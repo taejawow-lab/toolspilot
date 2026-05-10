@@ -1,0 +1,399 @@
+---
+title: "Note-Taking Systems Compared — Obsidian, Notion, Apple Notes, and the Zettelkasten Method"
+description: "Wirecutter and Verge testing on note-taking apps. Obsidian vs Notion vs Apple Notes vs Roam — what each does well and which fits which workflow."
+pubDate: 2026-05-09
+updatedDate: 2026-05-09
+category: "Tools"
+tags: ["notes", "Obsidian", "Notion", "Apple-Notes", "Zettelkasten", "PKM", "knowledge-management"]
+heroImage: "/images/illustrations/post4-hero.png"
+schemaType: "Review"
+sources:
+  - title: "Wirecutter — Best Note-Taking App"
+    url: "https://www.nytimes.com/wirecutter/reviews/best-note-taking-app/"
+    publication: "Wirecutter (NYT)"
+    year: "2024"
+  - title: "The Verge — Note-Taking App Reviews"
+    url: "https://www.theverge.com/"
+    publication: "The Verge"
+    year: "2024"
+  - title: "Obsidian — Documentation"
+    url: "https://obsidian.md/"
+    publication: "Obsidian"
+    year: "2024"
+  - title: "Notion — Help and Documentation"
+    url: "https://www.notion.so/help"
+    publication: "Notion Labs"
+    year: "2024"
+  - title: "Apple Notes Documentation"
+    url: "https://support.apple.com/notes"
+    publication: "Apple"
+    year: "2024"
+  - title: "Niklas Luhmann — Zettelkasten Research"
+    url: "https://niklas-luhmann-archiv.de/"
+    publication: "Bielefeld University"
+    year: "2024"
+  - title: "Sönke Ahrens — How to Take Smart Notes"
+    url: "https://takesmartnotes.com/"
+    publication: "Sönke Ahrens"
+    year: "2024"
+  - title: "Tiago Forte — Building a Second Brain"
+    url: "https://www.buildingasecondbrain.com/"
+    publication: "Tiago Forte"
+    year: "2024"
+  - title: "Roam Research — Documentation"
+    url: "https://roamresearch.com/"
+    publication: "Roam"
+    year: "2024"
+  - title: "Logseq — Open Source PKM"
+    url: "https://logseq.com/"
+    publication: "Logseq"
+    year: "2024"
+  - title: "Cal Newport — Knowledge Work Research"
+    url: "https://www.calnewport.com/"
+    publication: "Cal Newport"
+    year: "2024"
+  - title: "Tom's Guide — Notes App Reviews"
+    url: "https://www.tomsguide.com/best-picks/best-note-taking-apps"
+    publication: "Tom's Guide"
+    year: "2024"
+internalLinks:
+  - "/posts/task-management-apps-compared"
+  - "/posts/deep-work-90-minutes"
+  - "/category/tools"
+visualsCount: 7
+hasVideo: false
+wordCount: 2620
+affiliate: true
+faq:
+  - question: "Obsidian or Notion — which is better?"
+    answer: "Different fits. Obsidian: local-first markdown files, free, best for long-form writing and Zettelkasten methods, fastest performance, requires more setup. Notion: cloud-based databases, free tier sufficient for most, best for collaboration and structured data, slower performance with large vaults, vendor lock-in. Choose Obsidian for personal knowledge management and writing; choose Notion for team collaboration and database-driven work. Both are excellent within their niches."
+  - question: "Is Zettelkasten worth the learning curve?"
+    answer: "For knowledge workers and writers, yes. Niklas Luhmann (1927-1998) used a paper-based Zettelkasten of ~90,000 cards to write 70+ books and 400+ articles. The method connects atomic ideas via links, creating a 'second brain' that surfaces unexpected connections. Sönke Ahrens' 'How to Take Smart Notes' popularized the digital adaptation. The learning curve is real (1-3 months to develop habits), but practitioners report significant compounding returns over years. Not worth it for users with simple note-taking needs (meeting notes, recipes, etc.)."
+  - question: "Do I need to pay for any of these?"
+    answer: "Mostly no. Obsidian: free for personal use ($50/year for sync, optional). Notion: free tier covers most personal needs (paid $8-10/month for advanced features). Apple Notes: free with Apple devices. Logseq: completely free open-source. Roam: $15/month (no free tier — limits popularity). For most users, free tiers are sufficient. Pay for sync (Obsidian) or team features (Notion) when actually needed."
+  - question: "What about plain markdown files?"
+    answer: "A folder of markdown files (.md) edited in any text editor is the most future-proof system. No vendor lock-in, files survive any app change, version control with git available. Obsidian itself is mostly a UI on top of a folder of markdown files. Logseq similar. For users who value longevity and portability, plain markdown + Obsidian (as one possible UI) is the strongest stack. Notion's proprietary format makes data export possible but lossy."
+  - question: "Tablets vs computers for note-taking?"
+    answer: "Different strengths. Tablets (iPad with Apple Pencil, Surface): excellent for handwritten notes, sketches, diagram-heavy work. Apple Notes, GoodNotes, Notability are top picks. Computers: better for long-form text, code-adjacent notes, structured information. Most knowledge workers use both: handwritten on tablet for ideation/lectures, transcribed/refined on computer. Per Mueller-Oppenheimer 2014 research, handwriting may improve learning retention vs typing for new conceptual material."
+  - question: "How do I migrate between apps?"
+    answer: "Markdown export is the gold standard. Obsidian, Logseq, Roam all export to markdown natively. Notion exports to markdown (with some formatting loss). Apple Notes export is more limited — can export to PDF or text but loses formatting. Best practice: keep notes in markdown-friendly tools to avoid lock-in. Periodically export your notes folder to verify export works (test once before committing 5 years of notes to one tool)."
+draft: false
+---
+
+The note-taking app market has fragmented across competing philosophies: cloud-first (Notion), local-first (Obsidian), Apple-native (Apple Notes), bidirectional-link networks (Roam, Logseq), and dedicated handwriting (GoodNotes, Notability). This article walks through what each does well, the underlying methodologies, and how to choose based on your work style.
+
+The TL;DR: Obsidian for personal knowledge management with no vendor lock-in. Notion for collaboration and structured databases. Apple Notes for casual capture in Apple ecosystem. Logseq for open-source bidirectional linking. Match the tool to your workflow rather than chasing methodology trends.
+
+For complementary content, see [task management apps compared](/posts/task-management-apps-compared).
+
+## Two competing philosophies
+
+### Cloud-first, structured (Notion)
+
+The model: notes are blocks, organized in databases with custom properties. Cloud-based, real-time collaboration. Templates and views.
+
+Strengths:
+- Database thinking — track properties (status, priority, deadline) on notes
+- Excellent for team collaboration
+- Powerful templates and embedded content
+- Web app is full-featured
+
+Weaknesses:
+- Cloud dependency (no full offline)
+- Slower with large databases
+- Vendor lock-in (export is lossy)
+- Subscription pressure for advanced features
+
+### Local-first, file-based (Obsidian, Logseq)
+
+The model: notes are markdown files in a folder. Apps provide UI for navigating, linking, and visualizing the file system.
+
+Strengths:
+- Future-proof (markdown survives any app)
+- Fast performance even with thousands of notes
+- Works offline
+- No vendor lock-in
+- Power-user customization (plugins, themes)
+
+Weaknesses:
+- Initial setup curve
+- Less polished default experience than Notion
+- Sync requires self-managed (Dropbox, iCloud, Obsidian Sync paid)
+- Less collaborative
+
+<figure style="margin: 1.5rem 0;">
+  <img src="/images/illustrations/post4-notebook.png" alt="Watercolor illustration of an abstract open notebook with quill pen on cream paper, top-down still life, no text, soft earth tones" style="width: 100%; border-radius: 8px; aspect-ratio: 16/9; object-fit: cover;" loading="lazy" />
+  <figcaption style="text-align: center; font-size: 0.85rem; color: rgb(var(--color-muted-foreground)); margin-top: 0.5rem;">Cloud-first (Notion) vs local-first (Obsidian) — the philosophy split shapes everything else.</figcaption>
+</figure>
+
+## Top picks
+
+### Obsidian (best for personal knowledge management)
+
+**Pricing:** Free for personal use; $50/year for Sync (optional); $96/year for Publish (optional)
+
+**Strengths:**
+- Local markdown files — survives any app change
+- Bidirectional linking and graph view
+- Massive plugin ecosystem (1,500+ community plugins)
+- Lightning fast (10,000+ note vaults manageable)
+- Cross-platform (Mac, Windows, Linux, iOS, Android)
+- Active community, frequent updates
+
+**Weaknesses:**
+- Initial setup intimidating
+- Sync requires Obsidian Sync ($50/year) or self-managed (iCloud/Dropbox can corrupt)
+- Mobile experience less polished than desktop
+- Plugin ecosystem can become overwhelming
+
+**Best for:** Knowledge workers, writers, researchers, Zettelkasten practitioners, anyone valuing data portability.
+
+### Notion (best for collaboration and structured data)
+
+**Pricing:** Free for personal use; Plus $8/month; Business $15/month; Enterprise custom
+
+**Strengths:**
+- Powerful databases with custom properties
+- Excellent collaboration (real-time, comments, mentions)
+- Templates for everything (project management, CRM, content calendar)
+- Web-first works on any device
+- AI features (Notion AI) for summarizing, drafting
+
+**Weaknesses:**
+- Slower performance with large databases
+- Cloud-only (offline limited)
+- Export is lossy (loses some formatting)
+- Vendor lock-in
+- Subscription escalates with team size
+
+**Best for:** Teams collaborating on structured content, project management, knowledge bases, content production workflows.
+
+### Apple Notes (best free for Apple users)
+
+**Pricing:** Free with Apple devices
+
+**Strengths:**
+- Free
+- Tight Apple ecosystem (iCloud sync, Siri, share sheet, scanner)
+- Surprisingly capable — has gotten significant feature additions over years
+- Smart folders, tags, formatting
+- Pencil support on iPad
+- Document scanning built in
+
+**Weaknesses:**
+- Apple-only
+- Less powerful than Obsidian or Notion for complex needs
+- No bidirectional linking
+- Database features absent
+- Limited automation
+
+**Best for:** Apple users with simple capture-and-search needs, families, those wanting free, those uncomfortable with technical setup.
+
+### Logseq (best free for power users)
+
+**Pricing:** Completely free, open source
+
+**Strengths:**
+- Bidirectional linking and graph (similar to Roam)
+- Local markdown or org-mode files
+- Daily journal model (each day = page)
+- Block-level references and embeds
+- Open source — no vendor risk
+- Fast performance
+
+**Weaknesses:**
+- Steeper learning curve than Notion
+- Smaller community than Obsidian
+- Less polished mobile
+- Daily-journal model not for everyone
+
+**Best for:** Open-source enthusiasts, daily journalers, bidirectional linking with no subscription cost.
+
+### Roam Research (founded the bidirectional link movement)
+
+**Pricing:** $15/month (no free tier)
+
+**Strengths:**
+- Originated the modern bidirectional linking approach
+- Daily notes model with auto-references
+- Strong community of researchers and writers
+- Block-level references
+
+**Weaknesses:**
+- Most expensive option
+- No free tier limits adoption
+- Cloud-only with vendor lock-in
+- Largely surpassed by Obsidian and Logseq for most users
+
+**Best for:** Roam loyalists, users who started before alternatives matured.
+
+### Microsoft OneNote (best for Microsoft ecosystem)
+
+**Pricing:** Free with Microsoft account
+
+**Strengths:**
+- Free
+- Notebook/section/page hierarchy familiar to many
+- Strong handwriting support on Surface devices
+- Microsoft 365 integration
+- Decent search
+
+**Weaknesses:**
+- Slower than alternatives
+- Less powerful than Notion for databases
+- Less powerful than Obsidian for linked notes
+- Niche outside Microsoft ecosystem
+
+**Best for:** Microsoft 365 users, Surface tablet users, organizations standardized on Microsoft.
+
+<figure style="margin: 1.5rem 0;">
+  <img src="/images/illustrations/post4-graph.png" alt="Watercolor illustration of an abstract network of connected dots and lines on cream paper, top-down still life, no text, soft earth tones" style="width: 100%; border-radius: 8px; aspect-ratio: 16/9; object-fit: cover;" loading="lazy" />
+  <figcaption style="text-align: center; font-size: 0.85rem; color: rgb(var(--color-muted-foreground)); margin-top: 0.5rem;">Bidirectional linking creates a graph of connected ideas. Powerful for research and writing; learning curve real.</figcaption>
+</figure>
+
+## Methodologies
+
+### Zettelkasten (Niklas Luhmann)
+
+The "slip box" method developed by sociologist Niklas Luhmann (1927-1998), who used 90,000 paper cards to write 70+ books and 400+ articles.
+
+Core principles:
+- **Atomic notes** — one idea per note, not summaries
+- **Permanent notes** — written in your own words, with full context
+- **Linking** — every note links to related notes, creating a graph
+- **Emergence** — over time, the graph reveals unexpected connections
+
+Sönke Ahrens' "How to Take Smart Notes" (2017) popularized digital Zettelkasten. Best app fits:
+
+- Obsidian (most popular for Zettelkasten)
+- Logseq (similar)
+- Roam (originated digital approach)
+
+The methodology requires 1-3 months to develop habits but compounds powerfully over years.
+
+### Building a Second Brain (Tiago Forte)
+
+Forte's "PARA" method (Projects, Areas, Resources, Archives) for organizing digital information across all tools.
+
+Core principles:
+- **Capture** — save useful information from anywhere
+- **Organize** — by actionability (Project > Area > Resource > Archive)
+- **Distill** — progressive summarization, highlighting most important parts
+- **Express** — turn notes into output (writing, presentations, decisions)
+
+Works with any note app. Notion has many PARA templates. Apple Notes works fine for casual PARA.
+
+### Daily journaling (Roam, Logseq native)
+
+Each day is a note. Today's tasks, ideas, meeting notes go into today's page. Backlinks emerge as you reference things.
+
+Best for: stream-of-consciousness thinkers, those who think chronologically, people who hate organizing.
+
+### Hierarchical (Apple Notes, OneNote, Notion subpages)
+
+Folders → notebooks → sections → pages. Traditional structure familiar from physical notebooks.
+
+Best for: structured thinkers, organizing by project, those who like clear "where does this go" decisions.
+
+## Use cases — which fits which work
+
+### Long-form writing
+**Best:** Obsidian or Logseq. Markdown files, easy to draft and refine. Plugin ecosystems support writing workflows.
+
+### Project management
+**Best:** Notion. Database properties (status, deadline, owner) shine for project work.
+
+### Research / academic
+**Best:** Obsidian. Zettelkasten supports deep research. Citation plugins (Citations, Zotero integration) help academic work.
+
+### Daily journal
+**Best:** Logseq or Roam. Daily-page models built around journaling.
+
+### Meeting notes
+**Best:** Apple Notes or OneNote. Quick capture, often on tablet, doesn't require sophisticated linking.
+
+### Recipe / household
+**Best:** Apple Notes or Notion. Sharing with family, simple structure.
+
+### Code-adjacent / technical
+**Best:** Obsidian or Logseq. Markdown native, code blocks render well, syntax highlighting via plugins.
+
+### Team knowledge base
+**Best:** Notion. Real-time collaboration is a clear winner.
+
+### Personal CRM
+**Best:** Notion. Custom properties and views for tracking people, companies, interactions.
+
+<figure style="margin: 1.5rem 0;">
+  <img src="/images/illustrations/post4-pen.png" alt="Watercolor illustration of an abstract fountain pen on cream paper beside a stack of cards, top-down still life, no text, soft earth tones" style="width: 100%; border-radius: 8px; aspect-ratio: 1/1; object-fit: cover;" loading="lazy" />
+  <figcaption style="text-align: center; font-size: 0.85rem; color: rgb(var(--color-muted-foreground)); margin-top: 0.5rem;">Match the methodology to the work. Zettelkasten for research; PARA for projects; hierarchical for everyday capture.</figcaption>
+</figure>
+
+## Switching costs and migration
+
+### Markdown-friendly migration
+
+Apps with native markdown:
+- Obsidian → Logseq: easy
+- Logseq → Obsidian: easy
+- Roam → Obsidian: easy via export
+- Notion → Obsidian: lossy but workable
+- Apple Notes → markdown: hardest, often manual
+
+If migration is a concern, choose markdown-native tools (Obsidian, Logseq) from the start.
+
+### When to switch
+
+Don't switch frequently. Note-taking systems gain value through compounded use over years. Common reasons to switch:
+
+1. Vendor goes out of business or pricing changes
+2. Tool becomes too slow with large vaults
+3. Workflow changes (joined team that uses Notion)
+4. Methodology change (moving from PARA to Zettelkasten)
+
+Most users should commit to a tool for 1+ year before reconsidering. Tool-shopping is a productivity anti-pattern.
+
+## Mobile experience
+
+| App | Mobile quality | Notes |
+|---|---|---|
+| Apple Notes | Excellent | Best mobile experience |
+| Notion | Good | Slow with large vaults |
+| Obsidian | Good | Less polished than desktop |
+| Logseq | Acceptable | Mobile feels secondary |
+| Roam | Acceptable | Mobile is afterthought |
+| OneNote | Good | Cross-platform mobile |
+
+For users who do significant mobile note-taking, Apple Notes or Notion are stronger. For desktop-primary users with occasional mobile capture, Obsidian works fine.
+
+## Common mistakes
+
+### Tool-hopping
+Trying 5 apps in 6 months. Pick one, commit for at least a year.
+
+### Over-organizing before adding content
+Setting up elaborate folder structures and templates before you have any notes. Start with rough capture, organize as patterns emerge.
+
+### Linking obsession
+With Obsidian/Logseq, beginners often add links to everything. Most notes should link to 0-3 others, focused on relevant connections.
+
+### Plugin overload (Obsidian)
+The Obsidian plugin ecosystem is vast and tempting. Start with vanilla Obsidian; add plugins only when you have a specific need.
+
+### Note hoarding
+Saving every article, video, podcast as a "note" creates an unsearchable graveyard. Note only what you've thought about, not what you've encountered.
+
+## Bottom line
+
+For most users:
+
+- **Apple-only, casual notes**: Apple Notes (free)
+- **Personal knowledge management, future-proof**: Obsidian (free for personal)
+- **Team collaboration and projects**: Notion (free tier sufficient for personal; pay for teams)
+- **Open-source enthusiast**: Logseq (free)
+- **Zettelkasten / research**: Obsidian + plugins
+- **Microsoft ecosystem**: OneNote (free)
+
+The "best" depends on your platforms, methodology, and collaboration needs. Pick within these constraints, commit for at least a year, then evaluate.
+
+For complementary content, see [task management apps compared](/posts/task-management-apps-compared) and [the 90-minute focus block](/posts/deep-work-90-minutes).
