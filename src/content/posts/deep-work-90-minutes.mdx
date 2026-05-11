@@ -59,7 +59,7 @@ sources:
 visualsCount: 7
 hasVideo: false
 wordCount: 2800
-affiliate: false
+affiliate: true
 faq:
   - question: "How long can a person actually focus deeply in one session?"
     answer: "Research from Anders Ericsson on elite performers shows that sustained, demanding mental work tops out at about 60–90 minutes per session before cognitive fatigue significantly reduces output. Total daily capacity for novices is roughly 2–3 hours, climbing to about 4 hours for trained experts — not the 8 hours most workplaces assume."
@@ -78,6 +78,9 @@ internalLinks:
   - "/about"
 draft: false
 ---
+
+import ProductBox from '../../components/ProductBox.astro';
+import Aff from '../../components/Aff.astro';
 
 You sit down at 9 AM. Coffee. Calendar clear. A real 90 minutes of focus, finally. You open the doc. By 9:08 you have re-read the same paragraph four times. By 9:15 you are checking email "just for a second." By 9:32 the block is gone and the work has not moved.
 
@@ -221,3 +224,57 @@ Forty days of consistent 90-minute blocks is roughly 60 hours of compounded deep
 Deep work is not a hack or a productivity religion. It is just what the research finds when you measure how humans actually produce their best cognitive output. The hard part is not the technique. The hard part is treating two protected hours like the most valuable asset you have, because in most knowledge work, they are.
 
 Questions or corrections — editor@toolspilot.org. All quoted figures are linked to primary sources above.
+
+## Deep-work hardware and reading worth owning
+
+Cal Newport's deep-work practice requires uninterrupted focus blocks. Two categories of tools materially reduce distraction: noise-canceling headphones for any environment, and physical "ritual" objects that signal the brain to switch modes.
+
+<ProductBox
+  name="Sony WH-1000XM5 Wireless Noise Canceling Headphones"
+  priceHint="$330-400 — gold-standard ANC for offices and travel"
+  pros={[
+    "Industry-leading active noise cancellation — independent test winner",
+    "30-hour battery, multipoint Bluetooth (laptop + phone simultaneously)",
+    "Voice-call quality strong enough to skip a separate headset"
+  ]}
+  cons={[
+    "Premium pricing — among the most expensive in the category",
+    "Touch controls have a learning curve; some prefer physical buttons"
+  ]}
+  href="https://www.amazon.com/s?k=Sony+WH-1000XM5+wireless+noise+canceling"
+  region="us"
+/>
+
+<ProductBox
+  name="Bose QuietComfort Ultra Headphones"
+  priceHint="$380-430 — comfort-focused alternative"
+  pros={[
+    "Best-in-class long-session comfort (4+ hour deep work blocks)",
+    "Immersive Audio mode adds spatial sound for music-during-focus",
+    "Bose voice-pickup is among the cleanest for video calls"
+  ]}
+  cons={[
+    "Slightly weaker ANC than Sony XM5 in low-frequency noise tests",
+    "Battery 24 hours — shorter than Sony"
+  ]}
+  href="https://www.amazon.com/s?k=Bose+QuietComfort+Ultra+headphones"
+  region="us"
+/>
+
+<ProductBox
+  name="Deep Work by Cal Newport (Hardcover)"
+  priceHint="$15-22 — the book that started the genre"
+  pros={[
+    "Foundational text — practical frameworks not just theory",
+    "Hardcover holds up to highlighting and margin notes",
+    "Pairs naturally with focus-blocking practice"
+  ]}
+  cons={[
+    "First 70 pages can feel rhetorically heavy — skip to Part 2 rules",
+    "Some studies cited are now dated (book is from 2016)"
+  ]}
+  href="https://www.amazon.com/s?k=Deep+Work+Cal+Newport+hardcover"
+  region="us"
+/>
+
+The Sony XM5 + Newport book combo is the highest-leverage deep-work starter kit at any price point. Add the Bose only if comfort over an 8-hour stretch matters more than absolute ANC strength.
