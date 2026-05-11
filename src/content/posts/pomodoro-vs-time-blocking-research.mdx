@@ -63,7 +63,7 @@ internalLinks:
 visualsCount: 7
 hasVideo: false
 wordCount: 2620
-affiliate: false
+affiliate: true
 faq:
   - question: "Pomodoro or time-blocking — which is better?"
     answer: "Different fits. Pomodoro Technique (25-minute focused work + 5-minute break) is excellent for procrastination-prone work, task variety, and building focus stamina. Time-blocking (assigning specific calendar time to specific tasks) is excellent for known schedules, complex multi-task days, and protecting deep work time from meetings. They're complementary: time-block your day to reserve a 90-minute deep work block, then use Pomodoros within that block to maintain focus. Most productivity researchers (Cal Newport, Atlassian) recommend a hybrid approach over either alone."
@@ -79,6 +79,9 @@ faq:
     answer: "Yes, modestly. Apps (Forest, Be Focused, Toggl Track, Pomofocus) handle timing, tracking, and visualization. The biggest benefit is tracking — seeing how many Pomodoros you actually complete builds awareness of distractions and progress. The biggest pitfall is gamification interference (some users get more motivated by streaks than by the work itself). Most useful: simple timer + log of completions. Forest (apps that 'plant trees' if you don't unlock phone) has good adherence data. Free-tier basic timers work fine; premium features rarely worth it."
 draft: false
 ---
+
+import ProductBox from '../../components/ProductBox.astro';
+import Aff from '../../components/Aff.astro';
 
 The two dominant time management methods — Pomodoro Technique and time-blocking — are often presented as either/or choices. The research suggests they're complementary, with each suited to different work types. This article walks through what cognitive research, Cal Newport's deep work studies, and productivity meta-analyses actually show, and how to combine them effectively.
 
@@ -359,3 +362,57 @@ For most knowledge workers:
 Both methods work. The hybrid works better. The biggest improvement is making focus deliberate rather than reactive.
 
 For complementary content, see [the 90-minute focus block](/posts/deep-work-90-minutes).
+
+## Pomodoro and time-blocking hardware
+
+Both methods depend on visible, friction-free time tracking. Software timers fail at the third interruption; physical timers and dedicated planners survive the year-long consistency test.
+
+<ProductBox
+  name="Time Timer MOD (60-Minute Visual Timer)"
+  priceHint="$30-40 — visual countdown built for focus"
+  pros={[
+    "Visual disappearing-red-disc design — see time without checking",
+    "Silent operation (no ticking), gentle audible alert at zero",
+    "Optional alarm-off mode for shared offices"
+  ]}
+  cons={[
+    "60-minute max — not for 90-minute deep-work blocks",
+    "Pricier than $5 kitchen timers; the design matters here"
+  ]}
+  href="https://www.amazon.com/s?k=Time+Timer+MOD+60+minute+visual+timer"
+  region="us"
+/>
+
+<ProductBox
+  name="Bullet Journal Method by Ryder Carroll"
+  priceHint="$15-22 — the method that drives the system"
+  pros={[
+    "Foundational text for the time-blocking + rapid-logging system",
+    "Pairs with any blank notebook — no special supplies required",
+    "Practical exercises for migration, rapid logging, and collections"
+  ]}
+  cons={[
+    "Methodology takes 2-3 weeks of practice to stick",
+    "Some chapters skew philosophical vs. pure how-to"
+  ]}
+  href="https://www.amazon.com/s?k=Bullet+Journal+Method+Ryder+Carroll"
+  region="us"
+/>
+
+<ProductBox
+  name="Leuchtturm1917 Medium A5 Hardcover Notebook (Dotted)"
+  priceHint="$20-28 — preferred Bullet Journal substrate"
+  pros={[
+    "Dotted page for time-block grids, mood trackers, and habit logs",
+    "Numbered pages + table of contents page — frictionless indexing",
+    "Eight thread-bound signatures lie flat for two-handed writing"
+  ]}
+  cons={[
+    "Pricier than Moleskine; thinner paper than premium Japanese brands",
+    "Limited bleed-through tolerance with fountain pens"
+  ]}
+  href="https://www.amazon.com/s?k=Leuchtturm1917+A5+hardcover+dotted+notebook"
+  region="us"
+/>
+
+The Time Timer + Leuchtturm + Carroll's book is the complete starter kit. If you've never run a bullet journal, that combo is the lowest-friction way to test both pomodoro and time-blocking before committing to either.
