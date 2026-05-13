@@ -52,3 +52,5 @@ master-template/
 ```bash
 ../scripts/setup_site.sh <new-domain>
 ```
+
+<!-- rebuild-cookie-policy: 2026-05-13T22:45:10.5508704+09:00 -->
