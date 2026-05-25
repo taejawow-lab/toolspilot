@@ -1,0 +1,198 @@
+---
+title: "AI Connector Permission Audit 2026: Secure ChatGPT, Claude, Gemini, Copilot, and MCP Access"
+description: "A practical 2026 workflow for auditing AI connectors, OAuth scopes, browser context, MCP servers, retention settings, and high-risk tool actions."
+pubDate: 2026-05-25
+updatedDate: 2026-05-25
+category: "security"
+tags: ["AI security", "MCP", "OAuth", "connectors", "Copilot", "Gemini", "Claude", "ChatGPT"]
+heroImage: "/images/illustrations/tsp-ai-connector-audit-2026-01.png"
+schemaType: "HowTo"
+sources:
+  - title: "MCP and Connectors"
+    url: "https://platform.openai.com/docs/guides/tools-remote-mcp"
+    publication: "OpenAI Platform Docs"
+    year: "2026"
+  - title: "MCP connector"
+    url: "https://docs.anthropic.com/en/docs/agents-and-tools/mcp-connector"
+    publication: "Anthropic Docs"
+    year: "2026"
+  - title: "Authorization"
+    url: "https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization"
+    publication: "Model Context Protocol Specification"
+    year: "2025"
+  - title: "OWASP Top 10 for Large Language Model Applications"
+    url: "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+    publication: "OWASP Foundation"
+    year: "2026"
+  - title: "AI Risk Management Framework"
+    url: "https://www.nist.gov/itl/ai-risk-management-framework"
+    publication: "NIST"
+    year: "2026"
+  - title: "Generative AI in Google Workspace Privacy Hub"
+    url: "https://support.google.com/a/answer/15684907"
+    publication: "Google Workspace Admin Help"
+    year: "2026"
+  - title: "Data, Privacy, and Security for Microsoft 365 Copilot"
+    url: "https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-privacy"
+    publication: "Microsoft Learn"
+    year: "2026"
+  - title: "Getting started with Copilot in Microsoft Edge"
+    url: "https://support.microsoft.com/en-us/topic/getting-started-with-copilot-in-microsoft-edge-19c62e3a-6dc4-46db-8d4d-9c2edb4c6a9f"
+    publication: "Microsoft Support"
+    year: "2026"
+internalLinks:
+  - "/posts/passkey-password-manager-setup-2026"
+  - "/posts/client-browser-isolation-setup-2026"
+  - "/posts/privacy-first-task-automation-stack"
+  - "/category/security"
+visualsCount: 5
+hasVideo: false
+wordCount: 2100
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Are AI connectors the same as browser extensions?"
+    answer: "No. Browser extensions run in the browser permission model, while AI connectors may use OAuth, platform APIs, remote MCP servers, or browser context. Audit both because either can expose sensitive data."
+  - question: "Should freelancers connect an AI assistant to client drives?"
+    answer: "Only when the client approves the workflow, the permission scope is narrow, and the connector can be revoked after the project. Read-only or folder-limited access is safer than whole-account access."
+  - question: "What is the biggest MCP risk for small teams?"
+    answer: "Treating an unknown MCP server as just another plugin. It can expose tools and receive context, so verify the operator, authentication, tool list, logging, and destructive actions before use."
+  - question: "How often should I review AI connectors?"
+    answer: "Review high-risk connectors monthly and all connectors at least quarterly, plus immediately when a client project ends or a contractor leaves."
+draft: false
+---
+
+AI tools are no longer just chat windows. In 2026, a productivity assistant may read Google Drive, summarize calendar events, browse pages, call a remote MCP server, open GitHub issues, draft email, or inspect files through a desktop agent. That makes connector hygiene a practical security habit, not an enterprise-only concern. The question is not “which assistant is smartest?” The question is “what can this assistant see, do, retain, and hand to a tool?”
+
+This guide gives freelancers and small teams a repeatable audit. It is based on public documentation reviewed on 2026-05-25 from OpenAI, Anthropic, MCP, NIST, OWASP, Google, Microsoft, and browser-platform guidance. Product controls change quickly, so use the official admin and privacy pages for final settings before connecting sensitive accounts.
+
+<figure style="margin: 1.5rem 0;">
+  <img src="/images/illustrations/tsp-ai-connector-audit-2026-01.png" alt="Modern workspace showing abstract AI connector permissions and security boundaries" style="width: 100%; border-radius: 8px; aspect-ratio: 16/9; object-fit: cover;" loading="eager" decoding="async" />
+  <figcaption style="text-align: center; font-size: 0.85rem; color: rgb(var(--color-muted-foreground)); margin-top: 0.5rem;">AI connector security starts with knowing which accounts, files, and actions the assistant can reach.</figcaption>
+</figure>
+
+## The four connector types to separate
+
+Do not audit every AI feature as one blob. Sort each connection into a risk zone first.
+
+| Connection type | Examples | Main risk | Safer default |
+|---|---|---|---|
+| File upload | PDF, CSV, meeting notes | Sensitive data copied into a model workflow | Redact, use temporary copies, delete when done |
+| SaaS connector | Drive, Calendar, Slack, GitHub | Broad OAuth scope or cross-client exposure | Read-only, folder-limited, project-specific accounts |
+| Browser context | Edge Copilot, AI sidebars, AI browsers | Current tab, open tabs, history, or memory pulled into answers | Separate browser profile and context controls off by default |
+| MCP or agent tool | Remote MCP, local file tools, database tools | Prompt injection plus tool execution | Allowlist tools and require approval for write actions |
+
+A low-risk file summary can become high risk if the same assistant also has permission to email the summary externally. Risk is cumulative: data access plus action permission plus retention equals the real exposure.
+
+<figure style="margin: 1.5rem 0;">
+  <img src="/images/illustrations/tsp-ai-connector-audit-2026-02.png" alt="AI permission inventory with cloud service nodes and secure checklist" style="width: 100%; border-radius: 8px; aspect-ratio: 16/9; object-fit: cover;" loading="lazy" decoding="async" />
+  <figcaption style="text-align: center; font-size: 0.85rem; color: rgb(var(--color-muted-foreground)); margin-top: 0.5rem;">Inventory first: list every connector before deciding what to keep.</figcaption>
+</figure>
+
+## Build a connector inventory table
+
+Create a spreadsheet or note with one row per connector. Keep it boring and explicit.
+
+| Field | What to record |
+|---|---|
+| AI tool | ChatGPT, Claude, Gemini, Copilot, local agent, browser assistant |
+| Connected service | Google Drive, Gmail, Calendar, Slack, GitHub, Notion, MCP server |
+| Account boundary | Personal, business, client A, client B, shared workspace |
+| Permission scope | Read-only, read/write, full account, selected folder, selected repo |
+| Data retention | Product default, enterprise boundary, zero-data-retention eligibility, admin setting |
+| Tool actions | Can it send, delete, post, edit, purchase, merge, or invite? |
+| Revocation path | Where to remove access later |
+| Review date | Next monthly or quarterly audit |
+
+If you cannot identify the revocation path, do not connect the service yet. For OAuth apps, also check Google Account third-party access, Microsoft account or Entra admin settings, GitHub authorized OAuth apps, Slack app management, and the AI product's own connector screen. Some permissions can remain valid until revoked even if you stop using the feature.
+
+## Minimum safe defaults for freelancers
+
+Use these defaults unless a client or security policy requires something stronger.
+
+- Use a separate browser profile for AI work that touches client data.
+- Keep personal email, banking, health portals, and family accounts out of that profile.
+- Prefer read-only connectors and selected folders over whole-drive access.
+- Do not connect an assistant to multiple clients' drives in one AI account.
+- Turn off browser page context, open-tab context, history personalization, or memory unless the task needs it.
+- Require manual approval before sending email, creating calendar invites, pushing code, updating CRM records, or deleting files.
+- Remove project connectors during offboarding, not “sometime later.”
+
+<figure style="margin: 1.5rem 0;">
+  <img src="/images/illustrations/tsp-ai-connector-audit-2026-03.png" alt="Separate browser profiles and shielded AI workspace concept" style="width: 100%; border-radius: 8px; aspect-ratio: 16/9; object-fit: cover;" loading="lazy" decoding="async" />
+  <figcaption style="text-align: center; font-size: 0.85rem; color: rgb(var(--color-muted-foreground)); margin-top: 0.5rem;">Browser separation limits accidental context sharing between personal, business, and client work.</figcaption>
+</figure>
+
+## MCP needs a stricter review than “install plugin”
+
+The Model Context Protocol makes it easier for AI applications to discover and call external tools. That is powerful, but it also means the connector can become a bridge from natural-language instructions to real systems. Before approving a remote MCP server, document:
+
+1. Who operates the server?
+2. Is the URL official and encrypted?
+3. What OAuth scopes or tokens does it request?
+4. Which tools can the model call?
+5. Can you allowlist or denylist tools?
+6. Are destructive actions gated by user confirmation?
+7. What logs, prompts, tool calls, and outputs are retained?
+8. How do you revoke the token?
+
+Prompt injection is the reason this matters. A document, web page, email, or ticket can contain instructions that attempt to manipulate the model. If the assistant only summarizes text, the blast radius is smaller. If the same assistant can call a tool that emails files or changes a database, you need stricter approval gates.
+
+<figure style="margin: 1.5rem 0;">
+  <img src="/images/illustrations/tsp-ai-connector-audit-2026-04.png" alt="Secure MCP server and allowlist gate concept" style="width: 100%; border-radius: 8px; aspect-ratio: 16/9; object-fit: cover;" loading="lazy" decoding="async" />
+  <figcaption style="text-align: center; font-size: 0.85rem; color: rgb(var(--color-muted-foreground)); margin-top: 0.5rem;">For MCP, verify the server, tools, authentication, and approval gates before handing over tokens.</figcaption>
+</figure>
+
+## The 30-minute audit workflow
+
+### 1. Collect connections
+
+Open every AI tool you use and capture the connector list. Then check account-level third-party app pages for Google, Microsoft, GitHub, Slack, Notion, and any password manager or project-management platform. Add browser extensions and AI sidebars to the same inventory because they can read pages or tabs.
+
+### 2. Remove dead access
+
+Revoke anything you have not used in 90 days, anything tied to a finished client project, and anything whose owner or purpose you cannot explain. This is the highest-return step because unused connectors create risk without productivity.
+
+### 3. Downgrade scopes
+
+Look for whole-account access and write permissions. Replace them with folder-specific, repository-specific, read-only, or temporary access when possible. If a tool needs write access for one task, grant it for that task and schedule removal.
+
+### 4. Add approval checkpoints
+
+High-risk actions should not run automatically. Require a human click for email sends, file deletion, external sharing, purchase actions, calendar invitations, Git pushes, ticket status changes, payroll, finance, health, legal, or client data exports.
+
+### 5. Record retention and training settings
+
+Product policies differ. Some enterprise controls may keep prompts and responses inside a service boundary or exclude them from training, while other API or connector modes may have standard retention. Record the official setting for each workspace rather than assuming all AI features behave the same.
+
+## Risk scoring shortcut
+
+| Score | Pattern | Action |
+|---|---|---|
+| Low | Single-file upload, no connected account, no sensitive data | Use temporary copies and delete after use |
+| Medium | Read-only calendar, selected Drive folder, selected repo | Keep, but review quarterly |
+| High | Whole-drive access, email draft/send, repo write, CRM update | Limit scope and require approval |
+| Critical | Payment, contract, production database, payroll, legal or medical data | Avoid unless formally approved and logged |
+
+<figure style="margin: 1.5rem 0;">
+  <img src="/images/illustrations/tsp-ai-connector-audit-2026-05.png" alt="Quarterly AI connector audit workflow with access tokens and calendar" style="width: 100%; border-radius: 8px; aspect-ratio: 16/9; object-fit: cover;" loading="lazy" decoding="async" />
+  <figcaption style="text-align: center; font-size: 0.85rem; color: rgb(var(--color-muted-foreground)); margin-top: 0.5rem;">Put connector review on the calendar so access does not quietly accumulate.</figcaption>
+</figure>
+
+## A simple quarterly template
+
+Copy this into your notes:
+
+- [ ] Export or screenshot current AI connector lists.
+- [ ] Revoke unused connectors and finished-client access.
+- [ ] Confirm each remaining connector has a named owner and purpose.
+- [ ] Check OAuth scopes for read/write and full-account access.
+- [ ] Review browser AI context, memory, and personalization settings.
+- [ ] Confirm MCP servers are official, documented, and still needed.
+- [ ] Test that high-risk tool actions require confirmation.
+- [ ] Record retention, training, and admin-policy changes.
+- [ ] Schedule the next review.
+
+## Bottom line
+
+AI connectors are a new permission layer. Treat them like password-manager sharing, browser extensions, and contractor access: useful, but never invisible. The safe default for 2026 is separation, least privilege, read-only access, short-lived project connections, and explicit approval before the assistant can act outside the chat window.
