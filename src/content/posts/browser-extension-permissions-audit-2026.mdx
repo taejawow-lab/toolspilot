@@ -1,0 +1,110 @@
+---
+title: "Browser Extension Permissions Audit: A 2026 Safety Checklist for Teams"
+description: "Audit Chrome, Edge, and Firefox extensions by permission scope, data access, update risk, account recovery, and rollout controls."
+pubDate: 2026-05-30
+updatedDate: 2026-05-30
+category: "Automation"
+tags: ["browser extensions", "security", "SaaS", "permissions", "automation"]
+heroImage: "/images/illustrations/tp-extension-audit-2026-hero.png"
+schemaType: "HowTo"
+sources:
+  - title: "Chrome Extensions Permissions"
+    url: "https://developer.chrome.com/docs/extensions/develop/concepts/declare-permissions"
+    publication: "Chrome Developers"
+    year: "2026"
+  - title: "Chrome Extension Safety Check"
+    url: "https://support.google.com/chrome/answer/9890866"
+    publication: "Google Chrome Help"
+    year: "2026"
+  - title: "Firefox Extension Permissions"
+    url: "https://support.mozilla.org/en-US/kb/permission-request-messages-firefox-extensions"
+    publication: "Mozilla Support"
+    year: "2026"
+  - title: "Microsoft Edge Extensions and Permissions"
+    url: "https://learn.microsoft.com/en-us/microsoft-edge/extensions-chromium/developer-guide/declare-permissions"
+    publication: "Microsoft Learn"
+    year: "2026"
+  - title: "CISA Secure by Design"
+    url: "https://www.cisa.gov/securebydesign"
+    publication: "CISA"
+    year: "2026"
+  - title: "FTC Online Privacy and Security"
+    url: "https://consumer.ftc.gov/identity-theft-and-online-security/online-privacy-and-security"
+    publication: "FTC"
+    year: "2026"
+  - title: "NIST Digital Identity Guidelines"
+    url: "https://pages.nist.gov/800-63-4/"
+    publication: "NIST"
+    year: "2026"
+  - title: "Google Workspace Chrome Browser Cloud Management"
+    url: "https://support.google.com/chrome/a/answer/9116814"
+    publication: "Google"
+    year: "2026"
+internalLinks:
+  - "/category/automation"
+visualsCount: 5
+hasVideo: false
+wordCount: 1700
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Is this guide current for 2026?"
+    answer: "It was checked against the listed official/vendor sources during the May 30, 2026 workflow; verify account terms, browser policies, travel rules, labels, and medical advice for your exact situation."
+  - question: "What should I do first?"
+    answer: "Use the checklist to define your situation before buying, installing, booking, or applying a product."
+  - question: "When should I get expert help?"
+    answer: "Use qualified financial, security, travel, or medical help when the risk exceeds routine household or team judgment."
+draft: false
+---
+
+A browser extension can be a tiny helper or a quiet data pipe. In 2026, teams use extensions for password managers, screenshots, sales workflows, writing assistants, coupons, accessibility, translation, and automation. The risk is not that every extension is bad. The risk is that nobody owns the inventory, permissions change silently, employees install overlapping tools, and a helpful add-on gains access to pages that contain customer data, financial dashboards, source code, or private health information. This checklist was reviewed on May 30, 2026 against browser-vendor permission documentation, CISA secure-by-design principles, FTC consumer guidance, and NIST identity guidance.
+
+![Browser extension permissions audit hero](/images/illustrations/tp-extension-audit-2026-hero.png)
+
+## The audit table
+
+| Audit question | Good evidence | Risk signal |
+|---|---|---|
+| Who needs it? | Named role, workflow, owner | “Everyone installed it sometime” |
+| What can it read? | Narrow host permissions | Reads and changes all site data |
+| Who publishes it? | Known vendor and update history | New owner, vague listing, copycat name |
+| How is it deployed? | Allowlist or managed policy | Individual unmanaged installs |
+| How is it removed? | Rollback steps and alternatives | No owner, no replacement plan |
+
+![Extension inventory sorting](/images/illustrations/tp-extension-audit-2026-01.png)
+
+## Build the inventory before debating risk
+Start with a list of installed extensions by browser, profile, team, and device group. Include the extension ID, publisher, version, install source, purpose, permissions, and business owner. Do not rely only on memory; ask users which extensions they actually click every week. Many organizations discover duplicate screenshot tools, abandoned coupon add-ons, old meeting recorders, and test extensions that survived a pilot.
+
+## Translate permissions into plain language
+Permissions are technical, but the decision should be understandable. A tool that can read and change data on every website is not automatically malicious, but it needs a stronger reason than a tool limited to one domain. Host permissions, clipboard access, downloads, native messaging, tabs, cookies, and identity-related scopes should trigger closer review. Convert each risky permission into an example: “This could see text typed into a CRM page” is more useful than “broad host permission.”
+
+![Permission scope review](/images/illustrations/tp-extension-audit-2026-02.png)
+
+## Rate vendor and update risk
+Check whether the publisher is the expected vendor, whether the listing links to a real privacy policy, whether the extension was recently transferred, and whether reviews mention unexpected behavior. Review update cadence: no updates can mean abandonment, while sudden major changes can mean new risk. For high-sensitivity workflows, prefer vendors with admin controls, documented security practices, and clear support paths.
+
+## Separate personal convenience from business need
+A coupon finder on a personal shopping profile is different from the same extension on a work browser used for payroll, client data, or admin consoles. Create browser profiles or device policies that separate sensitive work from personal browsing. If the business need is weak, remove the extension instead of writing a complicated exception.
+
+![Managed policy review](/images/illustrations/tp-extension-audit-2026-03.png)
+
+## Use allowlists for sensitive teams
+For finance, legal, engineering, customer support, healthcare, education, and executive devices, default-deny with a reviewed allowlist is safer than open installs. The allowlist should name the extension ID, publisher, allowed domains, business owner, review date, and rollback method. Pair policy with communication: employees should know how to request a tool and why broad permissions are treated seriously.
+
+## Prepare a rollback playbook
+The time to decide how to remove an extension is before a suspicious update. Document how to disable it in managed browsers, revoke OAuth grants if the tool connected to SaaS accounts, rotate exposed tokens if needed, and preserve evidence. A small extension incident can become a larger account incident when it intersects with passwords, cookies, session tokens, or exported data.
+
+![Rollback kit](/images/illustrations/tp-extension-audit-2026-04.png)
+
+## Training script for employees
+Tell employees to check the publisher, review permission prompts, avoid copycat names, and report sudden permission changes. Do not shame users for installing helpful tools; make the safe path easier. Provide approved alternatives for screenshots, password management, translation, AI assistance, and accessibility so people do not work around the policy.
+
+![Employee extension training](/images/illustrations/tp-extension-audit-2026-05.png)
+
+## FAQ
+**Should we ban all extensions?** No. Some extensions are essential. The goal is ownership, least privilege, and fast removal when risk changes.
+
+**How often should we review?** Review high-risk extensions quarterly and the full inventory at least twice a year, plus whenever a vendor, permission set, or browser policy changes.
+
+**What is the biggest red flag?** Broad site-data access with no clear business owner, vague publisher identity, and no managed deployment or rollback plan.
