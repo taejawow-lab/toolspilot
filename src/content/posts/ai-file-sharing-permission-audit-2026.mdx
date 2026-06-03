@@ -1,0 +1,129 @@
+---
+title: "AI File-Sharing Permission Audit: 2026 Checklist for Docs, Drives, Links, and Team Bots"
+description: "Audit shared files, public links, AI connectors, bot access, retention, offboarding, and recovery evidence before private docs leak."
+pubDate: 2026-06-03
+updatedDate: 2026-06-03
+category: "Security"
+tags: ["file sharing", "AI tools", "permissions", "security", "collaboration"]
+heroImage: "/images/illustrations/tp-ai-file-sharing-audit-2026-hero.png"
+schemaType: "HowTo"
+sources:
+  - title: "CISA Secure Our World"
+    url: "https://www.cisa.gov/secure-our-world"
+    publication: "CISA"
+    year: "2026"
+  - title: "FTC Protect Your Personal Information"
+    url: "https://consumer.ftc.gov/identity-theft-online-security"
+    publication: "FTC"
+    year: "2026"
+  - title: "NIST Digital Identity Guidelines"
+    url: "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    publication: "NIST"
+    year: "2026"
+  - title: "Google Drive Share Files"
+    url: "https://support.google.com/drive/answer/2494822"
+    publication: "Google Help"
+    year: "2026"
+  - title: "Microsoft Share OneDrive Files"
+    url: "https://support.microsoft.com/office/share-onedrive-files-and-folders-9fcc2f7d-de0c-4cec-93b0-a82024800c07"
+    publication: "Microsoft Support"
+    year: "2026"
+  - title: "Dropbox Shared Links"
+    url: "https://help.dropbox.com/share/create-and-share-link"
+    publication: "Dropbox Help"
+    year: "2026"
+  - title: "Slack App Directory Permissions"
+    url: "https://slack.com/help/articles/222386767-Manage-app-approvals-for-your-workspace"
+    publication: "Slack Help"
+    year: "2026"
+  - title: "OpenAI Data Controls"
+    url: "https://help.openai.com/en/articles/7730893-data-controls-faq"
+    publication: "OpenAI Help"
+    year: "2026"
+internalLinks:
+  - "/category/security"
+visualsCount: 6
+hasVideo: false
+wordCount: 1700
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Is this guide current for 2026?"
+    answer: "It was checked against the listed sources on June 3, 2026; verify account-specific, school-specific, cruise-line, workspace, tax, or provider rules before acting."
+  - question: "What should I do first?"
+    answer: "Create the evidence table first so you understand owners, risks, timing, proof, and escalation before changing anything."
+  - question: "When should I get expert help?"
+    answer: "Use qualified tax, financial, security, travel, medical, legal, or official support when a mistake could affect money, identity, health, compliance, or access."
+draft: false
+---
+
+File sharing used to mean a folder link. In 2026 it can also mean an AI meeting bot, a document summarizer, a project-management connector, a browser extension, a workspace app, or a public link copied into chat months ago. The goal of this audit is not to ban collaboration; it is to make every active share explainable, scoped, owned, and reversible. This guide was checked on June 3, 2026 against CISA, FTC, NIST, Google, Microsoft, Dropbox, Slack, and OpenAI resources. Follow your organization’s policies for managed workspaces.
+
+![AI File-Sharing Permission Audit: 2026 Checklist for Docs, Drives, Links, and Team Bots](/images/illustrations/tp-ai-file-sharing-audit-2026-hero.png)
+
+## Practical decision table
+
+| Permission path | Keep when | Restrict when |
+|---|---|---|
+| Public link | Low-risk file and expiry exists | Sensitive or owner unknown |
+| External guest | Current project need is documented | Contractor left or project ended |
+| AI connector | Admin, retention, and scope are known | Can read broad drives by default |
+| Workspace app | Reviewed scopes and publisher | Unapproved app with file access |
+| Shared folder | Named owner and review date | Everyone group has write access |
+
+![support image 1](/images/illustrations/tp-ai-file-sharing-audit-2026-01.png)
+
+## Inventory access paths beyond the drive
+Start with the storage system, then widen the map. List direct users, groups, public links, external domains, synced desktop clients, mobile apps, third-party apps, AI connectors, meeting bots, automation services, and browser add-ons that can read or write files. Treat each path as a separate permission, even when it points to the same document.
+
+![support image 2](/images/illustrations/tp-ai-file-sharing-audit-2026-02.png)
+
+## Classify by sensitivity and lifetime
+A lunch menu and a contract negotiation should not have the same sharing rule. Mark files that include customer data, employee records, credentials, financial data, unreleased plans, legal terms, health information, student data, or private family documents. Give each share an owner, expiration review date, and reason. If nobody can explain why the access exists, restrict it first and ask questions before restoring.
+
+![support image 3](/images/illustrations/tp-ai-file-sharing-audit-2026-03.png)
+
+## Review AI and bot access with extra skepticism
+AI tools often work by ingesting prompts, file attachments, transcripts, or connector-accessible documents. Confirm what the tool can read, whether training or retention controls apply, who administers the integration, and whether private files are excluded by default. Avoid pasting secrets, credentials, legal documents, or regulated data into tools unless the policy and contract allow it.
+
+![support image 4](/images/illustrations/tp-ai-file-sharing-audit-2026-04.png)
+
+## Fix links before incidents
+Disable broad public links, prefer named-user access for sensitive files, limit external sharing by domain where available, remove stale guests, and rotate links when a recipient leaves. For team spaces, review app approvals and bot scopes after every onboarding, offboarding, acquisition, contractor change, or security incident. Keep a small evidence log of what was restricted and why.
+
+![support image 5](/images/illustrations/tp-ai-file-sharing-audit-2026-05.png)
+
+## Make recovery measurable
+After cleanup, test that a removed user cannot open a sample file, that a public link is no longer accessible, and that the audit owner can export the access report. Store recovery evidence without exposing private file names. A repeatable quarterly review is more AdSense- and user-trust-friendly than dramatic security claims without proof.
+
+## Audit the four permission surfaces separately
+A good review separates link exposure, account membership, app access, and AI processing. Public links are visible even when nobody remembers them. External collaborators can remain after a project ends. Workspace apps can keep broad scopes after a trial. AI tools may process pasted files outside the original document system. Treat each surface as its own inventory so one clean report does not hide another weak point.
+
+| Surface | What to list | Safe default | Evidence to capture |
+|---|---|---|---|
+| Public or anyone-with-link shares | URL, owner, file type, expiry | Private or named users only | Link settings screenshot or export |
+| External collaborators | Domain, role, purpose, owner | Least privilege and expiry date | Access review note |
+| Apps and bots | Scopes, workspace, data types | Admin-approved and scoped | App permission record |
+| AI file uploads | File category and retention setting | No sensitive files without policy | Tool policy and user note |
+
+## Seven-day cleanup sequence
+Day one is discovery: export links, members, app permissions, and recent uploads where the tools allow it. Day two is classification: mark each item as customer data, financial data, credentials, source code, internal planning, or low sensitivity. Day three is owner confirmation. Day four removes stale shares. Day five narrows broad permissions. Day six updates offboarding and project-close templates. Day seven repeats a small spot check to confirm no automation recreated the exposure.
+
+## Policy-safe AI guidance
+Do not tell staff merely to “use AI carefully.” Give examples: do not paste contracts, credentials, private customer records, employee data, unreleased financials, or proprietary source files into unapproved tools. If an approved AI tool is used, record the approved purpose, retention control, and responsible owner. That makes the article practical while preserving trust and avoiding vague security fearmongering.
+
+## Implementation checklist
+- Write the owner, review date, decision rule, and evidence location before changing money, documents, or access.
+- Prefer official sources and account settings over screenshots, social posts, or outdated forum advice.
+- Keep proof: confirmations, statements, receipts, support links, and dated internal notes when appropriate.
+- Reduce single points of failure such as one login, one document, one adult, one app, or one undocumented recovery path.
+- Revisit the plan after travel, school changes, account changes, offboarding, incidents, policy updates, or major life events.
+
+## FAQ
+### Is this current for 2026?
+Yes. The workflow was checked against the listed sources on June 3, 2026, but vendor sharing controls, workspace policies, app permissions, and security defaults can change.
+### What should I do first?
+Build the evidence table first. It prevents rushing into a change that breaks access, duplicates a benefit, or creates a new exposure.
+### When should I get expert help?
+Escalate to security, legal, compliance, or the workspace owner when a share may expose client data, credentials, regulated records, source code, contracts, or private employee information.
+

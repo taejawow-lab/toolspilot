@@ -1,0 +1,166 @@
+{
+  "site": "toolspilot",
+  "slug": "ai-file-sharing-permission-audit-2026",
+  "date": "2026-06-03",
+  "endpoint": "http://192.168.50.29:8188",
+  "host": "gti13",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "assets": [
+    {
+      "file": "public/images/illustrations/tp-ai-file-sharing-audit-2026-hero.png",
+      "filename": "tp-ai-file-sharing-audit-2026-hero.png",
+      "prompt": "realistic cybersecurity collaboration desk with blank laptop screen, file folders, lock, no text no logos",
+      "seed": 202606030607,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "ac158c39-70d1-4595-aade-8e5dc54336c2",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260603_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1147942,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-ai-file-sharing-audit-2026-01.png",
+      "filename": "tp-ai-file-sharing-audit-2026-01.png",
+      "prompt": "realistic secure file sharing audit still life with padlock, plain folders, blank sticky notes, closed laptop, no screens, no text, no labels",
+      "seed": 202606039102,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "5f462d7c-acb2-41cd-a853-6b2923b86c50",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260603_final2_toolspilot_tp-ai-file-sharing-audit-2026-01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1255594,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 28,
+      "cfg": 5.0,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "qa_replacement": true,
+      "qa_replacement_round": 2
+    },
+    {
+      "file": "public/images/illustrations/tp-ai-file-sharing-audit-2026-02.png",
+      "filename": "tp-ai-file-sharing-audit-2026-02.png",
+      "prompt": "realistic cloud drive cleanup scene with padlock and plain documents no logos",
+      "seed": 202606030609,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "a851cb74-b47d-47a3-8f98-af49333171ce",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260603_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1310181,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-ai-file-sharing-audit-2026-03.png",
+      "filename": "tp-ai-file-sharing-audit-2026-03.png",
+      "prompt": "realistic team bot connector review desk with dark phone screen no UI text",
+      "seed": 202606030610,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "3bac2d15-f85f-432a-ab8a-114561cf9e2a",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260603_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1143646,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-ai-file-sharing-audit-2026-04.png",
+      "filename": "tp-ai-file-sharing-audit-2026-04.png",
+      "prompt": "realistic cybersecurity access review still life with plain padlock silhouette, network cable coil, blank folders, no keys, no engravings, no text, no labels, no logos, no screen",
+      "seed": 202606039201,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "2d2ab995-5c4d-4aed-8d0b-20c91b6ac945",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260603_final3_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 963232,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 30,
+      "cfg": 4.8,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "qa_replacement": true,
+      "qa_replacement_round": 3
+    },
+    {
+      "file": "public/images/illustrations/tp-ai-file-sharing-audit-2026-05.png",
+      "filename": "tp-ai-file-sharing-audit-2026-05.png",
+      "prompt": "realistic team access offboarding review table with blank clipboard face down, keys, closed laptop, no whiteboard, no writing, no words",
+      "seed": 202606039003,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "fc995b8b-72f3-4f66-8020-382e8019ef25",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260603_finalqa_toolspilot_tp-ai-file-sharing-audit-2026-05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1698183,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.2,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "qa_replacement": true
+    }
+  ],
+  "contact_sheet_final3": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260603-toolspilot-contact-sheet-final3.jpg"
+}
