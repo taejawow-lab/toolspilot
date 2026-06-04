@@ -1,0 +1,176 @@
+{
+  "site": "toolspilot",
+  "slug": "pdf-redaction-ai-upload-safety-checklist-2026",
+  "date": "2026-06-04",
+  "endpoint": "http://192.168.50.29:8188",
+  "host": "gti13",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "assets": [
+    {
+      "file": "public/images/illustrations/tp-pdf-redaction-ai-upload-2026-hero.png",
+      "filename": "tp-pdf-redaction-ai-upload-2026-hero.png",
+      "prompt": "realistic document privacy review desk with blank laptop, stacked papers, black redaction marker cap closed, no text no logos",
+      "positive_prompt": "realistic document privacy review desk with blank laptop, stacked papers, black redaction marker cap closed, no text no logos, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, unsafe food handling, raw meat touching produce, exposed wiring, fake dashboard, fake warning label",
+      "seed": 202606040607,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "40c16ed9-f408-40f3-a3b9-eb0cf49ee790",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260604_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1141424,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-pdf-redaction-ai-upload-2026-01.png",
+      "filename": "tp-pdf-redaction-ai-upload-2026-01.png",
+      "prompt": "realistic PDF privacy review represented by closed laptop, paper stack with blank pages, black redaction marker capped, no screen visible, no text, no logos",
+      "positive_prompt": "realistic PDF privacy review represented by closed laptop, paper stack with blank pages, black redaction marker capped, no screen visible, no text, no logos, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, unsafe food handling, raw meat touching produce, exposed wiring, fake dashboard, fake warning label",
+      "seed": 202606041003,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "qa_replaces": "visual QA rejected first-pass image",
+      "prompt_id": "6b5a97cb-dcd7-4423-8860-20147025ef7e",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260604_qa_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1330233,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-pdf-redaction-ai-upload-2026-02.png",
+      "filename": "tp-pdf-redaction-ai-upload-2026-02.png",
+      "prompt": "realistic redaction workflow closeup with black marker beside fully blank white paper, no lines, no handwriting, no readable marks, no text",
+      "positive_prompt": "realistic redaction workflow closeup with black marker beside fully blank white paper, no lines, no handwriting, no readable marks, no text, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, unsafe food handling, raw meat touching produce, exposed wiring, fake dashboard, fake warning label",
+      "seed": 202606041004,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "qa_replaces": "visual QA rejected first-pass image",
+      "prompt_id": "000b1396-c311-4bbd-abf7-0abbea275cc8",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260604_qa_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 949424,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-pdf-redaction-ai-upload-2026-03.png",
+      "filename": "tp-pdf-redaction-ai-upload-2026-03.png",
+      "prompt": "realistic metadata cleanup scene with dark phone screen and file folder no UI",
+      "positive_prompt": "realistic metadata cleanup scene with dark phone screen and file folder no UI, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, unsafe food handling, raw meat touching produce, exposed wiring, fake dashboard, fake warning label",
+      "seed": 202606040610,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "be3fcdc7-f0e6-44e4-90b9-08909b347154",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260604_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1430176,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-pdf-redaction-ai-upload-2026-04.png",
+      "filename": "tp-pdf-redaction-ai-upload-2026-04.png",
+      "prompt": "realistic team document approval desk with sealed envelope and blank tablet no text",
+      "positive_prompt": "realistic team document approval desk with sealed envelope and blank tablet no text, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, unsafe food handling, raw meat touching produce, exposed wiring, fake dashboard, fake warning label",
+      "seed": 202606040611,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "b3e34615-3f54-4ea8-ae9c-bb1fca2f90d0",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260604_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1431201,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-pdf-redaction-ai-upload-2026-05.png",
+      "filename": "tp-pdf-redaction-ai-upload-2026-05.png",
+      "prompt": "realistic secure file handoff scene with lock and plain USB drive no labels",
+      "positive_prompt": "realistic secure file handoff scene with lock and plain USB drive no labels, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, unsafe food handling, raw meat touching produce, exposed wiring, fake dashboard, fake warning label",
+      "seed": 202606040612,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "8bed97fa-10be-43ed-bb03-2e5bf55a1b1b",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260604_toolspilot_05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1414360,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    }
+  ],
+  "contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260604-toolspilot-contact-sheet.jpg",
+  "final_visual_qa": "regenerated first-pass rejects; final contact sheet rewritten"
+}
