@@ -1,0 +1,178 @@
+{
+  "site": "toolspilot",
+  "slug": "passkey-recovery-backup-code-checklist-2026",
+  "date": "2026-06-05",
+  "endpoint": "http://192.168.50.29:8188",
+  "host": "gti13",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "assets": [
+    {
+      "file": "public/images/illustrations/tp-passkey-recovery-2026-hero.png",
+      "filename": "tp-passkey-recovery-2026-hero.png",
+      "prompt": "realistic cybersecurity desk with hardware security key, blank phone screen, laptop dark screen, sealed envelope no text no logos",
+      "positive_prompt": "realistic cybersecurity desk with hardware security key, blank phone screen, laptop dark screen, sealed envelope no text no logos, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, exposed wiring, fake dashboard, fake warning label, unsafe child scene",
+      "seed": 202606050607,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "ae559708-1c63-4aa5-819d-a8c11c8783b5",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260605_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1148295,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-passkey-recovery-2026-01.png",
+      "filename": "tp-passkey-recovery-2026-01.png",
+      "prompt": "realistic passkey setup desk with blank laptop and phone screens no UI no text",
+      "positive_prompt": "realistic passkey setup desk with blank laptop and phone screens no UI no text, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, exposed wiring, fake dashboard, fake warning label, unsafe child scene",
+      "seed": 202606050608,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "a39d0739-6a56-4132-81b4-54060131db47",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260605_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1576280,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-passkey-recovery-2026-02.png",
+      "filename": "tp-passkey-recovery-2026-02.png",
+      "prompt": "minimal realistic sealed plain kraft envelope under two metal keys and a black security key on clean table, envelope has no writing no marks no labels no documents",
+      "positive_prompt": "minimal realistic sealed plain kraft envelope under two metal keys and a black security key on clean table, envelope has no writing no marks no labels no documents, professional realistic editorial photography, high detail, 16:9, absolutely blank objects, no text no letters no numbers no logos no people",
+      "negative_prompt": "text, words, letters, numbers, barcodes, label, logo, brand, watermark, document, form, receipt, UI, screen content, code editor, calendar, handwriting, face, person, child, people, readable, low quality, distorted",
+      "seed": 202606052003,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "3b90b21b-0c80-4706-a4a8-eb73ebf1c1e0",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260605_qa2_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1785993,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 28,
+      "cfg": 4.8,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_for_visual_qa": true
+    },
+    {
+      "file": "public/images/illustrations/tp-passkey-recovery-2026-03.png",
+      "filename": "tp-passkey-recovery-2026-03.png",
+      "prompt": "realistic cybersecurity desk with two laptops powered off black blank screens, hardware key and closed notebook, no UI no code no logos no papers",
+      "positive_prompt": "realistic cybersecurity desk with two laptops powered off black blank screens, hardware key and closed notebook, no UI no code no logos no papers, professional realistic editorial photography, high detail, 16:9, absolutely blank objects, no text no letters no numbers no logos no people",
+      "negative_prompt": "text, words, letters, numbers, barcodes, label, logo, brand, watermark, document, form, receipt, UI, screen content, code editor, calendar, handwriting, face, person, child, people, readable, low quality, distorted",
+      "seed": 202606052004,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "42760c16-4ceb-465a-8e43-90fd99a7b6dc",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260605_qa2_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 942415,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 28,
+      "cfg": 4.8,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_for_visual_qa": true
+    },
+    {
+      "file": "public/images/illustrations/tp-passkey-recovery-2026-04.png",
+      "filename": "tp-passkey-recovery-2026-04.png",
+      "prompt": "realistic lost phone recovery planning scene with dark phone screen and lock no logos",
+      "positive_prompt": "realistic lost phone recovery planning scene with dark phone screen and lock no logos, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, exposed wiring, fake dashboard, fake warning label, unsafe child scene",
+      "seed": 202606050611,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "9e50e8f2-acf8-4f81-ac00-648bdc0b3c22",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260605_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1469112,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-passkey-recovery-2026-05.png",
+      "filename": "tp-passkey-recovery-2026-05.png",
+      "prompt": "realistic small business break glass security kit with plain USB key and sealed envelope no labels",
+      "positive_prompt": "realistic small business break glass security kit with plain USB key and sealed envelope no labels, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, exposed wiring, fake dashboard, fake warning label, unsafe child scene",
+      "seed": 202606050612,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "206440c0-b09b-4b4e-88bd-a70a249eecf3",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260605_toolspilot_05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1659595,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    }
+  ],
+  "contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260605-toolspilot-contact-sheet-final2.jpg",
+  "final_visual_qa_contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260605-toolspilot-contact-sheet-final2.jpg",
+  "updated_after_visual_qa": "2026-06-05T10:19:37Z",
+  "updated_after_visual_qa2": "2026-06-05T10:22:58Z"
+}
