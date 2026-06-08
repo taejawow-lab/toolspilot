@@ -1,0 +1,116 @@
+{
+  "site": "toolspilot",
+  "slug": "automation-error-log-template-no-code-ops-2026",
+  "endpoint": "http://192.168.50.29:8188",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "images": [
+    {
+      "file": "public/images/illustrations/tsp-auto-error-log-20260608-hero.png",
+      "seed": 90609000,
+      "prompt": "ops desk with automation flow represented by blank cards and neutral connectors, no readable text",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "remote_filename": "tsp-auto-error-log-20260608-hero_00001_.png"
+    },
+    {
+      "file": "public/images/illustrations/tsp-auto-error-log-20260608-01.png",
+      "seed": 90609001,
+      "prompt": "team member reviewing failed automation on laptop with blank screen and paper checklist no writing",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "remote_filename": "tsp-auto-error-log-20260608-01_00001_.png"
+    },
+    {
+      "file": "public/images/illustrations/tsp-auto-error-log-20260608-02.png",
+      "seed": 90609002,
+      "prompt": "clean incident triage board with colored sticky notes blank no text",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "remote_filename": "tsp-auto-error-log-20260608-02_00001_.png"
+    },
+    {
+      "file": "public/images/illustrations/tsp-auto-error-log-20260608-03.png",
+      "seed": 90609003,
+      "prompt": "desk with calendar blocks as plain colored shapes no numbers, automation maintenance theme",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "remote_filename": "tsp-auto-error-log-20260608-03_00001_.png"
+    },
+    {
+      "file": "public/images/illustrations/tsp-auto-error-log-20260608-04.png",
+      "seed": 90609004,
+      "prompt": "person checking data handoff between two devices with dark blank screens no UI",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "remote_filename": "tsp-auto-error-log-20260608-04_00001_.png"
+    },
+    {
+      "file": "public/images/illustrations/tsp-auto-error-log-20260608-05.png",
+      "seed": 90609005,
+      "prompt": "calm operations retrospective table with blank notebooks and simple workflow objects",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "remote_filename": "tsp-auto-error-log-20260608-05_00001_.png"
+    }
+  ],
+  "contact_sheet": "public/images/illustrations/tsp-auto-error-log-20260608-contact-sheet.jpg",
+  "visual_qa": "pass: final contact sheet inspected; rejected screen/text-heavy artifacts regenerated where needed; no readable text/logos/unsafe scenes accepted",
+  "qa_replacements": [
+    {
+      "file": "public/images/illustrations/tsp-auto-error-log-20260608-01.png",
+      "seed": 90609101,
+      "prompt": "operator desk with laptop completely closed, blank paper cards, warning light object, automation error triage, no screens visible, no text",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "remote_filename": "tsp-auto-error-log-20260608-01_00002_.png",
+      "reason": "visual QA rejected previous screen/text-like artifact"
+    },
+    {
+      "file": "public/images/illustrations/tsp-auto-error-log-20260608-03.png",
+      "seed": 90609103,
+      "prompt": "plain weekly maintenance desk with seven blank colored blocks as objects, no calendar grid, no numbers, no words, no writing",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "remote_filename": "tsp-auto-error-log-20260608-03_00002_.png",
+      "reason": "visual QA rejected previous screen/text-like artifact"
+    },
+    {
+      "file": "public/images/illustrations/tsp-auto-error-log-20260608-04.png",
+      "seed": 90609104,
+      "prompt": "automation handoff scene with two closed devices, cable, blank cards, neutral flow objects, no screens visible, no UI, no text",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "remote_filename": "tsp-auto-error-log-20260608-04_00002_.png",
+      "reason": "visual QA rejected previous screen/text-like artifact"
+    },
+    {
+      "file": "public/images/illustrations/tsp-auto-error-log-20260608-01.png",
+      "seed": 90609201,
+      "prompt": "automation incident triage concept with red indicator light, blank paper cards, cable, closed notebook, plain desk, no electronic screens, no devices open, no text",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "remote_filename": "tsp-auto-error-log-20260608-01_00003_.png",
+      "reason": "second visual QA replacement to remove screen/UI"
+    }
+  ]
+}
