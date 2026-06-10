@@ -524,3 +524,8 @@ a.card:hover, .card.is-link:hover { transform: translateY(-4px); box-shadow: var
   .pick-ribbon { position:absolute; top:-12px; right:18px; box-shadow:var(--shadow-sm); }
   .scorebar { height:6px; border-radius:999px; background:var(--surface-2); overflow:hidden; }
   .scorebar i { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg,var(--primary),var(--accent-soft)); }
+/* ---- functional interaction polish ---- */
+.tp-toast{position:fixed;left:50%;bottom:24px;z-index:200;transform:translate(-50%,12px);opacity:0;background:var(--ink);color:var(--paper);border-radius:var(--r-pill);padding:10px 16px;box-shadow:var(--shadow-lg);font-weight:600;transition:opacity .2s ease,transform .2s ease}
+.tp-toast.show{opacity:1;transform:translate(-50%,0)}
+.icon-btn[aria-pressed="true"]{background:var(--primary-tint);color:var(--primary);border-color:var(--primary-tint2)}
+.newsletter button[disabled]{opacity:.72;cursor:wait}

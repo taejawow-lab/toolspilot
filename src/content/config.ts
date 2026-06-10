@@ -31,6 +31,8 @@ const posts = defineCollection({
 
     // 어필리에이트
     affiliate: z.boolean().default(false),
+    editorsPick: z.boolean().default(false),
+    rating: z.number().min(0).max(5).optional(),
 
     // v5.4 페널티 회피 추적
     aiDisclosed: z.boolean().default(true), // 자동 footer

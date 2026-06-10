@@ -1,20 +1,23 @@
 ---
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-export interface Props { title:string; description:string; href:string; image?:string; category?:string; pubDate:Date; readingTime?:number; variant?:'feature'|'standard'; index?:number; }
-const { title, description, href, image, category, pubDate, readingTime, variant='standard', index=0 } = Astro.props;
+export interface Props { title:string; description:string; href:string; image?:string; category?:string; pubDate:Date; readingTime?:number; variant?:'feature'|'standard'; index?:number; editorsPick?:boolean; rating?:number; }
+const { title, description, href, image, category, pubDate, readingTime, variant='standard', index=0, editorsPick=false, rating } = Astro.props;
 const initials = category?.split(/\s+/).map((w)=>w[0]).join('').slice(0,2).toUpperCase() || 'TP';
 const glyph = index % 4 === 0 ? 'ph--violet' : index % 4 === 1 ? 'ph--green' : index % 4 === 2 ? 'ph--gold' : 'ph--teal';
 const hasLocalImage = !!image && (!image.startsWith('/') || existsSync(join(process.cwd(), 'public', image.slice(1))));
 const displayImage = hasLocalImage ? image : '';
+const isPick = editorsPick || variant === 'feature';
+const score = typeof rating === 'number' ? Math.max(0, Math.min(5, rating)) : (isPick ? 4.7 : undefined);
+const starPct = score ? `${Math.round((score / 5) * 100)}%` : '0%';
 ---
 <a class="card is-link reveal" href={href} data-card data-cat={category?.toLowerCase().replace(/\s+/g,'-') || 'all'} data-search={`${title} ${description} ${category || ''}`}>
   <div class={`thumb ${displayImage ? '' : `ph ${glyph}`}`}>
     {displayImage ? <img src={displayImage} alt={title} loading="lazy" decoding="async" /> : <div class="glyph"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>}
-    {variant === 'feature' && <div style="position:absolute;top:16px;left:16px"><span class="badge-pick">★ Editor's Pick</span></div>}
+    {isPick && <div style="position:absolute;top:16px;left:16px"><span class="badge-pick">★ Editor's Pick</span></div>}
   </div>
   <div class="body">
-    <div class="meta-row"><span class={category?.toLowerCase().includes('security') ? 'tag tag--security' : 'tag'}>{category || 'Review'}</span>{variant === 'feature' && <span class="rating"><span class="stars" style="--p:94%"></span><span class="score">4.7</span></span>}</div>
+    <div class="meta-row"><span class={category?.toLowerCase().includes('security') ? 'tag tag--security' : 'tag'}>{category || 'Review'}</span>{score && <span class="rating"><span class="stars" style={`--p:${starPct}`}></span><span class="score">{score.toFixed(1)}</span></span>}</div>
     <h3>{title}</h3>
     <p class="excerpt">{description}</p>
     <div class="foot"><span class="byline"><span class="avatar">{initials}</span><span class="who">ToolsPilot</span></span><span class="read-time">{readingTime || 8} min</span></div>
