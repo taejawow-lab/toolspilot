@@ -1,199 +1,25 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import TOC from '../components/TOC.astro';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import References from '../components/References.astro';
 import AffiliateDisclosure from '../components/AffiliateDisclosure.astro';
-
-export interface Props {
-  title: string;
-  description: string;
-  pubDate: Date;
-  updatedDate?: Date;
-  heroImage?: string;
-  tags?: string[];
-  category?: string;
-  sources?: Array<{ title: string; url: string; author?: string; year?: string }>;
-  affiliate?: boolean;
-  visualsCount?: number;
-  hasVideo?: boolean;
-  headings?: Array<{ depth: number; slug: string; text: string }>;
-  faq?: Array<{ question: string; answer: string }>;
-  internalLinks?: string[];
-}
-
-const {
-  title,
-  description,
-  pubDate,
-  updatedDate,
-  heroImage,
-  tags = [],
-  category,
-  sources = [],
-  affiliate = false,
-  visualsCount = 0,
-  hasVideo = false,
-  headings = [],
-  faq = [],
-  internalLinks = [],
-} = Astro.props;
-
-const articleSchema = {
-  '@type': 'Article',
-  headline: title,
-  description,
-  image: heroImage,
-  datePublished: pubDate?.toISOString(),
-  dateModified: (updatedDate || pubDate)?.toISOString(),
-  author: {
-    '@type': 'Organization',
-    name: import.meta.env.PUBLIC_SITE_NAME + ' Editorial Team',
-    url: import.meta.env.PUBLIC_SITE_URL,
-  },
-  publisher: {
-    '@type': 'NewsMediaOrganization',
-    name: import.meta.env.PUBLIC_SITE_NAME,
-    url: import.meta.env.PUBLIC_SITE_URL,
-  },
-};
-
-const faqSchema = faq.length > 0 ? {
-  '@type': 'FAQPage',
-  mainEntity: faq.map((q) => ({
-    '@type': 'Question',
-    name: q.question,
-    acceptedAnswer: { '@type': 'Answer', text: q.answer },
-  })),
-} : null;
-
-const siteUrlBC = (Astro.site ? Astro.site.toString().replace(/\/$/, '') : (import.meta.env.PUBLIC_SITE_URL || 'https://yookahplus.org'));
-const siteNameBC = import.meta.env.PUBLIC_SITE_NAME || 'Editorial';
-const postUrlBC = `${siteUrlBC}${Astro.url.pathname}`;
+export interface Props { title:string; description:string; pubDate:Date; updatedDate?:Date; heroImage?:string; tags?:string[]; category?:string; sources?:Array<{title:string;url:string;author?:string;year?:string}>; affiliate?:boolean; visualsCount?:number; hasVideo?:boolean; headings?:Array<{depth:number;slug:string;text:string}>; faq?:Array<{question:string;answer:string}>; internalLinks?:string[]; }
+const { title, description, pubDate, updatedDate, heroImage, tags=[], category, sources=[], affiliate=false, visualsCount=0, headings=[], internalLinks=[] } = Astro.props;
+const siteUrl = (Astro.site ? Astro.site.toString().replace(/\/$/, '') : (import.meta.env.PUBLIC_SITE_URL || 'https://toolspilot.org'));
+const schema = {'@context':'https://schema.org','@type':'Article',headline:title,description,image:heroImage,datePublished:pubDate?.toISOString(),dateModified:(updatedDate||pubDate)?.toISOString(),author:{'@type':'Organization',name:'ToolsPilot Editorial Team'},publisher:{'@type':'NewsMediaOrganization',name:'ToolsPilot',url:siteUrl}};
 const categorySlug = category ? category.toLowerCase().trim().replace(/\s+/g, '-') : '';
-const breadcrumbSchema = {
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: siteNameBC, item: `${siteUrlBC}/` },
-    ...(category ? [{ '@type': 'ListItem', position: 2, name: category, item: `${siteUrlBC}/category/${categorySlug}/` }] : []),
-    { '@type': 'ListItem', position: (category ? 3 : 2), name: title, item: postUrlBC },
-  ],
-};
-
-const schema = faqSchema ? {
-  '@context': 'https://schema.org',
-  '@graph': [articleSchema, breadcrumbSchema, faqSchema],
-} : { '@context': 'https://schema.org', '@graph': [articleSchema, breadcrumbSchema] };
-
-const lang = import.meta.env.PUBLIC_SITE_LANG || 'en';
-const localeMap: Record<string, string> = { ko: 'ko-KR', ja: 'ja-JP', en: 'en-US' };
-const tMap: Record<string, { published: string; updated: string; sources: string; visuals: string; video: string; related: string; explore: string }> = {
-  ko: { published: '발행일', updated: '갱신', sources: '건 1차 자료', visuals: '종 시각 자료', video: '영상 요약', related: '함께 읽으면 좋은 글', explore: '관련 경로 열기' },
-  ja: { published: '公開', updated: '更新', sources: '件の出典', visuals: '点のビジュアル', video: '動画要約', related: 'あわせて読みたい', explore: '関連ページを開く' },
-  en: { published: 'Published', updated: 'Updated', sources: 'sources cited', visuals: 'visuals', video: 'Video summary', related: 'Related Reading', explore: 'Open related path' },
-};
-const t = tMap[lang] || tMap.en;
-const locale = localeMap[lang] || 'en-US';
+const hasLocalHero = !!heroImage && (!heroImage.startsWith('/') || existsSync(join(process.cwd(), 'public', heroImage.slice(1))));
+const displayHero = hasLocalHero ? heroImage : '';
 ---
-
-<BaseLayout
-  title={title}
-  description={description}
-  image={heroImage}
-  type="article"
-  publishedTime={pubDate?.toISOString()}
-  modifiedTime={(updatedDate || pubDate)?.toISOString()}
-  schema={schema}
->
-  <article class="container mx-auto px-4 sm:px-6 py-10 md:py-14 max-w-6xl">
-    <header class="mx-auto mb-8 max-w-3xl text-center">
-      {category && (
-        <a
-          href={`/category/${categorySlug}`}
-          class="inline-flex min-h-9 items-center rounded-full bg-primary/10 px-4 py-1 mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-primary ring-1 ring-primary/20 transition-colors hover:bg-primary hover:text-primary-foreground"
-        >
-          {category}
-        </a>
-      )}
-      <h1 class="text-4xl md:text-6xl font-bold mb-5 text-balance leading-[1.03] tracking-[-0.025em]" style="font-family: var(--font-display);">{title}</h1>
-      <p class="text-lg md:text-xl leading-relaxed text-muted-foreground text-pretty">{description}</p>
-
-      <div class="mt-7 flex flex-wrap items-center justify-center gap-3 text-sm text-muted-foreground">
-        <time datetime={pubDate?.toISOString()} class="rounded-full bg-muted px-3 py-1">
-          {t.published} {pubDate?.toLocaleDateString(locale)}
-        </time>
-        {updatedDate && updatedDate.getTime() !== pubDate.getTime() && (
-          <time datetime={updatedDate.toISOString()} class="rounded-full bg-primary/10 px-3 py-1 text-primary font-semibold">
-            {t.updated} {updatedDate.toLocaleDateString(locale)}
-          </time>
-        )}
-        <span class="rounded-full bg-muted px-3 py-1">{sources.length} {t.sources}</span>
-        {visualsCount > 0 && <span class="rounded-full bg-muted px-3 py-1">{visualsCount} {t.visuals}</span>}
-        {hasVideo && <span class="rounded-full bg-accent px-3 py-1 text-accent-foreground">📹 {t.video}</span>}
-      </div>
-    </header>
-
-    {heroImage && (
-      <img
-        src={heroImage}
-        alt={title}
-        width="1280"
-        height="720"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-        class="mx-auto w-full max-w-5xl rounded-[1.5rem] shadow-xl mb-8 aspect-[16/9] object-cover ring-1 ring-border/60"
-      />
-    )}
-
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="progress-bar"></div></div>
+<BaseLayout title={title} description={description} image={heroImage} type="article" publishedTime={pubDate?.toISOString()} modifiedTime={(updatedDate||pubDate)?.toISOString()} schema={schema} active="reviews">
+  <article class="wrap tp-article-shell">
+    <header class="article-head"><div class="meta">{category && <a class={category.toLowerCase().includes('security') ? 'tag tag--security' : 'tag'} href={`/category/${categorySlug}/`}>{category}</a>}<span class="tag tag--plain">{pubDate?.toLocaleDateString('en-US')}</span><span class="tag tag--plain">{sources.length} sources</span>{visualsCount > 0 && <span class="tag tag--plain">{visualsCount} visuals</span>}</div><h1>{title}</h1><p class="dek">{description}</p><p class="byline" style="justify-content:center;margin-top:18px"><span class="avatar">TP</span><span class="who">ToolsPilot Editorial Team</span><span class="read-time">· 8 min read</span></p></header>
+    {displayHero ? <img class="article-cover" src={displayHero} alt={title} width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" /> : <div class="article-cover ph ph--violet"><div class="glyph"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div></div>}
     {affiliate && <AffiliateDisclosure />}
-
-    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_280px] gap-10 lg:gap-12">
-      <div class="prose-article min-w-0">
-        <slot />
-        {sources.length > 0 && <References sources={sources} />}
-      </div>
-
-      {headings.length > 0 && (
-        <aside class="hidden lg:block">
-          <div class="sticky top-28">
-            <TOC headings={headings} />
-          </div>
-        </aside>
-      )}
-    </div>
-
-    {internalLinks.length > 0 && (
-      <section class="mt-14 rounded-[1.5rem] border border-border/70 bg-card/80 p-5 shadow-sm sm:p-7">
-        <div class="mb-5 flex items-end justify-between gap-4 border-b border-border/70 pb-4">
-          <h2 class="m-0 text-2xl font-bold" style="font-family: var(--font-display);">{t.related}</h2>
-          <span class="hidden sm:inline text-xs uppercase tracking-[0.16em] text-muted-foreground">{t.explore}</span>
-        </div>
-        <ul class="grid gap-3 sm:grid-cols-2">
-          {internalLinks.map((link) => (
-            <li>
-              <a href={link} class="group flex min-h-12 items-center justify-between gap-3 rounded-2xl border border-border/70 bg-background px-4 py-3 text-sm font-semibold text-foreground/80 no-underline shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-md focus-visible:outline-ring">
-                <span class="truncate font-mono text-xs sm:text-sm">{link}</span>
-                <span class="shrink-0 text-primary transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
-
-    {tags.length > 0 && (
-      <footer class="mt-12 pt-8 border-t border-border">
-        <div class="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <a
-              href={`/tags/${tag.toLowerCase().trim().replace(/[\/\\&%?#=]/g, '-').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')}`}
-              class="inline-flex min-h-9 items-center rounded-full bg-muted px-3 py-1 text-sm text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              #{tag}
-            </a>
-          ))}
-        </div>
-      </footer>
-    )}
+    <div class="article-grid"><aside class="toc"><div class="toc-title">Flight plan</div><ul>{headings.filter((h)=>h.depth<=3).slice(0,8).map((h)=><li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ul></aside><div class="prose" id="article-body"><slot />{sources.length > 0 && <References sources={sources} />}</div></div>
+    {internalLinks.length > 0 && <section class="related-box"><span class="kicker">Related routes</span><h2 style="margin-top:8px">Keep navigating</h2><ul>{internalLinks.map((link)=><li><a href={link}>{link}</a></li>)}</ul></section>}
+    {tags.length > 0 && <footer class="tag-list">{tags.map((tag)=><a class="tag tag--plain" href={`/tags/${tag.toLowerCase().trim().replace(/[\/\\&%?#=]/g,'-').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'')}/`}>#{tag}</a>)}</footer>}
   </article>
 </BaseLayout>

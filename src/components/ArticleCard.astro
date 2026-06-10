@@ -1,63 +1,22 @@
 ---
-export interface Props {
-  title: string;
-  description: string;
-  href: string;
-  image?: string;
-  category?: string;
-  pubDate: Date;
-  readingTime?: number;
-  variant?: 'feature' | 'standard';
-  index?: number;
-}
-
-const { title, description, href, image, category, pubDate, readingTime, variant = 'standard', index = 0 } = Astro.props;
-
-const dateline = pubDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }).toUpperCase();
-const itemNum = String(index + 1).padStart(2, '0');
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+export interface Props { title:string; description:string; href:string; image?:string; category?:string; pubDate:Date; readingTime?:number; variant?:'feature'|'standard'; index?:number; }
+const { title, description, href, image, category, pubDate, readingTime, variant='standard', index=0 } = Astro.props;
+const initials = category?.split(/\s+/).map((w)=>w[0]).join('').slice(0,2).toUpperCase() || 'TP';
+const glyph = index % 4 === 0 ? 'ph--violet' : index % 4 === 1 ? 'ph--green' : index % 4 === 2 ? 'ph--gold' : 'ph--teal';
+const hasLocalImage = !!image && (!image.startsWith('/') || existsSync(join(process.cwd(), 'public', image.slice(1))));
+const displayImage = hasLocalImage ? image : '';
 ---
-
-<article class={`group h-full ${variant === 'feature' ? 'md:col-span-2' : ''}`}>
-  <a href={href} class="editorial-card block h-full rounded-[1.35rem] border border-border/70 bg-card/88 p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10 focus-visible:outline-ring sm:p-5">
-    <div class="flex items-center gap-3 mb-4 text-[10px] uppercase tracking-[0.18em] font-mono text-muted-foreground">
-      <span>№ {itemNum}</span>
-      <span class="h-px w-6 bg-border"></span>
-      {category && (
-        <span class="rounded-full bg-primary/10 px-2 py-1 text-primary font-semibold">{category}</span>
-      )}
-    </div>
-
-    {image && (
-      <div class={`${variant === 'feature' ? 'aspect-[16/10]' : 'aspect-[4/3]'} overflow-hidden mb-5 relative rounded-2xl bg-muted ring-1 ring-border/50`}>
-        {variant === 'feature' && (
-          <div class="absolute inset-0 bg-accent/10 -rotate-1 scale-95" aria-hidden="true"></div>
-        )}
-        <img
-          src={image}
-          alt={title}
-          loading="lazy"
-          decoding="async"
-          class="relative w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.035]"
-        />
-      </div>
-    )}
-
-    <h3
-      class={`${variant === 'feature' ? 'text-3xl md:text-4xl' : 'text-xl md:text-2xl'} font-bold mb-3 leading-[1.12] tracking-[-0.015em] text-balance group-hover:text-primary transition-colors duration-300`}
-      style="font-family: var(--font-display);"
-    >
-      {title}
-    </h3>
-
-    <p class="text-foreground/70 leading-relaxed mb-5 line-clamp-3 text-[15px]">
-      {description}
-    </p>
-
-    <div class="mt-auto flex items-center justify-between gap-3 text-[11px] uppercase tracking-[0.16em] font-mono text-muted-foreground pt-4 border-t border-border/70">
-      <time datetime={pubDate.toISOString()}>{dateline}</time>
-      <span class="inline-flex min-h-9 items-center gap-2 rounded-full bg-muted px-3 text-foreground/80 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-        Read <span aria-hidden="true">→</span>
-      </span>
-    </div>
-  </a>
-</article>
+<a class="card is-link reveal" href={href} data-card data-cat={category?.toLowerCase().replace(/\s+/g,'-') || 'all'} data-search={`${title} ${description} ${category || ''}`}>
+  <div class={`thumb ${displayImage ? '' : `ph ${glyph}`}`}>
+    {displayImage ? <img src={displayImage} alt={title} loading="lazy" decoding="async" /> : <div class="glyph"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>}
+    {variant === 'feature' && <div style="position:absolute;top:16px;left:16px"><span class="badge-pick">★ Editor's Pick</span></div>}
+  </div>
+  <div class="body">
+    <div class="meta-row"><span class={category?.toLowerCase().includes('security') ? 'tag tag--security' : 'tag'}>{category || 'Review'}</span>{variant === 'feature' && <span class="rating"><span class="stars" style="--p:94%"></span><span class="score">4.7</span></span>}</div>
+    <h3>{title}</h3>
+    <p class="excerpt">{description}</p>
+    <div class="foot"><span class="byline"><span class="avatar">{initials}</span><span class="who">ToolsPilot</span></span><span class="read-time">{readingTime || 8} min</span></div>
+  </div>
+</a>

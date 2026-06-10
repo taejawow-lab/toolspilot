@@ -1,112 +1,26 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/Hero.astro';
 import ArticleCard from '../components/ArticleCard.astro';
-
-const posts = (await getCollection('posts'))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const featuredPosts = posts.slice(0, 3);
-const recentPosts = posts.slice(3, 12);
-
-const siteName = import.meta.env.PUBLIC_SITE_NAME || 'yookahplus';
-const siteDescription = import.meta.env.PUBLIC_SITE_DESCRIPTION || '';
-const heroTitle = import.meta.env.PUBLIC_SITE_HERO_TITLE || siteName;
-const heroSubtitle = import.meta.env.PUBLIC_SITE_HERO_SUBTITLE || siteDescription;
+const posts = (await getCollection('posts')).filter((post)=>!post.data.draft).sort((a,b)=>b.data.pubDate.valueOf()-a.data.pubDate.valueOf());
+const featured = posts[0];
+const picks = posts.slice(1,4);
+const latest = posts.slice(4,10);
+const newsletterHtml = `<section class="section-pad" id="subscribe" style="padding-top:clamp(20px,3vw,40px)"><div class="wrap"><div class="newsletter reveal"><svg class="compass-bg" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1"/><path d="M20 6 L25 20 L20 20 Z M20 34 L25 20 L20 20 Z M20 6 L15 20 L20 20 Z M20 34 L15 20 L20 20 Z" fill="currentColor"/></svg><div style="position:relative;max-width:560px"><span class="kicker" style="color:var(--accent-soft);margin-bottom:14px">The Flight Plan · weekly</span><h2 style="margin-bottom:14px">One sharp email. Zero vendor spin.</h2><p style="opacity:.8;font-size:1.08rem;margin-bottom:26px">Every Thursday: the one tool worth your attention, one security move to make, and one workflow to steal.</p><form data-newsletter><input type="email" required placeholder="you@company.com" aria-label="Email"><button class="btn btn--primary" type="submit">Subscribe free</button></form><p style="opacity:.6;font-size:.82rem;margin-top:14px;font-family:var(--mono)">No spam. Unsubscribe anytime. Front-end confirmation only until an ESP endpoint is connected.</p></div></div></div></section>`;
+const categories = [...new Set(posts.map((p)=>p.data.category).filter(Boolean))].slice(0,6);
+const count = (cat)=>posts.filter((p)=>p.data.category===cat).length;
+const labelFor = (cat)=>cat.split('-').join(' ').split(/\s+/).map((w)=>w ? w[0].toUpperCase()+w.slice(1).toLowerCase() : '').join(' ');
 ---
-
-<BaseLayout title="Home" description={siteDescription}>
-  <Hero
-    title={heroTitle}
-    subtitle={heroSubtitle}
-  />
-
-  {featuredPosts.length > 0 && (
-    <section class="container mx-auto px-6 md:px-10 py-20 md:py-28">
-      <!-- editorial section header -->
-      <div class="grid grid-cols-12 gap-x-6 md:gap-x-8 mb-12 md:mb-16">
-        <div class="col-span-12 md:col-span-4">
-          <p class="text-[10px] uppercase tracking-[0.25em] font-mono text-accent mb-3">¶ Section 01</p>
-          <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.95] tracking-[-0.02em]" style="font-family: var(--font-display);">
-            Featured
-          </h2>
-        </div>
-        <div class="col-span-12 md:col-span-7 md:col-start-6 md:pt-4">
-          <p class="text-base md:text-lg text-foreground/70 leading-relaxed max-w-xl">
-            Hand-picked stories grounded in primary sources and verified data — what we believe is worth your attention right now.
-          </p>
-          <a href="/posts" class="inline-block mt-4 text-sm uppercase tracking-[0.15em] font-mono border-b border-foreground pb-1 hover:text-primary hover:border-primary transition-colors">
-            View archive →
-          </a>
-        </div>
-      </div>
-
-      <!-- asymmetric magazine grid: 1 large + 2 small -->
-      <div class="grid grid-cols-12 gap-x-6 md:gap-x-8 gap-y-12 md:gap-y-16">
-        {featuredPosts[0] && (
-          <div class="col-span-12 md:col-span-7 md:row-span-2">
-            <ArticleCard
-              title={featuredPosts[0].data.title}
-              description={featuredPosts[0].data.description}
-              href={`/posts/${featuredPosts[0].slug}`}
-              image={featuredPosts[0].data.heroImage}
-              category={featuredPosts[0].data.category}
-              pubDate={featuredPosts[0].data.pubDate}
-              variant="feature"
-              index={0}
-            />
-          </div>
-        )}
-        {featuredPosts.slice(1).map((post, i) => (
-          <div class="col-span-12 md:col-span-5">
-            <ArticleCard
-              title={post.data.title}
-              description={post.data.description}
-              href={`/posts/${post.slug}`}
-              image={post.data.heroImage}
-              category={post.data.category}
-              pubDate={post.data.pubDate}
-              variant="standard"
-              index={i + 1}
-            />
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {recentPosts.length > 0 && (
-    <section id="latest" class="border-t border-border py-20 md:py-28">
-      <div class="container mx-auto px-6 md:px-10">
-        <div class="grid grid-cols-12 gap-x-6 md:gap-x-8 mb-12 md:mb-16 items-baseline">
-          <div class="col-span-12 md:col-span-5">
-            <p class="text-[10px] uppercase tracking-[0.25em] font-mono text-accent mb-3">¶ Section 02</p>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-[0.95] tracking-[-0.02em]" style="font-family: var(--font-display);">
-              Recent
-            </h2>
-          </div>
-          <div class="col-span-12 md:col-span-7 md:text-right text-[10px] uppercase tracking-[0.25em] font-mono text-muted-foreground">
-            ↓ {recentPosts.length} stories · Sorted by date
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
-          {recentPosts.map((post, i) => (
-            <ArticleCard
-              title={post.data.title}
-              description={post.data.description}
-              href={`/posts/${post.slug}`}
-              image={post.data.heroImage}
-              category={post.data.category}
-              pubDate={post.data.pubDate}
-              variant="standard"
-              index={i + 3}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
+<BaseLayout title="Home" description="Independent reviews, comparisons, and field guides for productivity tools, SaaS permissions, passkeys, and workflow automation." active="">
+  <section class="hero section-pad" style="padding-top:clamp(40px,6vw,72px)">
+    <div class="wrap" style="display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,64px);align-items:center">
+      <div class="hero-copy reveal"><span class="kicker" style="margin-bottom:20px"><span style="width:6px;height:6px;border-radius:50%;background:var(--primary)"></span>Independent · vendor-neutral</span><h1 style="margin-bottom:20px">Navigate the tools that<br />run your <span style="color:var(--primary)">work</span>.</h1><p class="muted" style="font-size:1.18rem;max-width:46ch;margin-bottom:28px">Hands-on reviews, head-to-head comparisons, and field guides for productivity software, SaaS permissions, passkeys, and workflow automation — tested by people who ship.</p><a class="searchbar" style="max-width:440px;margin-bottom:22px" href="/posts/"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span style="flex:1;color:var(--ink-2)">Search {posts.length}+ tools & guides…</span><kbd>/</kbd></a><div style="display:flex;gap:36px;flex-wrap:wrap"><div class="stat"><b>{posts.length}+</b><span>Guides reviewed</span></div><div class="stat"><b>0</b><span>Paid placements</span></div><div class="stat"><b>3+</b><span>Sources / claim</span></div></div></div>
+      {featured && <ArticleCard title={featured.data.title} description={featured.data.description} href={`/posts/${featured.slug}`} image={featured.data.heroImage} category={featured.data.category} pubDate={featured.data.pubDate} variant="feature" readingTime={featured.data.readingTime || 14} />}
+    </div>
+  </section>
+  <section class="wrap" style="padding-bottom:8px"><div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><span class="kicker kicker--muted" style="margin-right:6px">Browse</span>{categories.map((cat)=><a class="chip" href={`/category/${cat.toLowerCase().trim().replace(/\s+/g,'-')}/`}>{labelFor(cat)} <span class="count">{count(cat)}</span></a>)}<a class="chip" href="/compare/">Comparisons <span class="count">1</span></a></div></section>
+  <section class="section-pad" style="padding-bottom:clamp(28px,4vw,48px)"><div class="wrap"><div class="eyrow"><div class="lead"><span class="kicker">Curated this week</span><h2>Editor's picks</h2></div><a class="btn btn--ghost btn--sm" href="/posts/">View all reviews →</a></div><div class="grid-cards">{picks.map((post,i)=><ArticleCard title={post.data.title} description={post.data.description} href={`/posts/${post.slug}`} image={post.data.heroImage} category={post.data.category} pubDate={post.data.pubDate} index={i+1} readingTime={post.data.readingTime || 9} />)}</div></div></section>
+  <section class="section-pad" style="padding-top:clamp(20px,3vw,40px)"><div class="wrap"><div class="card" style="border:1px solid var(--line);background:var(--surface-2);padding:clamp(28px,4vw,48px);border-radius:var(--r-xl)"><div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);align-items:center" class="cmp-teaser"><div><span class="kicker" style="margin-bottom:14px">Compare engine</span><h2 style="margin-bottom:16px">Stop opening 14 tabs.<br />Compare tools side by side.</h2><p class="muted" style="font-size:1.08rem;margin-bottom:24px;max-width:42ch">Pricing, security posture, passkey support, integrations, and hands-on fit — lined up in one honest table.</p><a class="btn btn--primary" href="/compare/">Open the compare engine →</a></div><div class="card" style="box-shadow:var(--shadow-lg)"><table class="cmp" style="min-width:0"><thead><tr><th style="font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)">Feature</th><th class="tool-head is-best" style="padding-top:22px"><span class="best-flag">Top score</span><div class="logo" style="background:#1463FF">1P</div><div class="name">1Password</div></th><th class="tool-head"><div class="logo" style="background:#1E9E6A">Bw</div><div class="name">Bitwarden</div></th></tr></thead><tbody><tr><td class="feat">Passkey support</td><td class="col yes">✓</td><td class="col yes">✓</td></tr><tr><td class="feat">Open source</td><td class="col no">—</td><td class="col yes">✓</td></tr><tr><td class="feat">From / user</td><td class="col cell-val">$7.99</td><td class="col cell-val">$3.00</td></tr></tbody></table></div></div></div></div></section>
+  <section class="section-pad" style="padding-top:clamp(28px,4vw,48px)"><div class="wrap"><div class="eyrow"><div class="lead"><span class="kicker">Fresh off the bench</span><h2>Latest guides & reviews</h2></div><a class="btn btn--ghost btn--sm" href="/posts/">Browse archive →</a></div><div class="grid-cards">{latest.map((post,i)=><ArticleCard title={post.data.title} description={post.data.description} href={`/posts/${post.slug}`} image={post.data.heroImage} category={post.data.category} pubDate={post.data.pubDate} index={i+4} readingTime={post.data.readingTime || 8} />)}</div></div></section>
+  <Fragment set:html={newsletterHtml} />
 </BaseLayout>

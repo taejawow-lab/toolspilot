@@ -1,73 +1,26 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
-
-const siteName = import.meta.env.PUBLIC_SITE_NAME || 'yookahplus';
-const edition = import.meta.env.PUBLIC_SITE_EDITION || '';
-
+const active = Astro.props.active || '';
 const navItems = [
-  { label: 'Posts', href: '/posts/' },
-  { label: 'Categories', href: '/categories/' },
-  { label: 'Search', href: '/search/' },
-  { label: 'About', href: '/about' },
-  { label: 'Editorial', href: '/editorial-process' },
+  {label:'Reviews', href:'/posts/', key:'reviews'},
+  {label:'Compare', href:'/compare/', key:'compare'},
+  {label:'Guides', href:'/categories/', key:'guides'},
+  {label:'Security', href:'/category/saas-security/', key:'security'},
+  {label:'Workflows', href:'/search/', key:'workflows'},
 ];
 ---
-
-<!-- modern editorial header: token-driven, mobile discoverable, no client JS -->
-<header class="sticky top-0 z-50 backdrop-blur-xl bg-background/90 border-b border-border/70 shadow-[0_1px_0_rgba(15,23,42,0.03)]">
-  {edition && (
-    <div class="border-b border-border/50 bg-muted/25">
-      <div class="container mx-auto px-4 sm:px-6 md:px-10 min-h-8 flex items-center justify-between gap-3 text-[10px] uppercase tracking-[0.22em] text-muted-foreground font-mono">
-        <span class="truncate">{edition}</span>
-        <span class="hidden sm:inline">A data-grounded publication</span>
-      </div>
-    </div>
-  )}
-
-  <div class="container mx-auto px-4 sm:px-6 md:px-10 min-h-[68px] md:min-h-20 flex items-center justify-between gap-4">
-    <a href="/" class="group flex min-w-0 items-center gap-3 rounded-md py-2 focus-visible:outline-ring" aria-label={`${siteName} home`}>
-      <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm ring-1 ring-border/30" aria-hidden="true">
-        <span class="text-sm font-bold" style="font-family: var(--font-display);">{siteName.slice(0, 1).toUpperCase()}</span>
-      </span>
-      <span
-        class="truncate text-2xl md:text-3xl font-bold tracking-[-0.025em] leading-none transition-colors group-hover:text-primary"
-        style="font-family: var(--font-display);"
-      >
-        {siteName}
-      </span>
-    </a>
-
-    <div class="flex items-center gap-3 md:gap-6">
-      <nav aria-label="Primary navigation" class="hidden md:block">
-        <ul class="flex items-center gap-1 text-xs lg:text-sm uppercase tracking-[0.12em]">
-          {navItems.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                class="rounded-full px-3 py-2 text-foreground/72 hover:bg-muted hover:text-foreground focus-visible:outline-ring transition-colors"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      <a href="/search/" class="hidden sm:inline-flex md:hidden min-h-10 items-center rounded-full border border-border bg-card px-4 text-xs font-semibold uppercase tracking-[0.12em] text-foreground/80 shadow-sm">
-        Search
-      </a>
-      <ThemeToggle />
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="ToolsPilot home"><svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18.4" stroke="currentColor" stroke-opacity=".18" stroke-width="1.4"/><g stroke="currentColor" stroke-opacity=".32" stroke-width="1.7" stroke-linecap="round"><line x1="20" y1="3.6" x2="20" y2="7.2"/><line x1="36.4" y1="20" x2="32.8" y2="20"/><line x1="20" y1="36.4" x2="20" y2="32.8"/><line x1="3.6" y1="20" x2="7.2" y2="20"/></g><path d="M20 8.5 L24.7 20 L20 20 Z" fill="var(--primary)"/><path d="M20 8.5 L15.3 20 L20 20 Z" fill="var(--primary)" fill-opacity=".62"/><path d="M20 31.5 L24.7 20 L20 20 Z" fill="currentColor" fill-opacity=".34"/><path d="M20 31.5 L15.3 20 L20 20 Z" fill="currentColor" fill-opacity=".2"/><circle cx="20" cy="20" r="2.5" fill="var(--paper)" stroke="var(--primary)" stroke-width="1.7"/></svg><span class="wordmark">Tools<b>Pilot</b></span></a>
+    <nav class="nav-links" aria-label="Primary navigation">
+      {navItems.map((item)=><a href={item.href} class:list={{ active: active === item.key }}>{item.label}</a>)}
+    </nav>
+    <div class="nav-spacer"></div>
+    <div class="nav-actions">
+      <a class="icon-btn" href="/posts/" aria-label="Search"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.2-3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+      <button class="icon-btn theme-toggle" data-action="theme" aria-label="Toggle theme"><svg class="sun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.4" stroke="currentColor" stroke-width="2"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/></g></svg><svg class="moon" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8 8 0 1 1 10.2 4 6.4 6.4 0 0 0 20 14.5Z" fill="currentColor"/></svg></button>
+      <a class="btn btn--primary btn--sm hide-sm" href="#subscribe">Subscribe</a>
+      <button class="icon-btn menu-btn" data-action="open-menu" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none"><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></g></svg></button>
     </div>
   </div>
-
-  <nav aria-label="Mobile primary navigation" class="md:hidden border-t border-border/55 bg-background/95">
-    <ul class="container mx-auto flex gap-2 overflow-x-auto px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.12em] [-webkit-overflow-scrolling:touch]">
-      {navItems.map((item) => (
-        <li class="shrink-0">
-          <a href={item.href} class="inline-flex min-h-10 items-center rounded-full border border-border/70 bg-card px-4 text-foreground/75 shadow-sm transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-ring">
-            {item.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
 </header>
+<div class="drawer" id="drawer"><div class="drawer__scrim"></div><aside class="drawer__panel"><div class="d-head"><span class="brand"><svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18.4" stroke="currentColor" stroke-opacity=".18" stroke-width="1.4"/><g stroke="currentColor" stroke-opacity=".32" stroke-width="1.7" stroke-linecap="round"><line x1="20" y1="3.6" x2="20" y2="7.2"/><line x1="36.4" y1="20" x2="32.8" y2="20"/><line x1="20" y1="36.4" x2="20" y2="32.8"/><line x1="3.6" y1="20" x2="7.2" y2="20"/></g><path d="M20 8.5 L24.7 20 L20 20 Z" fill="var(--primary)"/><path d="M20 8.5 L15.3 20 L20 20 Z" fill="var(--primary)" fill-opacity=".62"/><path d="M20 31.5 L24.7 20 L20 20 Z" fill="currentColor" fill-opacity=".34"/><path d="M20 31.5 L15.3 20 L20 20 Z" fill="currentColor" fill-opacity=".2"/><circle cx="20" cy="20" r="2.5" fill="var(--paper)" stroke="var(--primary)" stroke-width="1.7"/></svg><span class="wordmark">Tools<b>Pilot</b></span></span><button class="icon-btn" data-action="close-menu" aria-label="Close"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>{navItems.map((item)=><a class="d-link" href={item.href}>{item.label}</a>)}<a class="btn btn--primary btn--block" href="#subscribe" data-action="close-menu" style="margin-top:18px">Subscribe free</a></aside></div>

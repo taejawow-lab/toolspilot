@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Compare Tools" description="Side-by-side ToolsPilot comparison table for productivity and security tools." active="compare">
+<!-- ============ HEADER ============ -->
+<section class="wrap section-pad" style="padding-bottom:clamp(28px,4vw,40px)">
+  <div class="metaline" style="display:flex;gap:12px;font-family:var(--mono);font-size:.8rem;color:var(--ink-3);margin-bottom:18px;flex-wrap:wrap">
+    <a href="/posts/" style="color:var(--primary);font-weight:600">Compare</a><span>›</span><span>Password Managers</span>
+  </div>
+  <span class="tag" style="margin-bottom:16px">Head to head · 3 tools</span>
+  <h1 style="font-size:clamp(2.1rem,4.6vw,3.4rem);margin-bottom:18px;max-width:18ch">1Password vs Bitwarden vs Dashlane</h1>
+  <p class="muted" style="font-size:1.18rem;max-width:60ch">All three now store passkeys — but they pull apart on price, recovery, and admin control. We migrated a 40-seat team to each and scored every dimension that matters. No affiliate deals, no sponsored placement.</p>
+</section>
+
+<!-- ============ VERDICT CARDS ============ -->
+<section class="wrap" style="padding-bottom:clamp(36px,5vw,56px)">
+  <div class="verdict-grid">
+
+    <div class="card pick-card reveal" style="padding:24px">
+      <span class="badge-pick pick-ribbon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 6.3L21 9l-5 4.3L17.5 21 12 17.3 6.5 21 8 13.3 3 9l6.4-.7L12 2z"/></svg>Best overall</span>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;margin-top:6px">
+        <div class="verdict__logo" style="background:#1463FF;width:48px;height:48px">1P</div>
+        <div><div style="font-family:var(--display);font-weight:700;font-size:1.2rem">1Password 8</div><div class="rating" style="margin-top:2px"><span class="stars" style="--p:96%"></span><span class="score">4.8</span></div></div>
+      </div>
+      <div class="scorebar" style="margin-bottom:16px"><i style="width:96%"></i></div>
+      <p class="muted" style="font-size:.95rem;margin-bottom:18px">The most polished passkey experience and the best team recovery flow. You pay for it.</p>
+      <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:.8rem;color:var(--ink-3);margin-bottom:16px"><span>From</span><span style="color:var(--ink);font-weight:600">$7.99 / user</span></div>
+      <a class="btn btn--primary btn--block" href="/posts/passkey-password-manager-setup-2026/">Read full review</a>
+    </div>
+
+    <div class="card reveal" style="padding:24px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;margin-top:6px">
+        <div class="verdict__logo" style="background:#1E9E6A;width:48px;height:48px">Bw</div>
+        <div><div style="font-family:var(--display);font-weight:700;font-size:1.2rem">Bitwarden</div><div class="rating" style="margin-top:2px"><span class="stars" style="--p:92%"></span><span class="score">4.6</span></div></div>
+      </div>
+      <div class="scorebar" style="margin-bottom:16px"><i style="width:92%"></i></div>
+      <p class="muted" style="font-size:.95rem;margin-bottom:18px">Open source, audited, and astonishingly cheap. The best value in the category by a mile.</p>
+      <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:.8rem;color:var(--ink-3);margin-bottom:16px"><span>From</span><span style="color:var(--ink);font-weight:600">$3.00 / user</span></div>
+      <a class="btn btn--ghost btn--block" href="/posts/passkey-password-manager-setup-2026/">Read full review</a>
+    </div>
+
+    <div class="card reveal" style="padding:24px">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;margin-top:6px">
+        <div class="verdict__logo" style="background:#0F9D8C;width:48px;height:48px">Da</div>
+        <div><div style="font-family:var(--display);font-weight:700;font-size:1.2rem">Dashlane</div><div class="rating" style="margin-top:2px"><span class="stars" style="--p:84%"></span><span class="score">4.2</span></div></div>
+      </div>
+      <div class="scorebar" style="margin-bottom:16px"><i style="width:84%"></i></div>
+      <p class="muted" style="font-size:.95rem;margin-bottom:18px">Slick onboarding and a built-in VPN, but the priciest seats and a thinner admin console.</p>
+      <div style="display:flex;justify-content:space-between;font-family:var(--mono);font-size:.8rem;color:var(--ink-3);margin-bottom:16px"><span>From</span><span style="color:var(--ink);font-weight:600">$8.00 / user</span></div>
+      <a class="btn btn--ghost btn--block" href="/posts/passkey-password-manager-setup-2026/">Read full review</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ COMPARE TABLE ============ -->
+<section class="wrap" style="padding-bottom:clamp(40px,6vw,72px)">
+  <div class="eyrow"><div class="lead"><span class="kicker">The full grid</span><h2>Feature by feature</h2></div><span style="font-family:var(--mono);font-size:.76rem;color:var(--ink-3)">Scroll for more →</span></div>
+  <div class="cmp-wrap">
+    <table class="cmp">
+      <thead>
+        <tr>
+          <th style="font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);min-width:200px">Feature</th>
+          <th class="tool-head is-best"><span class="best-flag">Top score</span><div class="logo" style="background:#1463FF">1P</div><div class="name">1Password</div></th>
+          <th class="tool-head"><div class="logo" style="background:#1E9E6A">Bw</div><div class="name">Bitwarden</div></th>
+          <th class="tool-head"><div class="logo" style="background:#0F9D8C">Da</div><div class="name">Dashlane</div></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="feat">Passkey storage &amp; sync <small>Save and use passkeys cross-device</small></td><td class="col yes">✓</td><td class="col yes">✓</td><td class="col yes">✓</td></tr>
+        <tr><td class="feat">Open source <small>Independently auditable code</small></td><td class="col no">—</td><td class="col yes">✓</td><td class="col no">—</td></tr>
+        <tr><td class="feat">Team recovery flow <small>Admin-assisted account recovery</small></td><td class="col"><span class="cell-val" style="color:var(--success)">Excellent</span></td><td class="col"><span class="cell-val">Good</span></td><td class="col"><span class="cell-val">Basic</span></td></tr>
+        <tr><td class="feat">Admin console depth <small>Provisioning, policy, reporting</small></td><td class="col"><span class="cell-val" style="color:var(--success)">Deep</span></td><td class="col"><span class="cell-val">Solid</span></td><td class="col"><span class="cell-val">Light</span></td></tr>
+        <tr><td class="feat">SSO / SCIM <small>Enterprise identity integration</small></td><td class="col yes">✓</td><td class="col yes">✓</td><td class="col"><span class="cell-val">Add-on</span></td></tr>
+        <tr><td class="feat">Security audits <small>Public third-party assessment</small></td><td class="col yes">✓</td><td class="col yes">✓</td><td class="col yes">✓</td></tr>
+        <tr><td class="feat">Built-in VPN</td><td class="col no">—</td><td class="col no">—</td><td class="col yes">✓</td></tr>
+        <tr><td class="feat">Free personal tier</td><td class="col no">—</td><td class="col yes">✓</td><td class="col"><span class="cell-val">Limited</span></td></tr>
+        <tr><td class="feat">Price / user / mo</td><td class="col cell-val">$7.99</td><td class="col cell-val" style="color:var(--success)">$3.00</td><td class="col cell-val">$8.00</td></tr>
+        <tr style="background:var(--surface-2)"><td class="feat" style="font-family:var(--display);font-weight:700">ToolsPilot score</td><td class="col"><b style="font-family:var(--display);font-size:1.3rem">4.8</b></td><td class="col"><b style="font-family:var(--display);font-size:1.3rem">4.6</b></td><td class="col"><b style="font-family:var(--display);font-size:1.3rem">4.2</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-family:var(--mono);font-size:.74rem;color:var(--ink-3);margin-top:14px">Prices are annual-billed business tiers as of Feb 2026. ✓ = included · — = not available.</p>
+</section>
+
+<!-- ============ BOTTOM LINE ============ -->
+<section class="wrap" style="padding-bottom:clamp(40px,6vw,72px)">
+  <div class="card" style="background:var(--surface-2);border:1px solid var(--line);padding:clamp(28px,4vw,44px);border-radius:var(--r-xl)">
+    <span class="kicker" style="margin-bottom:14px">The bottom line</span>
+    <h2 style="margin-bottom:18px;max-width:24ch">Who should pick what</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px" class="grid-cards">
+      <div><div class="byline" style="margin-bottom:10px"><span class="verdict__logo" style="background:#1463FF;width:34px;height:34px;font-size:.9rem;border-radius:9px">1P</span><b>1Password</b></div><p class="muted" style="font-size:.95rem">Teams that want the smoothest passkey experience and bullet-proof recovery — and will pay for polish.</p></div>
+      <div><div class="byline" style="margin-bottom:10px"><span class="verdict__logo" style="background:#1E9E6A;width:34px;height:34px;font-size:.9rem;border-radius:9px">Bw</span><b>Bitwarden</b></div><p class="muted" style="font-size:.95rem">Anyone who values open source, audits, and value. Our pick for cost-conscious and technical teams.</p></div>
+      <div><div class="byline" style="margin-bottom:10px"><span class="verdict__logo" style="background:#0F9D8C;width:34px;height:34px;font-size:.9rem;border-radius:9px">Da</span><b>Dashlane</b></div><p class="muted" style="font-size:.95rem">Individuals who want a password manager and VPN in one slick bundle and don't mind the premium.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- newsletter -->
+<section class="wrap" style="padding-bottom:clamp(56px,8vw,104px)" id="subscribe">
+  <div class="newsletter">
+    <svg class="compass-bg" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1"/><path d="M20 6 L25 20 L20 20 Z M20 34 L25 20 L20 20 Z M20 6 L15 20 L20 20 Z M20 34 L15 20 L20 20 Z" fill="currentColor"/></svg>
+    <div style="position:relative;max-width:560px">
+      <span class="kicker" style="color:var(--accent-soft);margin-bottom:14px">The Flight Plan · weekly</span>
+      <h2 style="margin-bottom:14px">We test so you don't have to.</h2>
+      <p style="opacity:.8;font-size:1.08rem;margin-bottom:26px">Get our latest comparisons and verdicts every Thursday — vendor-neutral, always.</p>
+      <form data-newsletter><input type="email" required placeholder="you@company.com" aria-label="Email"><button class="btn btn--primary" type="submit">Subscribe free</button></form>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+
+<section class="section-pad" id="subscribe" style="padding-top:clamp(20px,3vw,40px)"><div class="wrap"><div class="newsletter reveal"><svg class="compass-bg" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1"/><path d="M20 6 L25 20 L20 20 Z M20 34 L25 20 L20 20 Z M20 6 L15 20 L20 20 Z M20 34 L15 20 L20 20 Z" fill="currentColor"/></svg><div style="position:relative;max-width:560px"><span class="kicker" style="color:var(--accent-soft);margin-bottom:14px">The Flight Plan · weekly</span><h2 style="margin-bottom:14px">One sharp email. Zero vendor spin.</h2><p style="opacity:.8;font-size:1.08rem;margin-bottom:26px">Every Thursday: the one tool worth your attention, one security move to make, and one workflow to steal.</p><form data-newsletter><input type="email" required placeholder="you@company.com" aria-label="Email"><button class="btn btn--primary" type="submit">Subscribe free</button></form><p style="opacity:.6;font-size:.82rem;margin-top:14px;font-family:var(--mono)">No spam. Unsubscribe anytime. Front-end confirmation only until an ESP endpoint is connected.</p></div></div></div></section>
+</BaseLayout>

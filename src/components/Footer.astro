@@ -1,118 +1,14 @@
 ---
-const siteName = import.meta.env.PUBLIC_SITE_NAME || 'yookahplus';
-const description = import.meta.env.PUBLIC_SITE_DESCRIPTION || '';
-const edition = import.meta.env.PUBLIC_SITE_EDITION || '';
-const tagline = import.meta.env.PUBLIC_SITE_TAGLINE || '';
 const currentYear = new Date().getFullYear();
-const lang = import.meta.env.PUBLIC_SITE_LANG || 'en';
-
-const aiDisclosure = lang === 'ko'
-  ? '본 사이트의 콘텐츠는 AI 도구의 보조를 받아 작성됩니다. 모든 데이터는 1차 자료에서 검증되며, 본문 인용 링크로 직접 확인할 수 있습니다.'
-  : 'Content on this site is produced with AI assistance. All data points are verified against primary sources, and all sources are linked inline for direct verification.';
-
-const affiliateDisclosure = lang === 'ko'
-  ? '쿠팡파트너스 활동의 일환으로 일정액의 수수료를 제공받습니다.'
-  : 'As an Amazon Associate and other affiliate partner, we earn from qualifying purchases.';
 ---
-
-<footer class="border-t border-border mt-24 md:mt-32 relative overflow-hidden">
-  <!-- 미세 grain texture -->
-  <div class="absolute inset-0 pointer-events-none opacity-[0.04]" aria-hidden="true"
-       style="background-image: linear-gradient(to right, rgb(var(--color-foreground)) 1px, transparent 1px); background-size: 64px 100%;"></div>
-
-  <div class="container mx-auto px-6 md:px-10 pt-20 md:pt-28 pb-12 relative">
-    <!-- masthead — 거대 wordmark -->
-    <div class="grid grid-cols-12 gap-x-6 md:gap-x-8 mb-16 md:mb-20 items-end">
-      <div class="col-span-12 md:col-span-8">
-        {edition && (
-          <p class="text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono mb-4">
-            {edition} · Colophon
-          </p>
-        )}
-        <h2
-          class="text-[18vw] md:text-[12vw] lg:text-[10vw] font-bold leading-[0.85] tracking-[-0.03em] mb-4"
-          style="font-family: var(--font-display);"
-        >
-          {siteName}
-        </h2>
-        {tagline && (
-          <p class="text-base md:text-lg text-muted-foreground max-w-md">
-            {tagline}
-          </p>
-        )}
-      </div>
-      <div class="col-span-12 md:col-span-4 md:text-right mt-8 md:mt-0">
-        <p class="text-xs uppercase tracking-[0.2em] text-muted-foreground font-mono mb-2">
-          MMXXVI
-        </p>
-        <p class="text-sm text-muted-foreground max-w-xs md:ml-auto">
-          {description}
-        </p>
-      </div>
+<footer class="footer">
+  <div class="wrap">
+    <div class="grid">
+      <div><a class="brand" href="/"><svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="18.4" stroke="currentColor" stroke-opacity=".18" stroke-width="1.4"/><g stroke="currentColor" stroke-opacity=".32" stroke-width="1.7" stroke-linecap="round"><line x1="20" y1="3.6" x2="20" y2="7.2"/><line x1="36.4" y1="20" x2="32.8" y2="20"/><line x1="20" y1="36.4" x2="20" y2="32.8"/><line x1="3.6" y1="20" x2="7.2" y2="20"/></g><path d="M20 8.5 L24.7 20 L20 20 Z" fill="var(--primary)"/><path d="M20 8.5 L15.3 20 L20 20 Z" fill="var(--primary)" fill-opacity=".62"/><path d="M20 31.5 L24.7 20 L20 20 Z" fill="currentColor" fill-opacity=".34"/><path d="M20 31.5 L15.3 20 L20 20 Z" fill="currentColor" fill-opacity=".2"/><circle cx="20" cy="20" r="2.5" fill="var(--paper)" stroke="var(--primary)" stroke-width="1.7"/></svg><span class="wordmark">Tools<b>Pilot</b></span></a><p class="blurb">Independent, vendor-neutral reviews and guides for the modern work stack. We buy the tools, run the tests, and tell you the truth.</p></div>
+      <div><h4>Explore</h4><ul><li><a href="/posts/">Reviews</a></li><li><a href="/compare/">Comparisons</a></li><li><a href="/categories/">Guides</a></li><li><a href="/search/">Workflows</a></li></ul></div>
+      <div><h4>Topics</h4><ul><li><a href="/category/productivity/">Productivity</a></li><li><a href="/category/saas-security/">SaaS Security</a></li><li><a href="/tags/passkeys/">Passkeys</a></li><li><a href="/search/">Automation</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#subscribe">Newsletter</a></li><li><a href="/editorial-process/">How we test</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></div>
     </div>
-
-    <!-- nav 그리드 — 더 미니멀 -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 pt-12 md:pt-16 border-t border-border">
-      <div>
-        <h4 class="text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono mb-5">Sections</h4>
-        <ul class="space-y-3 text-sm">
-          <li><a href="/" class="hover:underline underline-offset-4 decoration-from-font">Home</a></li>
-          <li><a href="/about" class="hover:underline underline-offset-4 decoration-from-font">About</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono mb-5">Editorial</h4>
-        <ul class="space-y-3 text-sm">
-          <li><a href="/editorial-process" class="hover:underline underline-offset-4 decoration-from-font">Editorial Process</a></li>
-          <li><a href="/editorial-standards" class="hover:underline underline-offset-4 decoration-from-font">Editorial Standards</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono mb-5">Legal</h4>
-        <ul class="space-y-3 text-sm">
-          <li><a href="/privacy" class="hover:underline underline-offset-4 decoration-from-font">Privacy</a></li>
-          <li><a href="/terms" class="hover:underline underline-offset-4 decoration-from-font">Terms</a></li>
-          <li><a href="/cookie-policy" class="hover:underline underline-offset-4 decoration-from-font">Cookie Policy</a></li>
-          <li><a href="/disclaimer" class="hover:underline underline-offset-4 decoration-from-font">Disclaimer</a></li>
-          <li><a href="/affiliate-disclosure" class="hover:underline underline-offset-4 decoration-from-font">Affiliate Disclosure</a></li>
-          <li><a href="/contact" class="hover:underline underline-offset-4 decoration-from-font">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono mb-5">Follow</h4>
-        <ul class="space-y-3 text-sm">
-          <li><a href={import.meta.env.PUBLIC_SITE_PINTEREST || '#'} class="hover:underline underline-offset-4">Pinterest →</a></li>
-          <li><a href={import.meta.env.PUBLIC_SITE_INSTAGRAM || '#'} class="hover:underline underline-offset-4">Instagram →</a></li>
-          <li><a href={import.meta.env.PUBLIC_SITE_YOUTUBE || '#'} class="hover:underline underline-offset-4">YouTube →</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- AI disclosure — editorial styled -->
-    <div class="mt-16 pt-8 border-t border-border">
-      <div class="grid grid-cols-12 gap-6 md:gap-8">
-        <div class="col-span-12 md:col-span-4">
-          <p class="text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">
-            ¶ Disclosure
-          </p>
-        </div>
-        <div class="col-span-12 md:col-span-8 space-y-3 text-sm text-foreground/70 leading-relaxed">
-          <p>{aiDisclosure}</p>
-          <p>{affiliateDisclosure}</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- bottom rail -->
-    <div class="mt-12 pt-6 border-t border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">
-      <span>© {currentYear} {siteName} · All rights reserved</span>
-      <span>Set in {' '}
-        <span style="font-family: var(--font-display);" class="normal-case tracking-tight text-sm">
-          {/* fontDisplay 이름은 CSS variable이라 표시 어려우니 일반 표기 */}
-          serif &amp; sans
-        </span>
-        {' '} · Built with Astro
-      </span>
-    </div>
+    <div class="bar"><span>© {currentYear} ToolsPilot. Independent &amp; reader-supported.</span><span style="font-family:var(--mono)"><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/editorial-standards/">Ethics</a></span></div>
   </div>
 </footer>
