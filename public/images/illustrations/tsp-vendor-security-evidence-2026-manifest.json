@@ -1,0 +1,178 @@
+{
+  "site": "toolspilot",
+  "slug": "vendor-security-evidence-folder-checklist-2026",
+  "date": "2026-06-11",
+  "host": "gti13",
+  "endpoint": "redacted-direct-gti13-comfyui",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "assets": [
+    {
+      "file": "public/images/illustrations/tsp-vendor-security-evidence-2026-hero.png",
+      "filename": "tsp-vendor-security-evidence-2026-hero.png",
+      "prompt": "realistic small team vendor review desk with blank laptop screen, sealed folders, hardware key, no text no logos no UI",
+      "positive_prompt": "realistic small team vendor review desk with blank laptop screen, sealed folders, hardware key, no text no logos no UI, professional realistic editorial photography, natural light, 16:9, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank or turned-away screens only",
+      "negative_prompt": "readable text, words, letters, numbers, logo, watermark, brand, UI, screen content, calendar grid, document text, handwriting, QR code, face closeup, child face closeup, distorted forms, fake receipts, fake official papers, financial numbers, medical labels, map labels, passport text, unsafe scene, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art",
+      "seed": 202606111607,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.3,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "7af2be16-f06b-44d4-9582-45d1f063b5f2",
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1566023,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260611_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "file": "public/images/illustrations/tsp-vendor-security-evidence-2026-01.png",
+      "filename": "tsp-vendor-security-evidence-2026-01.png",
+      "prompt": "realistic vendor security review desk with blank laptop and plain folders no UI no text",
+      "positive_prompt": "realistic vendor security review desk with blank laptop and plain folders no UI no text, professional realistic editorial photography, natural light, 16:9, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank or turned-away screens only",
+      "negative_prompt": "readable text, words, letters, numbers, logo, watermark, brand, UI, screen content, calendar grid, document text, handwriting, QR code, face closeup, child face closeup, distorted forms, fake receipts, fake official papers, financial numbers, medical labels, map labels, passport text, unsafe scene, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art",
+      "seed": 202606111608,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.3,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "66f3797b-5367-4de3-8fb6-bd3ef0e34d2a",
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1225530,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260611_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "file": "public/images/illustrations/tsp-vendor-security-evidence-2026-02.png",
+      "filename": "tsp-vendor-security-evidence-2026-02.png",
+      "prompt": "still life vendor security evidence folder with closed blank notebook and plain grid paper turned away, no writing, no forms, no UI, no people",
+      "positive_prompt": "still life vendor security evidence folder with closed blank notebook and plain grid paper turned away, no writing, no forms, no UI, no people, professional realistic editorial still life photography, natural light, 16:9, high detail, topic accurate, absolutely no embedded text, no people, no faces, no logos, no readable papers, blank props only",
+      "negative_prompt": "people, person, face, child, portrait, readable text, words, letters, numbers, logo, watermark, brand, UI, screen content, form, tax form, receipt, calendar grid, document text, handwriting, QR code, labels, official papers, medical label, financial numbers, unsafe scene, bad anatomy, low quality, blurry, generic stock art",
+      "seed": 202606112004,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "3b15c2bf-9af5-451f-8fc5-d3782e362e0b",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260611_finalqa_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1528835,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.6,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_for_visual_qa": true
+    },
+    {
+      "file": "public/images/illustrations/tsp-vendor-security-evidence-2026-03.png",
+      "filename": "tsp-vendor-security-evidence-2026-03.png",
+      "prompt": "still life cybersecurity hardware key beside face-down dark phone and sealed blank envelope, no screen UI, no text, no logos, no people",
+      "positive_prompt": "still life cybersecurity hardware key beside face-down dark phone and sealed blank envelope, no screen UI, no text, no logos, no people, professional realistic editorial still life photography, natural light, 16:9, high detail, topic accurate, absolutely no embedded text, no people, no faces, no logos, no readable papers, blank props only",
+      "negative_prompt": "people, person, face, child, portrait, readable text, words, letters, numbers, logo, watermark, brand, UI, screen content, form, tax form, receipt, calendar grid, document text, handwriting, QR code, labels, official papers, medical label, financial numbers, unsafe scene, bad anatomy, low quality, blurry, generic stock art",
+      "seed": 202606112005,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "6abf252e-e520-4c61-864b-c4a056724fbf",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260611_finalqa_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1368269,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.6,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_for_visual_qa": true
+    },
+    {
+      "file": "public/images/illustrations/tsp-vendor-security-evidence-2026-04.png",
+      "filename": "tsp-vendor-security-evidence-2026-04.png",
+      "prompt": "still life team access review concept with blank colored sticky notes on cork board from distance, no handwriting, no letters, no numbers, no people",
+      "positive_prompt": "still life team access review concept with blank colored sticky notes on cork board from distance, no handwriting, no letters, no numbers, no people, professional realistic editorial still life photography, natural light, 16:9, high detail, topic accurate, absolutely no embedded text, no people, no faces, no logos, no readable papers, blank props only",
+      "negative_prompt": "people, person, face, child, portrait, readable text, words, letters, numbers, logo, watermark, brand, UI, screen content, form, tax form, receipt, calendar grid, document text, handwriting, QR code, labels, official papers, medical label, financial numbers, unsafe scene, bad anatomy, low quality, blurry, generic stock art",
+      "seed": 202606112006,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "f72eb5bf-0964-4153-8948-93ab2946eea7",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260611_finalqa_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1949049,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.6,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_for_visual_qa": true
+    },
+    {
+      "file": "public/images/illustrations/tsp-vendor-security-evidence-2026-05.png",
+      "filename": "tsp-vendor-security-evidence-2026-05.png",
+      "prompt": "realistic vendor offboarding preparation with closed laptop and plain archive box no labels",
+      "positive_prompt": "realistic vendor offboarding preparation with closed laptop and plain archive box no labels, professional realistic editorial photography, natural light, 16:9, high detail, topic accurate, no embedded text anywhere, no logos, no brands, no readable papers, blank or turned-away screens only",
+      "negative_prompt": "readable text, words, letters, numbers, logo, watermark, brand, UI, screen content, calendar grid, document text, handwriting, QR code, face closeup, child face closeup, distorted forms, fake receipts, fake official papers, financial numbers, medical labels, map labels, passport text, unsafe scene, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art",
+      "seed": 202606111612,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.3,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "8169c6d0-d8d7-47c8-bd52-78e09b604ca0",
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1472694,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260611_toolspilot_05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    }
+  ],
+  "contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260611-toolspilot-contact-sheet-final.jpg",
+  "final_visual_qa_contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260611-toolspilot-contact-sheet-final.jpg",
+  "updated_after_visual_qa": "2026-06-11T10:20:13Z"
+}

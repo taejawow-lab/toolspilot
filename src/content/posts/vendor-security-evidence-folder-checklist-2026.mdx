@@ -1,0 +1,110 @@
+---
+title: "Vendor Security Evidence Folder Checklist for Small Teams in 2026"
+description: "A practical security evidence folder workflow for choosing SaaS, AI, automation, and no-code vendors without collecting sensitive documents or trusting vague badges."
+pubDate: 2026-06-11
+updatedDate: 2026-06-11
+category: "Security"
+tags: ["vendor security", "SaaS", "AI tools", "security questionnaire", "small teams"]
+heroImage: "/images/illustrations/tsp-vendor-security-evidence-2026-hero.png"
+schemaType: "HowTo"
+sources:
+  - title: "CISA Secure by Design"
+    url: "https://www.cisa.gov/securebydesign"
+    publication: "CISA"
+    year: "2026"
+  - title: "CISA Secure Our World"
+    url: "https://www.cisa.gov/secure-our-world"
+    publication: "CISA"
+    year: "2026"
+  - title: "NIST Cybersecurity Framework 2.0"
+    url: "https://www.nist.gov/cyberframework"
+    publication: "NIST"
+    year: "2026"
+  - title: "NIST Privacy Framework"
+    url: "https://www.nist.gov/privacy-framework"
+    publication: "NIST"
+    year: "2026"
+  - title: "FTC Protecting Personal Information"
+    url: "https://www.ftc.gov/business-guidance/resources/protecting-personal-information-guide-business"
+    publication: "FTC"
+    year: "2026"
+  - title: "SOC 2 Overview from AICPA"
+    url: "https://www.aicpa-cima.com/resources/landing/system-and-organization-controls-soc-suite-of-services"
+    publication: "AICPA & CIMA"
+    year: "2026"
+  - title: "Google Workspace Admin Security Checklist"
+    url: "https://support.google.com/a/answer/7587183"
+    publication: "Google Workspace Admin Help"
+    year: "2026"
+  - title: "Microsoft Entra Security Defaults"
+    url: "https://learn.microsoft.com/en-us/entra/fundamentals/security-defaults"
+    publication: "Microsoft Learn"
+    year: "2026"
+internalLinks:
+  - "/category/security"
+visualsCount: 6
+hasVideo: false
+wordCount: 1700
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Is this current for 2026?"
+    answer: "It was checked against the listed sources on June 11, 2026, but account, airline, vendor, tax, and institutional rules can change."
+  - question: "What should I do first?"
+    answer: "Build the evidence folder or decision table before taking irreversible action."
+  - question: "When should I get expert help?"
+    answer: "Use qualified tax, legal, compliance, security, travel, medical, or official support when the downside is material."
+draft: false
+---
+
+A small team can buy powerful SaaS, AI, automation, analytics, support, and payment tools in minutes. The slow part should be evidence: what data the vendor sees, who approved it, how access is removed, and what proof you can show later if an auditor, customer, partner, or incident asks why the tool was trusted. This 2026 checklist was reviewed against CISA, NIST, FTC, AICPA, Google, and Microsoft public guidance. It is a practical operations guide, not legal, compliance, or certification advice.
+
+![vendor security evidence desk](/images/illustrations/tsp-vendor-security-evidence-2026-hero.png)
+
+## Evidence table
+
+| Evidence item | Keep when | Reject or recheck when |
+|---|---|---|
+| Data map | It states what files, messages, customers, or prompts the vendor can access | It only says “secure” with no scope |
+| Security page | Controls are current and tied to the actual product | Badge image with no dated evidence |
+| Admin owner | A named person can remove access | Shared login or former employee owner |
+| AI/data policy | Retention, training, and connector behavior are clear | Private files can be used unexpectedly |
+| Exit plan | Export, deletion, and offboarding are known | Vendor lock-in is discovered during incident |
+
+![security evidence folder](/images/illustrations/tsp-vendor-security-evidence-2026-01.png)
+
+## Start with the data path, not the sales page
+Before reading marketing claims, describe the data path in plain language. Does the tool read emails, cloud drives, chat messages, customer tickets, financial records, browser tabs, calendar events, code repositories, screenshots, or AI prompts? Does it write back, create public links, invite guests, or install a bot? A vendor that only sees a public landing page is not the same risk as an AI connector with broad drive access. Store this map in the evidence folder and update it whenever a new integration is enabled.
+
+![AI tool risk review](/images/illustrations/tsp-vendor-security-evidence-2026-02.png)
+
+## Collect public evidence without demanding secrets
+Small buyers often cannot receive full audit reports, and asking vendors to send confidential reports into random inboxes can create a new data problem. Start with public trust pages, security whitepapers, subprocessors, data-processing terms, privacy policy, status page, support docs, and dated admin screenshots from your own tenant. If the vendor offers SOC 2 or ISO reports under NDA, record who is allowed to access them and where they are stored. Do not upload customer data, credentials, private screenshots, or regulated files just to “test” a tool.
+
+![team access review](/images/illustrations/tsp-vendor-security-evidence-2026-03.png)
+
+## Make approval reversible
+Every approved vendor should have an owner, renewal date, data category, least-privilege setting, billing contact, admin URL, MFA requirement, and offboarding path. A reversible approval means you know how to remove users, revoke OAuth grants, rotate API keys, export needed records, delete test data, and document the shutdown. If the only admin is a founder’s personal account or a contractor’s email, fix that before the tool becomes business-critical.
+
+![offboarding archive](/images/illustrations/tsp-vendor-security-evidence-2026-04.png)
+
+## Review AI and automation vendors with extra skepticism
+AI assistants, meeting bots, browser agents, and no-code automations can quietly join many systems at once. Confirm whether prompts, files, transcripts, embeddings, logs, and connector data are retained, used for training, shared with subprocessors, or visible to admins. Prefer scoped workspaces, service accounts, approval flows, and test data. If the tool needs production customer data, the evidence folder should explain why the benefit outweighs the exposure and what controls limit blast radius.
+
+![vendor evidence archive](/images/illustrations/tsp-vendor-security-evidence-2026-05.png)
+
+## Quarterly folder maintenance
+- Remove vendors that no longer have an owner.
+- Recheck apps after major product changes, pricing changes, acquisitions, incidents, or new AI features.
+- Confirm MFA, SSO, domain restrictions, app approvals, and public-link controls still match policy.
+- Keep an incident contact and export plan outside the vendor being reviewed.
+- Record “not approved” decisions so the team does not re-evaluate the same risky tool every month.
+
+## FAQ
+### Do small teams need SOC 2 from every vendor?
+Not always. The evidence should match the data risk. A public newsletter tool and a payment, identity, or customer-record system deserve different review depth.
+### What is the fastest useful evidence folder?
+One page with data scope, owner, admin URL, access list, MFA setting, renewal date, security links, AI/data notes, and offboarding steps is better than scattered screenshots.
+### What should never go in the folder?
+Passwords, API secrets, customer exports, private medical or financial data, and unnecessary screenshots containing personal information should stay out.
+
