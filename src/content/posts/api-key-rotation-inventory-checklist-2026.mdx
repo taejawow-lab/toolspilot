@@ -1,0 +1,113 @@
+---
+title: "API Key Rotation and Inventory Checklist for Small Teams in 2026"
+description: "A practical API key inventory and rotation workflow covering owners, scopes, service accounts, CI secrets, incident response, and evidence without exposing secrets."
+pubDate: 2026-06-12
+updatedDate: 2026-06-12
+category: "Security"
+tags: ["API keys", "secrets management", "security", "automation", "small teams"]
+heroImage: "/images/illustrations/tsp-api-key-rotation-2026-hero.png"
+schemaType: "HowTo"
+sources:
+  - title: "CISA Rotate API Keys Countermeasure"
+    url: "https://www.cisa.gov/eviction-strategies-tool/info-countermeasures/CM0083"
+    publication: "CISA"
+    year: "2026"
+  - title: "CISA Secure by Design"
+    url: "https://www.cisa.gov/securebydesign"
+    publication: "CISA"
+    year: "2026"
+  - title: "NIST Cybersecurity Framework 2.0"
+    url: "https://www.nist.gov/cyberframework"
+    publication: "NIST"
+    year: "2026"
+  - title: "NIST Digital Identity Guidelines"
+    url: "https://pages.nist.gov/800-63-4/"
+    publication: "NIST"
+    year: "2026"
+  - title: "OWASP Secrets Management Cheat Sheet"
+    url: "https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html"
+    publication: "OWASP"
+    year: "2026"
+  - title: "GitHub Managing Personal Access Tokens"
+    url: "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens"
+    publication: "GitHub Docs"
+    year: "2026"
+  - title: "Google Cloud API Keys Best Practices"
+    url: "https://cloud.google.com/docs/authentication/api-keys-best-practices"
+    publication: "Google Cloud"
+    year: "2026"
+  - title: "Microsoft Entra Workload Identities"
+    url: "https://learn.microsoft.com/en-us/entra/workload-id/workload-identities-overview"
+    publication: "Microsoft Learn"
+    year: "2026"
+internalLinks:
+  - "/category/security"
+visualsCount: 6
+hasVideo: false
+wordCount: 1700
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Is this guide current for 2026?"
+    answer: "It was checked against the listed sources on June 12, 2026, but official rules, provider settings, and account terms can change."
+  - question: "What should I do first?"
+    answer: "Create the decision table and evidence folder first so timing, ownership, proof, and escalation are clear before acting."
+  - question: "When should I get expert help?"
+    answer: "Use qualified tax, legal, security, medical, travel, financial, or official support when a mistake could affect money, identity, health, compliance, or access."
+draft: false
+---
+
+API keys are easy to create and hard to retire. A small team may have keys in CI variables, no-code automations, browser extensions, vendor dashboards, serverless functions, spreadsheets, and old contractor laptops. This 2026 checklist was reviewed on June 12, 2026 against CISA, NIST, OWASP, GitHub, Google Cloud, and Microsoft guidance. It is an operational security guide, not a substitute for incident-response, legal, or compliance advice.
+
+![API Key Rotation and Inventory Checklist for Small Teams in 2026](/images/illustrations/tsp-api-key-rotation-2026-hero.png)
+
+## Practical decision table
+
+| Inventory field | Why it matters | Rotation trigger |
+|---|---|---|
+| Owner | Someone can revoke it | Owner leaves or role changes |
+| Scope | Limits blast radius | Scope is broader than needed |
+| Storage location | Finds hidden copies | Secret appears in logs or repo |
+| Last rotated | Prevents stale credentials | Vendor incident or audit gap |
+| Break-glass plan | Avoids outage panic | Key powers production workflow |
+
+![support image 1](/images/illustrations/tsp-api-key-rotation-2026-01.png)
+
+## Inventory the integration, not just the secret
+A safe inventory names the product, environment, owner, purpose, scope, storage location, creation date, last rotation, and revocation path. It should not contain the key value. If the only record is “Zapier key” or “old GitHub token,” the team cannot judge risk during an incident.
+
+![support image 2](/images/illustrations/tsp-api-key-rotation-2026-02.png)
+
+## Prefer scoped tokens and service identities
+Where platforms support it, use least-privilege scopes, service accounts, workload identity, short-lived credentials, or environment-specific keys. A personal all-access token used by production automation is a lockout and data-exposure risk. Store why each scope exists so future reviewers do not blindly preserve excessive permissions.
+
+![support image 3](/images/illustrations/tsp-api-key-rotation-2026-03.png)
+
+## Rotate in a two-key window when possible
+The calm pattern is create new key, deploy it to the dependent service, verify traffic, then revoke the old key and document evidence. Emergency rotation after exposure may require faster revocation, but routine rotation should be tested like a deployment so customer workflows do not fail silently.
+
+![support image 4](/images/illustrations/tsp-api-key-rotation-2026-04.png)
+
+## Search for accidental copies
+Check code repositories, CI logs, issue trackers, notebooks, local env files, support tickets, no-code steps, and shared documents for old secrets. Use platform secret scanning where available. If a secret was ever committed or pasted into a ticket, treat deletion as insufficient and rotate it.
+
+![support image 5](/images/illustrations/tsp-api-key-rotation-2026-05.png)
+
+## Make incident revocation boring
+Write a one-page runbook for compromised key scenarios: who can revoke, where to rotate, which jobs to restart, how to confirm success, and which customers or vendors may be affected. Keep the runbook outside the system that might be down during the incident.
+
+## Implementation checklist
+- Save the official source, account page, receipt, confirmation, or policy text that supports the decision.
+- Keep sensitive details out of screenshots when a blank note, redacted PDF, or itemized non-sensitive record is enough.
+- Assign an owner and review date so the checklist does not become stale after a provider, rule, trip, or platform change.
+- Separate normal workflow evidence from escalation evidence; disputes, audits, incidents, and chargebacks need cleaner timelines.
+- Recheck the plan before deadlines, renewals, tax filing, travel departure, major software changes, or account offboarding.
+
+## FAQ
+### Is this guide current for 2026?
+It was checked against the listed sources on June 12, 2026. Official rules, platform settings, fees, forms, and support processes can change, so verify before acting.
+### What is the safest first step?
+Build the table and evidence folder before making an irreversible change. A calm record often prevents a rushed dispute, audit panic, lockout, or missed deadline.
+### When should I get expert help?
+Use qualified tax, legal, security, medical, travel, card-issuer, or official support when money, health, identity, access, compliance, or family safety could be affected.
+

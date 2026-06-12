@@ -1,0 +1,220 @@
+{
+  "site": "toolspilot",
+  "slug": "api-key-rotation-inventory-checklist-2026",
+  "date": "2026-06-12",
+  "host": "gti13",
+  "endpoint": "redacted-direct-comfyui",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "assets": [
+    {
+      "file": "public/images/illustrations/tsp-api-key-rotation-2026-hero.png",
+      "filename": "tsp-api-key-rotation-2026-hero.png",
+      "prompt": "realistic developer security desk with hardware key, closed laptop, blank sticky notes, sealed envelope, no code no screens no text",
+      "seed": 202606120607,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "0888c08e-afb2-47f3-8580-b6c0d376f4de",
+      "comfy_output": {
+        "filename": "batch_d_20260612_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1379800
+    },
+    {
+      "file": "public/images/illustrations/tsp-api-key-rotation-2026-01.png",
+      "filename": "tsp-api-key-rotation-2026-01.png",
+      "prompt": "realistic API key inventory security desk with closed laptop and blank cards no code no text",
+      "seed": 202606120608,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "29be3393-1bd3-411a-9118-2f20386eea90",
+      "comfy_output": {
+        "filename": "batch_d_20260612_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1327037
+    },
+    {
+      "file": "public/images/illustrations/tsp-api-key-rotation-2026-02.png",
+      "filename": "tsp-api-key-rotation-2026-02.png",
+      "prompt": "realistic service account owner review with plain folders and dark monitor no UI no words",
+      "seed": 202606120609,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "f75787b2-4ae1-4daf-b245-c2f3e05f663e",
+      "comfy_output": {
+        "filename": "batch_d_20260612_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1344203
+    },
+    {
+      "file": "public/images/illustrations/tsp-api-key-rotation-2026-03.png",
+      "filename": "tsp-api-key-rotation-2026-03.png",
+      "prompt": "realistic CI secrets rotation scene with hardware key and sealed envelope no readable screen",
+      "seed": 202606120610,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "490cb8b2-f87d-4493-91e2-16cb695ec9db",
+      "comfy_output": {
+        "filename": "batch_d_20260612_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1205395
+    },
+    {
+      "file": "public/images/illustrations/tsp-api-key-rotation-2026-04.png",
+      "filename": "tsp-api-key-rotation-2026-04.png",
+      "prompt": "realistic incident response key revocation kit with blank checklist no writing no logos",
+      "seed": 202606120611,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "81902567-b154-4c21-9a68-2d86311eabc8",
+      "comfy_output": {
+        "filename": "batch_d_20260612_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1777775
+    },
+    {
+      "file": "public/images/illustrations/tsp-api-key-rotation-2026-05.png",
+      "filename": "tsp-api-key-rotation-2026-05.png",
+      "prompt": "realistic small team access review table with neutral devices face down no app UI no text",
+      "seed": 202606120612,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "c533ead6-0a20-4ef4-9ddb-fa3ea8be4b94",
+      "comfy_output": {
+        "filename": "batch_d_20260612_toolspilot_05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1596479
+    }
+  ],
+  "contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260612-toolspilot-contact-sheet.jpg",
+  "visual_qa": "passed after contact-sheet inspection; rejected first-pass images were regenerated/excluded by overwrite; final sheet accepted",
+  "regenerations": {
+    "/home/taekm33/blog-ops/16-sites/toolspilot/public/images/illustrations/tsp-api-key-rotation-2026-03.png": {
+      "prompt": "abstract API security rotation still life with sealed envelope, blank card, hardware security token, soft light, no hands, no keys, no screens, no text",
+      "seed": 202606121001,
+      "prompt_id": "3a510783-53a2-4e94-abc9-31c547f80bd2",
+      "comfy_output": {
+        "filename": "batch_d_20260612_regen_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1136758
+    },
+    "/home/taekm33/blog-ops/16-sites/toolspilot/public/images/illustrations/tsp-api-key-rotation-2026-04.png": {
+      "prompt": "cybersecurity incident response still life with closed notebook, sealed blank envelope, hardware security token, plain desk, no tools, no weapons, no keys, no text",
+      "seed": 202606121002,
+      "prompt_id": "c7121f9f-d0f3-41e2-8472-9ba0e79a6319",
+      "comfy_output": {
+        "filename": "batch_d_20260612_regen_toolspilot_04_00002_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1976654
+    },
+    "/home/taekm33/blog-ops/16-sites/toolspilot/public/images/illustrations/tsp-api-key-rotation-2026-05.png": {
+      "prompt": "small team security review table with closed laptops, face down dark phones, blank colored cards, no visible screens, no UI, no text",
+      "seed": 202606121003,
+      "prompt_id": "abc43f22-f03a-4b98-b7ba-e94bd472c828",
+      "comfy_output": {
+        "filename": "batch_d_20260612_regen_toolspilot_05_00002_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1281632
+    },
+    "/home/taekm33/blog-ops/16-sites/travelsavvypro/public/images/illustrations/tsv-hotel-fee-dispute-2026-04.png": {
+      "prompt": "hotel deposit hold evidence concept with plain blank colored rectangles, suitcase fabric, pen, no card shape, no logos, no numbers, no money",
+      "seed": 202606121004,
+      "prompt_id": "b32481e5-cad6-4f20-994e-23f32758783b",
+      "comfy_output": {
+        "filename": "batch_d_20260612_regen_travelsavvypro_04_00002_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1939855
+    },
+    "/home/taekm33/blog-ops/16-sites/travelsavvypro/public/images/illustrations/tsv-hotel-fee-dispute-2026-05.png": {
+      "prompt": "vacation rental fee evidence folder still life with closed tablet face down dark, blank folders, plant, no screen, no UI, no text",
+      "seed": 202606121005,
+      "prompt_id": "a0897a6d-47aa-461f-bad5-e432f8fdc352",
+      "comfy_output": {
+        "filename": "batch_d_20260612_regen_travelsavvypro_05_00002_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1444644
+    }
+  },
+  "final_contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260612-toolspilot-contact-sheet-final.jpg"
+}
