@@ -1,0 +1,184 @@
+{
+  "site": "toolspilot",
+  "slug": "saas-admin-offboarding-access-checklist-2026",
+  "date": "2026-06-13",
+  "endpoint": "GTI13 direct ComfyUI (internal endpoint redacted in final report)",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "assets": [
+    {
+      "filename": "tp-saas-offboarding-2026-hero.png",
+      "path": "public/images/illustrations/tp-saas-offboarding-2026-hero.png",
+      "renderUrl": "/images/illustrations/tp-saas-offboarding-2026-hero.png",
+      "prompt": "realistic cybersecurity offboarding still life with closed laptop, hardware security key, blank access cards face down, no screens visible, no text",
+      "negative": "readable text, words, letters, numbers, logos, labels, forms, receipts, documents, passports, boarding passes, phone screen, UI, code, calculator buttons, calendar grid, fake paperwork, people, faces, children, hands closeup, watermark, low quality, distorted objects",
+      "seed": 202606131004,
+      "prompt_id": "5b9caf7c-6354-4f5e-8f20-2da7a80b9cb9",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "width": 1536,
+      "height": 864,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "cfg": 4.8,
+      "steps": 28,
+      "source": "GTI13 direct ComfyUI",
+      "comfy_file": {
+        "filename": "hermes_batch_d_20260613_final_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "qa_regenerated": true
+    },
+    {
+      "filename": "tp-saas-offboarding-2026-01.png",
+      "path": "public/images/illustrations/tp-saas-offboarding-2026-01.png",
+      "renderUrl": "/images/illustrations/tp-saas-offboarding-2026-01.png",
+      "prompt": "realistic admin access inventory scene with blank sticky notes and dark monitor, no readable text",
+      "negative": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, exposed wiring, fake dashboard, fake warning label, child face closeup, unsafe water scene, medicine labels",
+      "seed": 202606130408,
+      "prompt_id": "d25d8462-5f5c-4bf9-8ef7-6cf917d0b1af",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "width": 1536,
+      "height": 864,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "cfg": 5.0,
+      "steps": 26,
+      "source": "GTI13 direct ComfyUI",
+      "comfy_file": {
+        "filename": "hermes_batch_d_20260613_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "filename": "tp-saas-offboarding-2026-02.png",
+      "path": "public/images/illustrations/tp-saas-offboarding-2026-02.png",
+      "renderUrl": "/images/illustrations/tp-saas-offboarding-2026-02.png",
+      "prompt": "realistic API token rotation metaphor with hardware keys on a plain sealed envelope, completely blank envelope, no labels, no writing",
+      "negative": "readable text, words, letters, numbers, logos, labels, forms, receipts, documents, passports, boarding passes, phone screen, UI, code, calculator buttons, calendar grid, fake paperwork, people, faces, children, hands closeup, watermark, low quality, distorted objects",
+      "seed": 202606131005,
+      "prompt_id": "1cfce004-b118-4e24-9ff9-6648fc31119a",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "width": 1536,
+      "height": 864,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "cfg": 4.8,
+      "steps": 28,
+      "source": "GTI13 direct ComfyUI",
+      "comfy_file": {
+        "filename": "hermes_batch_d_20260613_final_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "qa_regenerated": true
+    },
+    {
+      "filename": "tp-saas-offboarding-2026-03.png",
+      "path": "public/images/illustrations/tp-saas-offboarding-2026-03.png",
+      "renderUrl": "/images/illustrations/tp-saas-offboarding-2026-03.png",
+      "prompt": "realistic business file ownership transfer with plain closed folders and blank color tabs, no labels, no open drawers, no text",
+      "negative": "readable text, words, letters, numbers, logos, labels, forms, receipts, documents, passports, boarding passes, phone screen, UI, code, calculator buttons, calendar grid, fake paperwork, people, faces, children, hands closeup, watermark, low quality, distorted objects",
+      "seed": 202606131006,
+      "prompt_id": "8a7000fe-a4cc-4f64-8f80-d021f4fd07f3",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "width": 1536,
+      "height": 864,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "cfg": 4.8,
+      "steps": 28,
+      "source": "GTI13 direct ComfyUI",
+      "comfy_file": {
+        "filename": "hermes_batch_d_20260613_final_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "qa_regenerated": true
+    },
+    {
+      "filename": "tp-saas-offboarding-2026-04.png",
+      "path": "public/images/illustrations/tp-saas-offboarding-2026-04.png",
+      "renderUrl": "/images/illustrations/tp-saas-offboarding-2026-04.png",
+      "prompt": "realistic device session cleanup still life with face down phone and closed laptop, no UI no logos",
+      "negative": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, passport text, document numbers, map labels, official seals, exposed wiring, fake dashboard, fake warning label, child face closeup, unsafe water scene, medicine labels",
+      "seed": 202606130411,
+      "prompt_id": "c483ad90-abec-4b4b-a945-949a4d3fc100",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "width": 1536,
+      "height": 864,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "cfg": 5.0,
+      "steps": 26,
+      "source": "GTI13 direct ComfyUI",
+      "comfy_file": {
+        "filename": "hermes_batch_d_20260613_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "filename": "tp-saas-offboarding-2026-05.png",
+      "path": "public/images/illustrations/tp-saas-offboarding-2026-05.png",
+      "renderUrl": "/images/illustrations/tp-saas-offboarding-2026-05.png",
+      "prompt": "realistic cybersecurity evidence still life with plain kraft folders closed, hardware security key, blank black card face down, no stickers, no labels, no text",
+      "negative": "text, words, letters, numbers, logos, labels, forms, receipts, documents, passports, boarding passes, phone screen, UI, code, calculator, calendar, paperwork, cards with writing, first aid label, people, faces, children, hands, watermark, low quality, distorted",
+      "seed": 202606132002,
+      "prompt_id": "4c559b29-6f75-496c-8ad8-a944f02f9911",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "width": 1536,
+      "height": 864,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "cfg": 4.5,
+      "steps": 30,
+      "source": "GTI13 direct ComfyUI",
+      "comfy_file": {
+        "filename": "hermes_batch_d_20260613_final2_toolspilot_05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "qa_regenerated": true,
+      "qa_regenerated_final2": true
+    }
+  ],
+  "preflight": {
+    "ok": true,
+    "site": "toolspilot",
+    "slug": "saas-admin-offboarding-access-checklist-2026",
+    "title": "SaaS Admin Offboarding and Access Removal Checklist for 2026",
+    "candidate_tokens": [
+      "access",
+      "admin",
+      "offboarding",
+      "removal",
+      "saas"
+    ],
+    "threshold": 0.42,
+    "near_duplicates": []
+  },
+  "source_url_check_bad": [
+    [
+      "https://www.cisa.gov/resources-tools/resources/zero-trust-maturity-model",
+      "HTTP Error 403: Forbidden"
+    ],
+    [
+      "https://www.cisa.gov/resources-tools/resources/secure-cloud-business-applications-scbas",
+      "HTTP Error 403: Forbidden"
+    ],
+    [
+      "https://www.cisa.gov/MFA",
+      "HTTP Error 403: Forbidden"
+    ],
+    [
+      "https://www.ftc.gov/business-guidance/privacy-security/data-security",
+      "HTTP Error 403: Forbidden"
+    ],
+    [
+      "https://www.cisa.gov/resources-tools/resources/cyber-essentials",
+      "HTTP Error 403: Forbidden"
+    ]
+  ],
+  "final_visual_qa_note": "Final2 regenerated remaining rejects for text/document/people artifacts; contact sheet final2 used for QA."
+}
