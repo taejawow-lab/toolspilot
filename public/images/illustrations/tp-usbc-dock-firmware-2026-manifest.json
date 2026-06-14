@@ -1,0 +1,181 @@
+{
+  "site": "toolspilot",
+  "slug": "usb-c-dock-firmware-update-risk-checklist-2026",
+  "title": "USB-C Dock Firmware Update Risk Checklist for 2026",
+  "date": "2026-06-14",
+  "host": "gti13",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "assets": [
+    {
+      "filename": "tp-usbc-dock-firmware-2026-hero.png",
+      "file": "public/images/illustrations/tp-usbc-dock-firmware-2026-hero.png",
+      "prompt": "realistic desk setup with USB-C dock, blank monitors, coiled cable, closed laptop, no UI no labels no text",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable label, screen text, UI screenshot, fake interface, fake document, form, receipt, calculator numbers, currency, QR code, barcode, passport, medical chart, prescription label text, child face closeup, unsafe child scene, bad hands, distorted objects, low quality, blurry, placeholder, generic stock art",
+      "seed": 202606140607,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "c29d64ca-4f6a-4f5b-b0ae-61f8505d58f2",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260614_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1231497
+    },
+    {
+      "filename": "tp-usbc-dock-firmware-2026-01.png",
+      "file": "public/images/illustrations/tp-usbc-dock-firmware-2026-01.png",
+      "prompt": "USB C dock on clean desk with all monitor screens completely black and powered off, no wallpaper, no UI, no icons, no text, no labels",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable label, screen text, UI screenshot, fake interface, fake document, form, receipt, calculator numbers, currency, QR code, barcode, passport, medical chart, prescription label text, child face closeup, unsafe child scene, bad hands, distorted objects, low quality, blurry, placeholder, generic stock art",
+      "seed": 202606149482,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_after_visual_qa": true,
+      "prompt_id": "2a4aed37-6b11-4f44-8a6f-359205077319",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260614_regen_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1346357
+    },
+    {
+      "filename": "tp-usbc-dock-firmware-2026-02.png",
+      "file": "public/images/illustrations/tp-usbc-dock-firmware-2026-02.png",
+      "prompt": "plain USB C cables and unlabeled dock accessories on desk, no tags, no stickers, no brand marks, no text, no numbers",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable label, screen text, UI screenshot, fake interface, fake document, form, receipt, calculator numbers, currency, QR code, barcode, passport, medical chart, prescription label text, child face closeup, unsafe child scene, bad hands, distorted objects, low quality, blurry, placeholder, generic stock art",
+      "seed": 202606154180,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_after_visual_qa": true,
+      "prompt_id": "70dc5006-0271-402f-ad9d-83b35a58b51e",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260614_regen_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1823404
+    },
+    {
+      "filename": "tp-usbc-dock-firmware-2026-03.png",
+      "file": "public/images/illustrations/tp-usbc-dock-firmware-2026-03.png",
+      "prompt": "USB C dock cable inventory with plain colored blank cable bands, no ethernet plugs, no labels, no writing, no text",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable label, screen text, UI screenshot, fake interface, fake document, form, receipt, calculator numbers, currency, QR code, barcode, passport, medical chart, prescription label text, child face closeup, unsafe child scene, bad hands, distorted objects, low quality, blurry, placeholder, generic stock art",
+      "seed": 202606152498,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_after_visual_qa": true,
+      "prompt_id": "9cd12ac6-d19f-4817-98c8-ff91cca6ee92",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260614_regen_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1019835
+    },
+    {
+      "filename": "tp-usbc-dock-firmware-2026-04.png",
+      "file": "public/images/illustrations/tp-usbc-dock-firmware-2026-04.png",
+      "prompt": "workspace rollback kit with dock box and dark phone screen no readable labels",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable label, screen text, UI screenshot, fake interface, fake document, form, receipt, calculator numbers, currency, QR code, barcode, passport, medical chart, prescription label text, child face closeup, unsafe child scene, bad hands, distorted objects, low quality, blurry, placeholder, generic stock art",
+      "seed": 202606140611,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "939f201e-1cc8-42a1-9258-6c1a287233e8",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260614_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1378534
+    },
+    {
+      "filename": "tp-usbc-dock-firmware-2026-05.png",
+      "file": "public/images/illustrations/tp-usbc-dock-firmware-2026-05.png",
+      "prompt": "post update testing desk with blank monitors keyboard and cable organizer no text",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable label, screen text, UI screenshot, fake interface, fake document, form, receipt, calculator numbers, currency, QR code, barcode, passport, medical chart, prescription label text, child face closeup, unsafe child scene, bad hands, distorted objects, low quality, blurry, placeholder, generic stock art",
+      "seed": 202606140612,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "9aefda05-af68-4627-b0e6-33c07b2815e5",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260614_toolspilot_05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1159587
+    }
+  ],
+  "contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260614-toolspilot-contact-sheet-final.jpg",
+  "sources": [
+    "https://www.cisa.gov/secure-our-world",
+    "https://csrc.nist.gov/pubs/sp/800/40/r4/final",
+    "https://www.nist.gov/cyberframework",
+    "https://www.thunderbolttechnology.net/security",
+    "https://www.usb.org/usb-type-cr-cable-and-connector-specification",
+    "https://support.microsoft.com/surface/update-your-surface-dock-firmware-7c8816f5-5b34-c315-5c9a-7d1f914e93f5",
+    "https://www.dell.com/support/kbdoc/en-us/000124295/dell-docking-station-support-resources",
+    "https://support.lenovo.com/solutions/ht508988"
+  ],
+  "qa_note": "Final manifest after visual-QA regenerations on 2026-06-14; rejected images replaced before staging."
+}
