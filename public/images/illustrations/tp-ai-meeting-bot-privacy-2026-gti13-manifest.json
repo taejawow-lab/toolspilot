@@ -1,0 +1,115 @@
+{
+  "site": "toolspilot",
+  "slug": "ai-meeting-bot-recording-consent-privacy-checklist-2026",
+  "title": "AI Meeting Bot Recording Consent and Privacy Checklist for 2026",
+  "date": "2026-06-15",
+  "gti13_only": true,
+  "endpoint_redacted": "direct GTI13 ComfyUI endpoint verified by gate",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "count_1536x864_png": 6,
+  "images": [
+    {
+      "file": "public/images/illustrations/tp-ai-meeting-bot-privacy-2026-hero.png",
+      "role": "hero",
+      "seed": 861501000,
+      "prompt": "realistic office meeting privacy planning desk with closed laptops and blank notecards no text no logos no screens",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "a4c4331a-c38d-4dec-a88c-89cf5e7650b6",
+      "remote": {
+        "filename": "tp-ai-meeting-bot-privacy-2026-hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "file": "public/images/illustrations/tp-ai-meeting-bot-privacy-2026-01.png",
+      "role": "01",
+      "seed": 861501001,
+      "prompt": "realistic conference room with empty chairs, dark blank wall display, small neutral camera covered, no writing",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "414573af-8fb5-455a-8a04-562912960816",
+      "remote": {
+        "filename": "tp-ai-meeting-bot-privacy-2026-01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "file": "public/images/illustrations/tp-ai-meeting-bot-privacy-2026-02.png",
+      "role": "02",
+      "seed": 861599100,
+      "prompt": "privacy settings concept as physical lockbox, closed laptop, blank cards, dark screen turned away, no user interface, no readable text",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "b3916d40-7922-48f4-a1ee-fa4aeb481604",
+      "remote": {
+        "filename": "tp-ai-meeting-bot-privacy-2026-02-regen_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "qa_regenerated": true
+    },
+    {
+      "file": "public/images/illustrations/tp-ai-meeting-bot-privacy-2026-03.png",
+      "role": "03",
+      "seed": 861501003,
+      "prompt": "realistic transcript retention folder scene with blank tabs and sealed envelope no readable labels",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "4abdd62d-1942-44c4-8044-2186d5fa4c66",
+      "remote": {
+        "filename": "tp-ai-meeting-bot-privacy-2026-03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "file": "public/images/illustrations/tp-ai-meeting-bot-privacy-2026-04.png",
+      "role": "04",
+      "seed": 861501004,
+      "prompt": "realistic remote work desk with headset, dark monitor, blank sticky notes no handwriting no logos",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "fd95e814-c106-4f3f-b260-3e67e0748c73",
+      "remote": {
+        "filename": "tp-ai-meeting-bot-privacy-2026-04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "file": "public/images/illustrations/tp-ai-meeting-bot-privacy-2026-05.png",
+      "role": "05",
+      "seed": 861501005,
+      "prompt": "realistic team policy discussion table with blank cards, no documents text, no faces closeup",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "febc6881-20f9-4265-a7b9-f7a0e58ddf34",
+      "remote": {
+        "filename": "tp-ai-meeting-bot-privacy-2026-05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    }
+  ],
+  "contact_sheet": "public/images/illustrations/tp-ai-meeting-bot-privacy-2026-contact-sheet-final.jpg",
+  "visual_qa": {
+    "status": "passed",
+    "review": "final contact sheet visually inspected; regenerated/replaced rejected assets; no readable text/logos/UI or safety/privacy blockers observed",
+    "contact_sheet": "public/images/illustrations/tp-ai-meeting-bot-privacy-2026-contact-sheet-final.jpg"
+  }
+}
