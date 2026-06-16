@@ -1,0 +1,178 @@
+{
+  "site": "toolspilot",
+  "slug": "oauth-app-consent-review-workspace-security-checklist-2026",
+  "date": "2026-06-16",
+  "endpoint": "http://192.168.50.29:8188",
+  "host": "gti13",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "assets": [
+    {
+      "file": "public/images/illustrations/tsp-oauth-consent-review-2026-hero.png",
+      "filename": "tsp-oauth-consent-review-2026-hero.png",
+      "prompt": "cybersecurity still life with hardware security key, closed laptop, dark blank phone face down, plain black desk, no keyboard, no screens, no text, no people",
+      "positive_prompt": "cybersecurity still life with hardware security key, closed laptop, dark blank phone face down, plain black desk, no keyboard, no screens, no text, no people, professional realistic editorial still life photography, 16:9, natural light, high detail, safe factual scene, absolutely no embedded text, no logos, no brands, no readable markings",
+      "negative_prompt": "person, people, human, face, eyes, skin, hands, child, text, words, letters, numbers, keyboard letters, calculator, money, currency, coins, bills, passport text, form, document text, label, logo, brand, QR, barcode, UI, screen content, map text, handwriting, low quality, distorted",
+      "seed": 202606161203,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "3409b6cf-924c-4871-88f6-6415879fab9c",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260616_final_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1053021,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.0,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_after_visual_qa": true
+    },
+    {
+      "file": "public/images/illustrations/tsp-oauth-consent-review-2026-01.png",
+      "filename": "tsp-oauth-consent-review-2026-01.png",
+      "prompt": "minimal SaaS access review desk with blank laptop and hardware key, no UI no text",
+      "positive_prompt": "minimal SaaS access review desk with blank laptop and hardware key, no UI no text, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, safe factual scene, absolutely no embedded text, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, barcodes, QR codes, label, logo, brand, watermark, document, form, receipt, UI, screen content, code editor, calendar, handwriting, face, child face, people closeup, readable, low quality, distorted objects, unsafe scene, fake official paper",
+      "seed": 202606160608,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "f4f09ad0-8232-4bc8-9143-300e1f01f4a0",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260616_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1533078,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tsp-oauth-consent-review-2026-02.png",
+      "filename": "tsp-oauth-consent-review-2026-02.png",
+      "prompt": "abstract OAuth consent review still life with padlock and unmarked colored blocks on desk, no letters, no keyboard keys, no text, no UI, no people",
+      "positive_prompt": "abstract OAuth consent review still life with padlock and unmarked colored blocks on desk, no letters, no keyboard keys, no text, no UI, no people, professional realistic editorial still life photography, 16:9, natural light, high detail, safe factual scene, absolutely no embedded text, no logos, no brands, no readable markings",
+      "negative_prompt": "person, people, human, face, eyes, skin, hands, child, text, words, letters, numbers, keyboard letters, calculator, money, currency, coins, bills, passport text, form, document text, label, logo, brand, QR, barcode, UI, screen content, map text, handwriting, low quality, distorted",
+      "seed": 202606161204,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "d3377df3-f39d-4114-b0ee-3e8ba1642af0",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260616_final_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1222315,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.0,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_after_visual_qa": true
+    },
+    {
+      "file": "public/images/illustrations/tsp-oauth-consent-review-2026-03.png",
+      "filename": "tsp-oauth-consent-review-2026-03.png",
+      "prompt": "workspace admin offboarding still life with closed laptop and blank access cards, no text",
+      "positive_prompt": "workspace admin offboarding still life with closed laptop and blank access cards, no text, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, safe factual scene, absolutely no embedded text, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, barcodes, QR codes, label, logo, brand, watermark, document, form, receipt, UI, screen content, code editor, calendar, handwriting, face, child face, people closeup, readable, low quality, distorted objects, unsafe scene, fake official paper",
+      "seed": 202606160610,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "a77c4828-7c6a-4f36-9809-363f78f09ed6",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260616_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1619791,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tsp-oauth-consent-review-2026-04.png",
+      "filename": "tsp-oauth-consent-review-2026-04.png",
+      "prompt": "third party app inventory scene with blank folders and security key, no documents no labels",
+      "positive_prompt": "third party app inventory scene with blank folders and security key, no documents no labels, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, safe factual scene, absolutely no embedded text, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, barcodes, QR codes, label, logo, brand, watermark, document, form, receipt, UI, screen content, code editor, calendar, handwriting, face, child face, people closeup, readable, low quality, distorted objects, unsafe scene, fake official paper",
+      "seed": 202606160611,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "e0312ff9-223f-44c3-9638-1213e36adf85",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260616_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1236688,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tsp-oauth-consent-review-2026-05.png",
+      "filename": "tsp-oauth-consent-review-2026-05.png",
+      "prompt": "incident evidence folder for app consent review, sealed blank envelope and dark phone, no UI no text",
+      "positive_prompt": "incident evidence folder for app consent review, sealed blank envelope and dark phone, no UI no text, professional realistic editorial photography, 16:9, natural light, high detail, topic accurate, safe factual scene, absolutely no embedded text, no logos, no brands, no readable papers, blank screens only",
+      "negative_prompt": "text, words, letters, numbers, barcodes, QR codes, label, logo, brand, watermark, document, form, receipt, UI, screen content, code editor, calendar, handwriting, face, child face, people closeup, readable, low quality, distorted objects, unsafe scene, fake official paper",
+      "seed": 202606160612,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "63ab84e5-1667-46d4-a8ef-ac14d6377b11",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260616_toolspilot_05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1772102,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    }
+  ],
+  "contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260616-toolspilot-contact-sheet-final.jpg",
+  "visual_qa_status": "pending-human/agent-contact-sheet-review",
+  "final_visual_qa_contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260616-toolspilot-contact-sheet-final.jpg",
+  "updated_after_visual_qa": "2026-06-16T00:00:00Z"
+}

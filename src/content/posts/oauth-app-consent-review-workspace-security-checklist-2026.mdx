@@ -1,0 +1,113 @@
+---
+title: "OAuth App Consent Review Checklist for Workspace Security in 2026"
+description: "Review OAuth app consent, scopes, publishers, owners, offboarding, and audit evidence before a small tool becomes a workspace data leak."
+pubDate: 2026-06-16
+updatedDate: 2026-06-16
+category: "Security"
+tags: ["OAuth", "SaaS security", "workspace admin", "app consent", "access review"]
+heroImage: "/images/illustrations/tsp-oauth-consent-review-2026-hero.png"
+schemaType: "HowTo"
+sources:
+  - title: "CISA Secure Our World"
+    url: "https://www.cisa.gov/secure-our-world"
+    publication: "CISA"
+    year: "2026"
+  - title: "CISA Secure by Design"
+    url: "https://www.cisa.gov/securebydesign"
+    publication: "CISA"
+    year: "2026"
+  - title: "NIST Digital Identity Guidelines"
+    url: "https://pages.nist.gov/800-63-4/"
+    publication: "NIST"
+    year: "2026"
+  - title: "OWASP OAuth 2.0 Security Cheat Sheet"
+    url: "https://cheatsheetseries.owasp.org/cheatsheets/OAuth2_Cheat_Sheet.html"
+    publication: "OWASP"
+    year: "2026"
+  - title: "Google Workspace App Access Control"
+    url: "https://support.google.com/a/answer/7281227"
+    publication: "Google"
+    year: "2026"
+  - title: "Microsoft App Consent Policies"
+    url: "https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/manage-app-consent-policies"
+    publication: "Microsoft"
+    year: "2026"
+  - title: "Slack Manage App Approval"
+    url: "https://slack.com/help/articles/222386767-Manage-app-approval-for-your-workspace"
+    publication: "Slack"
+    year: "2026"
+  - title: "FTC Protect Your Personal Information"
+    url: "https://consumer.ftc.gov/articles/how-protect-your-personal-information-hackers-and-scammers"
+    publication: "FTC"
+    year: "2026"
+internalLinks:
+  - "/category/security"
+visualsCount: 6
+hasVideo: false
+wordCount: 1700
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Is this guide current for 2026?"
+    answer: "It was checked against the listed sources on June 16, 2026; verify official, account-specific, agency, workspace, airline, provider, or tax rules before acting."
+  - question: "What should I do first?"
+    answer: "Create the decision table first so you understand owners, risks, timing, proof, and escalation before making changes."
+  - question: "When should I get expert help?"
+    answer: "Use qualified financial, security, legal, travel, tax, medical, or official support when a mistake could affect money, identity, health, compliance, travel, or access."
+draft: false
+---
+
+OAuth consent is one of the easiest access paths to forget because it often starts as a harmless productivity shortcut: a calendar helper, AI meeting bot, document summarizer, CRM sync, inbox plug-in, or browser-based automation. By 2026, a practical workspace review needs to look beyond user passwords and ask which third-party apps still hold tokens, broad scopes, shared-drive access, mailbox permissions, or admin-granted consent. This checklist was checked on June 16, 2026 against CISA, NIST, OWASP, Google, Microsoft, Slack, and FTC guidance. It is written for small teams that need safer operations without pretending to be a large security department.
+
+![OAuth App Consent Review Checklist for Workspace Security in 2026](/images/illustrations/tsp-oauth-consent-review-2026-hero.png)
+
+## Practical decision table
+
+| Review object | Keep when | Remove or restrict when |
+|---|---|---|
+| Broad scopes | Current owner and business case exist | “All files” or mailbox access is unexplained |
+| Publisher | Verified and still maintained | Unknown, abandoned, or impersonation risk |
+| User-installed apps | Low-risk data and short retention | Sensitive data leaves the workspace |
+| Admin consent | Documented approval and renewal date | One admin clicked during a rush |
+| Former employee tokens | None | Any token or app ownership remains |
+
+![support image 1](/images/illustrations/tsp-oauth-consent-review-2026-01.png)
+
+## Inventory consent paths before judging risk
+Export or list approved apps, user-installed apps, service accounts, browser extensions that connect to SaaS, automation bots, and marketplace add-ons. Record app name, publisher, owner, scopes, install date, last used signal, connected workspace, and data category. The first pass is not to delete everything; it is to find invisible access paths that normal user reviews miss.
+
+![support image 2](/images/illustrations/tsp-oauth-consent-review-2026-02.png)
+
+## Score scopes by data consequence
+A calendar read scope is different from mailbox send, full drive access, admin directory read, or offline refresh tokens. Translate technical scopes into business consequences: can the app read customer files, export employee records, send messages, alter billing, or retain data after offboarding? If the consequence is unclear, restrict the app until the owner proves the use case.
+
+![support image 3](/images/illustrations/tsp-oauth-consent-review-2026-03.png)
+
+## Separate trusted publisher from trusted configuration
+A known vendor can still be configured badly. Check whether the app is official, whether the publisher domain matches the product, whether the OAuth screen and marketplace listing are current, and whether the requested scopes match the actual feature. Avoid treating a familiar logo as blanket approval for every permission.
+
+![support image 4](/images/illustrations/tsp-oauth-consent-review-2026-04.png)
+
+## Make offboarding include app ownership
+When an employee leaves, shared documents and mailbox delegation are not enough. Check whether they owned automation, API keys, private apps, Slack apps, calendar bots, or OAuth clients. Transfer or retire the app deliberately. A former employee account that no longer signs in can still leave a token, workflow, or integration path behind if the workspace does not revoke it.
+
+![support image 5](/images/illustrations/tsp-oauth-consent-review-2026-05.png)
+
+## Create a lightweight approval trail
+Small teams can keep a simple evidence folder: requester, app link, scope screenshot or export, data category, owner, renewal date, removal plan, and incident contact. The folder should avoid secrets and private customer data. The goal is not bureaucracy; it is being able to answer “why does this app have access?” during an incident, audit, or AdSense/trust review of the site’s own operations advice.
+
+## Implementation checklist
+- Write the owner, review date, official source, evidence location, and next review trigger before acting.
+- Use official pages and account settings rather than ads, screenshots, social threads, or stale forum advice.
+- Keep proof that does not expose secrets: confirmations, dated notes, receipts without full account numbers, support case IDs, and policy links.
+- Reduce single points of failure such as one login, one document, one payment account, one traveler, one admin, or one undocumented recovery path.
+- Revisit the plan after policy changes, travel changes, account changes, device replacement, employee offboarding, tax events, or incident alerts.
+
+## FAQ
+### Is this current for 2026?
+Yes. The workflow was checked against the listed sources on June 16, 2026, but official rules, providers, account settings, and agency pages can change.
+### What should I do first?
+Build the decision table first. It turns a vague risk into owners, proof, timing, and a safer next action.
+### When should I get expert help?
+Use qualified financial, security, legal, travel, tax, medical, or official support when a mistake could affect money, identity, health, compliance, travel, or access.
+
