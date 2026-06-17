@@ -1,0 +1,169 @@
+{
+  "site": "toolspilot",
+  "slug": "shared-inbox-permission-audit-checklist-2026",
+  "date": "2026-06-17",
+  "endpoint": "redacted-direct-gti13",
+  "host": "gti13",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "assets": [
+    {
+      "file": "public/images/illustrations/tp-shared-inbox-audit-20260617-01.png",
+      "filename": "tp-shared-inbox-audit-20260617-01.png",
+      "prompt": "realistic shared access review still life with closed laptop, colored wooden cubes, blank index cards face down, plant, no screen visible, no UI, no text",
+      "negative_prompt": "text, words, letters, numbers, logo, label, brand, UI, screen content, document text, handwriting, barcode, forms, credential, login, account screen, child face, people face, medical label, pills, medicine bottle label, packaging label, low quality, blurry",
+      "seed": 202606171102,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "2c352141-0f22-40ee-9dfc-4e1924729c8d",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260617_qa2_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 2002354,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 28,
+      "cfg": 5.0,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_for_visual_qa": true
+    },
+    {
+      "file": "public/images/illustrations/tp-shared-inbox-audit-20260617-02.png",
+      "filename": "tp-shared-inbox-audit-20260617-02.png",
+      "prompt": "realistic OAuth permission map represented by plain wooden blocks connected by string, no labels, no board writing, no text, no screens",
+      "positive_prompt": "realistic OAuth permission map represented by plain wooden blocks connected by string, no labels, no board writing, no text, no screens, professional realistic editorial photography, no readable text, safe still life",
+      "negative_prompt": "readable text, words, letters, numbers, logo, watermark, brand, UI, screen content, calendar grid, document text, handwriting, QR code, payment card, currency, receipt, form, barcode, official seal, calculator, phone screen, laptop screen, child face, people face, label, packaging label, medical label, low quality, blurry, distorted objects",
+      "seed": 202606171007,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "c4c2af85-3a75-4918-a631-f3fc3ac62cc6",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260617_qa_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1962555,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.2,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_for_visual_qa": true
+    },
+    {
+      "file": "public/images/illustrations/tp-shared-inbox-audit-20260617-03.png",
+      "filename": "tp-shared-inbox-audit-20260617-03.png",
+      "prompt": "realistic forwarding rule audit desk with sealed envelopes and plain folders, no readable text",
+      "positive_prompt": "realistic forwarding rule audit desk with sealed envelopes and plain folders, no readable text, professional realistic editorial photography, no readable text, safe still life",
+      "negative_prompt": "readable text, words, letters, numbers, logo, watermark, brand, UI, screen content, calendar grid, document text, handwriting, QR code, payment screen, login form, passport, official seal, barcode, fake label, child face closeup, bad hands, distorted objects, unsafe scene, low quality, blurry, cartoon, placeholder, stock art",
+      "seed": 202606170610,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "5f4f97d8-cce1-4efa-a884-d6083225bd54",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260617_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1456983,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.2,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-shared-inbox-audit-20260617-04.png",
+      "filename": "tp-shared-inbox-audit-20260617-04.png",
+      "prompt": "realistic offboarding checklist with keys in lockbox, closed laptop, blank cards, no numbers",
+      "positive_prompt": "realistic offboarding checklist with keys in lockbox, closed laptop, blank cards, no numbers, professional realistic editorial photography, no readable text, safe still life",
+      "negative_prompt": "readable text, words, letters, numbers, logo, watermark, brand, UI, screen content, calendar grid, document text, handwriting, QR code, payment screen, login form, passport, official seal, barcode, fake label, child face closeup, bad hands, distorted objects, unsafe scene, low quality, blurry, cartoon, placeholder, stock art",
+      "seed": 202606170611,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "037cb5cc-cddc-406b-a119-081609a8ff53",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260617_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1493566,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.2,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras"
+    },
+    {
+      "file": "public/images/illustrations/tp-shared-inbox-audit-20260617-05.png",
+      "filename": "tp-shared-inbox-audit-20260617-05.png",
+      "prompt": "realistic retention evidence folder with blank folders and sealed envelopes, no forms, no printed lines, no readable text, no screens",
+      "positive_prompt": "realistic retention evidence folder with blank folders and sealed envelopes, no forms, no printed lines, no readable text, no screens, professional realistic editorial photography, no readable text, safe still life",
+      "negative_prompt": "readable text, words, letters, numbers, logo, watermark, brand, UI, screen content, calendar grid, document text, handwriting, QR code, payment card, currency, receipt, form, barcode, official seal, calculator, phone screen, laptop screen, child face, people face, label, packaging label, medical label, low quality, blurry, distorted objects",
+      "seed": 202606171008,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "prompt_id": "a1e38e63-45ec-4e36-9908-5ed6c9e1add7",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260617_qa_toolspilot_05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "status": "ok",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1664600,
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.2,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "regenerated_for_visual_qa": true
+    }
+  ],
+  "contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260617-toolspilot-contact-sheet-accepted.jpg",
+  "preflight": {
+    "rc": 0,
+    "out": "{\n  \"ok\": true,\n  \"site\": \"toolspilot\",\n  \"slug\": \"shared-inbox-permission-audit-checklist-2026\",\n  \"title\": \"Shared Inbox Permission Audit Checklist for 2026\",\n  \"candidate_tokens\": [\n    \"audit\",\n    \"inbox\",\n    \"permission\",\n    \"shared\"\n  ],\n  \"threshold\": 0.42,\n  \"near_duplicates\": []\n}\n",
+    "err": ""
+  },
+  "final_visual_qa_contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260617-toolspilot-contact-sheet-accepted.jpg",
+  "updated_after_visual_qa": "2026-06-17T10:21:47Z",
+  "updated_after_visual_qa2": "2026-06-17T10:24:13Z",
+  "updated_after_visual_qa3": "2026-06-17T10:25:52Z",
+  "accepted_assets": [
+    "tp-shared-inbox-audit-20260617-01.png",
+    "tp-shared-inbox-audit-20260617-02.png",
+    "tp-shared-inbox-audit-20260617-03.png",
+    "tp-shared-inbox-audit-20260617-04.png",
+    "tp-shared-inbox-audit-20260617-05.png"
+  ],
+  "rejected_removed": [
+    "hero"
+  ],
+  "visualsCount": 5,
+  "updated_after_exclusion": "2026-06-17T10:27:32Z"
+}
