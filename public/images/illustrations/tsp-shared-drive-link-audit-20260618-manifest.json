@@ -1,0 +1,420 @@
+{
+  "generated_at": "2026-06-18T10:16:59Z",
+  "host": "gti13",
+  "endpoint": "redacted-direct-comfyui",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "assets": [
+    {
+      "filename": "tsp-shared-drive-link-audit-20260618-hero.png",
+      "file": "public/images/illustrations/tsp-shared-drive-link-audit-20260618-hero.png",
+      "prompt": "realistic shared drive security audit still life with closed laptop, closed plain folders, hardware key, lockbox, no screen, no UI, no text, no logos",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, financial statement text, document numbers, license plate, dashboard numbers, road signs, official seals, child face closeup, unsafe scene, exposed wiring",
+      "seed": 202606181002,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "e5a6f7a2-7393-4cea-8b75-7e377e122d85",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen2_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1605333,
+      "status": "ok"
+    },
+    {
+      "filename": "tsp-shared-drive-link-audit-20260618-01.png",
+      "file": "public/images/illustrations/tsp-shared-drive-link-audit-20260618-01.png",
+      "prompt": "realistic external collaborator review scene with two closed laptops and blank cards, no readable labels",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, financial statement text, document numbers, license plate, dashboard numbers, road signs, official seals, child face closeup, unsafe scene, exposed wiring",
+      "seed": 202606180407,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "f83a7307-9915-4be4-819b-b0a48e891ce5",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1448330,
+      "status": "ok"
+    },
+    {
+      "filename": "tsp-shared-drive-link-audit-20260618-02.png",
+      "file": "public/images/illustrations/tsp-shared-drive-link-audit-20260618-02.png",
+      "prompt": "realistic access expiration planning still life with blank colored cards, hourglass, closed notebook, no clock face, no sticky notes with text, no numbers",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, financial statement text, document numbers, license plate, dashboard numbers, road signs, official seals, child face closeup, unsafe scene, exposed wiring",
+      "seed": 202606180904,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "85f7efb0-5a61-4bf4-a892-bae3079302d8",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1445813,
+      "status": "ok"
+    },
+    {
+      "filename": "tsp-shared-drive-link-audit-20260618-03.png",
+      "file": "public/images/illustrations/tsp-shared-drive-link-audit-20260618-03.png",
+      "prompt": "realistic offboarding access cleanup still life with sealed folder and face-down phone, no text",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, financial statement text, document numbers, license plate, dashboard numbers, road signs, official seals, child face closeup, unsafe scene, exposed wiring",
+      "seed": 202606180409,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "7d8621b1-688d-4bc6-9c49-9bfbf5a99cf2",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1755190,
+      "status": "ok"
+    },
+    {
+      "filename": "tsp-shared-drive-link-audit-20260618-04.png",
+      "file": "public/images/illustrations/tsp-shared-drive-link-audit-20260618-04.png",
+      "prompt": "realistic sensitive folder protection scene with lockbox, blank USB key, dark screen, no logos",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, financial statement text, document numbers, license plate, dashboard numbers, road signs, official seals, child face closeup, unsafe scene, exposed wiring",
+      "seed": 202606180410,
+      "dimensions": [
+        1536,
+        864
+      ],
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 24,
+      "cfg": 5.5,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "prompt_id": "84aaac0f-d612-4997-9134-f909a2209857",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1274856,
+      "status": "ok"
+    }
+  ],
+  "contact_sheet": "public/images/illustrations/tsp-shared-drive-link-audit-20260618-contact-sheet.jpg",
+  "visual_qa": "third targeted regeneration applied; final contact sheet rewritten before build",
+  "regenerated_assets": [
+    {
+      "site": "techmoneylab",
+      "suffix": "02",
+      "file": "public/images/illustrations/tml-401k-loan-job-change-20260618-02.png",
+      "prompt": "realistic household cash-flow planning still life with plain colored envelopes, blank wood blocks, closed notebook, no calculator, no currency, no numbers, no text",
+      "seed": 202606180901,
+      "prompt_id": "64a08af9-1857-42d8-9366-f73228cca297",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen_techmoneylab_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1651726,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "techmoneylab",
+      "suffix": "03",
+      "file": "public/images/illustrations/tml-401k-loan-job-change-20260618-03.png",
+      "prompt": "realistic retirement rollover decision still life with two unmarked plain folders, smooth blank cards, closed laptop dark screen, no calendar, no forms, no writing",
+      "seed": 202606180902,
+      "prompt_id": "b427a2db-f093-4c2c-b3c3-9109d505c562",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen_techmoneylab_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1381405,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "toolspilot",
+      "suffix": "hero",
+      "file": "public/images/illustrations/tsp-shared-drive-link-audit-20260618-hero.png",
+      "prompt": "realistic security audit workstation with laptop fully dark blank screen, closed folders, hardware key, no UI, no text, no readable screen",
+      "seed": 202606180903,
+      "prompt_id": "5353019f-f8b7-4de7-9ad8-ad3b840d3131",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1277384,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "toolspilot",
+      "suffix": "02",
+      "file": "public/images/illustrations/tsp-shared-drive-link-audit-20260618-02.png",
+      "prompt": "realistic access expiration planning still life with blank colored cards, hourglass, closed notebook, no clock face, no sticky notes with text, no numbers",
+      "seed": 202606180904,
+      "prompt_id": "85f7efb0-5a61-4bf4-a892-bae3079302d8",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1445813,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "travelsavvypro",
+      "suffix": "01",
+      "file": "public/images/illustrations/tsv-rental-car-toll-fee-20260618-01.png",
+      "prompt": "realistic rental car toll planning still life with paper road-shape curves without labels, face-down dark phone, plain car key, no GPS, no screens, no signs, no text",
+      "seed": 202606180905,
+      "prompt_id": "3af0a390-8bea-4034-b3a7-2e1be3fef07c",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen_travelsavvypro_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 2330476,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "travelsavvypro",
+      "suffix": "03",
+      "file": "public/images/illustrations/tsv-rental-car-toll-fee-20260618-03.png",
+      "prompt": "realistic rental car return evidence still life with plain sealed envelope, blank brown folder, car key turned away with no logo, no forms, no receipts, no readable text",
+      "seed": 202606180906,
+      "prompt_id": "28c09a44-4937-4f05-9601-8b822be32623",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen_travelsavvypro_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1688205,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "yookahplus",
+      "suffix": "hero",
+      "file": "public/images/illustrations/ykp-hagwon-shuttle-contact-20260618-hero.png",
+      "prompt": "realistic quiet curbside shuttle pickup area with distant plain white bus side cropped, no readable signs, no license plate, no children, guardian bag, blank card",
+      "seed": 202606180907,
+      "prompt_id": "6a582530-2467-4c3f-a2c1-ead50c1d19d2",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen_yookahplus_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1693720,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "yookahplus",
+      "suffix": "04",
+      "file": "public/images/illustrations/ykp-hagwon-shuttle-contact-20260618-04.png",
+      "prompt": "realistic child commute emergency contact kit still life with sealed plain envelopes, blank cards face down, family key tray, no red cross, no forms, no text, no personal data",
+      "seed": 202606180908,
+      "prompt_id": "f069acef-07b6-422e-a682-9fbf5274a70d",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen_yookahplus_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1718382,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "techmoneylab",
+      "suffix": "03",
+      "file": "public/images/illustrations/tml-401k-loan-job-change-20260618-03.png",
+      "prompt": "realistic retirement decision still life with plain wooden blocks, blank index cards face down, closed dark laptop, unmarked folders, no writing, no forms, no calendar, no text",
+      "seed": 202606181001,
+      "prompt_id": "e56a5d58-9d23-4e24-8960-6c44568ae94a",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen2_techmoneylab_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1666715,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "toolspilot",
+      "suffix": "hero",
+      "file": "public/images/illustrations/tsp-shared-drive-link-audit-20260618-hero.png",
+      "prompt": "realistic shared drive security audit still life with closed laptop, closed plain folders, hardware key, lockbox, no screen, no UI, no text, no logos",
+      "seed": 202606181002,
+      "prompt_id": "e5a6f7a2-7393-4cea-8b75-7e377e122d85",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen2_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1605333,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "travelsavvypro",
+      "suffix": "03",
+      "file": "public/images/illustrations/tsv-rental-car-toll-fee-20260618-03.png",
+      "prompt": "realistic rental car return evidence still life with plain sealed brown envelope and blank folder only, no car key, no forms, no receipts, no readable text, no logo",
+      "seed": 202606181003,
+      "prompt_id": "4881cd02-ff35-4a72-8123-7e84f303e835",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen2_travelsavvypro_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1625831,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "yookahplus",
+      "suffix": "hero",
+      "file": "public/images/illustrations/ykp-hagwon-shuttle-contact-20260618-hero.png",
+      "prompt": "realistic quiet child shuttle pickup preparation still life with backpack on bench, plain curb, guardian umbrella, no bus, no signs, no license plate, no children, no text",
+      "seed": 202606181004,
+      "prompt_id": "85215325-1d0c-486b-8d07-a664b1894fe3",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen2_yookahplus_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1880914,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "yookahplus",
+      "suffix": "04",
+      "file": "public/images/illustrations/ykp-hagwon-shuttle-contact-20260618-04.png",
+      "prompt": "realistic child commute contact kit still life with sealed plain envelopes and blank cards face down, simple key ring, no red cross, no medical objects, no forms, no text",
+      "seed": 202606181005,
+      "prompt_id": "5e14cc4a-fa0d-4906-b499-b81e99210581",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen2_yookahplus_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1700151,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "travelsavvypro",
+      "suffix": "03",
+      "file": "public/images/illustrations/tsv-rental-car-toll-fee-20260618-03.png",
+      "prompt": "minimal realistic travel dispute evidence still life: two sealed blank brown envelopes on plain table, one unmarked folder, no car key, no paper sheets, no forms, no receipts, no labels, no text",
+      "seed": 202606181101,
+      "prompt_id": "355e9047-6c94-4d0e-991b-e1ec8a0b14c8",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen3_travelsavvypro_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1714076,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "yookahplus",
+      "suffix": "hero",
+      "file": "public/images/illustrations/ykp-hagwon-shuttle-contact-20260618-hero.png",
+      "prompt": "minimal realistic child commute planning still life: empty bench, plain backpack, closed umbrella, blank card face down on bench, no people, no children, no vehicles, no signs, no text",
+      "seed": 202606181102,
+      "prompt_id": "8ef765bb-70ac-4cde-8c51-23383fcd19dd",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen3_yookahplus_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1518974,
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "site": "yookahplus",
+      "suffix": "04",
+      "file": "public/images/illustrations/ykp-hagwon-shuttle-contact-20260618-04.png",
+      "prompt": "minimal realistic family contact kit still life: plain sealed envelopes, blank cards face down, simple neutral key ring, no medical kit, no red cross, no symbols, no forms, no text",
+      "seed": 202606181103,
+      "prompt_id": "abbeaa0b-0fa5-41cb-a354-d0c1985dfda6",
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260618_regen3_yookahplus_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "bytes": 1374750,
+      "dimensions": [
+        1536,
+        864
+      ]
+    }
+  ]
+}
