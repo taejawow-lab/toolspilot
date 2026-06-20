@@ -1,0 +1,118 @@
+---
+title: "SaaS Audit Log Retention and Export Checklist for 2026"
+description: "A practical SaaS admin checklist for audit logs, retention windows, exports, SIEM handoff, offboarding evidence, incident timelines, and privacy boundaries."
+pubDate: 2026-06-20
+updatedDate: 2026-06-20
+category: "Security"
+tags: ["SaaS security", "audit logs", "retention", "SIEM", "access review"]
+heroImage: "/images/illustrations/tsp-saas-audit-log-retention-20260620-hero.png"
+schemaType: "HowTo"
+sources:
+  - title: "CISA Secure Our World"
+    url: "https://www.cisa.gov/secure-our-world"
+    publication: "CISA"
+    year: "2026"
+  - title: "CISA Logging Made Easy"
+    url: "https://www.cisa.gov/resources-tools/services/logging-made-easy"
+    publication: "CISA"
+    year: "2026"
+  - title: "NIST Cybersecurity Framework 2.0"
+    url: "https://www.nist.gov/cyberframework"
+    publication: "NIST"
+    year: "2026"
+  - title: "NIST Digital Identity Guidelines"
+    url: "https://pages.nist.gov/800-63-4/"
+    publication: "NIST"
+    year: "2026"
+  - title: "Google Workspace Admin Audit Logs"
+    url: "https://support.google.com/a/answer/4579696"
+    publication: "Google Workspace Admin Help"
+    year: "2026"
+  - title: "Microsoft Entra Audit Logs"
+    url: "https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-audit-logs"
+    publication: "Microsoft Learn"
+    year: "2026"
+  - title: "Slack Audit Logs API"
+    url: "https://api.slack.com/admins/audit-logs"
+    publication: "Slack API"
+    year: "2026"
+  - title: "Okta System Log"
+    url: "https://developer.okta.com/docs/reference/api/system-log/"
+    publication: "Okta Developer"
+    year: "2026"
+internalLinks:
+  - "/category/security"
+  - "/posts/shared-drive-external-link-expiration-audit-checklist-2026/"
+  - "/posts/oauth-app-consent-review-workspace-security-checklist-2026/"
+visualsCount: 5
+hasVideo: false
+wordCount: 2200
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "How often should I review this checklist?"
+    answer: "Review it before major account, trip, family, or policy changes, then keep a short evidence log after each important action."
+  - question: "Can I use a screenshot as proof?"
+    answer: "A screenshot can help, but pair it with official records, dates, confirmations, and source documents whenever possible."
+  - question: "What is the safest first step?"
+    answer: "Start with a small inventory, remove obviously stale assumptions, and document the owner for the next review."
+draft: false
+---
+
+SaaS audit logs are useful only when they still exist, can be exported, and answer the question an admin will actually face during an incident. “We have logs” is not enough. The team needs to know which events are captured, how long they are retained, who can read them, whether exports include the fields needed for a timeline, and what happens after an employee, contractor, app, or integration leaves. This checklist was reviewed on 2026-06-20 against CISA, NIST, Google, Microsoft, Slack, and Okta sources. Adapt it to your legal, security, and privacy obligations.
+
+![SaaS Audit Log Retention and Export Checklist for 2026 hero](/images/illustrations/tsp-saas-audit-log-retention-20260620-hero.png)
+
+## Quick decision table
+
+| Evidence area | Best use | Watch-out |
+|---|---|---|
+| Sign-in logs | Account takeover, impossible travel, failed MFA | Short retention or missing device context |
+| Admin audit logs | Role changes and policy edits | Exports limited to high-tier plans |
+| File sharing logs | External link investigation | Object names may be sensitive |
+| App/OAuth logs | Connector and bot access | Publisher and scope context missing |
+| SIEM archive | Longer incident timeline | Bad parsing or timezone drift |
+
+## Practical checklist
+
+- **Sign-in logs**: Use it for account takeover, impossible travel, failed mfa. Watch out for short retention or missing device context.
+- **Admin audit logs**: Use it for role changes and policy edits. Watch out for exports limited to high-tier plans.
+- **File sharing logs**: Use it for external link investigation. Watch out for object names may be sensitive.
+- **App/OAuth logs**: Use it for connector and bot access. Watch out for publisher and scope context missing.
+- **SIEM archive**: Use it for longer incident timeline. Watch out for bad parsing or timezone drift.
+
+## Inventory logs by decision, not by product name
+
+List the questions each log source can answer: who signed in, where from, what admin setting changed, which file was shared, which OAuth app was approved, which role was granted, and which export was created. Then map the product logs to those questions. A pretty dashboard that cannot export timestamps, actor IDs, target objects, and source addresses may not support a defensible incident timeline.
+
+![evidence folder](/images/illustrations/tsp-saas-audit-log-retention-20260620-01.png)
+
+## Write down the retention window before you need it
+
+Retention differs by product, plan, license, and export setup. Record the default retention period, whether premium retention is required, whether logs can stream to a SIEM, and whether old events disappear silently. If a compliance or customer contract needs longer evidence, set the export before the incident. Screenshots after the fact are a weak substitute for a tested retention plan.
+
+![review workflow](/images/illustrations/tsp-saas-audit-log-retention-20260620-02.png)
+
+## Control who can view and export sensitive logs
+
+Audit logs can contain IP addresses, file names, email addresses, device details, administrator actions, and sometimes sensitive object names. Limit access to named administrators, require strong authentication, and log the export itself where the platform supports it. Do not send raw logs into casual chat channels or general AI tools. Summaries can be useful, but the source evidence needs a controlled location.
+
+![risk checkpoint](/images/illustrations/tsp-saas-audit-log-retention-20260620-03.png)
+
+## Test one export and one reconstruction
+
+Pick a harmless event such as a test group membership change or app approval, then confirm it appears in the product log, exported file, and central archive. Practice reconstructing the timeline with UTC/local time handling, actor, target, action, and result. If the team cannot explain the test event, it will struggle during a real security review.
+
+![handoff kit](/images/illustrations/tsp-saas-audit-log-retention-20260620-04.png)
+
+## Connect logs to offboarding and access reviews
+
+Offboarding should not end at disabling the account. Check recent sign-ins, delegated access, app tokens, shared mailboxes, external shares, admin roles, and automation accounts. Use logs to verify that removals happened and that no stale integration still acts as the former user. Keep evidence minimal but enough to support a future audit.
+
+## AdSense and trust readiness note
+
+This article is written as practical education. It avoids affiliate pressure, keeps sensitive information out of images, and points readers back to official sources and qualified professionals when the decision is personal, regulated, or high risk.
+
+## Source review and next update
+
+The source list in the frontmatter was reviewed for this publication run. Re-check official guidance before relying on thresholds, tax limits, benefits rules, platform UI, travel requirements, or health advice because those can change faster than evergreen planning habits.

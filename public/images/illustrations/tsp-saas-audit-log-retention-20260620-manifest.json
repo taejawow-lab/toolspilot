@@ -1,0 +1,108 @@
+{
+  "site": "toolspilot",
+  "slug": "saas-audit-log-retention-export-checklist-2026",
+  "date": "2026-06-20",
+  "host": "gti13",
+  "endpoint": "direct ComfyUI (internal redacted in report)",
+  "dimensions": [
+    1536,
+    864
+  ],
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, document numbers, map labels, official seals, fake dashboard, fake warning label, child face closeup, visible currency, receipts with text, calculators with numbers, medical forms, passports, license plates",
+  "assets": [
+    {
+      "filename": "tsp-saas-audit-log-retention-20260620-hero.png",
+      "render_url": "/images/illustrations/tsp-saas-audit-log-retention-20260620-hero.png",
+      "prompt_id": "539c22ff-dc7c-4a4e-84c6-845c522556f0",
+      "prompt": "realistic SaaS security admin desk with dark laptop screen, plain folders, hardware key, no UI no readable text",
+      "seed": 620854,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "steps": 28,
+      "cfg": 5.2,
+      "width": 1536,
+      "height": 864,
+      "comfy_output": {
+        "filename": "tsp-saas-audit-log-retention-20260620_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "filename": "tsp-saas-audit-log-retention-20260620-01.png",
+      "render_url": "/images/illustrations/tsp-saas-audit-log-retention-20260620-01.png",
+      "prompt_id": "dead6161-580a-4069-aa53-2da30f535619",
+      "prompt": "realistic audit log retention planning scene with blank timeline cards and secure folder, no numbers no labels",
+      "seed": 620855,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "steps": 28,
+      "cfg": 5.2,
+      "width": 1536,
+      "height": 864,
+      "comfy_output": {
+        "filename": "tsp-saas-audit-log-retention-20260620_00002_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "filename": "tsp-saas-audit-log-retention-20260620-02.png",
+      "render_url": "/images/illustrations/tsp-saas-audit-log-retention-20260620-02.png",
+      "prompt_id": "d81cc108-fc3e-49fe-ba50-9029a0643026",
+      "prompt": "realistic SaaS audit archive still life with plain matte black storage boxes and blank folders on dark table, no electronics labels, no screens, no cables, no writing",
+      "seed": 898388,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "steps": 32,
+      "cfg": 4.8,
+      "width": 1536,
+      "height": 864,
+      "comfy_output": {
+        "filename": "tsp-saas-audit-log-retention-20260620_00008_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "qa_regenerated": "final2"
+    },
+    {
+      "filename": "tsp-saas-audit-log-retention-20260620-03.png",
+      "render_url": "/images/illustrations/tsp-saas-audit-log-retention-20260620-03.png",
+      "prompt_id": "3014de59-6d91-40f0-9e66-97794ea1aa58",
+      "prompt": "realistic security evidence retention folders on cork surface, sealed plain kraft envelopes fully covering any papers, no visible writing, no labels, no printed forms",
+      "seed": 877553,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "steps": 32,
+      "cfg": 4.8,
+      "width": 1536,
+      "height": 864,
+      "comfy_output": {
+        "filename": "tsp-saas-audit-log-retention-20260620_00009_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "qa_regenerated": "final2"
+    },
+    {
+      "filename": "tsp-saas-audit-log-retention-20260620-04.png",
+      "render_url": "/images/illustrations/tsp-saas-audit-log-retention-20260620-04.png",
+      "prompt_id": "656bf633-88ba-4fde-9d83-195f35e27d8a",
+      "prompt": "realistic incident timeline reconstruction desk with blank sticky notes and dark monitors, no writing",
+      "seed": 620858,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "steps": 28,
+      "cfg": 5.2,
+      "width": 1536,
+      "height": 864,
+      "comfy_output": {
+        "filename": "tsp-saas-audit-log-retention-20260620_00005_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    }
+  ],
+  "final_visual_qa_note": "Final2 regeneration for remaining text/label/child-face risks; contact sheet rewritten."
+}
