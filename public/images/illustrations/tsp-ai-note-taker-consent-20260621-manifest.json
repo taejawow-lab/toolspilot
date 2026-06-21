@@ -1,0 +1,107 @@
+{
+  "site": "toolspilot",
+  "slug": "ai-note-taker-meeting-consent-retention-checklist-2026",
+  "date": "2026-06-21",
+  "endpoint_host": "gti13 direct ComfyUI (internal URL redacted in report)",
+  "comfy_url": "http://192.168.50.29:8188",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "dimensions": [
+    1536,
+    864
+  ],
+  "assets": [
+    {
+      "filename": "tsp-ai-note-taker-consent-20260621-hero.png",
+      "file": "public/images/illustrations/tsp-ai-note-taker-consent-20260621-hero.png",
+      "prompt": "realistic meeting room table with closed laptops and blank notepads, no screens no text no people faces",
+      "seed": 202606210006,
+      "prompt_id": "26ba3107-54ae-4077-81b1-f6b2f103723d",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1364508,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260621_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "filename": "tsp-ai-note-taker-consent-20260621-01.png",
+      "file": "public/images/illustrations/tsp-ai-note-taker-consent-20260621-01.png",
+      "prompt": "realistic privacy review desk with dark blank monitor, sealed folder, microphone muted, no UI no words",
+      "seed": 202606210007,
+      "prompt_id": "35b4c44c-99ae-47fb-aa08-453800b5dc54",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 971008,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260621_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "filename": "tsp-ai-note-taker-consent-20260621-02.png",
+      "file": "public/images/illustrations/tsp-ai-note-taker-consent-20260621-02.png",
+      "prompt": "realistic team consent planning scene with empty chairs, blank tabletop cards, no readable labels",
+      "seed": 202606210008,
+      "prompt_id": "691c92a5-152f-4dfb-946b-1e214c94c46f",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1497907,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260621_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "filename": "tsp-ai-note-taker-consent-20260621-03.png",
+      "file": "public/images/illustrations/tsp-ai-note-taker-consent-20260621-03.png",
+      "prompt": "realistic data retention still life with plain archive box, blank sticky notes, no text no numbers",
+      "seed": 202606210009,
+      "prompt_id": "46f20399-c6b7-48c8-a014-5bf97deefaec",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1235978,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260621_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "filename": "tsp-ai-note-taker-consent-20260621-04.png",
+      "file": "public/images/illustrations/tsp-ai-note-taker-consent-20260621-04.png",
+      "prompt": "realistic admin security review desk with hardware key, closed laptop, plain folder, no logos no screen text",
+      "seed": 202606210010,
+      "prompt_id": "fa056451-1ae2-47aa-b93a-298b68f5a91b",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1304910,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260621_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    }
+  ],
+  "contact_sheet": "public/images/illustrations/tsp-ai-note-taker-consent-20260621-contact-sheet.jpg",
+  "visual_qa_status": "passed final contact-sheet review",
+  "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, distorted interface, fake labels, bad hands, bad anatomy, extra fingers, low quality, blurry, cartoon, placeholder, generic stock art, calendar grid, handwriting, QR code, payment screen, login form, medical chart text, document numbers, map labels, official seals, fake dashboard, fake warning label, child face closeup, readable forms, currency, coins, calculators with visible numbers"
+}
