@@ -1,0 +1,60 @@
+{
+  "site": "toolspilot",
+  "slug": "local-first-notes-backup-migration-checklist-2026",
+  "date": "2026-06-22",
+  "host": "gti13",
+  "endpoint": "redacted-direct-gti13",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "visual_qa": "passed after excluding QA-rejected assets",
+  "accepted_count": 6,
+  "assets": [
+    {
+      "filename": "tp-local-first-notes-backup-20260622-hero.png",
+      "file": "public/images/illustrations/tp-local-first-notes-backup-20260622-hero.png",
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "filename": "tp-local-first-notes-backup-20260622-01.png",
+      "file": "public/images/illustrations/tp-local-first-notes-backup-20260622-01.png",
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "filename": "tp-local-first-notes-backup-20260622-02.png",
+      "file": "public/images/illustrations/tp-local-first-notes-backup-20260622-02.png",
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "filename": "tp-local-first-notes-backup-20260622-03.png",
+      "file": "public/images/illustrations/tp-local-first-notes-backup-20260622-03.png",
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "filename": "tp-local-first-notes-backup-20260622-04.png",
+      "file": "public/images/illustrations/tp-local-first-notes-backup-20260622-04.png",
+      "dimensions": [
+        1536,
+        864
+      ]
+    },
+    {
+      "filename": "tp-local-first-notes-backup-20260622-05.png",
+      "file": "public/images/illustrations/tp-local-first-notes-backup-20260622-05.png",
+      "dimensions": [
+        1536,
+        864
+      ]
+    }
+  ]
+}
