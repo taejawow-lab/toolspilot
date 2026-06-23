@@ -1,0 +1,121 @@
+{
+  "site": "toolspilot",
+  "slug": "browser-profile-separation-work-personal-checklist-2026",
+  "generated_at": "2026-06-23T10:15:51Z",
+  "host": "gti13",
+  "endpoint": "redacted-direct-comfyui",
+  "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+  "dimensions": [
+    1536,
+    864
+  ],
+  "assets": [
+    {
+      "file": "public/images/illustrations/tp-browser-profile-separation-20260623-hero.png",
+      "filename": "tp-browser-profile-separation-20260623-hero.png",
+      "prompt": "realistic cybersecurity desk with two laptops closed, color coded blank browser profile cards, no screens no text",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, fake forms, fake documents, fake receipts, distorted interface, QR code, barcode, calendar grid, handwriting, medical label, legal document, financial statement, child face closeup, readable name tag, license plate, passport text, unsafe scene, raw meat, exposed wires, bad hands, bad anatomy, low quality, blurry, cartoon, placeholder, generic stock art",
+      "seed": 202606230101,
+      "prompt_id": "cf1b58c3-e91e-4367-8b83-44b055671633",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.2,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1484072,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260623_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "file": "public/images/illustrations/tp-browser-profile-separation-20260623-01.png",
+      "filename": "tp-browser-profile-separation-20260623-01.png",
+      "prompt": "realistic work personal separation scene with plain folders, hardware key, blank phone, no UI no logos",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, fake forms, fake documents, fake receipts, distorted interface, QR code, barcode, calendar grid, handwriting, medical label, legal document, financial statement, child face closeup, readable name tag, license plate, passport text, unsafe scene, raw meat, exposed wires, bad hands, bad anatomy, low quality, blurry, cartoon, placeholder, generic stock art",
+      "seed": 202606230102,
+      "prompt_id": "5ecbbd33-26fd-44b8-bd05-4621d114665a",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.2,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1687686,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260623_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "file": "public/images/illustrations/tp-browser-profile-separation-20260623-02.png",
+      "filename": "tp-browser-profile-separation-20260623-02.png",
+      "prompt": "realistic extension audit still life with closed laptop, puzzle piece blocks, blank checklist card no words",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, fake forms, fake documents, fake receipts, distorted interface, QR code, barcode, calendar grid, handwriting, medical label, legal document, financial statement, child face closeup, readable name tag, license plate, passport text, unsafe scene, raw meat, exposed wires, bad hands, bad anatomy, low quality, blurry, cartoon, placeholder, generic stock art",
+      "seed": 202606230103,
+      "prompt_id": "798f4137-2cdd-442c-b747-f56dd66fe171",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.2,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1707073,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260623_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "file": "public/images/illustrations/tp-browser-profile-separation-20260623-03.png",
+      "filename": "tp-browser-profile-separation-20260623-03.png",
+      "prompt": "realistic download hygiene desk with external drive, sealed folder, blank sticky notes, no text no numbers",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, fake forms, fake documents, fake receipts, distorted interface, QR code, barcode, calendar grid, handwriting, medical label, legal document, financial statement, child face closeup, readable name tag, license plate, passport text, unsafe scene, raw meat, exposed wires, bad hands, bad anatomy, low quality, blurry, cartoon, placeholder, generic stock art",
+      "seed": 202606230104,
+      "prompt_id": "34b108a6-8456-473f-b180-329f942413b1",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.2,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1551302,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260623_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    },
+    {
+      "file": "public/images/illustrations/tp-browser-profile-separation-20260623-04.png",
+      "filename": "tp-browser-profile-separation-20260623-04.png",
+      "prompt": "realistic admin access browser safety setup with hardware key and dark screen, no interface no readable labels",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, fake forms, fake documents, fake receipts, distorted interface, QR code, barcode, calendar grid, handwriting, medical label, legal document, financial statement, child face closeup, readable name tag, license plate, passport text, unsafe scene, raw meat, exposed wires, bad hands, bad anatomy, low quality, blurry, cartoon, placeholder, generic stock art",
+      "seed": 202606230105,
+      "prompt_id": "0488af6d-e2d0-44b7-a87e-fe5a6144309e",
+      "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "steps": 26,
+      "cfg": 5.2,
+      "sampler": "dpmpp_2m",
+      "scheduler": "karras",
+      "width": 1536,
+      "height": 864,
+      "bytes": 1384843,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260623_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      }
+    }
+  ],
+  "visual_qa": "contact sheet created; manual visual QA required before final commit",
+  "contact_sheet": "public/images/illustrations/tp-browser-profile-separation-20260623-contact-sheet.jpg"
+}
