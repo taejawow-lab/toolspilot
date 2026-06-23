@@ -99,27 +99,28 @@
     {
       "file": "public/images/illustrations/tp-browser-profile-separation-20260623-04.png",
       "filename": "tp-browser-profile-separation-20260623-04.png",
-      "prompt": "realistic admin browser safety setup with hardware security key, closed laptop, dark blank phone face down, no screen UI, no code, no text",
-      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, fake forms, fake documents, fake receipts, distorted interface, QR code, barcode, calendar grid, handwriting, medical label, legal document, financial statement, child face closeup, readable name tag, license plate, passport text, unsafe scene, raw meat, exposed wires, bad hands, bad anatomy, low quality, blurry, cartoon, placeholder, generic stock art, red cross symbol, medical cross, measurement marks",
-      "seed": 202606231102,
-      "prompt_id": "af0515b8-4269-4c5a-94f0-2ab6ecdf8cb6",
+      "prompt": "realistic admin browser safety still life with hardware security key, closed laptop, blank dark phone face down, plain folder, no screens visible, no UI, no code, no text, no numbers",
+      "negative_prompt": "text, words, letters, numbers, logo, watermark, brand name, readable labels, screen text, UI screenshot, code, terminal, fake forms, fake documents, medical bottle, medicine bottle, red cross, medical cross, first aid cross, distorted objects, QR code, barcode, calendar grid, handwriting, child face, people, low quality, blurry",
+      "seed": 202606232000,
+      "prompt_id": "397decc6-8554-4175-baa9-d087e4e9a3bb",
       "checkpoint": "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
-      "steps": 28,
-      "cfg": 5.4,
+      "steps": 30,
+      "cfg": 5.6,
       "sampler": "dpmpp_2m",
       "scheduler": "karras",
       "width": 1536,
       "height": 864,
-      "bytes": 1344272,
+      "bytes": 1275711,
       "comfy_output": {
-        "filename": "hermes_batch_d_20260623_repair_toolspilot_04_00001_.png",
+        "filename": "hermes_batch_d_20260623_finalrepair_toolspilot_04_00001_.png",
         "subfolder": "",
         "type": "output"
       },
-      "regenerated_after_visual_qa": true
+      "regenerated_after_final_visual_qa": true
     }
   ],
   "visual_qa": "final contact sheet regenerated after rejecting screen/text/label artifacts",
   "contact_sheet": "public/images/illustrations/tp-browser-profile-separation-20260623-contact-sheet.jpg",
-  "updated_after_visual_qa": "2026-06-23T10:21:39Z"
+  "updated_after_visual_qa": "2026-06-23T10:21:39Z",
+  "updated_after_final_visual_qa": "2026-06-23T10:24:27Z"
 }
