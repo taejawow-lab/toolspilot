@@ -1,0 +1,22 @@
+{
+  "site": "toolspilot",
+  "slug": "passkey-recovery-shared-team-accounts-checklist-2026",
+  "endpoint": "GTI15 direct ComfyUI (redacted LAN endpoint)",
+  "dimensions": "1536x864",
+  "accepted_images": [
+    "tp-passkey-recovery-team-20260627-hero.png",
+    "tp-passkey-recovery-team-20260627-01.png",
+    "tp-passkey-recovery-team-20260627-02.png",
+    "tp-passkey-recovery-team-20260627-03.png",
+    "tp-passkey-recovery-team-20260627-04.png",
+    "tp-passkey-recovery-team-20260627-05.png"
+  ],
+  "sources": [
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260627/toolspilot_a/20260627_191511_realvis_3566400817.png",
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260627/toolspilot_a/20260627_191529_juggernaut_3566400818.png",
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260627/toolspilot_b/20260627_191546_krea_547854328.png",
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260627/toolspilot_b/20260627_191639_juggernaut_547854330.png",
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260627/toolspilot_c/20260627_192643_krea_3449842321.png",
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260627/toolspilot_c/20260627_192736_juggernaut_3449842323.png"
+  ]
+}
