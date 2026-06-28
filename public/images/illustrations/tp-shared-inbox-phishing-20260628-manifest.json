@@ -1,0 +1,28 @@
+{
+  "site": "toolspilot",
+  "slug": "shared-inbox-phishing-triage-checklist-2026",
+  "date": "2026-06-28",
+  "gti15_endpoint": "redacted direct GTI15 ComfyUI endpoint verified by gate",
+  "selected_labels": [
+    1,
+    5,
+    6,
+    7,
+    8
+  ],
+  "images": [
+    "tp-shared-inbox-phishing-20260628-hero.png",
+    "tp-shared-inbox-phishing-20260628-support-1.png",
+    "tp-shared-inbox-phishing-20260628-support-2.png",
+    "tp-shared-inbox-phishing-20260628-support-3.png",
+    "tp-shared-inbox-phishing-20260628-support-4.png"
+  ],
+  "source_paths": [
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_20260628_gti15/toolspilot/pass1/20260628_191359_krea_1323581686.png",
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_20260628_gti15/toolspilot/pass2/20260628_191535_realvis_2826442260.png",
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_20260628_gti15/toolspilot/pass2/20260628_191551_juggernaut_2826442261.png",
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_20260628_gti15/toolspilot/regen3/20260628_192317_krea_4260221.png",
+    "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_20260628_gti15/toolspilot/regen3/20260628_192350_realvis_4260222.png"
+  ],
+  "visual_qa": "accepted after contact-sheet visual QA; rejected earlier candidates with readable text/UI/labels/forms/screens/calendars/currency as applicable"
+}
