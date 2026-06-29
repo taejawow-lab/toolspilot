@@ -1,0 +1,126 @@
+---
+title: "Workspace Admin Offboarding App Permission Checklist 2026"
+description: "A security-first 2026 workflow for removing a departing worker's SaaS access, delegated permissions, sessions, keys, and app ownership without losing business continuity."
+pubDate: 2026-06-29
+updatedDate: 2026-06-29
+category: "Security"
+tags: ["offboarding", "SaaS permissions", "workspace admin", "access control", "security checklist"]
+heroImage: "/images/illustrations/tp-offboarding-permissions-20260629-1.png"
+schemaType: "HowTo"
+sources:
+  - title: "CISA Secure Our World"
+    url: "https://www.cisa.gov/secure-our-world"
+    publication: "CISA"
+    year: "2026 accessed"
+  - title: "CISA More than a Password"
+    url: "https://www.cisa.gov/MFA"
+    publication: "CISA"
+    year: "2026 accessed"
+  - title: "NIST Cybersecurity Framework 2.0"
+    url: "https://www.nist.gov/cyberframework"
+    publication: "NIST"
+    year: "2026 accessed"
+  - title: "NIST Digital Identity Guidelines SP 800-63B"
+    url: "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    publication: "NIST"
+    year: "2026 accessed"
+  - title: "Google Workspace Admin Help: Delete or remove a user"
+    url: "https://support.google.com/a/answer/33314"
+    publication: "Google Workspace Admin Help"
+    year: "2026 accessed"
+  - title: "Microsoft Learn: Remove a former employee"
+    url: "https://learn.microsoft.com/en-us/microsoft-365/admin/add-users/remove-former-employee"
+    publication: "Microsoft Learn"
+    year: "2026 accessed"
+  - title: "Slack Help: Deactivate a member's account"
+    url: "https://slack.com/help/articles/204475027-Deactivate-a-members-account"
+    publication: "Slack Help"
+    year: "2026 accessed"
+  - title: "GitHub Docs: Removing a member from your organization"
+    url: "https://docs.github.com/en/organizations/managing-membership-in-your-organization/removing-a-member-from-your-organization"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+visualsCount: 6
+hasVideo: false
+wordCount: 1700
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Is disabling the main account enough?"
+    answer: "No. Treat it as the first containment step, then review sessions, app grants, shared mailboxes, API keys, devices, and ownership roles."
+  - question: "Who should approve exceptions?"
+    answer: "The business owner for the system and the security or IT owner should approve time-limited exceptions with a review date."
+draft: false
+---
+
+## Why offboarding fails after the directory account is disabled
+
+Most teams remember to disable the primary identity account. The gaps appear in the systems around it: delegated mailbox access, shared drives, OAuth app grants, browser sessions, mobile devices, API tokens, calendar ownership, billing-owner roles, automation accounts, and contractor tools purchased outside the central identity provider. A safe 2026 offboarding workflow assumes that one button is not enough. It creates a short evidence trail showing who removed which access, what ownership was transferred, and what exception still has a deadline.
+
+![Workspace offboarding permissions hero](/images/illustrations/tp-offboarding-permissions-20260629-1.png)
+
+## The first hour: contain without breaking operations
+
+| Area | Immediate action | Continuity question | Evidence to keep |
+|---|---|---|---|
+| Identity provider | Disable sign-in or apply the approved termination action | Does a service account depend on this user? | Timestamp and admin name |
+| Email and calendar | Stop new sign-ins, preserve records per policy | Who receives customer replies? | Forward/delegate decision |
+| File storage | Transfer ownership of key shared files | Which folders power public or client work? | Transfer log |
+| SaaS apps | Remove direct and group access | Which app owner can confirm removal? | App access export |
+| Developer tools | Revoke org, repo, token, and deploy access | Are deploy keys user-owned? | Revocation list |
+
+Do not delete evidence simply to make the dashboard look clean. Many organizations need a retention period, a legal hold check, or a manager review before mailbox and file destruction. The checklist is about access control, not a blanket deletion policy.
+
+![Closed laptop and blank access card](/images/illustrations/tp-offboarding-permissions-20260629-2.png)
+
+## Permission map to review
+
+Start with group membership, then check direct grants. Direct grants are often the hidden risk because they bypass role-based cleanup. Next, review delegated access: shared inboxes, calendars, dashboards, CRMs, password vault collections, cloud folders, and analytics tools. Then look for connected apps and OAuth grants that can continue after the user stops signing in. Finally, check personal tokens and keys in developer systems. If a vendor has a session revocation or sign-out-everywhere feature, use it according to the vendor's current documentation.
+
+## Ownership transfer before deletion
+
+Offboarding can cause outages when a departing worker owns a workflow that nobody noticed: a scheduled report, a domain renewal notice, a cloud billing project, a meeting room calendar, a GitHub repository, a Slack workflow, or an automation that posts to a shared channel. Before deleting the account, list owner-only objects and transfer them to a durable role account or current employee. If the vendor only supports one owner, document the new owner and a backup reviewer.
+
+![Admin review workspace](/images/illustrations/tp-offboarding-permissions-20260629-3.png)
+
+## SaaS-by-SaaS checklist
+
+- Export or screenshot the final access list if your policy requires audit evidence.
+- Remove the person from groups first, then search for direct grants.
+- Revoke active sessions and refresh tokens where the platform supports it.
+- Rotate shared secrets that were visible to the departing worker.
+- Transfer documents, workflows, repositories, calendars, billing ownership, and automation triggers.
+- Confirm that external guests, contractors, and aliases are not tied to the old account.
+- Create a time-limited exception list for systems that cannot be changed immediately.
+
+![Hardware key and permissions desk](/images/illustrations/tp-offboarding-permissions-20260629-4.png)
+
+## Red flags that need escalation
+
+Escalate if the worker had privileged admin rights, handled payments or payroll, managed production deploys, maintained DNS, owned customer support queues, stored shared passwords, or used unsanctioned apps for business records. Escalation does not mean accusation. It means the organization needs a tighter verification loop because the cost of a missed token or orphaned owner is higher.
+
+## Offboarding record template
+
+| Field | Example entry |
+|---|---|
+| Person and date | Name, role, last working date |
+| Trigger | Resignation, contractor end, role transfer |
+| Primary identity action | Disabled sign-in at time and timezone |
+| Systems checked | Workspace, mail, storage, password vault, code, CRM, finance |
+| Ownership transfers | New owner and object name |
+| Exceptions | System, reason, approver, review date |
+| Final reviewer | IT/security owner and manager |
+
+![Blank offboarding workspace](/images/illustrations/tp-offboarding-permissions-20260629-5.png)
+
+## Keep the process humane and privacy-safe
+
+Only collect what the organization needs to secure systems and preserve records. Do not ask coworkers to search private messages unless policy, law, and role boundaries support it. Avoid public blame. The clearest offboarding processes are calm: remove access, preserve required business records, transfer ownership, and document exceptions. That protects the company and the departing person.
+
+![Offboarding checklist desk](/images/illustrations/tp-offboarding-permissions-20260629-6.png)
+
+## FAQ
+
+**Can a small team do this without enterprise software?** Yes. A spreadsheet or ticket template can work if it lists the systems, owner, evidence, and exception review date. The weak point is forgetting shadow apps, not the format of the checklist.
+
+**Should we delete the mailbox immediately?** Usually no. Follow legal, HR, and business retention policy. Access should be controlled quickly, while deletion or retention follows the approved process.

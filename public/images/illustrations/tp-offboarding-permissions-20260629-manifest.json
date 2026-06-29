@@ -1,0 +1,45 @@
+{
+  "site": "toolspilot",
+  "slug": "workspace-admin-offboarding-app-permission-checklist-2026",
+  "generated_by": "GTI15 ComfyUI 192.168.50.31:8188 via generate_natural_blog_candidates.py",
+  "dimensions": "1536x864",
+  "accepted": [
+    {
+      "slot": 1,
+      "source": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_gti15_20260629/toolspilot/p1/20260629_191428_krea_2845492361.png",
+      "file": "/images/illustrations/tp-offboarding-permissions-20260629-1.png",
+      "git_path": "public/images/illustrations/tp-offboarding-permissions-20260629-1.png"
+    },
+    {
+      "slot": 3,
+      "source": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_gti15_20260629/toolspilot/p1/20260629_191516_juggernaut_2845492363.png",
+      "file": "/images/illustrations/tp-offboarding-permissions-20260629-2.png",
+      "git_path": "public/images/illustrations/tp-offboarding-permissions-20260629-2.png"
+    },
+    {
+      "slot": 5,
+      "source": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_gti15_20260629/toolspilot/p2/20260629_191604_realvis_3938670106.png",
+      "file": "/images/illustrations/tp-offboarding-permissions-20260629-3.png",
+      "git_path": "public/images/illustrations/tp-offboarding-permissions-20260629-3.png"
+    },
+    {
+      "slot": 6,
+      "source": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_gti15_20260629/toolspilot/p2/20260629_191619_juggernaut_3938670107.png",
+      "file": "/images/illustrations/tp-offboarding-permissions-20260629-4.png",
+      "git_path": "public/images/illustrations/tp-offboarding-permissions-20260629-4.png"
+    },
+    {
+      "slot": 7,
+      "source": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_gti15_20260629/toolspilot/p3/20260629_192249_krea_2034119040.png",
+      "file": "/images/illustrations/tp-offboarding-permissions-20260629-5.png",
+      "git_path": "public/images/illustrations/tp-offboarding-permissions-20260629-5.png"
+    },
+    {
+      "slot": 8,
+      "source": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batch_d_gti15_20260629/toolspilot/p3/20260629_192322_realvis_2034119041.png",
+      "file": "/images/illustrations/tp-offboarding-permissions-20260629-6.png",
+      "git_path": "public/images/illustrations/tp-offboarding-permissions-20260629-6.png"
+    }
+  ],
+  "visual_qa": "passed after contact-sheet review; rejected candidates excluded"
+}
