@@ -1,0 +1,57 @@
+{
+  "site": "toolspilot",
+  "slug": "saas-guest-account-expiration-offboarding-checklist-2026",
+  "date": "2026-06-30",
+  "gate": "GTI15 gate passed before generation",
+  "endpoint_host": "gti15 direct ComfyUI endpoint redacted in public report",
+  "assets": [
+    {
+      "render_url": "/images/illustrations/tp-guest-expiration-20260630-1.png",
+      "source_path": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260630/toolspilot_a/20260630_191530_realvis_1697526607.png",
+      "filename": "tp-guest-expiration-20260630-1.png",
+      "dimensions": "1536x864",
+      "source": "GTI15 ComfyUI via generate_natural_blog_candidates",
+      "qa": "accepted from visual contact-sheet QA"
+    },
+    {
+      "render_url": "/images/illustrations/tp-guest-expiration-20260630-2.png",
+      "source_path": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260630/toolspilot_c/20260630_192433_krea_3555595991.png",
+      "filename": "tp-guest-expiration-20260630-2.png",
+      "dimensions": "1536x864",
+      "source": "GTI15 ComfyUI via generate_natural_blog_candidates",
+      "qa": "accepted from visual contact-sheet QA"
+    },
+    {
+      "render_url": "/images/illustrations/tp-guest-expiration-20260630-3.png",
+      "source_path": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260630/toolspilot_c/20260630_192506_realvis_3555595992.png",
+      "filename": "tp-guest-expiration-20260630-3.png",
+      "dimensions": "1536x864",
+      "source": "GTI15 ComfyUI via generate_natural_blog_candidates",
+      "qa": "accepted from visual contact-sheet QA"
+    },
+    {
+      "render_url": "/images/illustrations/tp-guest-expiration-20260630-4.png",
+      "source_path": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260630/toolspilot_c/20260630_192521_juggernaut_3555595993.png",
+      "filename": "tp-guest-expiration-20260630-4.png",
+      "dimensions": "1536x864",
+      "source": "GTI15 ComfyUI via generate_natural_blog_candidates",
+      "qa": "accepted from visual contact-sheet QA"
+    },
+    {
+      "render_url": "/images/illustrations/tp-guest-expiration-20260630-5.png",
+      "source_path": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260630/toolspilot_c2/20260630_192537_krea_3539790294.png",
+      "filename": "tp-guest-expiration-20260630-5.png",
+      "dimensions": "1536x864",
+      "source": "GTI15 ComfyUI via generate_natural_blog_candidates",
+      "qa": "accepted from visual contact-sheet QA"
+    },
+    {
+      "render_url": "/images/illustrations/tp-guest-expiration-20260630-6.png",
+      "source_path": "/mnt/c/Users/k8plus/AppData/Local/hermes/tmp/batchd_20260630/toolspilot_c2/20260630_192609_realvis_3539790295.png",
+      "filename": "tp-guest-expiration-20260630-6.png",
+      "dimensions": "1536x864",
+      "source": "GTI15 ComfyUI via generate_natural_blog_candidates",
+      "qa": "accepted from visual contact-sheet QA"
+    }
+  ]
+}

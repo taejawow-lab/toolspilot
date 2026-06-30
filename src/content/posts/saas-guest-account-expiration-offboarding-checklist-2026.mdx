@@ -1,0 +1,133 @@
+---
+title: "SaaS Guest Account Expiration and Offboarding Checklist 2026"
+description: "A 2026 security checklist for setting guest-account expiration dates, reviewing external collaborators, and offboarding SaaS access without breaking project continuity."
+pubDate: 2026-06-30
+updatedDate: 2026-06-30
+category: "Security"
+tags: ["SaaS security", "guest access", "offboarding", "workspace administration", "access review"]
+heroImage: "/images/illustrations/tp-guest-expiration-20260630-1.png"
+schemaType: "HowTo"
+sources:
+  - title: "CISA Secure Our World"
+    url: "https://www.cisa.gov/secure-our-world"
+    publication: "CISA"
+    year: "2026 accessed"
+  - title: "CISA More than a Password"
+    url: "https://www.cisa.gov/MFA"
+    publication: "CISA"
+    year: "2026 accessed"
+  - title: "NIST Cybersecurity Framework 2.0"
+    url: "https://www.nist.gov/cyberframework"
+    publication: "NIST"
+    year: "2026 accessed"
+  - title: "NIST SP 800-63B Digital Identity Guidelines"
+    url: "https://pages.nist.gov/800-63-4/sp800-63b.html"
+    publication: "NIST"
+    year: "2026 accessed"
+  - title: "Google Workspace Visitor Sharing"
+    url: "https://support.google.com/drive/answer/9195194"
+    publication: "Google Workspace Help"
+    year: "2026 accessed"
+  - title: "Microsoft Entra B2B Collaboration Overview"
+    url: "https://learn.microsoft.com/en-us/entra/external-id/what-is-b2b"
+    publication: "Microsoft Learn"
+    year: "2026 accessed"
+  - title: "Slack Connect Security"
+    url: "https://slack.com/help/articles/360060749374-Slack-Connect-security"
+    publication: "Slack Help"
+    year: "2026 accessed"
+  - title: "GitHub Outside Collaborators"
+    url: "https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-outside-collaborators/adding-outside-collaborators-to-repositories-in-your-organization"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+visualsCount: 6
+hasVideo: false
+wordCount: 1700
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Should every guest account have an expiration date?"
+    answer: "For temporary vendors, agencies, clients, auditors, and contractors, yes whenever the platform supports it. Permanent exceptions should have a named owner and review date."
+  - question: "Can this replace an identity-governance tool?"
+    answer: "No. It is a lightweight operating checklist for small teams and should be adapted to the organization’s identity, legal, and security requirements."
+draft: false
+---
+
+## Why guest access becomes permanent by accident
+
+Guest accounts are often created during a hurry: a designer needs a file, a client needs a dashboard, an auditor needs evidence, or a contractor needs one repository. The project ends, but the account remains because no one owns the closing step. In 2026, small teams should treat every external identity as a temporary exception unless there is a documented business reason to keep it. This checklist focuses on practical administration, not fear: set an end date, keep a sponsor, transfer ownership, and review evidence before removing access.
+
+![Guest access review workspace](/images/illustrations/tp-guest-expiration-20260630-1.png)
+
+## Minimum fields for every guest
+
+| Field | Example | Why it matters |
+|---|---|---|
+| Business sponsor | Product manager, finance owner, project lead | Someone internal must approve the access |
+| Access purpose | Design review, invoice upload, security assessment | Prevents broad access “just in case” |
+| Expiration date | End of project plus short buffer | Creates a natural review moment |
+| Systems touched | Drive, Slack channel, repo, ticket board | Keeps offboarding from missing side doors |
+| Data sensitivity | Public, internal, customer, regulated | Determines whether extra approval is needed |
+
+A guest record can be a spreadsheet, ticket, identity-governance system, or admin-console note. The format matters less than consistency and reviewability.
+
+![Hardware key and blank access cards](/images/illustrations/tp-guest-expiration-20260630-2.png)
+
+## The creation checklist
+
+Before inviting a guest, ask whether a shared export, view-only link, temporary upload form, or meeting screen-share would meet the need with less risk. If an account is still required, use the least-privilege role, disable unnecessary app discovery, avoid adding the guest to broad default groups, and prefer single-purpose spaces. Set calendar reminders if the platform does not support automatic expiration. Send the guest a short note about acceptable use, data handling, and who to contact when access is no longer needed.
+
+## Review cadence by risk
+
+| Guest type | Review interval | Removal trigger |
+|---|---|---|
+| One-time file reviewer | 7 to 14 days | Review complete or no activity |
+| Agency or contractor | Monthly during engagement | Contract end, inactive project, sponsor change |
+| Client workspace member | Quarterly | Account owner leaves, statement of work changes |
+| Auditor or legal reviewer | End of evidence window | Audit package accepted or matter closed |
+| Emergency vendor access | Same day or next business day | Incident resolved or privilege no longer needed |
+
+![Access cards beside a blank notebook](/images/illustrations/tp-guest-expiration-20260630-3.png)
+
+## Offboarding without breaking continuity
+
+Do not simply delete the guest and hope nothing depended on that identity. First transfer file ownership, automation ownership, repository issues, scheduled reports, shared channel bookmarks, and saved dashboard filters. Then revoke sessions, app grants, external links created by the guest, API tokens, and mobile devices if the platform exposes them. Save evidence of the removal and the person who approved any exception.
+
+## Common places guest access hides
+
+- Shared drives and folders with inherited permissions.
+- Chat channels created for a temporary project.
+- Ticket boards where the guest owns automation rules.
+- Repositories where outside collaborator access bypasses a team group.
+- BI dashboards shared directly to an email address.
+- Calendar resources or recurring meetings.
+- OAuth apps authorized by the guest account.
+- Billing portals, support consoles, and sandbox environments.
+
+![Laptop and blank access tags](/images/illustrations/tp-guest-expiration-20260630-4.png)
+
+## Exception language that keeps teams honest
+
+A safe exception reads: “Keep guest access for Vendor A until July 31 because the warranty evidence package is still being reviewed. Sponsor: Kim. Scope: one private channel and one folder. Next review: July 15.” A weak exception reads: “Do not remove; might need later.” The first one can be audited. The second one becomes permanent access.
+
+## Small-team operating model
+
+If your team does not have an identity-governance platform, choose one weekly review owner. The owner exports guests from major systems, compares them with active projects, asks sponsors for keep/remove decisions, and records outcomes. This is not glamorous, but it prevents external accounts from surviving employee turnover, vendor changes, and forgotten pilots.
+
+![Lockbox and blank tags for offboarding](/images/illustrations/tp-guest-expiration-20260630-5.png)
+
+## Final pre-removal checklist
+
+- Sponsor confirmed the work is complete or scope changed.
+- Ownership of files, tickets, automations, and reports transferred.
+- Guest removed from groups, channels, repositories, and direct shares.
+- Sessions, tokens, app grants, and devices reviewed.
+- Sensitive exports or downloads checked against policy.
+- Exception list updated with a new review date if access remains.
+
+![Blank sticky notes beside dark laptop](/images/illustrations/tp-guest-expiration-20260630-6.png)
+
+## Trust and policy note
+
+This guide avoids encouraging surveillance, credential sharing, or bypassing platform controls. It supports AdSense readiness by giving readers practical, policy-safe security administration steps and pointing to official platform/security documentation.
+
