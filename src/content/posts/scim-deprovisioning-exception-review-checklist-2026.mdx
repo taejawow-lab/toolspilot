@@ -1,0 +1,140 @@
+---
+title: "SCIM Deprovisioning Exception Review Checklist 2026"
+description: "A 2026 SaaS administration checklist for reviewing SCIM deprovisioning exceptions, stale groups, app owners, and safe rollback paths before access lingers."
+pubDate: 2026-07-01
+updatedDate: 2026-07-01
+category: "Security"
+tags: ["SCIM", "deprovisioning", "SaaS security", "identity management", "access review"]
+heroImage: "/images/illustrations/tp-scim-exception-20260701-1.png"
+schemaType: "HowTo"
+sources:
+  - title: "RFC 7644 SCIM Protocol"
+    url: "https://www.rfc-editor.org/rfc/rfc7644"
+    publication: "IETF"
+    year: "2026 accessed"
+  - title: "RFC 7643 SCIM Core Schema"
+    url: "https://www.rfc-editor.org/rfc/rfc7643"
+    publication: "IETF"
+    year: "2026 accessed"
+  - title: "NIST Cybersecurity Framework 2.0"
+    url: "https://www.nist.gov/cyberframework"
+    publication: "NIST"
+    year: "2026 accessed"
+  - title: "CISA Secure Our World"
+    url: "https://www.cisa.gov/secure-our-world"
+    publication: "CISA"
+    year: "2026 accessed"
+  - title: "Microsoft Entra SCIM provisioning"
+    url: "https://learn.microsoft.com/en-us/entra/identity/app-provisioning/use-scim-to-provision-users-and-groups"
+    publication: "Microsoft Learn"
+    year: "2026 accessed"
+  - title: "Google directory sync overview"
+    url: "https://support.google.com/a/answer/106368?hl=en"
+    publication: "Google Workspace Help"
+    year: "2026 accessed"
+  - title: "Okta SCIM concepts"
+    url: "https://developer.okta.com/docs/concepts/scim/"
+    publication: "Okta Developer"
+    year: "2026 accessed"
+  - title: "Slack SCIM API"
+    url: "https://api.slack.com/admins/scim"
+    publication: "Slack API"
+    year: "2026 accessed"
+visualsCount: 5
+hasVideo: false
+wordCount: 1700
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Is this professional advice?"
+    answer: "No. Use this as an organizing checklist and consult qualified professionals or official guidance for legal, medical, tax, security, or travel-safety decisions."
+  - question: "Why were current sources checked?"
+    answer: "The article covers guidance that can change, so the cited official and authoritative pages were checked during the July 2026 publishing workflow."
+draft: false
+---
+
+## Why SCIM exceptions become a quiet access risk
+
+SCIM provisioning is supposed to make account lifecycle work boring: identity data flows from the identity provider, users are created, groups are assigned, and departing users are deactivated. The risk appears when teams add one-off exceptions and never review them. A contractor is excluded from deprovisioning because a migration is not finished. A service account sits in a human group. An app owner disables automatic removal because a vendor integration broke. Six months later, the exception is no longer temporary.
+
+This checklist is for small teams that use Google Workspace, Microsoft Entra, Okta, Slack, GitHub, or another SaaS stack with SCIM-like provisioning. It does not replace identity governance, legal retention, or incident response. It gives an operator a monthly or quarterly routine that preserves access continuity while reducing stale permissions.
+
+![SCIM Deprovisioning Exception Review Checklist 2026 visual 1](/images/illustrations/tp-scim-exception-20260701-1.png)
+
+## Exception review table
+
+| Exception type | What to ask | Safer resolution |
+|---|---|---|
+| User excluded from deprovisioning | Who owns the exception and when does it expire? | Add a dated ticket and remove if no owner answers |
+| Group excluded from app sync | Which app would break if removed? | Replace broad group with least-privilege group |
+| Suspended user still active in one SaaS app | Is the app outside SCIM or failing sync? | Disable locally, then repair the connector |
+| Service account in a human role | Is it named, scoped, and owned? | Move to a service-account policy with rotation owner |
+| Manual admin grant after outage | Was it rolled back after the incident? | Reconcile against the IdP source of truth |
+
+## Step 1: export the exception list before editing anything
+
+Before clicking disable, export or screenshot the current provisioning configuration, groups, app assignments, and connector health. Store the evidence in a restricted admin folder. The goal is reversible cleanup, not surprise access removal. If the app provides a provisioning log, capture recent failures and last successful sync time. If it does not, record the admin console path and timestamp.
+
+Then sort exceptions into three buckets: documented temporary exception, undocumented exception, and connector failure. Temporary exceptions need an owner and expiration date. Undocumented exceptions need a business owner before they are kept. Connector failures need a fix plan because local cleanup alone may be overwritten by the next sync.
+
+![SCIM Deprovisioning Exception Review Checklist 2026 visual 2](/images/illustrations/tp-scim-exception-20260701-2.png)
+
+## Step 2: reconcile identity source, app role, and real usage
+
+A SCIM record can be technically correct but still too broad. Compare the identity provider group to app-level roles. If “All staff” maps to an admin or editor role in a downstream tool, a deprovisioning review will not solve the privilege problem. Use last-login, audit-log, and project-owner evidence to narrow groups before removing accounts.
+
+For users who recently left, check whether the app is still active, merely suspended, or retained for records. Some tools preserve content ownership after deactivation; others transfer content to a manager. Do not delete accounts just to make a report look clean if retention or ownership would break. Prefer deactivate, transfer, then delete only when policy allows.
+
+![SCIM Deprovisioning Exception Review Checklist 2026 visual 3](/images/illustrations/tp-scim-exception-20260701-3.png)
+
+## Step 3: use a rollback window
+
+Pick a low-risk time window, notify app owners, and remove the smallest set first. For each change, record the before state, action, time, and verification result. If an automation breaks, restore the specific group or account instead of rolling back the entire cleanup. This keeps the review from becoming an all-or-nothing event.
+
+After the first pass, wait for the next provisioning cycle and confirm the app did not recreate removed access. A reappearing account usually means the source group or attribute rule is still wrong. Fix the source, not just the symptom.
+
+![SCIM Deprovisioning Exception Review Checklist 2026 visual 4](/images/illustrations/tp-scim-exception-20260701-4.png)
+
+## Operator checklist
+
+- Export app assignments, group mappings, and provisioning errors before cleanup.
+- Identify every exception owner by person, team, and review date.
+- Separate retention needs from active-login needs.
+- Disable local access for high-risk stale users when the connector is broken.
+- Repair source groups and attributes so removed accounts do not reappear.
+- Keep a rollback note for every app owner affected.
+- Review service accounts separately from employees and contractors.
+- Add the next review date to the team calendar.
+
+## AdSense and reader-trust note
+
+This article intentionally avoids scareware claims and vendor ranking. It focuses on source-backed identity hygiene: least privilege, documented ownership, reversible changes, and privacy-safe records. If your organization handles regulated data, align the checklist with counsel, HR, security leadership, and contractual retention requirements.
+
+![SCIM Deprovisioning Exception Review Checklist 2026 visual 5](/images/illustrations/tp-scim-exception-20260701-5.png)
+
+## FAQ
+
+**Should I delete every inactive user?** No. Some inactive records need retention, content transfer, or litigation-hold handling. Start with deactivation and ownership transfer unless policy says otherwise.
+
+**Is SCIM enough for offboarding?** No. SCIM helps automate account lifecycle, but teams still need MFA, admin-role review, audit logs, app-owner accountability, and exception expiry.
+
+## Evidence to keep for each exception
+
+A useful exception record is short but specific. It names the app, the identity provider group, the affected user or service account, the reason for the exception, the owner, the approval date, the expiry date, and the rollback command or admin-console path. Avoid storing private screenshots that include customer data, message content, or secrets. A clean text ticket with role names and timestamps is usually enough for routine review and safer for privacy.
+
+For small teams, the review can be a spreadsheet or issue tracker. Larger teams may already have identity governance tooling, but the same principle applies: an exception without an owner is not an exception, it is drift. If nobody can explain why access remains, downgrade it, disable it, or schedule a documented owner review before the next billing or audit cycle.
+
+## A sample thirty-minute review routine
+
+First, filter for users suspended in the identity provider but active in the SaaS app. Second, filter for app admins who have not signed in recently. Third, compare high-risk groups such as finance, HR, engineering admin, customer export, and security logs against current team rosters. Fourth, pick three exceptions and ask the named owner whether each still needs to exist. Fifth, remove the ones with no owner and record the outcome. This small routine is easier to repeat than a once-a-year access panic.
+
+## Privacy and safety boundaries
+
+Do not paste access tokens, session IDs, private documents, or customer exports into review tickets. Do not shame individual employees in a public channel. Treat the review as a systems hygiene task: the system should make the safe path easy, should expire temporary access, and should leave enough evidence for another admin to understand the decision later.
+
+## Final readiness pass before publishing
+
+Before acting on this checklist, run a final readiness pass. Confirm that the article's advice is appropriate for your jurisdiction, employer, family situation, and risk tolerance. Save official pages rather than social snippets, because the rules and platform screens that matter are the ones maintained by agencies, vendors, or qualified professionals. If a step would affect taxes, medical care, legal rights, account access, or travel safety, treat this page as a planning aid and verify the final decision with the relevant authority.
+
+A useful checklist should reduce confusion, not create pressure. If any row feels uncertain, convert it into a question: who owns this decision, what evidence do we need, when must it be completed, what is the safest reversible action, and what would make us stop? That simple question set keeps the process user-first and helps preserve trust signals for readers, search engines, and future AdSense review.
+

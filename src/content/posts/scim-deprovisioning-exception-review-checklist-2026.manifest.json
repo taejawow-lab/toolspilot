@@ -1,0 +1,23 @@
+{
+  "site": "toolspilot",
+  "slug": "scim-deprovisioning-exception-review-checklist-2026",
+  "created": "2026-07-01",
+  "generator": "GTI15 ComfyUI via generate_natural_blog_candidates.py",
+  "endpoint_host": "gti15 redacted direct endpoint",
+  "dimensions": "1536x864",
+  "accepted_images": [
+    "/images/illustrations/tp-scim-exception-20260701-1.png",
+    "/images/illustrations/tp-scim-exception-20260701-2.png",
+    "/images/illustrations/tp-scim-exception-20260701-3.png",
+    "/images/illustrations/tp-scim-exception-20260701-4.png",
+    "/images/illustrations/tp-scim-exception-20260701-5.png"
+  ],
+  "selected_sources": [
+    "pass1/20260701_191429_krea_4114921441.png",
+    "pass1/20260701_191517_juggernaut_4114921443.png",
+    "pass2/20260701_191533_krea_834677636.png",
+    "pass2/20260701_191605_realvis_834677637.png",
+    "pass2/20260701_191621_juggernaut_834677638.png"
+  ],
+  "visual_qa": "manual contact-sheet QA passed for selected images; rejected images excluded where applicable"
+}
