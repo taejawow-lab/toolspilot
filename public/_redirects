@@ -1,3 +1,8 @@
 /sitemap.xml /sitemap-index.xml 301
 /tags/* /categories/ 301
 /posts/page/* /posts/ 301
+/about/ /company/ 301
+/editorial-process/ /method/ 301
+/editorial-standards/ /standards/ 301
+/posts/automation-error-log-template-no-code-ops-2026/ /category/automation/ 301
+/posts/privacy-first-task-automation-stack/ /category/automation/ 301

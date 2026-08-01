@@ -79,7 +79,7 @@ for filename, links in post_links_by_file.items():
         if target not in EXPECTED_PUBLIC: errors.append(f"{filename}: internal link targets non-public post {link}")
 for paragraph, files in paragraphs.items():
     if len(files) > 1: errors.append(f"repeated paragraph in {files}: {paragraph[:120]}")
-source_blob = "\n".join(p.read_text(encoding="utf-8") for p in [ROOT/"src/pages/index.astro", ROOT/"src/pages/about.astro", ROOT/"src/pages/editorial-process.astro", ROOT/"src/pages/editorial-standards.astro", ROOT/"src/layouts/ArticleLayout.astro", ROOT/"src/components/Header.astro", ROOT/"public/_worker.js", ROOT/"public/assets/toolspilot-app.js"])
+source_blob = "\n".join(p.read_text(encoding="utf-8") for p in [ROOT/"src/pages/index.astro", ROOT/"src/pages/company.astro", ROOT/"src/pages/method.astro", ROOT/"src/pages/standards.astro", ROOT/"src/layouts/ArticleLayout.astro", ROOT/"src/components/Header.astro", ROOT/"public/_worker.js", ROOT/"public/assets/toolspilot-app.js"])
 if "data-newsletter" in source_blob or 'href="#subscribe"' in source_blob or "/api/newsletter" in source_blob: errors.append("newsletter collection UI or endpoint remains on a reader path")
 if (ROOT/"public/ads.txt").read_text(encoding="utf-8").strip().splitlines() != ["google.com, pub-3526385510396286, DIRECT, f08c47fec0942fa0"]: errors.append("ads.txt must contain exactly the authorized seller record")
 config = (ROOT/"astro.config.mjs").read_text(encoding="utf-8")

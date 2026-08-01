@@ -14,7 +14,13 @@ expected_post_count = sum(
     if not re.search(r"(?m)^draft:\s*true\s*$", post.read_text(encoding="utf-8").split("---", 2)[1])
 )
 redirects = (DIST / "_redirects").read_text(encoding="utf-8") if (DIST / "_redirects").exists() else ""
-for required in ("/tags/* /categories/ 301", "/posts/page/* /posts/ 301"):
+for required in (
+    "/tags/* /categories/ 301", "/posts/page/* /posts/ 301",
+    "/about/ /company/ 301", "/editorial-process/ /method/ 301",
+    "/editorial-standards/ /standards/ 301",
+    "/posts/automation-error-log-template-no-code-ops-2026/ /category/automation/ 301",
+    "/posts/privacy-first-task-automation-stack/ /category/automation/ 301",
+):
     if required not in redirects:
         errors.append(f"missing redirect rule: {required}")
 
