@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "published_file": "tp-guide-time-blocks-20260801.png",
+  "accepted": true,
+  "visual_qa": {
+    "date": "2026-08-01",
+    "result": "PASS",
+    "criteria": "No readable/fake text, numbers, clock/calendar/planner grid, UI, logos, people, distorted objects, or unsafe details."
+  },
+  "generation": {
+    "engine": "krea",
+    "prompt_id": "134b4ad2-8286-4392-a762-d9cb52bd3e25",
+    "seed": 1837462910,
+    "source_dimensions": [
+      1536,
+      864
+    ],
+    "published_dimensions": [
+      1280,
+      720
+    ],
+    "prompt": "Photorealistic editorial still life illustrating short focus intervals versus larger protected work blocks: a realistic clear glass hourglass on a warm neutral wood desk, beside six plain solid-color wooden rectangular blocks arranged as three small intervals and three larger project blocks, one fully closed plain linen notebook with no markings. No paper, no cards, no open notebook, no planner, no grid, no clock, no watch, no calendar, no numbers, no letters, no handwriting, no printed text, no screen, no device, no logos, no brand marks, no UI. Natural soft window light, physically plausible objects, clean professional blog photography, wide composition.",
+    "negative_prompt": "people, person, face, hands, fingers, body, readable text, letters, numbers, logo, watermark, signature, fake user interface, app dock, icons, browser window, code screen, open laptop screen, monitor screen, document, forms, receipts, certificates, currency, medicine labels, policy paper, passport, distorted objects, warped laptop, impossible geometry, extra objects, clutter, blurry, low resolution, oversaturated, cartoon, anime, 3d render, illustration artifacts"
+  },
+  "provenance_note": "The generation helper manifest did not expose a checkpoint/model name; this field is intentionally not invented."
+}
