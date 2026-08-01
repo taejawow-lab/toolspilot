@@ -8,6 +8,10 @@ import json, re, struct, sys, xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 errors = []
+redirects = (DIST / "_redirects").read_text(encoding="utf-8") if (DIST / "_redirects").exists() else ""
+for required in ("/tags/* /categories/ 301", "/posts/page/* /posts/ 301"):
+    if required not in redirects:
+        errors.append(f"missing redirect rule: {required}")
 
 class Links(HTMLParser):
     def __init__(self): super().__init__(); self.items = []
