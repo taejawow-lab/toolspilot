@@ -8,6 +8,8 @@
                     "start":  "astro dev",
                     "build":  "astro build",
                     "preview":  "astro preview",
+                    "qa:adsense": "python3 scripts/adsense-readiness-qa.py",
+                    "qa:dist": "python3 scripts/static-output-qa.py",
                     "astro":  "astro"
                 },
     "dependencies":  {

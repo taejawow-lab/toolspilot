@@ -19,6 +19,8 @@ jobs:
       - run: npm ci || npm install
       - name: Restore npm binary execute bits
         run: chmod -R a+x node_modules/.bin node_modules/astro 2>/dev/null || true
+      - name: AdSense public-corpus quality gate
+        run: npm run qa:adsense
       - run: npm run build
         env:
           PUBLIC_CF_BEACON_TOKEN: d8048479b24f4568817e9006f45822f1
@@ -28,6 +30,8 @@ jobs:
           PUBLIC_AMAZON_TAG_JP: taekm33-22
           PUBLIC_AMAZON_TAG_UK: taekm33-21
           PUBLIC_AMAZON_TAG_CA: taekm330a-20
+      - name: Validate generated routes and links
+        run: npm run qa:dist
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}

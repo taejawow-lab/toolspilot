@@ -12,7 +12,12 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false, // global.css에서 직접 베이스 스타일 작성
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        const path = new URL(page).pathname;
+        return path !== '/compare/' && !path.startsWith('/tags/') && !/^\/posts\/page\/\d+\/?$/.test(path);
+      },
+    }),
     mdx(),
   ],
   output: 'static',

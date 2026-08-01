@@ -8,7 +8,7 @@ const glyph = index % 4 === 0 ? 'ph--violet' : index % 4 === 1 ? 'ph--green' : i
 const hasLocalImage = !!image && (!image.startsWith('/') || existsSync(join(process.cwd(), 'public', image.slice(1))));
 const displayImage = hasLocalImage ? image : '';
 const isPick = editorsPick || variant === 'feature';
-const score = typeof rating === 'number' ? Math.max(0, Math.min(5, rating)) : (isPick ? 4.7 : undefined);
+const score = typeof rating === 'number' ? Math.max(0, Math.min(5, rating)) : undefined;
 const starPct = score ? `${Math.round((score / 5) * 100)}%` : '0%';
 ---
 <a class="card is-link reveal" href={href} data-card data-cat={category?.toLowerCase().replace(/\s+/g,'-') || 'all'} data-search={`${title} ${description} ${category || ''}`}>

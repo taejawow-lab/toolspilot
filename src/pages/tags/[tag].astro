@@ -4,26 +4,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 
 export async function getStaticPaths() {
-  const posts = (await getCollection('posts')).filter((p) => !p.data.draft);
-  const tagSet = new Set();
-  posts.forEach((p) => (p.data.tags || []).forEach((t) => tagSet.add(t)));
-  const tags = [...tagSet];
-  return tags.map((tag) => {
-    const slug = tag
-      .toLowerCase()
-      .trim()
-      .replace(/[\/\\&%?#=]/g, '-')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-|-$/g, '');
-    const tagPosts = posts
-      .filter((p) => (p.data.tags || []).includes(tag))
-      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-    return {
-      params: { tag: slug },
-      props: { tag, posts: tagPosts },
-    };
-  });
+  // Tags remain descriptive metadata and search signals, not standalone thin
+  // archive routes. Topic discovery is handled by curated category pages.
+  return [];
 }
 
 const { tag, posts } = Astro.props;
@@ -36,7 +19,7 @@ const labels = {
 };
 ---
 
-<BaseLayout title={`#${tag} — ${labels.archive}`} description={labels.desc}>
+<BaseLayout title={`#${tag} — ${labels.archive}`} description={labels.desc} noindex={true}>
   <section class="container mx-auto px-6 md:px-10 py-16 md:py-24">
     <div class="grid grid-cols-12 gap-x-6 md:gap-x-8 mb-12 md:mb-16 border-b border-border pb-12">
       <div class="col-span-12 md:col-span-4">

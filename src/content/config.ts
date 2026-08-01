@@ -24,10 +24,12 @@ const posts = defineCollection({
           publication: z.string().optional(),
         })
       )
-      .min(8, '최소 8건의 1차 자료 인용 필요 (v5.3 #1)'),
-    visualsCount: z.number().min(5, '시각 자료 5종 의무 (v5.3 #9-#13)'),
+      .default([]),
+    visualsCount: z.number().min(0),
     hasVideo: z.boolean().default(false), // v5.3 #14
-    wordCount: z.number().min(1500, '최소 1500단어 / 한국어 3000자 (v5.3 #3)'),
+    // Draft entries are still parsed by Astro. Public-only thresholds are enforced
+    // by scripts/adsense-readiness-qa.py before every production build.
+    wordCount: z.number().min(1),
 
     // 어필리에이트
     affiliate: z.boolean().default(false),

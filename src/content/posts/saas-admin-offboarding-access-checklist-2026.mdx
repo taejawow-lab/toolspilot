@@ -41,10 +41,10 @@ sources:
     publication: "CISA"
     year: "2026"
 internalLinks:
-  - "/category/Automation"
+  - "/category/automation/"
 visualsCount: 6
 hasVideo: false
-wordCount: 1700
+wordCount: 1153
 affiliate: false
 aiDisclosed: true
 faq:
@@ -56,6 +56,7 @@ faq:
     answer: "Escalate if there is suspected misuse, regulated data, customer data exposure, unmanaged devices, privileged cloud access, or a hostile departure risk."
 draft: false
 ---
+
 Small teams often remove a departing teammate from the email account and stop there. The risk lives in the overlooked places: shared admin roles, OAuth grants, browser sessions, API keys, automation owners, billing seats, recovery email addresses, and private files synced to unmanaged devices. This checklist was reviewed on June 13, 2026 against NIST, CISA, and FTC security guidance. It is general operational guidance, not legal, HR, or incident-response advice.
 
 ![SaaS Admin Offboarding and Access Removal Checklist for 2026](/images/illustrations/tp-saas-offboarding-2026-hero.png)
@@ -117,10 +118,6 @@ By the next day, review lower-risk systems and exceptions. Some tools are forgot
 Contractors, agencies, bookkeepers, designers, and fractional operators often use external identities rather than company-managed accounts. Their access can survive a normal employee offboarding flow. Search by personal email domain, agency email, shared group, and project name. Review guest users, external collaborators, repository teams, shared dashboards, calendar delegation, support-seat access, and billing portals.
 
 If a vendor relationship continues but a specific person leaves, ask the vendor to confirm who now owns the account and whether any shared secrets were known to the departed individual. Rotate credentials when the answer is unclear. Keep the request professional and narrow: the business does not need private employment details, but it does need assurance that access to its systems is still appropriate.
-
-## Readiness improvement for small teams
-A good offboarding checklist also improves AdSense and trust readiness for a public site because it reduces the chance of unauthorized content changes, broken analytics, exposed customer messages, or abandoned contact forms. Keep editorial, analytics, hosting, and ad-platform access assigned to named roles. Review policy pages and contact routes after high-risk staff changes. If the person managed publishing, verify that deployment secrets, webhooks, and domain access still belong to the business rather than an individual account.
-
 
 ## Metrics that prove the process improved
 Track a few simple numbers after each offboarding: how many systems were reviewed, how many had named owners, how many tokens were rotated, how many exceptions remained, and how long it took to disable primary access. These metrics should not become a blame exercise. They show whether the company is reducing hidden dependency on individual accounts over time.
