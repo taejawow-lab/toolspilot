@@ -6,17 +6,17 @@ const lang = import.meta.env.PUBLIC_SITE_LANG || 'en';
 const hasIllust = import.meta.env.PUBLIC_HAS_CATEGORY_ILLUSTRATION === 'true';
 
 const sections = lang === 'ko' ? [
-  { label: 'I', title: '인용하는 출처', items: ['학술 데이터베이스: PubMed, Cochrane, SSRN, NBER', '정부 공시: 보건복지부, 식약처, 통계청, 금감원, 한국소비자원', '학회 가이드라인: 대한소아청소년과학회, 한국영양학회 등', '제조사 공식 사양서', '검증된 측정 매체: RTINGS, Wirecutter, Cook\'s Illustrated'] },
-  { label: 'II', title: '인용하지 않는 출처', items: ['Wikipedia 본문 (다만 1차 자료 발견용 참고는 OK)', '다른 블로그·체험기', '인플루언서 리뷰', '업체 홍보 자료 (사양서 외)'] },
-  { label: 'III', title: '정정 정책', body: '오류 발견 시 24시간 내 수정. 본문에 "Updated YYYY-MM-DD: [변경 사항]" 명시.' },
-  { label: 'IV', title: '협찬·후원 정책', body: '광고비를 받은 추천은 없습니다. 어필리에이트 수수료(쿠팡파트너스 등)는 글 시작과 푸터에 명시합니다.' },
-  { label: 'V', title: 'AI 사용 정책', body: '모든 글은 AI 도구의 보조를 받아 작성됩니다. 모든 1차 자료는 사람이 검증합니다.' }
+  { label: 'I', title: '우선하는 출처', items: ['정부·규제기관·표준기관 문서', '학술 연구와 공신력 있는 조사 자료', '제조사 공식 사양과 보안 문서', '방법론을 공개한 독립 측정 자료'] },
+  { label: 'II', title: '보조 출처의 사용', items: ['블로그와 커뮤니티 글은 사례 또는 추가 출처 탐색에 사용할 수 있습니다.', '업체 홍보 문구는 사실의 독립적 증거로 취급하지 않습니다.', '출처가 주장을 직접 뒷받침하지 않으면 표현을 좁히거나 삭제합니다.'] },
+  { label: 'III', title: '정정 정책', body: '제보된 오류는 근거와 영향 범위를 확인합니다. 확인된 오류는 가능한 한 신속히 수정하며, 중요한 변경은 본문에 표시할 수 있습니다.' },
+  { label: 'IV', title: '협찬·제휴 정책', body: '추천을 대가로 한 유료 게재는 받지 않습니다. 제휴 링크가 포함되는 경우 글 또는 공시 페이지에 관계를 명확히 밝힙니다.' },
+  { label: 'V', title: 'AI 사용 정책', body: 'AI 도구가 조사 정리와 초안 작성에 도움을 줄 수 있습니다. 출처가 없는 경험을 만들지 않으며, 공개 전 중복·근거·링크·시각 자료 검사를 수행합니다.' }
 ] : [
-  { label: 'I', title: 'Sources We Cite', items: ['Academic databases: PubMed, Cochrane, SSRN, NBER', 'Government data: BLS, FDA, EPA, FTC, CFPB, NHTSA', 'Industry standards: AVMA, AAFCO, NIST, ISO, IEEE', 'Manufacturer official specifications', 'Verified measurement publications: RTINGS, Wirecutter'] },
-  { label: 'II', title: 'Sources We Avoid', items: ['Wikipedia article body (acceptable as discovery for primary sources)', 'Other blogs, personal testimonials', 'Influencer reviews', 'Vendor marketing material (specifications excepted)'] },
-  { label: 'III', title: 'Corrections Policy', body: 'Errors are corrected within 24 hours of discovery. Updates are logged inline as "Updated YYYY-MM-DD: [change]".' },
-  { label: 'IV', title: 'Sponsorship Policy', body: 'We never accept payment for recommendations. Affiliate fees are disclosed at the top of each article and in the footer.' },
-  { label: 'V', title: 'AI Usage Policy', body: 'All articles are produced with AI assistance. All primary sources are verified by humans before publication.' }
+  { label: 'I', title: 'Preferred Sources', items: ['Government, regulator, and standards-body documents', 'Peer-reviewed research and reputable surveys', 'Official product specifications and security documentation', 'Independent measurements with a disclosed method'] },
+  { label: 'II', title: 'Using Secondary Sources', items: ['Blogs and community posts may provide examples or help locate stronger evidence.', 'Vendor marketing language is not treated as independent proof.', 'When a source does not directly support a claim, we narrow or remove the claim.'] },
+  { label: 'III', title: 'Corrections Policy', body: 'Reported errors are reviewed against the evidence and their likely impact. Confirmed errors are corrected as promptly as practical, and material changes may be noted in the article.' },
+  { label: 'IV', title: 'Sponsorship and Affiliate Policy', body: 'We do not accept paid placement in exchange for a recommendation. If affiliate links appear, the relationship is disclosed in the article or disclosure page.' },
+  { label: 'V', title: 'AI Usage Policy', body: 'AI tools may assist with research organization and drafting. We do not invent unsupported experience, and public pages are checked for repetition, evidence, links, and visuals before release.' }
 ];
 
 const heading = lang === 'ko' ? '편집 기준' : 'Editorial Standards';

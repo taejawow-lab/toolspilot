@@ -29,16 +29,4 @@
   if(filterRoot){ var chips=filterRoot.querySelectorAll('.chip[data-cat]'); var items=document.querySelectorAll('[data-card]'); var searchInput=document.getElementById('archive-search'); var emptyState=document.getElementById('empty-state'); var countOut=document.getElementById('result-count'); var activeCat='all'; function apply(){ var q=((searchInput&&searchInput.value)||'').trim().toLowerCase(); var shown=0; items.forEach(function(it){ var cat=it.getAttribute('data-cat')||''; var text=((it.getAttribute('data-search')||it.textContent||'')).toLowerCase(); var okCat=activeCat==='all'||cat===activeCat; var okQ=!q||text.indexOf(q)!==-1; var vis=okCat&&okQ; it.style.display=vis?'':'none'; if(vis)shown++; }); if(emptyState)emptyState.style.display=shown?'none':''; if(countOut)countOut.textContent=shown; } chips.forEach(function(c){ c.addEventListener('click',function(){ chips.forEach(function(x){x.classList.remove('is-active');x.setAttribute('aria-pressed','false')}); c.classList.add('is-active'); c.setAttribute('aria-pressed','true'); activeCat=c.getAttribute('data-cat'); apply(); }); }); if(searchInput) searchInput.addEventListener('input',apply); apply(); }
   document.addEventListener('keydown', function(e){ if(e.key==='/' && !/INPUT|TEXTAREA/.test(((document.activeElement||{}).tagName)||'')){ var s=document.querySelector('[data-search-focus]'); if(s){e.preventDefault();s.focus();} } if(e.key==='Escape') closeDrawer(); });
 
-  document.querySelectorAll('form[data-newsletter]').forEach(function(f){
-    f.addEventListener('submit', async function(e){
-      e.preventDefault(); var input=f.querySelector('input[type="email"]'); var email=(input&&input.value||'').trim(); if(!email){return;}
-      var btn=f.querySelector('button[type="submit"]'); var old=btn?btn.textContent:''; if(btn){btn.disabled=true;btn.textContent='Subscribing…';}
-      try{
-        var res=await fetch('/api/newsletter',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({email:email,source:location.pathname})});
-        var json=await res.json().catch(function(){return {ok:res.ok};}); if(!res.ok||!json.ok) throw new Error(json.error||'subscribe_failed');
-        try{ localStorage.setItem('tp-newsletter-email', email); }catch(_e){}
-        f.style.display='none'; var ok=document.createElement('div'); ok.className='nl-ok'; ok.style.cssText='display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.05rem;'; ok.innerHTML='<svg viewBox="0 0 24 24" fill="none" width="24" height="24" style="flex:none"><circle cx="12" cy="12" r="11" fill="currentColor" opacity=".15"/><path d="M7 12.5l3.2 3.2L17 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> You’re on the list — check your inbox if confirmation is enabled.'; f.parentElement.appendChild(ok);
-      } catch(err){ toast('Subscription endpoint is temporarily unavailable. Please try again.'); if(btn){btn.disabled=false;btn.textContent=old;} }
-    });
-  });
 })();

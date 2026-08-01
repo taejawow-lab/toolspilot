@@ -6,28 +6,24 @@ const lang = import.meta.env.PUBLIC_SITE_LANG || 'en';
 const hasIllust = import.meta.env.PUBLIC_HAS_FEATURE_ILLUSTRATION === 'true';
 
 const stepsKo = [
-  { n: '01', title: '키워드·주제 선정', body: '분야별 검색 트렌드와 1-10위 글의 데이터 공백(인용되지 않은 1차 자료)을 분석해 주제를 선정합니다.' },
-  { n: '02', title: '1차 자료 수집', body: '학술 데이터베이스(PubMed·SSRN), 정부 공시, 제조사 사양서, 검증된 측정 매체(RTINGS·Wirecutter)에서 글당 8건 이상의 1차 자료를 수집합니다.' },
-  { n: '03', title: 'AI 보조 초안 작성', body: '수집된 1차 자료를 바탕으로 AI 도구의 보조를 받아 초안을 작성합니다. 운영자의 개인 경험·의견은 본문에 들어가지 않습니다.' },
-  { n: '04', title: '출처 자동 검증', body: '본문에 인용된 모든 외부 URL을 자동 fetch해 페이지 존재·인용 수치 일치를 확인합니다. 1건이라도 실패하면 발행 보류.' },
-  { n: '05', title: 'AI 디텍터 통과', body: 'self-hosted Roberta 모델 점수 30% 미만이어야 발행. 미달 시 자동 리라이팅.' },
-  { n: '06', title: '시각 자료 자동 생성', body: '인포그래픽·비교표·데이터 차트·다이어그램·제품 일러스트 5종 + 30-60초 요약 동영상이 글마다 자동 생성됩니다.' },
-  { n: '07', title: '분기 갱신·재검증', body: '분기마다(3·6·9·12월) 모든 발행 글의 인용 자료를 재검증합니다. 가격·통계·정책 변경 시 자동 갱신.' },
-  { n: '08', title: '정정 정책', body: '오류 발견 시 24시간 내 수정 + 본문에 변경 이력 명시. 독자 정정 제보는 editor@ 이메일로.' }
+  { n: '01', title: '독자 문제 정의', body: '검색량만을 기준으로 주제를 만들지 않습니다. 독자가 실제로 내려야 할 결정, 필요한 조건, 안전·개인정보·비용상의 제한을 먼저 정의합니다.' },
+  { n: '02', title: '근거 수집', body: '공식 문서, 표준, 연구 자료, 제조사 사양과 신뢰할 수 있는 측정 자료를 우선합니다. 출처의 날짜와 적용 범위를 확인하고 서로 다른 성격의 자료를 구분합니다.' },
+  { n: '03', title: '초안과 한계 작성', body: 'AI 도구가 구조화와 초안 작성에 도움을 줄 수 있습니다. 직접 수행하지 않은 구매·사용·시험 경험을 만들지 않으며, 근거가 부족한 부분은 한계 또는 확인 항목으로 표시합니다.' },
+  { n: '04', title: '편집 검토', body: '중요한 주장과 연결된 출처, 과도하게 단정적인 표현, 반복 문단, 내부 링크와 시각 자료를 발행 전에 검토합니다. 근거로 방어할 수 없는 문장은 수정하거나 제거합니다.' },
+  { n: '05', title: '기술 검사', body: '공개 글 목록, 단어·출처·시각 자료 수, 중복 문단, 깨진 링크와 로컬 자산을 자동 검사합니다. 검사가 실패하면 배포가 중단됩니다.' },
+  { n: '06', title: '정정과 갱신', body: '독자는 편집부 이메일로 오류를 제보할 수 있습니다. 확인된 오류와 오래된 정보는 중요도와 영향 범위를 검토한 뒤 수정하며, 필요한 경우 변경 내용을 글에 표시합니다.' }
 ];
 const stepsEn = [
-  { n: '01', title: 'Topic Selection', body: 'We analyze category-specific search trends and identify "data gaps" in top-10 SERPs — primary sources that competitors aren\'t citing.' },
-  { n: '02', title: 'Primary Source Collection', body: 'For every article we collect 8+ primary sources from academic databases (PubMed, SSRN), government filings, manufacturer specifications, and verified measurement publications.' },
-  { n: '03', title: 'AI-Assisted Drafting', body: 'Drafts are written with AI assistance grounded in the collected sources. We do not insert personal opinions or experience-based testimonials.' },
-  { n: '04', title: 'Automated Source Verification', body: 'Every external URL is fetched automatically; cited statistics are cross-checked against the source page. Any failure puts the article on hold.' },
-  { n: '05', title: 'AI Detector Threshold', body: 'Articles must score below 30% on a self-hosted Roberta detector to publish. Above threshold triggers automatic rewriting.' },
-  { n: '06', title: 'Auto-Generated Visuals', body: 'Every article includes 5 visual assets (infographic, comparison table, data chart, diagram, product illustration) plus a 30-60 second summary video.' },
-  { n: '07', title: 'Quarterly Re-Verification', body: 'Every quarter (Mar·Jun·Sep·Dec) all published articles are re-verified for source freshness. Price changes and updated statistics trigger automatic updates.' },
-  { n: '08', title: 'Corrections Policy', body: 'Errors are corrected within 24 hours of discovery, with the correction logged inline. Reader corrections to editor@.' }
+  { n: '01', title: 'Define the Reader Problem', body: 'We do not select topics from search volume alone. Each guide starts with the decision a reader needs to make and the relevant constraints around safety, privacy, cost, and reversibility.' },
+  { n: '02', title: 'Collect Evidence', body: 'We prefer official documentation, standards, research, manufacturer specifications, and credible measurement sources. Dates, scope, and the difference between primary evidence and commentary are considered.' },
+  { n: '03', title: 'Draft with Limitations', body: 'AI tools may assist with structure and drafting. We do not invent purchases, usage, or testing experience, and we label uncertainty or verification steps where the available evidence is incomplete.' },
+  { n: '04', title: 'Editorial Review', body: 'Before publication, we review important claims against their sources and check for overconfident language, repeated passages, internal-link problems, and unsuitable visuals. Claims we cannot support are revised or removed.' },
+  { n: '05', title: 'Technical Checks', body: 'Automated checks cover the public article allowlist, measured words, sources and visuals, repeated paragraphs, broken links, and missing local assets. A failed check blocks deployment.' },
+  { n: '06', title: 'Corrections and Updates', body: 'Readers may report errors by email. Confirmed errors and outdated information are reviewed according to their impact and corrected when warranted; material changes may be noted in the article.' }
 ];
 const steps = lang === 'ko' ? stepsKo : stepsEn;
 const heading = lang === 'ko' ? '편집 프로세스' : 'Editorial Process';
-const lede = lang === 'ko' ? `${siteName}는 다음 8단계로 모든 글을 발행합니다.` : `${siteName} publishes every article through this 8-step process.`;
+const lede = lang === 'ko' ? `${siteName}가 공개 글을 선정하고 검토하는 현재 기준입니다.` : `The current process ${siteName} uses to select and review public articles.`;
 ---
 
 <BaseLayout title="Editorial Process" description={`How ${siteName} produces content`}>
@@ -35,7 +31,7 @@ const lede = lang === 'ko' ? `${siteName}는 다음 8단계로 모든 글을 발
     <!-- editorial header -->
     <div class="grid grid-cols-12 gap-x-6 md:gap-x-8 items-end mb-16 md:mb-24">
       <div class="col-span-12 md:col-span-7">
-        <p class="text-[10px] uppercase tracking-[0.25em] font-mono text-accent mb-4">¶ Method · 8 Steps</p>
+        <p class="text-[10px] uppercase tracking-[0.25em] font-mono text-accent mb-4">¶ Method · 6 Steps</p>
         <h1 class="text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.92] tracking-[-0.025em] mb-6 text-balance" style="font-family: var(--font-display);">
           {heading}
         </h1>

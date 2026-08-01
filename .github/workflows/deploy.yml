@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm ci || npm install
+      - run: npm ci
       - name: Restore npm binary execute bits
         run: chmod -R a+x node_modules/.bin node_modules/astro 2>/dev/null || true
       - name: AdSense public-corpus quality gate

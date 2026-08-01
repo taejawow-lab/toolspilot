@@ -7,7 +7,12 @@ import json, re, struct, sys, xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
+POSTS = ROOT / "src" / "content" / "posts"
 errors = []
+expected_post_count = sum(
+    1 for post in POSTS.glob("*.mdx")
+    if not re.search(r"(?m)^draft:\s*true\s*$", post.read_text(encoding="utf-8").split("---", 2)[1])
+)
 redirects = (DIST / "_redirects").read_text(encoding="utf-8") if (DIST / "_redirects").exists() else ""
 for required in ("/tags/* /categories/ 301", "/posts/page/* /posts/ 301"):
     if required not in redirects:
@@ -52,7 +57,7 @@ else:
     bad = [u for u in urls if any(x in u for x in ("/tags/", "/posts/page/", "/compare/"))]
     if bad: errors.append("forbidden sitemap URLs: " + ", ".join(bad[:5]))
     post_urls = [u for u in urls if "/posts/" in u and not u.rstrip("/").endswith("/posts")]
-    if len(post_urls) != 20: errors.append(f"sitemap has {len(post_urls)} article URLs, expected 20")
+    if len(post_urls) != expected_post_count: errors.append(f"sitemap has {len(post_urls)} article URLs, expected {expected_post_count}")
 
 # New QA-approved assets: valid PNG headers, expected dimensions, non-trivial size.
 for image in sorted((DIST / "images" / "illustrations").glob("tp-guide-*-20260801.png")):
