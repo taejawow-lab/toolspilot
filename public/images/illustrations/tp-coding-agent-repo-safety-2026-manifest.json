@@ -1,0 +1,62 @@
+{
+  "generated_at": "2026-08-16",
+  "backend": "GTI15 ComfyUI",
+  "workflow": "generate_image",
+  "assets": [
+    {
+      "filename": "tp-coding-agent-repo-safety-2026-hero.png",
+      "source_filename": "ComfyUI_00046_.png",
+      "prompt_id": "518b9522-f1ac-42cb-8d6d-ea41a8fdf9d9",
+      "model": "RealVisXL_V5.0_fp16.safetensors",
+      "width": 1536,
+      "height": 864,
+      "accepted": true
+    },
+    {
+      "filename": "tp-coding-agent-repo-safety-2026-trust-boundary.png",
+      "source_filename": "ComfyUI_00012_.png",
+      "prompt_id": "085055d6-66d7-4886-9007-51ee2d9e2f72",
+      "model": "RealVisXL_V5.0_fp16.safetensors",
+      "width": 1536,
+      "height": 864,
+      "accepted": true
+    },
+    {
+      "filename": "tp-coding-agent-repo-safety-2026-network-gate.png",
+      "source_filename": "ComfyUI_00013_.png",
+      "prompt_id": "5a8321d0-c4cb-4e09-b2f3-d8d88d3de03d",
+      "model": "RealVisXL_V5.0_fp16.safetensors",
+      "width": 1536,
+      "height": 864,
+      "accepted": true
+    },
+    {
+      "filename": "tp-coding-agent-repo-safety-2026-permission-matrix.png",
+      "source_filename": "ComfyUI_00047_.png",
+      "prompt_id": "cdb4ca80-5335-4a6b-aa85-a5baf2a4beff",
+      "model": "RealVisXL_V5.0_fp16.safetensors",
+      "width": 1536,
+      "height": 864,
+      "accepted": true
+    },
+    {
+      "filename": "tp-coding-agent-repo-safety-2026-review-lane.png",
+      "source_filename": "ComfyUI_00033_.png",
+      "prompt_id": "8bb09933-2df7-4e21-a2d9-7da03ad83c11",
+      "model": "RealVisXL_V5.0_fp16.safetensors",
+      "width": 1536,
+      "height": 864,
+      "accepted": true
+    },
+    {
+      "filename": "tp-coding-agent-repo-safety-2026-incident-stop.png",
+      "source_filename": "ComfyUI_00034_.png",
+      "prompt_id": "f313ba63-5b1f-4988-b22d-c3d199918684",
+      "model": "RealVisXL_V5.0_fp16.safetensors",
+      "width": 1536,
+      "height": 864,
+      "accepted": true
+    }
+  ],
+  "qa": "final contact-sheet visual review passed after replacements on 2026-08-16"
+}

@@ -7,6 +7,7 @@ import json, re, sys
 ROOT = Path(__file__).resolve().parents[1]
 POSTS = ROOT / "src/content/posts"
 EXPECTED_PUBLIC = {
+    "ai-coding-agent-repository-safety-checklist-2026",
     "ai-browser-agent-permission-checklist-2026", "ai-connector-permission-audit-2026",
     "ai-file-sharing-permission-audit-2026", "ai-meeting-bot-recording-consent-privacy-checklist-2026",
     "ai-meeting-notes-privacy-workflow",
