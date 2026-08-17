@@ -1,0 +1,240 @@
+---
+title: "npm Trusted Publishing Migration Checklist: Replace Long-Lived Tokens with OIDC in 2026"
+description: "Migrate an npm release workflow from persistent registry tokens to trusted publishing with provider-bound OIDC, provenance, rollback, and maintainer controls."
+pubDate: "2026-08-17"
+updatedDate: "2026-08-17"
+category: "Security"
+tags: ["npm", "trusted publishing", "OIDC", "package provenance", "software supply chain"]
+heroImage: "/images/illustrations/tp-npm-oidc-20260817-hero.png"
+schemaType: "Article"
+sources:
+  - title: "Trusted publishers"
+    url: "https://docs.npmjs.com/trusted-publishers/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "Generating provenance statements"
+    url: "https://docs.npmjs.com/generating-provenance-statements/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "About access tokens"
+    url: "https://docs.npmjs.com/about-access-tokens/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "Require 2FA for publishing and settings"
+    url: "https://docs.npmjs.com/requiring-2fa-for-package-publishing-and-settings-modification/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "Staged publishing"
+    url: "https://docs.npmjs.com/staged-publishing/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "OpenID Connect concepts"
+    url: "https://docs.github.com/en/actions/concepts/security/openid-connect"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Configuring OIDC deployments"
+    url: "https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-cloud-providers"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Secure use reference"
+    url: "https://docs.github.com/en/actions/reference/security/secure-use"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Using artifact attestations"
+    url: "https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Sigstore overview"
+    url: "https://docs.sigstore.dev/about/overview/"
+    publication: "Sigstore"
+    year: "2026 accessed"
+internalLinks:
+  - "/posts/ai-coding-agent-repository-safety-checklist-2026/"
+  - "/posts/ai-connector-permission-audit-2026/"
+  - "/posts/passkey-password-manager-setup-2026/"
+  - "/posts/saas-admin-offboarding-access-checklist-2026/"
+visualsCount: 6
+hasVideo: false
+wordCount: 1894
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Is this a guarantee of eligibility or security?"
+    answer: "No. It is a planning workflow; verify current official requirements and account-specific evidence before acting."
+  - question: "Why keep a fallback?"
+    answer: "Short-lived credentials and digital systems can fail, so a protected recovery route prevents one operational problem from becoming a lockout."
+  - question: "What evidence should I retain?"
+    answer: "Keep the minimum dated confirmations, exact source links, responsible owner, and verification result needed to explain the decision."
+draft: false
+---
+
+npm trusted publishing lets an eligible CI workflow request short-lived registry access through OpenID Connect instead of storing a long-lived npm token in routine release secrets. That is a meaningful reduction in standing credential exposure, not a complete supply-chain security solution. A compromised workflow file, maintainer account, dependency, runner, or release decision can still publish harmful code.
+
+The current [npm trusted publishers documentation](https://docs.npmjs.com/trusted-publishers/) lists supported providers, runner constraints, npm and Node requirements, and package configuration steps. Recheck those details on migration day. This guide describes a controlled small-team migration with a rollback window and independent review; it is not a substitute for your registry, organization, or incident-response policy.
+
+![Secure software-release workbench with guarded connection](/images/illustrations/tp-npm-oidc-20260817-hero.png)
+
+## Decide whether the workflow is eligible
+
+A migration should stop before editing secrets if any hard requirement is unresolved:
+
+| Gate | Evidence to collect | Stop condition |
+|---|---|---|
+| Package ownership | Correct npm package and organization maintainers | Unknown or departed owner controls settings |
+| Provider support | Supported CI provider and hosted-runner pattern | Self-hosted or unsupported environment without documented path |
+| Workflow identity | Exact organization, repository, workflow filename, and environment | Release identity is broad or ambiguous |
+| Toolchain | npm and Node versions satisfying current documented minimums | Build relies on incompatible runtime |
+| Branch protection | Reviewed release workflow and protected default/release branch | Publisher can change and approve its own workflow |
+| Recovery | Named owner and protected emergency process | Permanent broad token is the only fallback |
+
+The npm page currently notes one configured trusted publisher per package and explicit allowed actions for newer configurations. Treat that as live product behavior, not an eternal rule. Save the page date and exact workflow identity in the change record.
+
+## Map the existing token before removing it
+
+Inventory the present release path without copying the token value. Record where the secret is stored, which workflows can read it, the token type and scope, who can rotate it, the last successful use, and any manual jobs that depend on it. Search organization and repository secrets, environment secrets, local release files, package-manager configuration, build services, and forgotten forks.
+
+npm’s [access-token documentation](https://docs.npmjs.com/about-access-tokens/) explains current token types and management. Do not assume a secret named `NPM_TOKEN` is the only registry credential. A release might also use automation tokens, granular access tokens, personal configuration, or inherited organization secrets.
+
+Use a redacted dependency table:
+
+| Consumer | Normal purpose | Needed after migration? | Removal evidence |
+|---|---|---|---|
+| Main release workflow | Publish approved version | No, if OIDC succeeds | Successful trusted publish and secret reference removed |
+| Dry-run job | Pack and inspect | Usually no publish credential | Job succeeds without registry write access |
+| Emergency manual release | Break-glass only | Maybe temporarily | Protected owner, expiry, and access log |
+| Local maintainer machine | Historical manual publish | Prefer no standing token | Local config reviewed and token revoked |
+
+![Physical comparison of standing and short-lived release credentials](/images/illustrations/tp-npm-oidc-20260817-01.png)
+
+## Calculate maintenance burden, not breach probability
+
+A transparent workload estimate can justify migration without claiming OIDC makes compromise impossible:
+
+**annual token-maintenance minutes = tokens × planned rotations per year × minutes per rotation**
+
+If four registry tokens are rotated quarterly and each validated rotation takes 25 minutes, the plan consumes `4 × 4 × 25 = 400 minutes`, or 6 hours 40 minutes per year. If the normal path moves to trusted publishing and one protected emergency token is tested twice yearly for 30 minutes, the modeled burden is `1 × 2 × 30 = 60 minutes`.
+
+The modeled difference is 340 minutes. It excludes incident response, workflow review, and provider outages. It is not a forecast of compromise probability or guaranteed labor savings. OIDC trades routine secret rotation for identity-policy and workflow-integrity work; budget reviewer time for that work.
+
+A second useful measure is standing exposure time. A token valid for 90 days has a much larger theoretical availability window than a credential minted for one job, but exposure-hours do not predict attacker success. Use the metric only to compare credential persistence under stated assumptions.
+
+## Bind the publisher narrowly
+
+GitHub’s [OIDC concepts guide](https://docs.github.com/en/actions/concepts/security/openid-connect) explains how a workflow receives an identity token containing claims. The registry uses those claims and its configured trusted-publisher record to decide whether the workload may publish. The security value depends on exact binding. Keep maintainer and settings protection independent: npm also documents [requiring 2FA for package publishing and settings modification](https://docs.npmjs.com/requiring-2fa-for-package-publishing-and-settings-modification/), which protects a different path from workload OIDC.
+
+Match the npm trusted-publisher configuration to the intended organization, repository, workflow filename, and environment. Use the narrowest supported release identity. Avoid a reusable workflow or broad branch pattern unless that scope is understood and reviewed. If environments are supported in the binding, protect the release environment with required reviewers and restricted branches.
+
+The GitHub [OIDC deployment guidance](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-cloud-providers) stresses conditions on identity claims. A token being short-lived does not help if any pull request or arbitrary repository can obtain the accepted identity.
+
+Treat changes to the workflow filename or repository transfer as security changes. The trusted-publisher record can stop matching, or a careless broadening can grant an unintended workflow. Add the exact identity tuple to the release runbook.
+
+![Package provenance represented by nested boxes and inspection chain](/images/illustrations/tp-npm-oidc-20260817-02.png)
+
+## Harden the workflow before the first OIDC publish
+
+Review the workflow as privileged code:
+
+- pin third-party actions to immutable full commit identifiers when practical;
+- grant the workflow token only permissions the build and provenance steps need;
+- isolate untrusted pull-request execution from release secrets and publishing permissions;
+- require reviewed source and a known commit for release;
+- avoid downloading and executing mutable scripts without verification;
+- keep package versioning and tag creation deterministic;
+- generate the package from a clean checkout;
+- inspect the packed file list before publish;
+- preserve build logs and the exact source commit;
+- prevent the publishing identity from approving its own workflow change.
+
+GitHub’s [secure use reference](https://docs.github.com/en/actions/reference/security/secure-use) covers least-privilege tokens, untrusted input, and immutable action references. Pair these controls with the [AI coding-agent repository safety checklist](/posts/ai-coding-agent-repository-safety-checklist-2026/) if an agent can edit workflow files. An agent must not change the publisher trust boundary and then approve or release its own change.
+
+The [AI connector permission audit](/posts/ai-connector-permission-audit-2026/) is useful for inventorying adjacent CI integrations. Remove release access from bots and connectors that have no current owner or purpose.
+
+## Add provenance without overstating it
+
+npm’s [provenance guide](https://docs.npmjs.com/generating-provenance-statements/) explains how supported CI can associate published packages with build information. GitHub also documents [artifact attestations](https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations), and [Sigstore](https://docs.sigstore.dev/about/overview/) describes identity-bound signing and transparency concepts.
+
+Provenance can help a consumer connect an artifact to a source repository and build process. It does not prove the source is benign, dependencies are safe, tests are complete, or the maintainer intended every change. Avoid claims such as “verified secure package.” Use precise language: the registry displays provenance for a package produced by the configured workflow from a specific source context.
+
+Before migration, choose verification evidence:
+
+1. packed file manifest and checksum generated during the job;
+2. source commit and release tag;
+3. workflow run identifier;
+4. npm package/version and dist-tag after publication;
+5. provenance indicator or statement where supported;
+6. an independent install in a clean temporary project.
+
+![Three isolated platforms representing staged release progression](/images/illustrations/tp-npm-oidc-20260817-03.png)
+
+## Use a two-release migration
+
+For Release A, keep the old token available only as a protected rollback mechanism while the normal workflow attempts trusted publishing. Do not expose both paths to the same broad job. Require a named release owner to invoke fallback after diagnosing the OIDC failure. Record whether the failure was identity mismatch, provider outage, toolchain version, package setting, or workflow permission.
+
+After Release A succeeds, verify the published version, package contents, provenance, source commit, and clean installation. Remove the routine token reference from the workflow, but do not immediately declare the whole migration complete. Observe one normal consumption cycle and confirm downstream automation does not secretly require the old credential.
+
+For Release B, run the trusted path again with the routine token unavailable. If it succeeds and the recovery plan is documented, revoke the old long-lived token. Search logs and configuration for its secret name, but never print the value. Record revocation time and owner.
+
+npm’s [staged publishing documentation](https://docs.npmjs.com/staged-publishing/) may offer a separate safety mechanism for supported workflows. Staging and OIDC solve different problems: OIDC authenticates the publisher workload; staging introduces a controlled release phase. Verify current compatibility before combining them.
+
+## Preserve a bounded recovery path
+
+A fallback should be less convenient than the normal route and more controlled than an undocumented personal token. Define:
+
+- the incident or outage that permits fallback;
+- who can approve and execute it;
+- where a short-lived or tightly scoped credential is created;
+- how its use is logged;
+- when it expires or is revoked;
+- how the normal trusted-publisher path is restored;
+- who reviews any package published during fallback.
+
+Use named maintainers and role-based access. The [SaaS admin offboarding checklist](/posts/saas-admin-offboarding-access-checklist-2026/) helps ensure a former maintainer does not remain the only person able to change package or CI settings. Protect maintainers with phishing-resistant authentication and a tested recovery path; the [passkey and password-manager setup guide](/posts/passkey-password-manager-setup-2026/) is a companion, not a guarantee.
+
+![Maintainer recovery kit with sealed envelope and hardware key](/images/illustrations/tp-npm-oidc-20260817-04.png)
+
+## Verification and rollback table
+
+| Check | Pass evidence | Rollback trigger |
+|---|---|---|
+| Workflow identity | Registry record matches exact intended workflow | Unexpected repo, branch, environment, or workflow can publish |
+| Package contents | Packed manifest matches reviewed source | Generated or secret file appears unexpectedly |
+| Version integrity | Expected version and dist-tag are visible | Wrong version or tag points to bad artifact |
+| Provenance | Statement/indicator maps to intended source and run | Missing or mismatched source identity |
+| Consumer test | Clean install and representative import/command pass | Install resolves different or broken artifact |
+| Token removal | Routine workflow has no standing npm token | Old secret remains reachable by normal jobs |
+
+If a bad version reaches the registry, follow npm’s current deprecation, dist-tag, support, and removal rules. Do not promise that an already-downloaded package can be recalled. Preserve evidence before changing tags or publishing a fix.
+
+![Release rollback scene with isolated package and protected baseline](/images/illustrations/tp-npm-oidc-20260817-05.png)
+
+## Limitations and security boundaries
+
+Trusted publishing reduces dependence on long-lived registry credentials in eligible workflows. It does not secure source-code review, dependency selection, package ownership, CI administration, release intent, consumer environments, or emergency access. Provider support and version requirements can change. Self-hosted runners may have different or unsupported trust characteristics.
+
+Do not run the migration from an unreviewed branch, grant broad repository write access merely to fix an OIDC error, or leave an all-powerful fallback token active indefinitely. If a package is high impact, use an independent reviewer, protected release environment, incident plan, and registry support contact.
+
+## Final migration checklist
+
+- [ ] Package ownership and maintainer roster are current.
+- [ ] Provider, runner, Node, and npm versions meet current requirements.
+- [ ] Trusted publisher is bound to the exact intended workflow identity.
+- [ ] Release workflow uses least privilege and immutable dependencies where practical.
+- [ ] Package contents are inspected before publish.
+- [ ] Source commit, run, version, dist-tag, and provenance are recorded.
+- [ ] Release A keeps a protected fallback; Release B proves normal token-free operation.
+- [ ] Old standing token is revoked after downstream verification.
+- [ ] Emergency publishing has an owner, expiry, log, and restoration path.
+
+## FAQ
+
+### Does OIDC make a package trustworthy?
+
+No. It can authenticate the build workload and reduce standing secret exposure. It does not prove the source or dependencies are safe.
+
+### Should the old token be revoked before the first test?
+
+Usually no. Keep a tightly protected rollback path for the first controlled release, then remove routine access and revoke the old token after independent verification.
+
+### Can a self-hosted runner use this workflow?
+
+Do not assume so. Check the current npm supported-provider and runner requirements for the exact environment.

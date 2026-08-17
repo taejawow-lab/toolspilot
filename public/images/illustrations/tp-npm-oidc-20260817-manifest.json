@@ -1,0 +1,142 @@
+{
+  "site": "toolspilot",
+  "slug": "npm-trusted-publishing-oidc-migration-checklist-2026",
+  "date": "2026-08-17",
+  "checkpoint": "RealVisXL_V5.0_fp16.safetensors",
+  "dimensions": [
+    1536,
+    864
+  ],
+  "assets": [
+    {
+      "filename": "tp-npm-oidc-20260817-hero.png",
+      "file": "public/images/illustrations/tp-npm-oidc-20260817-hero.png",
+      "prompt": "secure software release metaphor using plain nested package blocks, one small metal key sealed in a transparent case, one guarded short connection and closed archive box, realistic editorial still life",
+      "negative_prompt": "readable text, typography, words, letters, numbers, logo, watermark, brand, screen, user interface, keyboard, document, form, receipt, passport, identification card, boarding pass, QR code, barcode, official seal, currency, calculator, camera, people, person, human, child, hands, face, body, vehicle, license plate, road sign, distorted object, duplicate object, unsafe road, cartoon, illustration",
+      "prompt_id": "15b92b12-cc3d-408a-952e-85779eab2888",
+      "seed": 202608171503,
+      "checkpoint": "RealVisXL_V5.0_fp16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1356464,
+      "accepted": true,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260817_regen_toolspilot_hero_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "visual_qa": "PASS: final contact-sheet review; no readable text/logo/UI/people/distortion or topic-safety defect"
+    },
+    {
+      "filename": "tp-npm-oidc-20260817-01.png",
+      "file": "public/images/illustrations/tp-npm-oidc-20260817-01.png",
+      "prompt": "two credential lifetimes represented by one large metal key locked inside a plain vault box and one small temporary token passing through a narrow transparent gate, realistic tabletop still life",
+      "negative_prompt": "readable text, typography, words, letters, numbers, logo, watermark, brand, screen, user interface, keyboard, document, form, receipt, passport, identification card, boarding pass, QR code, barcode, official seal, currency, calculator, camera, people, person, human, child, hands, face, body, vehicle, license plate, road sign, distorted object, duplicate object, unsafe road, cartoon, illustration",
+      "prompt_id": "8f15f168-95d0-47e1-87f1-76c99d9e4c78",
+      "seed": 202608171504,
+      "checkpoint": "RealVisXL_V5.0_fp16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1271239,
+      "accepted": true,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260817_regen_toolspilot_01_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "visual_qa": "PASS: final contact-sheet review; no readable text/logo/UI/people/distortion or topic-safety defect"
+    },
+    {
+      "filename": "tp-npm-oidc-20260817-02.png",
+      "file": "public/images/illustrations/tp-npm-oidc-20260817-02.png",
+      "prompt": "software package provenance represented by plain nested boxes, transparent chain links and inspection lamp, realistic photography, no labels",
+      "negative_prompt": "readable text, words, letters, numbers, logos, watermark, brand marks, fake user interface, screen content, QR code, barcode, official seal, form, receipt, passport, boarding pass, currency, calculator, hands, people, faces, distorted object, duplicate object, bad anatomy, low resolution, illustration, cartoon, unsafe scene",
+      "prompt_id": "00dec169-5f39-48b4-88d1-0d694daf33ae",
+      "seed": 202608170009,
+      "checkpoint": "RealVisXL_V5.0_fp16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1301595,
+      "accepted": true,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260817_toolspilot_02_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "visual_qa": "PASS: final contact-sheet review; no readable text/logo/UI/people/distortion or topic-safety defect"
+    },
+    {
+      "filename": "tp-npm-oidc-20260817-03.png",
+      "file": "public/images/illustrations/tp-npm-oidc-20260817-03.png",
+      "prompt": "staged release lane represented by three isolated neutral platforms and a protected final package, no screens, realistic editorial still life",
+      "negative_prompt": "readable text, words, letters, numbers, logos, watermark, brand marks, fake user interface, screen content, QR code, barcode, official seal, form, receipt, passport, boarding pass, currency, calculator, hands, people, faces, distorted object, duplicate object, bad anatomy, low resolution, illustration, cartoon, unsafe scene",
+      "prompt_id": "ef4d9ce6-0e21-4528-bd70-20b449dbd9cc",
+      "seed": 202608170010,
+      "checkpoint": "RealVisXL_V5.0_fp16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 897677,
+      "accepted": true,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260817_toolspilot_03_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "visual_qa": "PASS: final contact-sheet review; no readable text/logo/UI/people/distortion or topic-safety defect"
+    },
+    {
+      "filename": "tp-npm-oidc-20260817-04.png",
+      "file": "public/images/illustrations/tp-npm-oidc-20260817-04.png",
+      "prompt": "maintainer recovery kit using only plain hardware key shapes, sealed unmarked envelope, small metal lock and closed vault box, no electronic devices, realistic overhead photography",
+      "negative_prompt": "readable text, typography, words, letters, numbers, logo, watermark, brand, screen, user interface, keyboard, document, form, receipt, passport, identification card, boarding pass, QR code, barcode, official seal, currency, calculator, camera, people, person, human, child, hands, face, body, vehicle, license plate, road sign, distorted object, duplicate object, unsafe road, cartoon, illustration",
+      "prompt_id": "98f43691-61ec-4bdf-875e-1d6e2c8debc1",
+      "seed": 202608171505,
+      "checkpoint": "RealVisXL_V5.0_fp16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1462361,
+      "accepted": true,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260817_regen_toolspilot_04_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "visual_qa": "PASS: final contact-sheet review; no readable text/logo/UI/people/distortion or topic-safety defect"
+    },
+    {
+      "filename": "tp-npm-oidc-20260817-05.png",
+      "file": "public/images/illustrations/tp-npm-oidc-20260817-05.png",
+      "prompt": "calm release rollback scene with one package isolated and a clean baseline package retained behind a transparent shield, realistic photography",
+      "negative_prompt": "readable text, words, letters, numbers, logos, watermark, brand marks, fake user interface, screen content, QR code, barcode, official seal, form, receipt, passport, boarding pass, currency, calculator, hands, people, faces, distorted object, duplicate object, bad anatomy, low resolution, illustration, cartoon, unsafe scene",
+      "prompt_id": "0f49adc6-54b3-444b-b0fd-89aac3f5a94d",
+      "seed": 202608170012,
+      "checkpoint": "RealVisXL_V5.0_fp16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1114683,
+      "accepted": true,
+      "comfy_output": {
+        "filename": "hermes_batch_d_20260817_toolspilot_05_00001_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "visual_qa": "PASS: final contact-sheet review; no readable text/logo/UI/people/distortion or topic-safety defect"
+    }
+  ],
+  "contact_sheet": "/home/taekm33/blog-ops/16-sites/reports/batch-d-20260817-toolspilot-contact-sheet-final.jpg",
+  "qa_status": "PASSED",
+  "accepted_count": 6,
+  "rejected_excluded": []
+}
