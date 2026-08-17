@@ -529,3 +529,34 @@ a.card:hover, .card.is-link:hover { transform: translateY(-4px); box-shadow: var
 .tp-toast.show{opacity:1;transform:translate(-50%,0)}
 .icon-btn[aria-pressed="true"]{background:var(--primary-tint);color:var(--primary);border-color:var(--primary-tint2)}
 .newsletter button[disabled]{opacity:.72;cursor:wait}
+
+/* 2026-08-17 mobile article overflow guard: keep editorial shells inside the viewport. */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
+main, article, header, footer, .wrap, .container, .article-head, .tp-article-shell, .prose, .prose-article {
+  min-width: 0;
+  max-width: 100%;
+}
+h1, h2, h3, .art-title, .article-head h1 {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+article img, .prose img, .prose-article img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 640px) {
+  h1, .art-title, .article-head h1 {
+    text-wrap: wrap !important;
+    word-break: normal;
+  }
+  article table, .prose table, .prose-article table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
