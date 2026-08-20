@@ -1,0 +1,245 @@
+---
+title: "npm Install Script Approval Checklist: ignore-scripts vs allowScripts in CI (2026)"
+description: "Decide when npm lifecycle scripts may run, review allowScripts safely, use ignore-scripts in restricted CI, and preserve reproducible builds and rollback."
+pubDate: "2026-08-20"
+updatedDate: "2026-08-20"
+category: "Security"
+tags: ["npm", "install scripts", "software supply chain", "CI security", "dependency review"]
+heroImage: "/images/illustrations/tp-npm-install-scripts-20260820-hero.png"
+schemaType: "Article"
+sources:
+  - title: "Scripts"
+    url: "https://docs.npmjs.com/cli/v11/using-npm/scripts/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "Config: ignore-scripts and allow-scripts"
+    url: "https://docs.npmjs.com/cli/v11/using-npm/config#ignore-scripts"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "npm-approve-scripts"
+    url: "https://docs.npmjs.com/cli/v11/commands/npm-approve-scripts/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "npm-ci"
+    url: "https://docs.npmjs.com/cli/v11/commands/npm-ci/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "package-lock.json"
+    url: "https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "npm-audit"
+    url: "https://docs.npmjs.com/cli/v11/commands/npm-audit/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "Dependency review"
+    url: "https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Secure use reference"
+    url: "https://docs.github.com/en/actions/reference/security/secure-use"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Dependabot alerts"
+    url: "https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Settings (.yarnrc.yml): enableScripts"
+    url: "https://yarnpkg.com/configuration/yarnrc#enableScripts"
+    publication: "Yarn"
+    year: "2026 accessed"
+  - title: "Vulnerable Dependency Management Cheat Sheet"
+    url: "https://cheatsheetseries.owasp.org/cheatsheets/Vulnerable_Dependency_Management_Cheat_Sheet.html"
+    publication: "OWASP Cheat Sheet Series"
+    year: "2026 accessed"
+internalLinks:
+  - "/posts/npm-trusted-publishing-oidc-migration-checklist-2026/"
+  - "/posts/ai-coding-agent-repository-safety-checklist-2026/"
+  - "/posts/ai-connector-permission-audit-2026/"
+  - "/posts/client-browser-isolation-setup-2026/"
+visualsCount: 6
+hasVideo: false
+wordCount: 2274
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Does npm ci disable install scripts?"
+    answer: "No. npm ci provides a clean, lockfile-based install, but lifecycle-script policy is separate. Use and verify the script controls appropriate to the job."
+  - question: "Is allowScripts an enforcement boundary in npm 11?"
+    answer: "Do not assume that. The npm 11.19.0 documentation describes the field as advisory in the current release and says unreviewed scripts still run by default."
+  - question: "Should every CI job use --ignore-scripts?"
+    answer: "No. Some packages legitimately need native compilation or artifact setup. Test each job and isolate any script-enabled build."
+  - question: "Does npm audit prove an install is safe?"
+    answer: "No. It reports known vulnerability information and can verify supported signatures, but it does not establish that every package or script is benign."
+draft: false
+---
+
+An npm dependency can execute lifecycle code while a developer or CI runner installs the project. That supports legitimate native compilation, binary selection, code generation, and setup work. It also means “download dependencies” can become “run dependency-controlled code” before the application starts.
+
+The right policy is not automatically “block every script” or “trust the lockfile.” Identify which jobs require lifecycle execution, review the packages that receive that privilege, constrain the runner, and keep a reproducible no-script path for tasks that do not need builds. npm’s current [lifecycle documentation](https://docs.npmjs.com/cli/v11/using-npm/scripts/) lists `preinstall`, `install`, `postinstall`, and other events in the installation sequence. Treat those events as executable behavior, not passive metadata.
+
+![Plain software package blocks approaching a guarded installation boundary](/images/illustrations/tp-npm-install-scripts-20260820-hero.png)
+
+## The npm 11 distinction: inventory is not enforcement
+
+npm 11 adds an `allowScripts` field and an `npm approve-scripts` workflow for recording reviewed dependencies. The current [npm approve-scripts documentation](https://docs.npmjs.com/cli/v11/commands/npm-approve-scripts/) says the command manages approvals for dependencies with install scripts. It also gives a critical limitation for npm 11.19.0: the field is **advisory in the current release**, so unreviewed scripts still run by default while npm reports packages awaiting review. A future release may block unreviewed scripts, but a future plan is not a control you can count on today.
+
+| Choice | What it does now | Useful when | Main limitation |
+|---|---|---|---|
+| Normal `npm ci` | Clean install from the existing lockfile; applicable lifecycle behavior runs | A controlled build genuinely needs package setup | A lockfile freezes resolution; it does not disable execution |
+| `npm ci --ignore-scripts` | Skips scripts declared in package manifests during installation | Lint, inventory, or static checks that operate without built add-ons | Packages needing compilation or setup may fail later |
+| `allowScripts` plus review | Records reviewed or denied packages and surfaces pending script owners | Building a team inventory before stronger enforcement arrives | In npm 11.19.0, approvals are advisory, not default-deny enforcement |
+
+The npm [configuration reference](https://docs.npmjs.com/cli/v11/using-npm/config#ignore-scripts) says `ignore-scripts=true` prevents scripts in package manifests from running, while commands explicitly intended to run a script—such as `npm test` or `npm run`—still run the requested script without its pre- and post-hooks. A job that installs with `--ignore-scripts` can therefore execute project code later when the workflow explicitly invokes it.
+
+## Inventory the actual execution surface
+
+Do not approve a package merely because its name is familiar. Start from a clean branch and capture four things without running a newly introduced script on a privileged workstation:
+
+1. package and resolved version;
+2. lifecycle hook names it declares;
+3. command and files the hook invokes;
+4. credentials, filesystem paths, and network destinations available when it runs.
+
+A direct dependency may bring a transitive package with a lifecycle hook. A package from a Git URL or local path can have different preparation behavior from a registry archive. npm’s lifecycle reference notes that `prepare` applies in several packaging and installation contexts and that lifecycle order differs by command. Review the exact command your workflow uses.
+
+![Unmarked modules passing through a narrow mechanical execution gate](/images/illustrations/tp-npm-install-scripts-20260820-01.png)
+
+For a new or changed dependency, inspect the lockfile diff, package manifest, published artifact contents where available, repository ownership, release history, and the hook’s purpose. Do not paste an unknown script into a shell merely to see what it does on a credentialed machine. If inspection requires execution, use a disposable environment with no production secrets and a narrow or disabled network.
+
+The [AI coding-agent repository safety checklist](/posts/ai-coding-agent-repository-safety-checklist-2026/) applies when an agent proposes a dependency or lockfile update. An agent should not add a package, broaden lifecycle permission, and approve its own result. Keep approval and merge authority independent.
+
+## Use the lockfile for reproducibility, not as a trust certificate
+
+The [npm ci reference](https://docs.npmjs.com/cli/v11/commands/npm-ci/) requires an existing `package-lock.json` or `npm-shrinkwrap.json`, exits when the lock and manifest disagree, removes an existing `node_modules`, and does not rewrite package files. Those properties are valuable for repeatability and review.
+
+The [package-lock documentation](https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json/) says the file describes the exact generated dependency tree and records artifact integrity information. That helps reproduce which artifact was resolved. It does not prove the artifact’s lifecycle script is harmless or that a runner should expose cloud credentials to it.
+
+Use both layers:
+
+- **Resolution control:** committed lockfile, reviewed diff, frozen `npm ci`, consistent install flags.
+- **Execution control:** scripts disabled where unnecessary; isolated, least-privilege runner where necessary; reviewed lifecycle inventory; restricted outbound access.
+
+If the lockfile was generated with dependency-tree flags such as `--legacy-peer-deps` or `--install-links`, npm’s `ci` documentation says the same settings need to be supplied to the clean install. Commit project-scoped configuration rather than adding an unexplained CI-only exception.
+
+![A dependency tree of nested boxes with one branch isolated for review](/images/illustrations/tp-npm-install-scripts-20260820-02.png)
+
+## Decide policy per job, not once per repository
+
+A documentation check may only need package files. A typecheck may need a compiler but not every optional native build. An integration test may require native modules. A release build may need the full reviewed setup.
+
+| Job | Needs lifecycle output? | Credentials | Recommended starting mode |
+|---|---:|---|---|
+| Manifest or license check | Usually no | None | `npm ci --ignore-scripts`, then verify the tool runs |
+| Lint or typecheck | Project-specific | Read-only repository token at most | Try no-script install; document exceptions |
+| Unit test | Sometimes | No production secrets | No-script if tests pass; otherwise isolated install |
+| Native build | Often | Artifact store only if required | Script-enabled disposable, restricted runner |
+| Package release | Project-specific | Short-lived publish identity | Separate reviewed release environment |
+
+Do not place cloud administration credentials, publisher tokens, signing keys, or production database access in the job that first evaluates a new dependency hook. GitHub’s [secure use reference](https://docs.github.com/en/actions/reference/security/secure-use) recommends least-privilege workflow credentials and immutable full commit identifiers for third-party actions. The same blast-radius principle applies to package lifecycle execution.
+
+If the workflow publishes npm packages, pair these consumer-side controls with the [npm trusted publishing migration guide](/posts/npm-trusted-publishing-oidc-migration-checklist-2026/). Trusted publishing reduces standing registry-token exposure; it does not make earlier dependency execution safe.
+
+![Three separate installation-policy lanes with different gate widths](/images/illustrations/tp-npm-install-scripts-20260820-03.png)
+
+## Build an approval record without overstating it
+
+Run `npm approve-scripts --allow-scripts-pending` in a review branch to identify dependencies not covered by policy. Read the proposed entries before updating `package.json`. The npm command documentation says the command is currently unaware of workspaces, so a monorepo owner must verify each workspace and root policy rather than assuming one command covered the whole tree.
+
+For every approval, record:
+
+- exact package and version or deliberately broader scope;
+- lifecycle hooks and command executed;
+- why the application needs their output;
+- expected files and network access;
+- review source, date, owner, and next-review trigger;
+- a test showing what breaks under `--ignore-scripts`;
+- rollback: remove approval, restore lockfile, rebuild cleanly.
+
+Prefer version-pinned approvals when supported. The npm configuration documentation says `allow-scripts-pin` defaults to writing `package@version` approvals. A name-only approval has broader future reach and needs an explicit reason. A reviewed version is not an approval for every future release.
+
+The same reference describes one-off `--allow-scripts` use for contexts without a project `package.json`, such as global installs or `npx`. Avoid turning that exception into a wildcard. A global developer environment usually has more personal credentials and unrelated files than a purpose-built CI container.
+
+## Calculate the review load
+
+A transparent workload model distinguishes a manageable allowlist from ceremonial approval:
+
+**monthly review minutes = changed script-bearing packages × minutes per package + exceptions × retest minutes**
+
+Assume 8 changed packages with lifecycle hooks. If review averages 12 minutes each and 3 need an additional 18-minute no-script comparison, the modeled load is `8 × 12 + 3 × 18 = 150 minutes`, or **2 hours 30 minutes per month**.
+
+At 40 script-bearing changes and 10 retests, the same assumptions produce `40 × 12 + 10 × 18 = 660 minutes`, or **11 hours**. This does not estimate breach probability and does not prove 12 minutes is enough. It exposes staffing: reduce update batch size, automate inventory, split repositories, or add reviewers instead of clicking approvals faster.
+
+A second decision aid is:
+
+**privileged lifecycle executions = script-enabled installs × concurrent jobs × scheduled runs**
+
+If one workflow performs 3 script-enabled installs across 4 environments on 5 weekdays, that is `3 × 4 × 5 = 60` execution opportunities per week. Consolidating builds to one restricted artifact job and letting test jobs consume the artifact can reduce the modeled count to `1 × 1 × 5 = 5`. This is an exposure count, not a claim that any run is malicious.
+
+## Add dependency and vulnerability checks
+
+GitHub’s [dependency review documentation](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review) explains that pull requests can show direct and indirect dependency changes and known-vulnerability information from manifest and lockfile updates. Require that review where available, but still inspect lifecycle behavior: advisory databases do not describe every risky script or compromised release immediately.
+
+[Dependabot alerts documentation](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/about-dependabot-alerts) says alerts use the dependency graph and reviewed advisories, and notes that alerts cannot catch every issue and may arrive later. “No alert” does not mean “safe package.”
+
+The [npm audit reference](https://docs.npmjs.com/cli/v11/commands/npm-audit/) says the command sends a dependency description to the default registry for known-vulnerability analysis. It also documents `npm audit signatures` for supported registry signatures and provenance attestations. These checks answer different questions from install-script approval. A valid signature does not prove an authorized publisher’s script is benign.
+
+OWASP’s [vulnerable dependency management guidance](https://cheatsheetseries.owasp.org/cheatsheets/Vulnerable_Dependency_Management_Cheat_Sheet.html) recommends introducing automated analysis early and warns that its approach is not a universal solution. Combine automation with ownership and escalation.
+
+## Test in quarantine before normal access
+
+1. Install from the reviewed lockfile with `--ignore-scripts`.
+2. Run jobs that claim not to need lifecycle output.
+3. Record the exact missing artifact or failure without enabling every script.
+4. Inspect the responsible package and transitive path.
+5. Run the required hook in a disposable environment with no inherited secrets.
+6. Compare filesystem changes, child processes, and network destinations with the approval record.
+7. Enable only the minimum job scope and rerun from a clean image.
+8. Remove the environment after preserving non-sensitive evidence.
+
+![One sealed package isolated inside a transparent inspection chamber](/images/illustrations/tp-npm-install-scripts-20260820-04.png)
+
+The isolation model in the [client browser isolation guide](/posts/client-browser-isolation-setup-2026/) applies here: unfamiliar code starts away from valuable sessions and data. For CI, that means no reused developer home, mounted Docker control socket, broad cloud profile, or write access to unrelated repositories.
+
+A hook may fetch a platform binary or compile locally. If a download is necessary, prefer a documented official destination, preserve integrity evidence, and block arbitrary network access. An allowlisted package name is not an allowlisted network destination.
+
+## Roll back when a package surprises you
+
+Stop when a hook reaches an unexplained host, reads unrelated paths, changes shell startup files, writes outside the workspace, produces unexpected binaries, asks for elevated permission, or behaves differently from the reviewed version.
+
+1. Stop the runner and revoke temporary credentials that may have been exposed.
+2. Preserve relevant logs and the dependency diff without publishing secrets.
+3. Restore the last reviewed manifest and lockfile.
+4. Remove the package approval.
+5. Rebuild from a clean image rather than reusing `node_modules`.
+6. Check other workflows, caches, and artifacts that used the version.
+7. Open an internal incident or upstream report through an appropriate channel.
+
+The [AI connector permission audit](/posts/ai-connector-permission-audit-2026/) provides a companion inventory pattern for tokens and integrations the runner may have reached. Rotate based on plausible exposure, not on whether the script printed a credential.
+
+![A changed package set separated from a protected clean baseline](/images/illustrations/tp-npm-install-scripts-20260820-05.png)
+
+## Limitations and package-manager differences
+
+This checklist is specific to npm 11 behavior observed on August 20, 2026. npm can change `allowScripts` enforcement, flags, and workspace handling. Pin the npm version in CI and recheck live documentation before relying on a policy boundary.
+
+Do not copy npm flags to Yarn or pnpm by analogy. Yarn’s current [`enableScripts` setting](https://yarnpkg.com/configuration/yarnrc#enableScripts) documents a different model for third-party postinstall scripts and workspaces. Use the exact versioned documentation and clean-install tests for the manager committed to the repository.
+
+Disabling scripts can break legitimate packages, and enabling a reviewed script cannot guarantee safety. Static inspection can miss generated commands or platform-specific paths. Sandboxes, containers, lockfiles, signatures, vulnerability feeds, and human review each reduce a different risk; none makes dependency execution universally safe.
+
+## Final checklist
+
+- [ ] Pin and record the npm version used by CI.
+- [ ] Use `npm ci` with a committed, reviewed lockfile.
+- [ ] Try `--ignore-scripts` in every job that may not need lifecycle output.
+- [ ] Inventory direct and transitive packages with install-time hooks.
+- [ ] Treat npm 11 `allowScripts` as advisory until the installed release documents enforcement.
+- [ ] Pin approvals to versions unless broader scope is deliberately reviewed.
+- [ ] Keep script-enabled jobs away from production secrets and unrelated repositories.
+- [ ] Restrict network destinations and compare behavior with the approval record.
+- [ ] Require dependency and lockfile review before merge.
+- [ ] Run known-vulnerability and supported signature checks as separate evidence.
+- [ ] Preserve rollback that removes the package, approval, cache, and artifacts.
+- [ ] Re-review when package version, script content, registry source, runner image, or npm behavior changes.
+
+The practical goal is not zero lifecycle scripts at any cost. It is **known executable dependencies, narrow execution environments, reproducible inputs, and an ordinary way to say no**.

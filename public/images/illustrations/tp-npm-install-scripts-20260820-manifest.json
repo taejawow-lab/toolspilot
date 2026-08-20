@@ -1,0 +1,131 @@
+{
+  "site": "toolspilot",
+  "slug": "npm-install-script-approval-ignore-scripts-allowscripts-ci-checklist-2026",
+  "date": "2026-08-20",
+  "assets": [
+    {
+      "filename": "tp-npm-install-scripts-20260820-hero.png",
+      "file": "public/images/illustrations/tp-npm-install-scripts-20260820-hero.png",
+      "source_file": "tp-npm-install-scripts-20260820-01.png",
+      "workflow": "direct RealVisXL",
+      "prompt": "package lifecycle execution represented as plain unmarked wooden modules passing through a mechanical safety gate with one disconnected cable outside the boundary, realistic studio still life",
+      "prompt_export_gap": null,
+      "negative_prompt": "people, person, face, hands, fingers, body, readable text, letters, numbers, logo, watermark, signature, brand, fake user interface, app dock, icons, browser window, code screen, laptop, monitor, phone, screen, keyboard, document, paper, form, receipt, certificate, currency, calculator, medicine, label, barcode, QR code, distorted object, warped object, impossible geometry, duplicate object, floating object, clutter, blurry, low resolution, oversaturated, cartoon, anime, 3d render, illustration",
+      "prompt_id": "0c8ea995-2902-45e4-a8e6-40c66097913e",
+      "seed": 202608202102,
+      "checkpoint": "RealVisXL_V5.0_fp16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1952717,
+      "accepted": true,
+      "visual_qa": "PASS: final accepted-set contact-sheet review; no readable/fake text, UI/screens, logos, people/hands/faces, documents, or material distortion"
+    },
+    {
+      "filename": "tp-npm-install-scripts-20260820-01.png",
+      "file": "public/images/illustrations/tp-npm-install-scripts-20260820-01.png",
+      "source_file": "tp-npm-install-scripts-20260820-05.png",
+      "workflow": "direct RealVisXL",
+      "prompt": "safe rollback represented by a newly changed group of plain package blocks separated from a protected clean baseline behind a transparent shield, one disconnected connector, realistic photography",
+      "prompt_export_gap": null,
+      "negative_prompt": "people, person, face, hands, fingers, body, readable text, letters, numbers, logo, watermark, signature, brand, fake user interface, app dock, icons, browser window, code screen, laptop, monitor, phone, screen, keyboard, document, paper, form, receipt, certificate, currency, calculator, medicine, label, barcode, QR code, distorted object, warped object, impossible geometry, duplicate object, floating object, clutter, blurry, low resolution, oversaturated, cartoon, anime, 3d render, illustration",
+      "prompt_id": "bc889f47-7cf9-4751-920d-2b2085469b35",
+      "seed": 202608202106,
+      "checkpoint": "RealVisXL_V5.0_fp16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1733499,
+      "accepted": true,
+      "visual_qa": "PASS: final accepted-set contact-sheet review; no readable/fake text, UI/screens, logos, people/hands/faces, documents, or material distortion"
+    },
+    {
+      "filename": "tp-npm-install-scripts-20260820-02.png",
+      "file": "public/images/illustrations/tp-npm-install-scripts-20260820-02.png",
+      "source_file": "tp-npm-install-scripts-20260820-02-r4.png",
+      "workflow": "z_image_turbo_portrait",
+      "prompt": null,
+      "prompt_export_gap": "exact prompt omitted by r4 MCP manifest; concept provenance retained in live job history",
+      "negative_prompt": "people, face, hands, body, text, letters, numbers, logo, watermark, brand, sign, label, screen, user interface, document, distortion",
+      "prompt_id": "b8c6112b-7748-496d-8d32-eb335b047102",
+      "seed": 202608202402,
+      "checkpoint": "z_image_turbo_bf16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1488205,
+      "accepted": true,
+      "visual_qa": "PASS: final accepted-set contact-sheet review; no readable/fake text, UI/screens, logos, people/hands/faces, documents, or material distortion"
+    },
+    {
+      "filename": "tp-npm-install-scripts-20260820-03.png",
+      "file": "public/images/illustrations/tp-npm-install-scripts-20260820-03.png",
+      "source_file": "tp-npm-install-scripts-20260820-04-r4.png",
+      "workflow": "z_image_turbo_portrait",
+      "prompt": null,
+      "prompt_export_gap": "exact prompt omitted by r4 MCP manifest; concept provenance retained in live job history",
+      "negative_prompt": "people, face, hands, body, text, letters, numbers, logo, watermark, brand, sign, label, screen, user interface, document, distortion",
+      "prompt_id": "670253c6-6a65-48ac-9ab6-95799fa0a4ca",
+      "seed": 202608202404,
+      "checkpoint": "z_image_turbo_bf16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1076268,
+      "accepted": true,
+      "visual_qa": "PASS: final accepted-set contact-sheet review; no readable/fake text, UI/screens, logos, people/hands/faces, documents, or material distortion"
+    },
+    {
+      "filename": "tp-npm-install-scripts-20260820-04.png",
+      "file": "public/images/illustrations/tp-npm-install-scripts-20260820-04.png",
+      "source_file": "tp-npm-install-scripts-20260820-05-r4.png",
+      "workflow": "z_image_turbo_portrait",
+      "prompt": null,
+      "prompt_export_gap": "exact prompt omitted by r4 MCP manifest; concept provenance retained in live job history",
+      "negative_prompt": "people, face, hands, body, text, letters, numbers, logo, watermark, brand, sign, label, screen, user interface, document, distortion",
+      "prompt_id": "538a369c-1454-4246-ab30-0c760cfe2547",
+      "seed": 202608202405,
+      "checkpoint": "z_image_turbo_bf16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1274958,
+      "accepted": true,
+      "visual_qa": "PASS: final accepted-set contact-sheet review; no readable/fake text, UI/screens, logos, people/hands/faces, documents, or material distortion"
+    },
+    {
+      "filename": "tp-npm-install-scripts-20260820-05.png",
+      "file": "public/images/illustrations/tp-npm-install-scripts-20260820-05.png",
+      "source_file": "20260820_194103_realvis_2337282341.png",
+      "workflow": "natural candidate script RealVisXL",
+      "prompt": "realistic studio photograph of six smooth solid-color river stones arranged in a line approaching a plain transparent acrylic gate, one stone isolated behind the gate, white tabletop, abstract software approval metaphor, no wooden blocks, no electronics, no computers, no people, no hands, no text, no letters, no numbers, no labels, no logos, no screens, no documents",
+      "prompt_export_gap": null,
+      "negative_prompt": "people, person, face, hands, fingers, body, readable text, letters, numbers, logo, watermark, signature, fake user interface, app dock, icons, browser window, code screen, open laptop screen, monitor screen, document, forms, receipts, certificates, currency, medicine labels, policy paper, passport, distorted objects, warped laptop, impossible geometry, extra objects, clutter, blurry, low resolution, oversaturated, cartoon, anime, 3d render, illustration artifacts",
+      "prompt_id": "c79626c9-7514-44b7-8c1d-94293879f956",
+      "seed": 2337282341,
+      "checkpoint": "RealVisXL_V5.0_fp16.safetensors",
+      "dimensions": [
+        1536,
+        864
+      ],
+      "bytes": 1156267,
+      "accepted": true,
+      "visual_qa": "PASS: final accepted-set contact-sheet review; no readable/fake text, UI/screens, logos, people/hands/faces, documents, or material distortion"
+    }
+  ],
+  "accepted_count": 6,
+  "qa_status": "PASSED",
+  "contact_sheet": "public/images/illustrations/tp-npm-install-scripts-20260820-contact-sheet-final.jpg",
+  "rejected_excluded": [
+    "initial hero,02,03,04",
+    "r2 all failed slots as recorded in run transcript",
+    "r3 all screen/label candidates",
+    "r4 hero and 03",
+    "final5 fake-text candidate"
+  ]
+}
