@@ -1,0 +1,225 @@
+---
+title: "GitHub Actions pull_request_target Security Checklist for Fork PRs (2026)"
+description: "Review fork pull requests without running untrusted code in a privileged GitHub Actions context: event choice, checkout boundaries, permissions, secrets, approval, artifacts, and rollback."
+pubDate: "2026-08-21"
+updatedDate: "2026-08-21"
+category: "Security"
+tags: ["GitHub Actions", "pull_request_target", "fork security", "CI security", "workflow permissions"]
+heroImage: "/images/illustrations/tp-pr-target-security-20260821-hero.png"
+schemaType: "HowTo"
+sources:
+  - { title: "Securely using pull_request_target", url: "https://docs.github.com/en/actions/reference/security/securely-using-pull_request_target", publication: "GitHub Docs", year: "2026 accessed" }
+  - { title: "Events that trigger workflows", url: "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target", publication: "GitHub Docs", year: "2026 accessed" }
+  - { title: "Secure use reference", url: "https://docs.github.com/en/actions/reference/security/secure-use", publication: "GitHub Docs", year: "2026 accessed" }
+  - { title: "Automatic token authentication", url: "https://docs.github.com/en/actions/tutorials/authenticate-with-github_token", publication: "GitHub Docs", year: "2026 accessed" }
+  - { title: "Workflow syntax: permissions", url: "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions", publication: "GitHub Docs", year: "2026 accessed" }
+  - { title: "Approving workflow runs from public forks", url: "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/approve-runs-from-forks", publication: "GitHub Docs", year: "2026 accessed" }
+  - { title: "Security hardening for GitHub Actions", url: "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions", publication: "GitHub Docs", year: "2026 accessed" }
+  - { title: "GitHub Actions: Preventing pwn requests", url: "https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/", publication: "GitHub Security Lab", year: "2021" }
+  - { title: "Using OpenID Connect with reusable workflows", url: "https://docs.github.com/en/actions/how-tos/security-for-github-actions/security-hardening-your-deployments/using-openid-connect-with-reusable-workflows", publication: "GitHub Docs", year: "2026 accessed" }
+internalLinks:
+  - "/posts/vendor-security-evidence-folder-checklist-2026/"
+  - "/posts/ai-coding-agent-repository-safety-checklist-2026/"
+  - "/posts/npm-install-script-approval-ignore-scripts-allowscripts-ci-checklist-2026/"
+visualsCount: 6
+hasVideo: false
+wordCount: 1800
+affiliate: false
+aiDisclosed: true
+faq:
+  - { question: "Is pull_request_target unsafe by itself?", answer: "No. The danger arises when a privileged run evaluates or executes attacker-controlled pull-request content, expressions, scripts, actions, or artifacts." }
+  - { question: "Can a pull_request_target job safely check out the fork head?", answer: "Treat that as a high-risk design. A privileged context must not execute untrusted head code; use an unprivileged workflow for code execution and a narrowly designed handoff when necessary." }
+  - { question: "Does manual approval make an unsafe workflow safe?", answer: "No. Approval is a decision point, not a sandbox. The workflow still needs least privilege, trusted code, pinned dependencies, isolated artifacts, and reviewable inputs." }
+  - { question: "Should every workflow have write permission?", answer: "No. Set the narrowest permissions at workflow and job level; use a separate, trusted job for the one write action actually required." }
+draft: false
+---
+
+`pull_request_target` is useful when a repository wants to label, triage, or comment on a pull request from a fork because the workflow runs in the context of the base repository. That same property creates the hazard: the base context can have a writable token or secrets, while the pull request can supply attacker-controlled code and metadata.
+
+The safe design question is not “Which event is better?” It is **which trust boundary exists at each step**. A review workflow can read untrusted metadata without executing untrusted code. A test workflow can execute fork code without secrets and with read-only permissions. A privileged workflow can update the pull request only when its inputs come from a trusted source and cannot redirect execution.
+
+![Trusted and untrusted workflow materials separated on a security desk](/images/illustrations/tp-pr-target-security-20260821-hero.png)
+
+## The invariant: privileged context must not execute fork content
+
+GitHub’s dedicated [pull_request_target security guide](https://docs.github.com/en/actions/reference/security/securely-using-pull_request_target) warns against checking out and running untrusted pull-request code in the privileged target context. The [event reference](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target) explains that this event runs in the context of the pull request’s base rather than the merge commit.
+
+Write the invariant in the workflow review:
+
+> A job with secrets, write permissions, cloud identity, cache-writing authority, or trusted release credentials must not execute code, actions, shell fragments, configuration, or binaries controlled by the fork.
+
+“Execute” includes more than `npm test`. It includes sourcing a shell file, importing a changed Python module, evaluating a template, running a package-manager lifecycle script, loading a build configuration, invoking a local action from the head branch, or interpolating untrusted metadata into a shell command.
+
+## Classify the event before editing YAML
+
+| Need | Starting event | Trust posture | Typical permissions |
+|---|---|---|---|
+| Build and test fork code | `pull_request` | Untrusted code execution | Read-only; no repository secrets |
+| Add labels based on trusted metadata | `pull_request_target` | Base-branch workflow only | Narrow issue/PR write permission |
+| Publish after reviewed merge | `push` on protected branch | Trusted repository revision | Job-specific write or OIDC |
+| Consume unprivileged results | `workflow_run` with care | Privileged consumer of data | Validate artifact and run identity |
+
+The GitHub [secure-use reference](https://docs.github.com/en/actions/reference/security/secure-use) specifically calls out `pull_request_target` and `workflow_run` when untrusted code is checked out or untrusted artifacts are consumed. Event separation reduces risk only if the handoff is validated.
+
+![A closed laptop and isolated hardware key mark the privilege boundary](/images/illustrations/tp-pr-target-security-20260821-01.png)
+
+## Audit every path from PR input to execution
+
+Search the workflow and referenced scripts for attacker-controlled values:
+
+- pull request title, body, branch name, label text, author, and comments;
+- file paths and file contents from the fork;
+- outputs produced by a fork-controlled step;
+- artifacts uploaded by an unprivileged workflow;
+- environment variables derived from event payload fields;
+- local actions or reusable workflows checked out from the head SHA;
+- package manifests and lockfiles that can trigger install scripts.
+
+A dangerous shell pattern may look harmless:
+
+```yaml
+run: echo "${{ github.event.pull_request.title }}" | tool
+```
+
+The expression is expanded before the shell runs. Quoting does not reliably turn arbitrary event data into a safe shell literal. Prefer passing data through an environment variable and using a tool that receives it as data, not shell syntax; better yet, use a maintained API action pinned to an immutable commit.
+
+The broader [security-hardening guide](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions) recommends treating contexts as potentially untrusted and pinning third-party actions to full-length commit SHAs. A tag is readable, but a mutable reference is not an integrity boundary.
+
+## Make permissions explicit and job-specific
+
+The [workflow permissions reference](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions) describes how to restrict `GITHUB_TOKEN`. Set a read-only workflow default, then grant one write scope only to the job that needs it.
+
+```yaml
+permissions:
+  contents: read
+
+jobs:
+  classify:
+    permissions:
+      contents: read
+      pull-requests: write
+```
+
+Do not add `write-all` to solve a failed comment step. Determine the exact API operation and scope. Separate labeling from testing so a failed test does not inherit comment, content, package, deployment, or identity authority.
+
+GitHub’s [automatic token authentication guide](https://docs.github.com/en/actions/tutorials/authenticate-with-github_token) explains that actions can access `GITHUB_TOKEN` through the context even when a workflow does not explicitly pass it. Therefore “we did not put the token in `env`” is not proof that an action cannot use it. Review permissions and every action executed by the job.
+
+![Plain access cards with different scopes beside a closed device](/images/illustrations/tp-pr-target-security-20260821-02.png)
+
+## Safe pattern 1: metadata-only triage
+
+A metadata-only `pull_request_target` workflow can inspect base-controlled event fields and call the GitHub API to add a known label. It should not:
+
+- check out the fork head;
+- run a script from the pull request;
+- install dependencies described by the pull request;
+- derive a shell command from title, body, or branch name;
+- upload fork-produced output into a privileged release path;
+- expose cloud or package-publishing credentials.
+
+Even label names should come from a fixed mapping in the trusted workflow, not from arbitrary PR text. Keep the base workflow protected with code review and CODEOWNERS where appropriate.
+
+## Safe pattern 2: unprivileged test plus validated handoff
+
+Run tests under `pull_request` with read-only permissions and no secrets. If a privileged follow-up must comment with a result, hand off a small data artifact—not an executable workspace.
+
+The privileged consumer should verify:
+
+1. source workflow name and repository;
+2. triggering event and conclusion;
+3. head SHA expected for the pull request;
+4. artifact name and size bounds;
+5. strict data schema;
+6. no path traversal in archive entries;
+7. no executable, symlink, script, or workflow content;
+8. result still belongs to the current PR head.
+
+GitHub Security Lab’s [preventing pwn requests article](https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/) describes the two-workflow pattern and the danger of mixing untrusted checkout with privileged operations. Treat the article as design guidance; validate the current platform behavior in GitHub’s live documentation.
+
+![A transparent inspection container holds one untrusted package artifact](/images/illustrations/tp-pr-target-security-20260821-03.png)
+
+## Calculate blast radius before approving the design
+
+Use a simple exposure count:
+
+**privileged attack opportunities = fork PR runs × privileged jobs × untrusted execution paths**
+
+If a repository receives 80 fork PR updates per month, has two privileged jobs, and each has three paths that evaluate fork-controlled material, the modeled surface is `80 × 2 × 3 = 480` opportunities per month. This is not a breach probability. It shows why reducing execution paths from three to zero matters more than adding one more reviewer checkbox.
+
+Also inventory reachable assets:
+
+| Asset | Could current job reach it? | Required? | Reduction |
+|---|---:|---:|---|
+| Repository contents write | Yes | Labeling does not need it | Set `contents: read` |
+| Pull-request comments | Yes | Yes | Grant only `pull-requests: write` |
+| Package registry | Maybe | No | Remove package permission and token |
+| Cloud account | Maybe | No | Remove secret/OIDC permission |
+| Shared cache | Yes | Usually no for metadata | Disable cache write |
+| Other workflow artifacts | Yes | Maybe | Validate run and schema |
+
+## Manual approval is not a sandbox
+
+GitHub provides controls for [approving runs from public forks](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/approve-runs-from-forks). Approval can prevent an unknown contributor’s job from starting automatically. It cannot make an unsafe job safe after a reviewer clicks the button.
+
+A meaningful approval record should show:
+
+- exact head SHA reviewed;
+- workflow files and actions that will execute;
+- whether dependency manifests changed;
+- token permissions and secrets available;
+- artifact inputs and network destinations;
+- reviewer identity and timestamp;
+- what changed since the prior approval.
+
+A contributor can update a pull request after approval, so bind the decision to the head SHA and re-review on change.
+
+## Avoid cache and artifact privilege confusion
+
+Untrusted jobs should not write a cache later restored by a privileged job unless the cache key, contents, and provenance create a real trust boundary. A cache is a performance mechanism, not a signature. Do not run binaries or package trees merely because they came from a cache namespace.
+
+Artifacts are also data from another trust zone. Never extract an untrusted archive over the repository root. Reject absolute paths, `..` traversal, symlinks, device files, oversized payloads, and unexpected extensions. Parse expected JSON as JSON with a schema; do not source it as shell.
+
+For release evidence, Toolspilot’s [vendor security evidence-folder checklist](/posts/vendor-security-evidence-folder-checklist-2026/) explains provenance. Attestation can show which workflow produced an artifact; it does not transform a fork-controlled build into trusted release input.
+
+![A protected baseline stays separate from an untrusted artifact path](/images/illustrations/tp-pr-target-security-20260821-04.png)
+
+## Keep cloud identity out of review workflows
+
+OIDC removes long-lived cloud secrets, but a privileged OIDC token is still valuable. Do not give `id-token: write` to a fork review or metadata job. Grant it only to a trusted deployment job with environment protection, branch or tag conditions, and restrictive cloud-side subject claims.
+
+GitHub’s [OIDC reusable-workflow guide](https://docs.github.com/en/actions/how-tos/security-for-github-actions/security-hardening-your-deployments/using-openid-connect-with-reusable-workflows) explains how claims can include reusable-workflow identity. Cloud trust policy must validate the expected repository, ref, environment, and workflow path; merely using short-lived credentials does not prevent an untrusted workflow from requesting them.
+
+## Dependency execution belongs to the untrusted lane
+
+If testing a fork requires package installation, assume lifecycle scripts can execute. Use an ephemeral runner without production credentials, persistent home directories, Docker control sockets, unrelated repository access, or write access to deployment infrastructure.
+
+The [npm install-script approval checklist](/posts/npm-install-script-approval-ignore-scripts-allowscripts-ci-checklist-2026/) provides a job-by-job method. A lockfile controls resolution; it does not prove a dependency script is safe. The [AI coding-agent repository checklist](/posts/ai-coding-agent-repository-safety-checklist-2026/) applies when automated tools alter workflow files or permissions: the same agent should not author the privilege increase and approve it.
+
+## Review and rollback checklist
+
+- [ ] Event choice matches the trust requirement.
+- [ ] Privileged jobs never check out or execute fork-head content.
+- [ ] PR metadata is treated as untrusted data, not shell syntax.
+- [ ] Workflow permissions default to read-only.
+- [ ] Write scope exists only in the exact job and API step that needs it.
+- [ ] Third-party actions are pinned to full commit SHAs.
+- [ ] No secrets or OIDC permission exist in fork-code jobs.
+- [ ] Manual approval is SHA-bound and does not replace isolation.
+- [ ] Artifact handoffs validate run identity, head SHA, schema, paths, and size.
+- [ ] Cache data cannot cross into a privileged execution path.
+- [ ] Branch protection and CODEOWNERS cover workflow changes.
+- [ ] A rollback commit can disable the workflow without destroying evidence.
+
+![A final set of six security gates before the trusted repository boundary](/images/illustrations/tp-pr-target-security-20260821-05.png)
+
+## Incident response if the boundary was crossed
+
+If a privileged workflow ran fork-controlled code, stop or disable affected workflows, preserve run IDs and logs without copying secrets, revoke or rotate reachable credentials, review token and cloud audit logs, invalidate suspect caches and artifacts, inspect repository writes and releases, and rebuild from a trusted revision. Do not assume a green log proves no compromise; malicious code can suppress output.
+
+Document the exact head SHA, workflow revision, runner, permissions, secrets, network destinations, and artifacts. Narrow the workflow before re-enabling it. If public users may have consumed a release, coordinate a security advisory and replacement through the repository’s incident process.
+
+## Limitations
+
+No YAML checklist proves a workflow safe. Composite actions, reusable workflows, action updates, runner hooks, self-hosted persistence, organization policy, cloud trust conditions, and new GitHub protections can change the result. Test the effective permissions in a disposable repository and inspect the live run—not only the source file.
+
+The durable rule is simple: **untrusted code may run, or a job may hold privilege, but the same execution path should not have both**. Everything else—events, permissions, approvals, artifacts, and OIDC—is harnessing that boundary.

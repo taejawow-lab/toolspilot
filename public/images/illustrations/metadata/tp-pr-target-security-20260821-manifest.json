@@ -1,0 +1,125 @@
+{
+  "run_date": "2026-08-21",
+  "site": "toolspilot",
+  "prefix": "tp-pr-target-security-20260821",
+  "backend": "GTI15 ComfyUI",
+  "publish_policy": "Final selected assets only; contact-sheet visual QA passed.",
+  "accepted": [
+    {
+      "prompt_id": "13e34cb2-e55b-487a-b665-4752a9445d23",
+      "remote": {
+        "filename": "gti15_natural_krea_00622_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "local": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260821\\toolspilot-c\\20260821_192811_krea_2667136250.png",
+      "bytes": 1559126,
+      "seconds": 32,
+      "engine": "krea",
+      "seed": 2667136250,
+      "status": "NEEDS_VISUAL_QA",
+      "qa_required": "Reject if any fake text/UI/logos/hands/faces/distorted or nonsensical objects are visible.",
+      "source_directory": "toolspilot-c",
+      "selected_index": 0,
+      "published_file": "tp-pr-target-security-20260821-hero.png",
+      "visual_qa": "PASS 2026-08-21; no fake/readable text, UI, logos, people, distortions, or unsafe/wrong-domain details in final selected set"
+    },
+    {
+      "prompt_id": "424304aa-1171-439a-9296-6b1d58a34189",
+      "remote": {
+        "filename": "gti15_natural_krea_00623_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "local": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260821\\toolspilot-d\\20260821_192915_krea_475072019.png",
+      "bytes": 1449659,
+      "seconds": 32,
+      "engine": "krea",
+      "seed": 475072019,
+      "status": "NEEDS_VISUAL_QA",
+      "qa_required": "Reject if any fake text/UI/logos/hands/faces/distorted or nonsensical objects are visible.",
+      "source_directory": "toolspilot-d",
+      "selected_index": 0,
+      "published_file": "tp-pr-target-security-20260821-01.png",
+      "visual_qa": "PASS 2026-08-21; no fake/readable text, UI, logos, people, distortions, or unsafe/wrong-domain details in final selected set"
+    },
+    {
+      "prompt_id": "672e5546-ad29-4e94-9fd7-e88123fd2cd1",
+      "remote": {
+        "filename": "gti15_natural_realvis_00351_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "local": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260821\\toolspilot-d\\20260821_192948_realvis_475072020.png",
+      "bytes": 1343048,
+      "seconds": 15,
+      "engine": "realvis",
+      "seed": 475072020,
+      "status": "NEEDS_VISUAL_QA",
+      "qa_required": "Reject if any fake text/UI/logos/hands/faces/distorted or nonsensical objects are visible.",
+      "source_directory": "toolspilot-d",
+      "selected_index": 1,
+      "published_file": "tp-pr-target-security-20260821-02.png",
+      "visual_qa": "PASS 2026-08-21; no fake/readable text, UI, logos, people, distortions, or unsafe/wrong-domain details in final selected set"
+    },
+    {
+      "prompt_id": "9f670ddb-3309-463e-8044-ae3b38c7963a",
+      "remote": {
+        "filename": "gti15_natural_juggernaut_00310_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "local": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260821\\toolspilot-d\\20260821_193003_juggernaut_475072021.png",
+      "bytes": 1306698,
+      "seconds": 15,
+      "engine": "juggernaut",
+      "seed": 475072021,
+      "status": "NEEDS_VISUAL_QA",
+      "qa_required": "Reject if any fake text/UI/logos/hands/faces/distorted or nonsensical objects are visible.",
+      "source_directory": "toolspilot-d",
+      "selected_index": 2,
+      "published_file": "tp-pr-target-security-20260821-03.png",
+      "visual_qa": "PASS 2026-08-21; no fake/readable text, UI, logos, people, distortions, or unsafe/wrong-domain details in final selected set"
+    },
+    {
+      "prompt_id": "f8cb4616-d776-4af3-ace2-6d96b12a3347",
+      "remote": {
+        "filename": "gti15_natural_realvis_00359_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "local": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260821\\toolspilot-f\\20260821_193911_realvis_1635725636.png",
+      "bytes": 1115863,
+      "seconds": 15,
+      "engine": "realvis",
+      "seed": 1635725636,
+      "status": "NEEDS_VISUAL_QA",
+      "qa_required": "Reject if any fake text/UI/logos/hands/faces/distorted or nonsensical objects are visible.",
+      "source_directory": "toolspilot-f",
+      "selected_index": 1,
+      "published_file": "tp-pr-target-security-20260821-04.png",
+      "visual_qa": "PASS 2026-08-21; no fake/readable text, UI, logos, people, distortions, or unsafe/wrong-domain details in final selected set"
+    },
+    {
+      "prompt_id": "cc96a06f-d239-4faf-a33e-1354683d3f28",
+      "remote": {
+        "filename": "gti15_natural_realvis_00367_.png",
+        "subfolder": "",
+        "type": "output"
+      },
+      "local": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260821\\toolspilot-g\\20260821_194825_realvis_3090067709.png",
+      "bytes": 1197727,
+      "seconds": 15,
+      "engine": "realvis",
+      "seed": 3090067709,
+      "status": "NEEDS_VISUAL_QA",
+      "qa_required": "Reject if any fake text/UI/logos/hands/faces/distorted or nonsensical objects are visible.",
+      "source_directory": "toolspilot-g",
+      "selected_index": 1,
+      "published_file": "tp-pr-target-security-20260821-05.png",
+      "visual_qa": "PASS 2026-08-21; no fake/readable text, UI, logos, people, distortions, or unsafe/wrong-domain details in final selected set"
+    }
+  ],
+  "rejected_candidates_excluded": true,
+  "published_count": 6
+}
