@@ -8,22 +8,49 @@ tags: ["GitHub Actions", "pull_request_target", "fork security", "CI security", 
 heroImage: "/images/illustrations/tp-pr-target-security-20260821-hero.png"
 schemaType: "HowTo"
 sources:
-  - { title: "Securely using pull_request_target", url: "https://docs.github.com/en/actions/reference/security/securely-using-pull_request_target", publication: "GitHub Docs", year: "2026 accessed" }
-  - { title: "Events that trigger workflows", url: "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target", publication: "GitHub Docs", year: "2026 accessed" }
-  - { title: "Secure use reference", url: "https://docs.github.com/en/actions/reference/security/secure-use", publication: "GitHub Docs", year: "2026 accessed" }
-  - { title: "Automatic token authentication", url: "https://docs.github.com/en/actions/tutorials/authenticate-with-github_token", publication: "GitHub Docs", year: "2026 accessed" }
-  - { title: "Workflow syntax: permissions", url: "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions", publication: "GitHub Docs", year: "2026 accessed" }
-  - { title: "Approving workflow runs from public forks", url: "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/approve-runs-from-forks", publication: "GitHub Docs", year: "2026 accessed" }
-  - { title: "Security hardening for GitHub Actions", url: "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions", publication: "GitHub Docs", year: "2026 accessed" }
-  - { title: "GitHub Actions: Preventing pwn requests", url: "https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/", publication: "GitHub Security Lab", year: "2021" }
-  - { title: "Using OpenID Connect with reusable workflows", url: "https://docs.github.com/en/actions/how-tos/security-for-github-actions/security-hardening-your-deployments/using-openid-connect-with-reusable-workflows", publication: "GitHub Docs", year: "2026 accessed" }
+  - title: "Securely using pull_request_target"
+    url: "https://docs.github.com/en/actions/reference/security/securely-using-pull_request_target"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Events that trigger workflows"
+    url: "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_target"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Secure use reference"
+    url: "https://docs.github.com/en/actions/reference/security/secure-use"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Automatic token authentication"
+    url: "https://docs.github.com/en/actions/tutorials/authenticate-with-github_token"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Workflow syntax: permissions"
+    url: "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#permissions"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Approving workflow runs from public forks"
+    url: "https://docs.github.com/en/actions/how-tos/manage-workflow-runs/approve-runs-from-forks"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Security hardening for GitHub Actions"
+    url: "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "GitHub Actions: Preventing pwn requests"
+    url: "https://securitylab.github.com/resources/github-actions-preventing-pwn-requests/"
+    publication: "GitHub Security Lab"
+    year: "2021"
+  - title: "Using OpenID Connect with reusable workflows"
+    url: "https://docs.github.com/en/actions/how-tos/security-for-github-actions/security-hardening-your-deployments/using-openid-connect-with-reusable-workflows"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
 internalLinks:
-  - "/posts/vendor-security-evidence-folder-checklist-2026/"
+  - "/posts/npm-trusted-publishing-oidc-migration-checklist-2026/"
   - "/posts/ai-coding-agent-repository-safety-checklist-2026/"
   - "/posts/npm-install-script-approval-ignore-scripts-allowscripts-ci-checklist-2026/"
 visualsCount: 6
 hasVideo: false
-wordCount: 1800
+wordCount: 1939
 affiliate: false
 aiDisclosed: true
 faq:
@@ -179,7 +206,7 @@ Untrusted jobs should not write a cache later restored by a privileged job unles
 
 Artifacts are also data from another trust zone. Never extract an untrusted archive over the repository root. Reject absolute paths, `..` traversal, symlinks, device files, oversized payloads, and unexpected extensions. Parse expected JSON as JSON with a schema; do not source it as shell.
 
-For release evidence, Toolspilot’s [vendor security evidence-folder checklist](/posts/vendor-security-evidence-folder-checklist-2026/) explains provenance. Attestation can show which workflow produced an artifact; it does not transform a fork-controlled build into trusted release input.
+For release evidence, Toolspilot’s [trusted-publishing OIDC migration checklist](/posts/npm-trusted-publishing-oidc-migration-checklist-2026/) explains provenance. Attestation can show which workflow produced an artifact; it does not transform a fork-controlled build into trusted release input.
 
 ![A protected baseline stays separate from an untrusted artifact path](/images/illustrations/tp-pr-target-security-20260821-04.png)
 
