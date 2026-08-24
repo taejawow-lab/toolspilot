@@ -1,0 +1,266 @@
+---
+title: "SaaS Backup Restore Drill: RTO, RPO, and Evidence Checklist for 2026"
+description: "A vendor-neutral restore drill for proving that SaaS exports, backups, permissions, attachments, and business workflows can actually be recovered within an agreed time."
+pubDate: 2026-08-24
+updatedDate: 2026-08-24
+category: "Security"
+tags: ["SaaS backup", "restore drill", "RTO", "RPO", "disaster recovery", "data export"]
+heroImage: "/images/illustrations/tp-saas-restore-drill-20260824-hero.png"
+schemaType: "HowTo"
+sources:
+  - title: "NIST SP 800-34 Rev. 1: Contingency Planning Guide"
+    url: "https://csrc.nist.gov/pubs/sp/800/34/r1/final"
+    publication: "National Institute of Standards and Technology"
+    year: "2026 accessed"
+  - title: "StopRansomware Guide"
+    url: "https://www.cisa.gov/stopransomware/ransomware-guide"
+    publication: "Cybersecurity and Infrastructure Security Agency"
+    year: "2026 accessed"
+  - title: "Export all your organization's data"
+    url: "https://knowledge.workspace.google.com/admin/migrate/export-all-your-organizations-data"
+    publication: "Google Workspace Admin Help"
+    year: "2026 accessed"
+  - title: "Microsoft 365 Backup overview"
+    url: "https://learn.microsoft.com/en-us/microsoft-365/backup/backup-overview"
+    publication: "Microsoft Learn"
+    year: "2026 accessed"
+  - title: "Backing up a repository"
+    url: "https://docs.github.com/en/repositories/archiving-a-github-repository/backing-up-a-repository"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Export issues from Jira Cloud"
+    url: "https://support.atlassian.com/jira-cloud-administration/docs/export-issues/"
+    publication: "Atlassian Support"
+    year: "2026 accessed"
+  - title: "Restore testing"
+    url: "https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing.html"
+    publication: "Amazon Web Services Documentation"
+    year: "2026 accessed"
+  - title: "CIS Control 11: Data Recovery"
+    url: "https://www.cisecurity.org/controls/data-recovery"
+    publication: "Center for Internet Security"
+    year: "2026 accessed"
+  - title: "Small organisations guide to cyber security"
+    url: "https://www.ncsc.gov.uk/collection/small-organisations-guide-to-cyber-security"
+    publication: "UK National Cyber Security Centre"
+    year: "2026 accessed"
+internalLinks:
+  - "/posts/local-first-notes-backup-migration-checklist-2026/"
+  - "/posts/ai-coding-agent-repository-safety-checklist-2026/"
+  - "/posts/npm-install-script-safety-review-checklist-2026/"
+visualsCount: 5
+hasVideo: false
+wordCount: 2300
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Is a successful SaaS export the same as a successful restore?"
+    answer: "No. An export only proves that files were produced. A restore drill must prove that the selected records, attachments, permissions, links, and required workflow can be reconstructed in a safe test destination."
+  - question: "How often should a restore drill run?"
+    answer: "Set frequency from impact and change rate rather than a universal calendar. Run again after material schema, identity, integration, vendor, retention, or business-process changes."
+  - question: "Should a drill restore production data into a live tenant?"
+    answer: "Normally no. Use an approved isolated destination with minimal data and access. A production overwrite or customer-data exposure is not an acceptable test side effect."
+  - question: "What is the minimum evidence to keep?"
+    answer: "Keep the approved scope, start and finish timestamps, source snapshot identifier, tool versions, exceptions, validation counts, owner sign-off, and an exact deletion date for temporary restored data."
+draft: false
+---
+
+A green “backup completed” badge does not prove that a team can recover work. It may mean only that an export job ran, that a provider retained one data class, or that a file exists somewhere. Recovery fails later because nobody tested the archive format, attachments were omitted, identity records were not portable, encryption keys were unavailable, links no longer resolved, or the one administrator who understood the process had left.
+
+This guide turns the vague instruction “test the backup” into a bounded SaaS restore drill. It is vendor-neutral and uses hypothetical numbers. Do not copy production secrets or regulated data into an unmanaged test account. Follow your provider contracts, retention policy, incident-response plan, legal hold, privacy obligations, and change-control rules. If an incident is active, preserve evidence and follow the incident commander rather than improvising a drill.
+
+![Server racks representing the systems behind a SaaS recovery plan](/images/illustrations/tp-saas-restore-drill-20260824-hero.png)
+
+## Define the recovery promise before choosing a tool
+
+Start with the business service, not the backup product. NIST [SP 800-34 Rev. 1](https://csrc.nist.gov/pubs/sp/800/34/r1/final) frames contingency planning around impact, recovery priorities, testing, training, and plan maintenance. Translate that into four explicit promises:
+
+- **RPO (recovery point objective):** how much recent change may be absent from the restored state;
+- **RTO (recovery time objective):** how long the service can remain unavailable before the agreed recovery result is needed;
+- **minimum viable dataset:** the records, attachments, metadata, identities, configuration, and audit evidence needed to resume the essential workflow;
+- **recovery owner:** the person authorized to run the procedure, obtain credentials, approve exceptions, and close temporary access.
+
+A four-hour RTO does not mean “the ZIP downloaded in four hours.” It means the agreed business capability was usable and validated by that deadline. A one-day RPO does not mean a daily job exists; it means the restored records were no older than the permitted point when measured against a trusted source.
+
+| Promise | Weak wording | Testable wording |
+|---|---|---|
+| RPO | “Backed up daily” | “For selected records, the latest restorable change is no more than 24 hours before the drill snapshot” |
+| RTO | “Quick recovery” | “A trained alternate restores the minimum dataset and completes the validation workflow within four hours” |
+| Completeness | “All files included” | “All sampled records, attachments, owners, timestamps, and required links match the signed inventory” |
+| Access | “Admins can restore” | “Two named roles can obtain credentials and keys through the approved break-glass path” |
+| Closure | “Test done” | “Temporary data and accounts are deleted on the recorded date, with evidence retained separately” |
+
+## Inventory what the provider actually exports
+
+A SaaS name is not a data model. List the object classes your workflow depends on: primary records, comments, attachments, version history, labels, custom fields, groups, users, permissions, sharing links, automation, API integrations, audit logs, encryption material, and configuration. Mark each class as **exported**, **restorable**, **manually rebuildable**, or **not recoverable through the current plan**.
+
+Provider documentation illustrates why this matters. Google Workspace documents a domain-wide [organization data export](https://knowledge.workspace.google.com/admin/migrate/export-all-your-organizations-data), but the administrative prerequisites, scope, preparation time, and resulting files must be checked against your edition and account. Microsoft’s [Microsoft 365 Backup overview](https://learn.microsoft.com/en-us/microsoft-365/backup/backup-overview) describes protected services and recovery concepts, but coverage and restore behavior still need tenant-specific verification. GitHub’s [repository backup guide](https://docs.github.com/en/repositories/archiving-a-github-repository/backing-up-a-repository) separates repository content from other resources that may require API-based export. Jira’s [issue export guidance](https://support.atlassian.com/jira-cloud-administration/docs/export-issues/) likewise should not be assumed to reproduce every app, permission, automation, or external integration.
+
+The practical rule is simple: if the business depends on it, place it in the inventory and prove its recovery path. Do not let “the vendor backs it up” substitute for a written answer to “which objects can we recover, to what destination, with which permissions, and how do we validate them?”
+
+## Choose a safe drill scope
+
+A useful first drill is small enough to control but rich enough to expose gaps. Select a representative sample rather than the easiest five empty records. Include:
+
+- one record with several attachments;
+- one with comments or version history;
+- one owned by a normal user rather than an administrator;
+- one shared with a group;
+- one with a custom field or automation dependency;
+- one deleted or changed near the selected recovery point, if the provider supports that case;
+- one link to an external system, documented as a dependency rather than silently treated as recovered.
+
+Use an isolated test tenant, sandbox, disposable organization, or approved offline reconstruction environment. Minimize personal data. Replace sensitive content with controlled fixtures when that still tests the contract. If real records are necessary, obtain the required approval, restrict access, encrypt the transfer, define a deletion deadline, and record where every copy is stored.
+
+## Measure the transfer before promising the RTO
+
+Transfer time is only one part of recovery, but it is an easy place to catch an impossible promise. Use measured throughput from the actual path, not the advertised network rate.
+
+Hypothetical example:
+
+- compressed export size: **180 GB**;
+- measured sustained download throughput: **240 megabits per second**;
+- convert to megabytes per second: `240 ÷ 8 = 30 MB/s`;
+- theoretical transfer time: `180,000 MB ÷ 30 MB/s = 6,000 seconds`, or **100 minutes**;
+- add 30 minutes for queueing and download preparation;
+- add 45 minutes for integrity checks and extraction;
+- add 90 minutes for import and indexing;
+- add 45 minutes for validation;
+- planning total: `100 + 30 + 45 + 90 + 45 = 310 minutes`, or **5 hours 10 minutes**.
+
+A four-hour RTO would fail under those assumptions before a human delay, retry, rate limit, or provider outage is considered. The remedy is not to round down. Reduce the minimum dataset, pre-stage approved tooling, improve the tested path, change the RTO with the service owner, or add a different recovery capability.
+
+![Two hourglasses representing measured recovery phases and delay budgets](/images/illustrations/tp-saas-restore-drill-20260824-02.png)
+
+## Run the drill with two clocks and one evidence log
+
+Use a technical clock and a business clock. The technical clock starts when the recovery operator begins obtaining the approved backup. The business clock stops only when a separate validator completes the agreed workflow. Record both.
+
+1. Freeze the drill scope and snapshot identifier.
+2. Confirm the test destination, data classification, deletion date, and authorized participants.
+3. Obtain credentials and encryption material through the documented path; do not copy secrets into the evidence log.
+4. Download or select the recovery point and record timestamps and reported sizes.
+5. Verify integrity using the provider’s documented mechanism or a locally calculated hash when appropriate.
+6. Import into the isolated destination using the recorded tool and version.
+7. Reconstruct only the approved configuration and identity mappings.
+8. Run the validation script or checklist.
+9. Record failures without quietly fixing the baseline evidence.
+10. Delete temporary restored data on schedule and retain proof of closure.
+
+AWS Backup’s [restore testing documentation](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-testing.html) is infrastructure-oriented, but its core discipline is broadly useful: schedule tests, choose protected resources, apply controls, and inspect results rather than treating backup creation as recovery proof. The Center for Internet Security’s [Data Recovery control](https://www.cisecurity.org/controls/data-recovery) similarly emphasizes establishing and maintaining recovery practices.
+
+![Three plain storage enclosures representing isolated restore stages](/images/illustrations/tp-saas-restore-drill-20260824-03.png)
+
+## Validate content, identity, and workflow separately
+
+A row count can pass while the service remains unusable. Split validation into layers:
+
+### Content checks
+
+- expected record count and sampled record identifiers;
+- attachment count, size, and ability to open;
+- timestamps, authors, comments, labels, and custom fields;
+- non-ASCII names and long filenames;
+- archived, deleted, or versioned objects in scope;
+- hash comparison for files where exact byte identity is expected.
+
+### Identity and permission checks
+
+- owners map to active approved identities;
+- groups and roles have least-privilege access;
+- public or external sharing is not accidentally broadened;
+- former users do not regain access;
+- break-glass credentials are rotated or re-sealed after the drill;
+- service accounts and API tokens are not copied blindly into the test tenant.
+
+### Workflow checks
+
+Ask a validator who did not perform the import to complete one real task: find a case, open its attachment, inspect history, hand it to the next role, and produce the required output. If the restored system contains records but search, relationships, permissions, or exports do not work, the recovery promise has not been met.
+
+## Protect the backup from the same failure
+
+A synchronized copy can reproduce deletion, corruption, or attacker activity. CISA’s [StopRansomware Guide](https://www.cisa.gov/stopransomware/ransomware-guide) recommends offline or otherwise protected backups and regular testing, among other defensive measures. The UK NCSC’s [small organisations cyber-security guide](https://www.ncsc.gov.uk/collection/small-organisations-guide-to-cyber-security) also treats backups as a practical resilience control.
+
+For each recovery copy, answer:
+
+- Can a compromised SaaS administrator delete it?
+- Can the same identity change retention and destroy old points?
+- Is there an offline, immutable, or separately administered copy appropriate to the risk?
+- Are encryption keys recoverable if the primary identity provider is unavailable?
+- Are backup alerts routed somewhere an attacker in the primary tenant cannot suppress?
+- Does the provider’s retention window match the time needed to discover a slow incident?
+
+Do not publish sensitive drill evidence in a ticket visible to the whole company. Logs should prove dates, counts, approvals, exceptions, and outcomes without containing passwords, tokens, recovery codes, customer content, or full personal-data exports.
+
+![An isolated server row and coiled cable representing separated recovery infrastructure](/images/illustrations/tp-saas-restore-drill-20260824-04.png)
+
+## Score the result without hiding partial failure
+
+Use three outcomes:
+
+- **PASS:** every required object class and workflow passed within the agreed RPO/RTO, and temporary data was closed correctly;
+- **CONDITIONAL:** the essential workflow recovered, but a documented noncritical gap has an owner and deadline;
+- **FAIL:** required data, access, workflow, timing, evidence, or safe closure did not meet the contract.
+
+Do not turn a failed attachment import into a pass by deleting attachments from the scope after the run. Amend the future contract only through the service owner and risk process. Preserve the original result, open a remediation item, and schedule a focused retest.
+
+A useful after-action table is short:
+
+| Finding | Impact | Owner | Due date | Retest evidence |
+|---|---|---|---|---|
+| Export omitted private-channel attachments | Required case history incomplete | Collaboration admin | Set date | Sample attachment hashes and open test |
+| Group permissions became individual grants | Access review burden and possible overexposure | Identity owner | Set date | Role/group comparison |
+| Import exceeded RTO by 70 minutes | Service objective not met | Recovery owner | Set date | Timed rerun with revised process |
+| Test tenant deletion not automated | Privacy and cost residue | Platform owner | Set date | Deletion log and account inventory |
+
+![Fiber strands representing the many dependencies that must reconnect during recovery](/images/illustrations/tp-saas-restore-drill-20260824-05.png)
+
+## A quarterly drill agenda
+
+Frequency should follow impact and change rate, but a quarterly cycle is a practical starting hypothesis for many important SaaS workflows—not a universal rule. Also trigger a drill after a major provider migration, identity redesign, retention change, new encryption method, critical integration, merger, or incident.
+
+**One week before:** approve scope, destination, participants, fixture data, and stop conditions. Confirm the backup point exists without changing it.
+
+**Drill day:** record the start, execute the documented runbook, capture bounded evidence, and stop if privacy, production, or integrity controls are at risk.
+
+**Within two business days:** classify findings, assign owners, set retest dates, and update the runbook. Do not rewrite the original result.
+
+**At closure:** verify temporary tenants, exports, local archives, and credentials were removed or retained only under the approved policy.
+
+## Stop conditions and escalation
+
+Stop the drill and contact the responsible security, privacy, legal, platform, or incident lead when:
+
+- the only available destination is production;
+- the export contains data outside the approved scope;
+- encryption keys or credentials are missing;
+- the archive appears corrupted or malicious;
+- the exercise could overwrite current records;
+- an active compromise may still control the primary tenant;
+- legal hold, residency, contractual, or regulated-data requirements are unclear;
+- temporary data cannot be reliably deleted;
+- the team discovers a real incident during the exercise.
+
+The objective is not to prove that the backup team was right. It is to discover recovery gaps while the situation is controlled, record them honestly, and make the next real incident less improvisational.
+
+## Related Toolspilot guides
+
+Use the [local-first notes backup and migration checklist](/posts/local-first-notes-backup-migration-checklist-2026/) when the source is a file-based notes system. Review the [AI coding agent repository safety checklist](/posts/ai-coding-agent-repository-safety-checklist-2026/) before letting automation touch repositories or credentials, and the [npm install-script safety review](/posts/npm-install-script-safety-review-checklist-2026/) before adding recovery tooling to a privileged environment.
+
+## FAQ
+
+### Is a successful SaaS export the same as a successful restore?
+
+No. It proves only that an export process produced files. The drill must reconstruct and validate the agreed records, attachments, metadata, permissions, and workflow in a safe destination.
+
+### How often should the drill run?
+
+Use impact and change rate. Repeat after material schema, identity, integration, retention, provider, or business-process changes even if the calendar date has not arrived.
+
+### Should we restore into production?
+
+Normally no. Use an approved isolated destination. A drill that overwrites production or exposes customer data has failed its safety objective.
+
+### What evidence should we retain?
+
+Retain scope, approvals, source snapshot identifier, timestamps, sizes and counts, tool versions, validation results, exceptions, owner sign-off, and deletion proof. Keep secrets and raw customer data out of the report.
