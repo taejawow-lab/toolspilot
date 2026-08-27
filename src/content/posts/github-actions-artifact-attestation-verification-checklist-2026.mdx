@@ -1,0 +1,264 @@
+---
+title: "GitHub Actions Artifact Attestations: Build, Verify, and Release Evidence Checklist for 2026"
+description: "A practical guide to generating and verifying GitHub Actions artifact attestations, binding releases to workflow identity and digest, and avoiding provenance overclaims."
+pubDate: 2026-08-27
+updatedDate: 2026-08-27
+author: "ToolsPilot Editorial"
+category: "Security & Compliance"
+tags: ["GitHub Actions", "artifact attestations", "software supply chain", "SLSA", "release security"]
+heroImage: "/images/illustrations/tp-artifact-attestation-20260827-hero.png"
+heroAlt: "Sealed archive boxes and a transparent shield representing build provenance"
+featured: false
+draft: false
+visualsCount: 5
+wordCount: 1654
+disclosure: "Independent technical guidance. Verify syntax and policy against current GitHub, npm, Sigstore, and SLSA documentation before changing a production release workflow."
+faq:
+  - question: "Does a valid attestation prove an artifact is safe?"
+    answer: "No. It proves claims about origin and build identity for a digest; it does not prove the source, dependencies, or workflow are free of malicious behavior."
+  - question: "Should verification use a filename or a digest?"
+    answer: "Use the artifact bytes and resulting digest. Filenames and release labels are mutable and are not sufficient identity."
+  - question: "Can a pull-request workflow generate release attestations?"
+    answer: "Technically possible designs may exist, but untrusted pull-request contexts are a poor release boundary. Generate attestations only in a tightly scoped trusted release workflow."
+internalLinks:
+  - "/posts/github-actions-pull-request-target-fork-security-checklist-2026/"
+  - "/posts/ai-coding-agent-repository-safety-checklist-2026/"
+  - "/posts/npm-trusted-publishing-oidc-migration-checklist-2026/"
+sources:
+  - title: "Using artifact attestations to establish provenance for builds"
+    url: "https://docs.github.com/en/actions/concepts/security/artifact-attestations"
+    publication: "GitHub Docs"
+    year: "2026"
+  - title: "actions/attest-build-provenance"
+    url: "https://github.com/actions/attest-build-provenance"
+    publication: "GitHub Actions"
+    year: "2026"
+  - title: "GitHub CLI attestation verify manual"
+    url: "https://cli.github.com/manual/gh_attestation_verify"
+    publication: "GitHub CLI Manual"
+    year: "2026"
+  - title: "SLSA Provenance v1.1"
+    url: "https://slsa.dev/spec/v1.1/provenance"
+    publication: "SLSA"
+    year: "2025"
+  - title: "Generating provenance statements"
+    url: "https://docs.npmjs.com/generating-provenance-statements"
+    publication: "npm Docs"
+    year: "2026"
+  - title: "Sigstore Cosign verify-attestation"
+    url: "https://docs.sigstore.dev/cosign/verifying/attestation/"
+    publication: "Sigstore Documentation"
+    year: "2026"
+  - title: "Secure Software Development Framework SP 800-218"
+    url: "https://csrc.nist.gov/pubs/sp/800/218/final"
+    publication: "NIST"
+    year: "2022"
+  - title: "Securing GitHub Actions with OpenID Connect"
+    url: "https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect"
+    publication: "GitHub Docs"
+    year: "2026"
+---
+
+A release asset named `app-linux-x64.zip` can be replaced while keeping the same filename. A tag can be moved. A checksum file can be replaced beside the binary it supposedly protects. Artifact attestations improve that weak chain by signing a statement about a specific artifact digest and the workflow identity that produced it. They are useful only when the verifier checks the right identity and treats provenance as evidence—not as a “safe software” badge.
+
+GitHub describes artifact attestations as a way to establish build provenance, while the [SLSA provenance model](https://slsa.dev/spec/v1.1/provenance) frames provenance as an attestation that a build platform produced artifacts through a defined build. That distinction matters: the attestation answers **where and how these bytes were built**, not **whether every line is benign**.
+
+![Sealed archive boxes and a shield representing artifact provenance](/images/illustrations/tp-artifact-attestation-20260827-hero.png)
+
+## The minimum trust statement
+
+Before editing YAML, write the policy in plain language:
+
+> Accept this artifact only if its digest has a valid GitHub attestation, the signer maps to our expected repository, the workflow identity matches our protected release workflow, and the source revision is an approved tag or commit.
+
+That sentence contains four independent checks:
+
+| Check | Failure it catches | What it does not catch |
+|---|---|---|
+| Artifact digest | asset replacement or corruption | malicious source built honestly |
+| Repository identity | attestation from a different repo | compromised expected repo |
+| Workflow identity | unapproved workflow minting evidence | malicious change to approved workflow |
+| Source revision/policy | wrong branch, tag, or commit | unsafe approved revision |
+
+A verifier that runs only `gh attestation verify file.zip --owner your-org` may establish an owner boundary, but your release policy may need the exact repository and workflow. Read the current [`gh attestation verify` manual](https://cli.github.com/manual/gh_attestation_verify) and pin the constraints your organization actually intends.
+
+## Generation: isolate the trusted release job
+
+GitHub's [artifact-attestation guide](https://docs.github.com/en/actions/concepts/security/artifact-attestations) uses an attestation action after the build output exists. A defensible release job has narrow permissions and a protected trigger.
+
+```yaml
+name: release
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-attest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@<full-commit-sha>
+      - run: ./scripts/build-release.sh
+      - name: Attest release archive
+        uses: actions/attest-build-provenance@<full-commit-sha>
+        with:
+          subject-path: dist/app-linux-x64.zip
+```
+
+This is a structural example, not copy-paste authority. Confirm the current action version and syntax in GitHub Docs. Pin third-party and security-sensitive actions to full commit SHAs, keep `id-token: write` and `attestations: write` only in the job that needs them, and protect tag creation or the release environment.
+
+![Locked build cabinet representing an isolated trusted workflow](/images/illustrations/tp-artifact-attestation-20260827-01.png)
+
+### Why the build and attestation should be adjacent
+
+If one job builds an artifact, uploads it under a mutable name, and a later broadly privileged job downloads “latest” before attesting, the statement may faithfully identify the wrong bytes. Prefer a pipeline where the attestation subject is the exact final artifact produced in the trusted job. If jobs must be separated, bind the transfer to an immutable artifact ID or verified digest.
+
+Calculate and record the release digest before upload:
+
+```bash
+sha256sum dist/app-linux-x64.zip > dist/app-linux-x64.zip.sha256
+```
+
+The checksum file is operationally useful, but it is not self-authenticating. The attestation signature and identity check give the digest stronger context.
+
+## Verification: start from downloaded bytes
+
+GitHub's [verification guide](https://github.com/actions/attest-build-provenance) centers verification on the artifact itself. A release acceptance script should download to a fresh directory, verify the attestation against an expected identity, and only then extract or execute.
+
+```bash
+set -euo pipefail
+asset='downloads/app-linux-x64.zip'
+expected_repo='acme/example-app'
+
+gh attestation verify "$asset" --repo "$expected_repo"
+sha256sum "$asset"
+```
+
+Treat that as a baseline. Depending on the current CLI, add policy flags for signer workflow, source repository, or predicate type. Save the verifier's structured output when audit evidence matters; do not rely only on a green terminal line.
+
+![Smooth connected rings representing digest, repository, and workflow identity](/images/illustrations/tp-artifact-attestation-20260827-02.png)
+
+### A five-row acceptance record
+
+| Field | Example evidence | Pass condition |
+|---|---|---|
+| Asset | local SHA-256 | digest computed from downloaded bytes |
+| Source repository | attestation identity | exact approved repository |
+| Workflow | signer/workflow reference | protected release workflow |
+| Revision | commit or tag resolution | approved immutable commit |
+| Verification time/tool | CLI version and timestamp | supported current verifier |
+
+Store this record with the release ticket, not inside the mutable release page alone. For a small team, JSON output plus the release commit and asset digest is often enough. For regulated environments, map the record to change approval, environment protection, and retention requirements.
+
+## Threat-model the four common false assurances
+
+### 1. “The signature is valid, so the software is safe.”
+
+False. npm's [provenance documentation](https://docs.npmjs.com/generating-provenance-statements) explicitly says provenance does not guarantee a package has no malicious code; it creates a verifiable link to source and build instructions. You still need review, dependency controls, tests, scanning, and incident response.
+
+### 2. “The repository is ours, so any workflow is acceptable.”
+
+False. A low-privilege documentation workflow should not be able to mint release evidence. Restrict token permissions, protect workflow files with CODEOWNERS and branch rules, and constrain verification to the intended signer workflow where supported. Pair this with our [GitHub Actions security-hardening checklist](/posts/github-actions-pull-request-target-fork-security-checklist-2026/).
+
+### 3. “The filename matches the release.”
+
+False. Names are labels. Hash the downloaded bytes and verify the attestation subject digest.
+
+### 4. “An attestation replaces reproducible builds.”
+
+False. Provenance identifies a build and inputs; reproducibility independently tests whether the process yields the expected output. Both can help, but they answer different questions.
+
+## Permission and identity design
+
+GitHub Actions uses OIDC to request short-lived identity tokens. The same pattern that reduces long-lived cloud secrets also underpins signed claims about workflow identity. GitHub's [OIDC hardening documentation](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect) emphasizes trust conditions so a cloud provider accepts only intended repository and workflow claims.
+
+For attestations:
+
+- Keep default workflow permissions read-only.
+- Grant `id-token: write` only at the attesting job.
+- Grant `attestations: write` only where generation occurs.
+- Do not expose release credentials to pull requests from forks.
+- Require review for changes to `.github/workflows/release.yml`.
+- Use protected environments for publish or signing boundaries.
+- Separate build evidence from deployment authorization.
+
+If your existing pipeline already uses cloud OIDC, compare its trust claims with the release-attestation identity. Our [GitHub Actions OIDC deployment checklist](/posts/ai-coding-agent-repository-safety-checklist-2026/) covers that adjacent boundary.
+
+![Plain bridge between two secure shelves representing controlled release transfer](/images/illustrations/tp-artifact-attestation-20260827-03.png)
+
+## npm packages: related, not identical
+
+npm can generate provenance for packages published from supported CI. The npm documentation explains that provenance links a published package to source and build instructions through Sigstore-backed attestations. Trusted publishing can automatically generate provenance without a long-lived npm token.
+
+That makes the migration decision more than adding `--provenance`. Validate repository metadata, case-sensitive source URL, supported runner, package access, and publishing identity. Use our [npm trusted-publishing migration checklist](/posts/npm-trusted-publishing-oidc-migration-checklist-2026/) for the token-removal path.
+
+For installed dependencies, `npm audit signatures` can verify registry signatures and attestations where available. Absence of provenance is not automatically proof of compromise, and presence is not proof of safety. Define how your policy treats legacy packages.
+
+## Sigstore and non-GitHub verification
+
+GitHub's product flow is convenient, but the underlying attestation ecosystem is broader. Sigstore's [Cosign attestation verification documentation](https://docs.sigstore.dev/cosign/verifying/attestation/) covers identity, issuer, predicate, and policy checks for signed attestations. If artifacts move across registries or CI systems, standardize the predicate and identity policy rather than wrapping every platform in an unrelated “verified” badge.
+
+A SLSA provenance statement contains a subject digest, build definition, and run details. SLSA warns that external parameters are untrusted inputs and should be captured and verified downstream. Therefore, a verifier should care not only that a statement exists but also whether the declared source, ref, build type, and builder identity are acceptable.
+
+![Archive shelf and transparent verification lens representing downstream checking](/images/illustrations/tp-artifact-attestation-20260827-04.png)
+
+## Rollout plan for a small engineering team
+
+### Phase 1: observe
+
+Generate attestations for one non-critical release. Do not block deployment yet. Capture verifier output and compare the attested digest, repository, workflow, and revision with the release record.
+
+### Phase 2: warn
+
+Add a CI job that downloads the release candidate and fails softly when verification is missing or identity differs. Track false positives and old release exceptions.
+
+### Phase 3: enforce
+
+Block promotion unless the artifact verifies against the expected repository and workflow. Keep a documented break-glass process that requires human approval and records the unmatched digest.
+
+### Phase 4: rehearse failure
+
+Run four tests:
+
+1. Modify one byte in the archive; verification must fail.
+2. Attest from a test repository; repository policy must fail.
+3. Attest through an unapproved workflow; workflow policy must fail.
+4. Use an approved attestation for a different artifact; digest binding must fail.
+
+NIST's [Secure Software Development Framework](https://csrc.nist.gov/pubs/sp/800/218/final) recommends integrating secure development practices into the SDLC rather than treating security as a final scan. Attestation generation, verification, retention, and failure rehearsal fit that operational approach.
+
+## Limitations and incident response
+
+Attestations do not prevent a compromised maintainer from merging malicious code, a compromised runner from affecting a build within its trust boundary, or an approved workflow from downloading an unsafe dependency. They also do not replace secret scanning, dependency review, branch protection, code review, sandboxing, or runtime controls.
+
+If verification suddenly fails:
+
+- stop promotion of the asset;
+- preserve the bytes and computed digest;
+- compare repository, workflow, issuer, and revision claims;
+- check whether the CLI or predicate format changed;
+- inspect workflow and release logs;
+- rotate or revoke release credentials if compromise is plausible;
+- publish a correction only after a new verified artifact is built.
+
+## FAQ
+
+### Does a valid attestation prove an artifact is safe?
+
+No. It proves specific signed claims about origin and build identity for exact bytes. Source and workflow security still require independent controls.
+
+### Should verification use a filename or digest?
+
+The artifact bytes and resulting digest. A filename is mutable metadata.
+
+### Can a pull-request workflow generate release attestations?
+
+Do not use an untrusted pull-request context as the release trust boundary. Generate release attestations in a narrowly permissioned, protected workflow, and verify that workflow identity downstream.
+
+The useful outcome is not “we added an attestation action.” It is a closed evidence loop: **protected source → constrained build → exact artifact digest → signed provenance → independent verification → retained release record**.

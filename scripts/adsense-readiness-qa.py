@@ -20,6 +20,7 @@ EXPECTED_PUBLIC = {
     "note-taking-systems-compared", "passkey-password-manager-setup-2026",
     "passkey-recovery-shared-team-accounts-checklist-2026", "pomodoro-vs-time-blocking-research",
     "saas-admin-offboarding-access-checklist-2026",
+    "github-actions-artifact-attestation-verification-checklist-2026",
     "scim-deprovisioning-exception-review-checklist-2026", "shared-inbox-phishing-triage-checklist-2026",
     "task-management-apps-compared", "workspace-admin-offboarding-app-permission-checklist-2026",
 }
