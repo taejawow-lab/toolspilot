@@ -1,0 +1,236 @@
+---
+title: "GitHub Dependency Review Policy: Lockfile, License, and Rollback Checklist (2026)"
+description: "Build a pull-request dependency review policy that checks lockfile changes, vulnerability severity, license rules, exceptions, and rollback evidence."
+pubDate: "2026-08-30"
+updatedDate: "2026-08-30"
+category: "Security & Compliance"
+tags: ["GitHub", "dependency review", "lockfiles", "open source licenses", "software supply chain"]
+heroImage: "/images/illustrations/tp-dependency-review-20260830-hero.png"
+schemaType: "Article"
+sources:
+  - title: "Dependency review"
+    url: "https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Configuring the dependency review action"
+    url: "https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/manage-your-dependency-security/configure-dependency-review-action"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Dependency Review Action"
+    url: "https://github.com/actions/dependency-review-action"
+    publication: "GitHub Actions"
+    year: "2026 accessed"
+  - title: "Dependency Review Action 5.0.0 release"
+    url: "https://github.com/actions/dependency-review-action/releases/tag/v5.0.0"
+    publication: "GitHub Actions"
+    year: "2026"
+  - title: "Dependency graph"
+    url: "https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-the-dependency-graph"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Dependency graph supported package ecosystems"
+    url: "https://docs.github.com/en/code-security/reference/supply-chain-security/dependency-graph-supported-package-ecosystems"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Reviewing dependency changes in a pull request"
+    url: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-dependency-changes-in-a-pull-request"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "REST API endpoints for dependency review"
+    url: "https://docs.github.com/en/rest/dependency-graph/dependency-review"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "About protected branches"
+    url: "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Secure use reference"
+    url: "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "package-lock.json"
+    url: "https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "SPDX License List"
+    url: "https://spdx.org/licenses/"
+    publication: "SPDX"
+    year: "2026"
+internalLinks:
+  - "/posts/npm-install-script-approval-ignore-scripts-allowscripts-ci-checklist-2026/"
+  - "/posts/github-actions-pull-request-target-fork-security-checklist-2026/"
+  - "/posts/github-actions-artifact-attestation-verification-checklist-2026/"
+visualsCount: 5
+hasVideo: false
+wordCount: 2245
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Does a passing dependency review prove a pull request is safe?"
+    answer: "No. It reports dependency changes that GitHub can identify and applies the configured vulnerability and license rules; it does not prove package code, install scripts, maintainers, or the pull request are safe."
+  - question: "Should a policy use allow-licenses or deny-licenses?"
+    answer: "Choose one, not both. A reviewed allowlist is stricter and handles unknown licenses explicitly; the action currently marks deny-licenses as deprecated, so teams using it should plan a reviewed migration."
+  - question: "Is a small lockfile diff automatically low risk?"
+    answer: "No. One direct version change can alter transitive packages, sources, integrity values, scopes, or install behavior. Review the resolved dependency change, not line count alone."
+  - question: "What evidence should be kept for rollback?"
+    answer: "Keep immutable base and head commits, manifest and lockfile hashes, dependency-review output, the action and policy revision, test results, the approved exception record, and the last known-good deployment or release identifier."
+draft: false
+---
+
+A pull request that changes one version range can rewrite hundreds of lockfile lines, add transitive packages, change an artifact source, or introduce a license the product cannot accept. Reviewing only `package.json` misses the resolved tree; approving a green automated check without reading its coverage misses what the tool could not classify.
+
+GitHub’s [dependency review documentation](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-dependency-review) says the pull-request view can report added, removed, and updated dependencies, including indirect changes in lockfiles and known vulnerability information. A useful policy turns that signal into a merge decision while preserving human ownership, explicit exceptions, and a tested route back to the previous dependency set.
+
+![A guarded pull request lane separating dependency packages by risk](/images/illustrations/tp-dependency-review-20260830-hero.png)
+
+## Define the merge contract before writing YAML
+
+Start with a sentence reviewers and repository administrators can enforce:
+
+> A pull request that changes a recognized manifest or lockfile must pass dependency review, receive an independent review of the resolved dependency changes, comply with the approved license policy, and retain enough evidence to restore and verify the last known-good dependency set.
+
+That contract separates four questions that are often collapsed into one green check:
+
+| Decision | Primary evidence | Stop condition | Important limitation |
+|---|---|---|---|
+| What changed? | manifest diff, lockfile diff, dependency rich diff | unexplained package, source, scope, or integrity change | unsupported or unparsed files may be absent |
+| Is a known vulnerability introduced? | advisory ID, affected range, severity, dependency path | policy threshold met | an absent advisory is not proof of safety |
+| Is the license acceptable? | detected SPDX identifier or expression, legal policy | disallowed, unknown, or unreviewed license | detection is metadata, not legal advice |
+| Can the change be reversed? | immutable commits, hashes, clean reinstall and application checks | baseline or recovery evidence missing | source rollback does not undo every published artifact or data change |
+
+GitHub builds its [dependency graph](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-the-dependency-graph) from repository manifests and lockfiles plus submitted dependency data. The graph can show versions, licenses, known vulnerabilities, and transitive paths where supported. It is an inventory input, not an assertion that every runtime-loaded component was discovered.
+
+## Require the check, but do not confuse execution with enforcement
+
+A workflow run can fail while a pull request remains mergeable. GitHub’s [protected branch documentation](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches) explains that required status checks are a branch-protection setting. Give the dependency-review job a unique, stable name, require that exact check on protected branches or the applicable ruleset, restrict bypasses, and test the rule with a deliberately failing pull request.
+
+The current official action repository documents `v5`; its [5.0.0 release](https://github.com/actions/dependency-review-action/releases/tag/v5.0.0) moved the action runtime to Node 24 and requires Actions Runner 2.327.1 or later. Hosted-runner and self-hosted-runner owners should verify compatibility before changing the required check. This conservative example pins the reviewed release commit rather than a mutable major tag:
+
+```yaml
+name: Dependency Review
+on: [pull_request]
+permissions:
+  contents: read
+jobs:
+  dependency-review:
+    name: dependency-policy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Review dependency changes
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294
+        with:
+          fail-on-severity: high
+          fail-on-scopes: runtime, development, unknown
+          allow-licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC
+```
+
+Treat this as a policy illustration, not a universal license list or a permanent action revision. The official [configuration guide](https://docs.github.com/en/code-security/how-tos/secure-your-supply-chain/manage-your-dependency-security/configure-dependency-review-action) allows inline settings or a configuration file and says `allow-licenses` and `deny-licenses` cannot be used together. Confirm the current input names against the [action repository](https://github.com/actions/dependency-review-action) whenever the pinned revision changes.
+
+GitHub’s [secure-use reference](https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions) recommends minimum `GITHUB_TOKEN` permissions and pinning third-party actions to full commit SHAs. Dependency review normally needs read access to contents; do not add write permissions, deployment credentials, package-publish tokens, or cloud secrets to this job merely for convenience.
+
+![A narrow status-check gate attached to a protected branch](/images/illustrations/tp-dependency-review-20260830-01.png)
+
+## Review lockfiles as resolved security input
+
+The source diff and dependency rich diff answer different questions. GitHub’s guide to [reviewing dependency changes in a pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-dependency-changes-in-a-pull-request) recommends examining the dependency view and the source diff because some changes may not alter dependencies and some dependencies may not be parsed. Reviewers should therefore record both views.
+
+For each lockfile change, ask:
+
+1. Does the manifest change explain every direct addition, removal, and update?
+2. Which transitive packages changed, and through which direct dependency path?
+3. Did any registry, tarball URL, Git commit, checksum, workspace link, or patch source change?
+4. Did a package move between runtime, development, optional, or unknown scope?
+5. Did the package-manager or lockfile-format version change and cause unrelated churn?
+6. Does a clean, frozen install reproduce the reviewed tree without rewriting the lockfile?
+7. Does any new package execute install-time code or fetch an additional binary?
+
+For npm, the official [`package-lock.json` reference](https://docs.npmjs.com/cli/v11/configuring-npm/package-lock-json/) says the lockfile describes the exact generated tree, is intended for source control, and records fields such as resolved locations and integrity values. Those properties support repeatability and diff review; they do not certify that the resolved artifact or its scripts are benign. Use the [npm install-script approval checklist](/posts/npm-install-script-approval-ignore-scripts-allowscripts-ci-checklist-2026/) when the changed tree can execute lifecycle hooks.
+
+Coverage varies by ecosystem and file type. GitHub’s [supported-ecosystems table](https://docs.github.com/en/code-security/reference/supply-chain-security/dependency-graph-supported-package-ecosystems) lists recommended files such as `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`, `Cargo.lock`, and `poetry.lock`, while support methods differ. A repository using generated vendor directories, custom download scripts, container base images, committed binaries, or an unsupported lock format needs separate controls. Do not label an unparsed change “no dependency changes.” Label it “not covered,” then route it to the appropriate scanner and reviewer.
+
+## Choose a license model with an exception path
+
+The [SPDX License List](https://spdx.org/licenses/) provides standardized identifiers, license texts, exceptions, and canonical URLs. It does not decide whether a license is compatible with a product’s distribution model, linking method, customer commitments, patent policy, or jurisdiction. Engineering should implement identifiers approved by qualified legal or compliance owners rather than inventing a legal policy in workflow YAML.
+
+An allowlist is usually the clearer default for a product with a small approved license set: a new or unknown identifier stops for review. A denylist permits everything not named, including newly encountered or unclassified terms. The current action documentation also marks `deny-licenses` as deprecated for possible removal in the next major release, strengthening the case for a controlled migration rather than expanding a denylist indefinitely.
+
+Use one of these models:
+
+- **Allowlist:** accept only reviewed SPDX identifiers or expressions; block `unknown`, missing, custom, and unmatched values for manual classification.
+- **Denylist during transition:** block specifically prohibited identifiers while inventorying the current tree, then migrate after resolving existing exceptions.
+- **License check disabled:** appropriate only when an independently required license system covers the same pull-request boundary and its failure blocks merge; document the replacement evidence.
+
+Never add an identifier to the allowlist merely to make a check green. An exception should name the exact package and version, detected and confirmed license expression, intended use, approving owner, rationale, expiration or review trigger, and replacement plan. Keep the exception narrow. A package-name exception without a version boundary can silently authorize a future release with different terms.
+
+![License tokens entering an approval channel with an exception tray](/images/illustrations/tp-dependency-review-20260830-02.png)
+
+## Work a risk-priority example without pretending it is probability
+
+Suppose a pull request updates one direct web framework. The dependency view reports 14 transitive updates and three items needing attention:
+
+| Item | Finding | Scope | Immediate policy result |
+|---|---|---|---|
+| Package A | known critical advisory, patched version available | runtime | block |
+| Package B | known high advisory, no application path confirmed yet | development | block under the example policy |
+| Package C | no known advisory, license reported as unknown | runtime | block for license review |
+
+The binary merge decision comes from policy, not arithmetic. A simple queue-order score can help responders decide what to investigate first:
+
+**priority score = severity weight × scope weight × reachability-evidence weight**
+
+Use severity weights critical `4`, high `3`, moderate `2`, low `1`; scope weights runtime `3`, unknown `2`, development `1`; and evidence weights confirmed reachable `3`, plausible `2`, unassessed `2`, demonstrated unreachable `1`. Package A is critical, runtime, and plausibly reachable: `4 × 3 × 2 = 24`. Package B is high, development, and unassessed: `3 × 1 × 2 = 6`. Package C has no vulnerability severity, so it does not receive this vulnerability score; it remains blocked in the separate license lane.
+
+This score is a triage aid, not CVSS, exploit probability, legal significance, or permission to merge. “Demonstrated unreachable” still does not erase an advisory; it supports a documented, expiring exception only if the organization’s policy permits one. Record the evidence used for each factor so another reviewer can reproduce the ordering.
+
+The [dependency review REST API](https://docs.github.com/en/rest/dependency-graph/dependency-review) can return changes between two commits, including package name, version, manifest, license, and vulnerability data. If a team archives API output, bind it to immutable base and head SHAs. A report generated before the final force-push is not evidence for the final pull request.
+
+## Preserve rollback evidence before merge
+
+Rollback starts before approval. A merged lockfile can feed caches, artifacts, images, deployments, generated clients, database migrations, or published packages. Reverting two source files does not retract those effects. For release outputs, pair dependency controls with the [artifact attestation verification checklist](/posts/github-actions-artifact-attestation-verification-checklist-2026/) so the restored source revision can be tied to rebuilt bytes.
+
+Save this compact evidence packet with the pull request or change record:
+
+- [ ] base commit SHA and final reviewed head commit SHA;
+- [ ] hashes of every changed manifest, lockfile, and dependency policy file;
+- [ ] dependency-review action commit, workflow revision, and effective configuration;
+- [ ] machine-readable dependency changes or complete job summary, including “unknown” findings;
+- [ ] advisory IDs, affected ranges, patched versions, dependency paths, and scope classifications;
+- [ ] detected license identifiers or expressions plus any approved exception record;
+- [ ] clean frozen-install command, package-manager version, runner image, and result;
+- [ ] tests or build checks that establish the last known-good baseline and proposed state;
+- [ ] produced artifact, image, SBOM, or release identifiers and their digests where applicable;
+- [ ] rollback owner, stop conditions, recovery command or revert SHA, and verification checks.
+
+![Two immutable dependency baselines connected by a reversible bridge](/images/illustrations/tp-dependency-review-20260830-03.png)
+
+A practical rollback rehearsal restores the previous manifest and lockfile in a clean environment, invalidates dependency caches associated with the rejected tree, performs the frozen install, rebuilds artifacts, and runs a small set of service-critical checks. Never “roll back” by editing a transitive version directly in a generated lockfile unless the package manager explicitly supports that operation and a clean regeneration produces the same result.
+
+Stop deployment and investigate if rollback produces a different tree, integrity verification fails, a registry artifact is unavailable, a package source changed, install behavior reaches an unexplained host, or the restored build cannot be tied to the expected commit. If untrusted dependency code ran with credentials, use the [pull-request workflow security checklist](/posts/github-actions-pull-request-target-fork-security-checklist-2026/) to assess token, secret, runner, cache, and artifact exposure; source reversion alone does not revoke credentials.
+
+## Operate exceptions as expiring debt
+
+A vulnerability exception should contain the GHSA or CVE, exact package and affected version, transitive path, runtime scope, exploitability evidence, compensating control, owner, approval, expiry, and upgrade target. GitHub’s action supports advisory allowances, but an `allow-ghsas` entry is only a machine-readable bypass. It is not the risk acceptance record.
+
+Review exceptions when the dependency version, dependency path, application exposure, advisory range, license expression, deployment model, or action version changes. Fail closed if an exception has expired or its evidence cannot be reproduced. Keep emergency bypass authority separate from the contributor who authored the dependency update, and require a follow-up change to remove temporary policy entries.
+
+![An evidence folder beside a timed exception seal and rollback marker](/images/illustrations/tp-dependency-review-20260830-04.png)
+
+## Boundaries and final policy checklist
+
+Dependency review covers changes GitHub can identify between revisions. It cannot prove the absence of malicious code, undisclosed vulnerabilities, compromised maintainers, typosquatted packages, unsafe install scripts, incompatible license obligations, runtime-loaded plugins, or artifacts downloaded outside recognized package files. It also cannot guarantee that a passing pull request was deployed unchanged.
+
+Before making the check required:
+
+- [ ] confirm the repository and plan support dependency review;
+- [ ] inventory recognized manifests and lockfiles, and document uncovered dependency channels;
+- [ ] pin the action to a reviewed commit and verify runner compatibility;
+- [ ] grant only `contents: read` unless current official documentation requires more;
+- [ ] choose a severity and scope threshold that matches written risk policy;
+- [ ] choose either a legally reviewed license allowlist or a time-bounded denylist migration;
+- [ ] require the uniquely named status check and test that a failure blocks merge;
+- [ ] require human review of direct, transitive, source, integrity, scope, and install-behavior changes;
+- [ ] bind exceptions and archived output to the final base and head SHAs;
+- [ ] retain and rehearse a clean rollback evidence packet;
+- [ ] revalidate settings after action, runner, package-manager, ruleset, or licensing-policy changes.
+
+A strong dependency gate does not promise that approved packages are safe. It makes the narrower, defensible claim that **recognized dependency changes were compared, configured rules were enforced, unresolved findings stopped the merge, named owners accepted any exceptions, and the team can reconstruct the evidence needed to reverse course**.

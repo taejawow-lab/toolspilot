@@ -1,0 +1,64 @@
+{
+  "site": "toolspilot",
+  "article": "github-dependency-review-pull-request-policy-lockfile-license-checklist-2026.mdx",
+  "accepted": [
+    {
+      "index": 0,
+      "published_url": "/images/illustrations/tp-dependency-review-20260830-hero.png",
+      "engine": "krea",
+      "seed": 2026085003,
+      "prompt_id": "3fe68822-de8b-4ede-8e02-efb0726ba4e9",
+      "width": 1536,
+      "height": 864,
+      "source_file": "20260830_214735_krea_2026085003.png",
+      "visual_qa": "accepted_2026-08-30"
+    },
+    {
+      "index": 1,
+      "published_url": "/images/illustrations/tp-dependency-review-20260830-01.png",
+      "engine": "krea",
+      "seed": 2026086011,
+      "prompt_id": "e67935b9-5eb4-4022-a2a4-92a64e193a79",
+      "width": 1536,
+      "height": 864,
+      "source_file": "20260830_215200_krea_2026086011.png",
+      "visual_qa": "accepted_2026-08-30"
+    },
+    {
+      "index": 2,
+      "published_url": "/images/illustrations/tp-dependency-review-20260830-02.png",
+      "engine": "krea",
+      "seed": 2026086012,
+      "prompt_id": "2953422b-8f8e-401e-865e-aae39e846cda",
+      "width": 1536,
+      "height": 864,
+      "source_file": "20260830_215214_krea_2026086012.png",
+      "visual_qa": "accepted_2026-08-30"
+    },
+    {
+      "index": 3,
+      "published_url": "/images/illustrations/tp-dependency-review-20260830-03.png",
+      "engine": "krea",
+      "seed": 2026085006,
+      "prompt_id": "6b5f0173-1402-4223-8779-ad65510d3e07",
+      "width": 1536,
+      "height": 864,
+      "source_file": "20260830_214815_krea_2026085006.png",
+      "visual_qa": "accepted_2026-08-30"
+    },
+    {
+      "index": 4,
+      "published_url": "/images/illustrations/tp-dependency-review-20260830-04.png",
+      "engine": "krea",
+      "seed": 2026085007,
+      "prompt_id": "64243ddf-c6dc-45df-8cf7-a6c37961cdc7",
+      "width": 1536,
+      "height": 864,
+      "source_file": "20260830_214829_krea_2026085007.png",
+      "visual_qa": "accepted_2026-08-30"
+    }
+  ],
+  "accepted_count": 5,
+  "contact_sheet_qa": "batch-d-20260830 final contact sheet visually inspected; rejected generations excluded",
+  "generated_at": "2026-08-30"
+}
