@@ -7,6 +7,7 @@ import json, re, sys
 ROOT = Path(__file__).resolve().parents[1]
 POSTS = ROOT / "src/content/posts"
 EXPECTED_PUBLIC = {
+    "code-signing-release-key-custody-checklist-2026",
     "github-dependency-review-pull-request-policy-lockfile-license-checklist-2026",
     "saas-backup-restore-drill-rto-rpo-evidence-checklist-2026",
     "github-actions-pull-request-target-fork-security-checklist-2026",

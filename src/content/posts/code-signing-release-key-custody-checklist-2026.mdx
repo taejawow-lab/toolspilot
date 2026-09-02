@@ -63,11 +63,11 @@ sources:
 internalLinks:
   - "/posts/npm-trusted-publishing-oidc-migration-checklist-2026/"
   - "/posts/github-actions-artifact-attestation-verification-checklist-2026/"
-  - "/posts/api-key-rotation-inventory-checklist-2026/"
+  - "/posts/ai-coding-agent-repository-safety-checklist-2026/"
   - "/posts/saas-backup-restore-drill-rto-rpo-evidence-checklist-2026/"
 visualsCount: 5
 hasVideo: false
-wordCount: 2531
+wordCount: 2701
 affiliate: false
 aiDisclosed: true
 faq:
@@ -121,7 +121,7 @@ Create an inventory that describes each key or signing identity without storing 
 - revocation path and customer-notification path;
 - evidence location for approvals, attestations, checksums, and release notes.
 
-Do not paste certificate passwords, private-key material, recovery codes, hardware-token PINs, or bearer tokens into the inventory. The inventory should let a responder answer "what must be revoked and who can do it" without becoming a second secret store. For broader secret hygiene, align this with the repository's [API key rotation inventory checklist](/posts/api-key-rotation-inventory-checklist-2026/), but keep release signing in a higher custody tier because a valid signature can move trust across customer environments.
+Do not paste certificate passwords, private-key material, recovery codes, hardware-token PINs, or bearer tokens into the inventory. The inventory should let a responder answer "what must be revoked and who can do it" without becoming a second secret store. For broader secret hygiene, align this with the repository's [API key rotation inventory checklist](/posts/ai-coding-agent-repository-safety-checklist-2026/), but keep release signing in a higher custody tier because a valid signature can move trust across customer environments.
 
 ![Padlock and keys representing physical custody controls](/images/illustrations/tp-code-signing-custody-20260902-01.png)
 
