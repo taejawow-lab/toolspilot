@@ -1,0 +1,263 @@
+---
+title: "Code-Signing and Release-Key Custody Checklist for Small Teams in 2026"
+description: "A small-team custody checklist for code-signing keys, release keys, CI permissions, recovery, revocation drills, and two-person release decisions."
+pubDate: 2026-09-02
+updatedDate: 2026-09-02
+category: "Security"
+tags: ["code signing", "release security", "key management", "CI security", "software supply chain"]
+heroImage: "/images/illustrations/tp-code-signing-custody-20260902-hero.png"
+schemaType: "HowTo"
+sources:
+  - title: "Secure Software Development Framework SP 800-218"
+    url: "https://csrc.nist.gov/pubs/sp/800/218/final"
+    publication: "NIST"
+    year: "2026 accessed"
+  - title: "Recommendation for Key Management: Part 1"
+    url: "https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final"
+    publication: "NIST"
+    year: "2026 accessed"
+  - title: "Secure by Design"
+    url: "https://www.cisa.gov/securebydesign"
+    publication: "CISA"
+    year: "2026 accessed"
+  - title: "Secure Use Reference"
+    url: "https://docs.github.com/en/actions/reference/security/secure-use"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "OpenID Connect"
+    url: "https://docs.github.com/en/actions/concepts/security/openid-connect"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Using artifact attestations to establish provenance for builds"
+    url: "https://docs.github.com/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Verifying attestations offline"
+    url: "https://docs.github.com/actions/security-for-github-actions/using-artifact-attestations/verifying-attestations-offline"
+    publication: "GitHub Docs"
+    year: "2026 accessed"
+  - title: "Trusted publishing for npm packages"
+    url: "https://docs.npmjs.com/trusted-publishers/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "Generating provenance statements"
+    url: "https://docs.npmjs.com/generating-provenance-statements/"
+    publication: "npm Docs"
+    year: "2026 accessed"
+  - title: "Sigstore keyless signing overview"
+    url: "https://docs.sigstore.dev/cosign/signing/overview/"
+    publication: "Sigstore Documentation"
+    year: "2026 accessed"
+  - title: "Create a certificate signing request"
+    url: "https://developer.apple.com/help/account/certificates/create-a-certificate-signing-request/"
+    publication: "Apple Developer Documentation"
+    year: "2026 accessed"
+  - title: "Code signing options for Windows app developers"
+    url: "https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/code-signing-options"
+    publication: "Microsoft Learn"
+    year: "2026 accessed"
+  - title: "Artifact Signing certificate management"
+    url: "https://learn.microsoft.com/en-us/azure/artifact-signing/concept-certificate-management"
+    publication: "Microsoft Learn"
+    year: "2026 accessed"
+internalLinks:
+  - "/posts/npm-trusted-publishing-oidc-migration-checklist-2026/"
+  - "/posts/github-actions-artifact-attestation-verification-checklist-2026/"
+  - "/posts/api-key-rotation-inventory-checklist-2026/"
+  - "/posts/saas-backup-restore-drill-rto-rpo-evidence-checklist-2026/"
+visualsCount: 5
+hasVideo: false
+wordCount: 2531
+affiliate: false
+aiDisclosed: true
+faq:
+  - question: "Does two-person custody mean every commit needs two people?"
+    answer: "No. Apply two-person approval to release-key custody, privileged signing, recovery, revocation, and exception decisions. Normal code review can remain separate."
+  - question: "Should a small team keep code-signing private keys in CI?"
+    answer: "Prefer managed signing, hardware-backed custody, or keyless workflows when they fit the platform. If CI must access a key, isolate that job, narrow permissions, and remove all unrelated secret access."
+  - question: "Is the risk-priority score a probability of compromise?"
+    answer: "No. It is a prioritization score for scheduling controls and drills. It does not estimate breach likelihood, expected loss, or legal compliance."
+  - question: "How often should revocation be drilled?"
+    answer: "Run a tabletop at least after major signing, CI, platform, or staffing changes, and set a calendar cadence based on release impact and certificate renewal dates."
+draft: false
+---
+
+Code-signing keys and release keys deserve more care than ordinary project secrets because they can convert a normal-looking build into trusted software. A small team does not need a bank-grade ceremony for every patch, but it does need a written custody model, a narrow CI path, a recovery plan, and a way to revoke trust without debating the process during an incident.
+
+This checklist was written for small software teams that ship desktop apps, command-line tools, mobile apps, packages, containers, or signed release archives. It is operational guidance, not legal advice, audit certification, or a claim that any one tool makes releases safe. Recheck your platform requirements before changing production signing because Apple, Microsoft, npm, GitHub, and Sigstore details can change.
+
+![Hardware signing tokens stored in a protected case](/images/illustrations/tp-code-signing-custody-20260902-hero.png)
+
+## Start with the trust boundary
+
+NIST's Secure Software Development Framework treats secure release as an engineering practice, not a final marketing step, and includes protecting code integrity, verifying releases, and retaining evidence in the software lifecycle ([NIST SP 800-218](https://csrc.nist.gov/pubs/sp/800/218/final)). CISA's Secure by Design guidance pushes a related idea: security responsibilities should be designed into the product and delivery process rather than shifted to customers after release ([CISA Secure by Design](https://www.cisa.gov/securebydesign)).
+
+Translate that into one plain-language policy before touching tools:
+
+> A release is trusted only when the approved source revision, build environment, artifact digest, signer identity, and publication channel match the team's recorded release decision.
+
+That policy keeps the team from treating a signature as a magic shield. A signature can prove that a key or identity signed bytes. It does not prove that the source was reviewed, dependencies were healthy, the workflow was uncompromised, or the artifact is appropriate for customers. GitHub artifact attestations make a similar distinction by binding provenance claims to artifacts so consumers can verify where and how software was built, not whether every line is benign ([GitHub artifact attestations](https://docs.github.com/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds)).
+
+Use this boundary for scope decisions:
+
+| Asset or action | Custody level | Why it matters | Minimum evidence |
+|---|---|---|---|
+| Root code-signing private key or managed signing role | Two-person custody | Can sign customer-trusted artifacts | Owner list, storage method, approval log |
+| CI release identity | Two-person change approval | Can request signing or publishing rights | Protected workflow, branch rule, reviewed diff |
+| Package publish permission | Two-person release approval | Can distribute to users quickly | Registry role, release ticket, version record |
+| Recovery secret or offline backup | Two-person access | Can restore or replace signing authority | Sealed inventory, access timestamp, return check |
+| Revocation decision | Two-person incident approval when time allows | Can break updates or customer installs | Reason, affected cert/key, notification owner |
+
+## Inventory keys without exposing them
+
+Create an inventory that describes each key or signing identity without storing the secret value. NIST SP 800-57 Part 1 frames key management as a lifecycle discipline covering generation, distribution, storage, use, rotation, backup, compromise response, and destruction ([NIST SP 800-57 Part 1 Rev. 5](https://csrc.nist.gov/pubs/sp/800/57/pt1/r5/final)). For a small team, the practical inventory fields are enough to make decisions under pressure:
+
+- signer name and platform;
+- artifact types it may sign;
+- owner and backup owner;
+- storage location class, such as HSM, cloud signing service, hardware token, password manager attachment, or offline encrypted media;
+- creation, expiry, renewal, and last-use dates;
+- CI workflows or manual machines allowed to invoke it;
+- revocation path and customer-notification path;
+- evidence location for approvals, attestations, checksums, and release notes.
+
+Do not paste certificate passwords, private-key material, recovery codes, hardware-token PINs, or bearer tokens into the inventory. The inventory should let a responder answer "what must be revoked and who can do it" without becoming a second secret store. For broader secret hygiene, align this with the repository's [API key rotation inventory checklist](/posts/api-key-rotation-inventory-checklist-2026/), but keep release signing in a higher custody tier because a valid signature can move trust across customer environments.
+
+![Padlock and keys representing physical custody controls](/images/illustrations/tp-code-signing-custody-20260902-01.png)
+
+## Choose the custody model
+
+There are three common models for small teams. The right answer depends on platform support, cost, release frequency, and offline needs.
+
+Managed signing is the default preference when it fits. Microsoft now documents Azure Artifact Signing, formerly Trusted Signing, as a recommended option for many Windows apps distributed outside the Store, with service-managed signing resources rather than a team handling a traditional private key file directly ([Microsoft code signing options](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/code-signing-options)). Microsoft also documents certificate lifecycle concepts for Artifact Signing, including short-lived signing certificates and timestamp countersignatures ([Microsoft certificate management](https://learn.microsoft.com/en-us/azure/artifact-signing/concept-certificate-management)). In custody terms, your risk shifts from "where is the private key file" to "who can administer the signing account, validation, certificate profile, and CI identity."
+
+Platform-issued developer certificates remain common for Apple ecosystems. Apple documents certificate signing request creation through Keychain Access, where the CSR process is tied to a key generated on the Mac ([Apple CSR documentation](https://developer.apple.com/help/account/certificates/create-a-certificate-signing-request/)). That means custody must cover the Mac account, keychain access, certificate export policy, Apple Developer roles, revocation authority, and backup plan. A shared laptop with a saved login password is not two-person custody.
+
+Keyless and identity-bound signing can reduce standing key exposure when the ecosystem supports it. Sigstore's keyless signing model uses identity tokens and public transparency infrastructure so a release workflow can sign without long-lived private key custody in the usual sense ([Sigstore keyless overview](https://docs.sigstore.dev/cosign/signing/overview/)). npm Trusted Publishing similarly lets supported CI providers publish packages through OIDC-bound trusted publisher configuration rather than a long-lived registry token, subject to npm's current provider, workflow, and package rules ([npm trusted publishers](https://docs.npmjs.com/trusted-publishers/)). The [npm trusted publishing migration checklist](/posts/npm-trusted-publishing-oidc-migration-checklist-2026/) is the adjacent path for JavaScript packages.
+
+## Two-person custody decision support
+
+Two-person custody is not theater. It is a way to prevent one compromised account, hurried maintainer, or departed employee from silently changing the release trust boundary. Use it for decisions where a mistake can create public trust, destroy recovery options, or hide evidence.
+
+Use this decision table before adding a second approver requirement:
+
+| Decision | Require two people? | Approver separation | Exception rule |
+|---|---|---|---|
+| Create or replace a release signing key | Yes | One release owner and one security or engineering lead | No solo exception |
+| Grant CI the ability to sign or publish | Yes | Workflow author cannot be sole approver | Emergency expires within 24 hours |
+| Run a normal signed release from an unchanged workflow | Usually yes for public production | Builder and releaser should differ where staffing allows | Solo release allowed only under preapproved low-impact class |
+| Renew certificate before expiry | Yes if key material, roles, or identity validation changes | Requester cannot approve custody change | Renewal-only path may be scheduled |
+| Revoke a suspected compromised key | Yes when time allows | Incident lead and release owner | One person may revoke immediately if delay increases harm |
+| Access offline recovery material | Yes | Holder A and Holder B both record access | Break-glass record required after use |
+
+The table supports judgment; it does not replace incident command. If the team is two people total, use compensating controls: protected branches, hardware-backed authentication, external timestamped logs, registry notifications, and post-action review. If the team is one person, write the process anyway and add an outside accountant, attorney, advisor, or managed service only where confidentiality and legal duties permit.
+
+![Separate lockboxes and hardware tokens for split custody](/images/illustrations/tp-code-signing-custody-20260902-02.png)
+
+## Worked risk-priority score, not probability
+
+Small teams need a way to schedule work without pretending to calculate breach odds. Use a risk-priority score that ranks control work. It is explicitly not a probability of compromise, not expected annual loss, and not a compliance score.
+
+Score each signing path from 1 to 5 on four factors:
+
+- **standing authority:** how much persistent signing or publishing power exists;
+- **change exposure:** how often workflows, dependencies, or maintainers change around the release path;
+- **customer impact:** how many users or systems would trust a bad release;
+- **recovery friction:** how hard it would be to revoke, replace, and communicate.
+
+Then calculate:
+
+`priority score = standing authority + change exposure + customer impact + recovery friction`
+
+Worked example:
+
+| Release path | Standing authority | Change exposure | Customer impact | Recovery friction | Priority score |
+|---|---:|---:|---:|---:|---:|
+| Desktop app signing key on one maintainer Mac | 5 | 3 | 4 | 5 | 17 |
+| npm package using Trusted Publishing and protected workflow | 2 | 3 | 3 | 2 | 10 |
+| Internal CLI signed by short-lived CI identity | 2 | 2 | 2 | 2 | 8 |
+
+The desktop app path gets scheduled first because one workstation and high recovery friction make custody brittle. The score does not mean a 17 percent chance of compromise or a 17 out of 20 legal risk. It is a queueing tool for engineering attention. Pair it with evidence from incidents, audit findings, platform notifications, and staffing changes.
+
+## Build the key lifecycle
+
+A release-key lifecycle should be boring enough to run on a checklist:
+
+1. **Generate or enroll:** create the key, certificate, managed signing profile, or identity binding in the approved environment. For Apple, document the CSR owner and keychain location. For Microsoft managed signing, document the signing account, identity validation, and certificate profile. For Sigstore or npm OIDC, document the issuer, subject, repository, workflow file, environment, and package.
+2. **Approve:** record the two-person custody decision, allowed artifacts, allowed repositories, and expiration review date.
+3. **Use:** invoke signing only from the protected release path. Keep signing separate from test, preview, pull-request, and dependency-update jobs.
+4. **Verify:** check the artifact digest, signature, timestamp where applicable, provenance or attestation, version number, and publication destination.
+5. **Store evidence:** retain release ticket, approvers, workflow run identifier, artifact digest, signature verification result, and customer-facing release note.
+6. **Rotate or renew:** renew before expiry with the same custody decision, and treat any storage or identity change as a new custody event.
+7. **Revoke and destroy:** remove old rights, revoke compromised certificates or tokens, delete local copies, and retain non-secret evidence of destruction.
+
+The lifecycle should include artifacts that are not classical certificates. GitHub OIDC tokens are short-lived, but the trust relationship that lets a workflow request them is durable policy and must be reviewed ([GitHub OIDC](https://docs.github.com/en/actions/concepts/security/openid-connect)). npm provenance is generated around package publication behavior, but the trusted publisher configuration and package maintainer roles remain privileged release assets ([npm provenance](https://docs.npmjs.com/generating-provenance-statements/)).
+
+## CI least privilege
+
+GitHub's Actions secure-use reference emphasizes careful workflow design, minimizing token permissions, reviewing third-party actions, and avoiding unsafe patterns around untrusted code ([GitHub secure use](https://docs.github.com/en/actions/reference/security/secure-use)). For signing, apply those ideas with a narrower rule: only the final trusted release job may request signing or publishing authority.
+
+A defensible CI release path has these properties:
+
+- release triggers are restricted to protected tags, protected branches, or approved environments;
+- pull-request workflows cannot sign production artifacts;
+- the default workflow token starts with read-only permissions, with job-specific elevation only where required;
+- OIDC `id-token: write`, attestation, package publish, or signing permissions exist only in the release job;
+- third-party actions in the release path are pinned to reviewed immutable references;
+- build outputs are transferred by digest or immutable artifact identity, not a mutable "latest" filename;
+- release approvals happen outside the workflow file being approved;
+- logs are checked for accidental secret, path, token, or certificate material exposure.
+
+The adjacent [GitHub Actions artifact attestation checklist](/posts/github-actions-artifact-attestation-verification-checklist-2026/) covers digest-bound provenance verification. The custody checklist here adds the human controls around who can change the release identity and who can recover it.
+
+![Primary and recovery hardware tokens in separate storage](/images/illustrations/tp-code-signing-custody-20260902-03.png)
+
+## Offline recovery
+
+Recovery is part of custody, not an afterthought. A signing setup with no recovery path can push a team into unsafe shortcuts during outage, expiry, account lockout, hardware failure, or personnel loss. A recovery path with no controls can become the easiest attack path.
+
+Keep an offline recovery packet that contains no unnecessary production secret values. Depending on platform, it may include certificate identifiers, revocation URLs, account recovery contacts, hardware-token serial numbers, sealed backup locations, escrow instructions, support contract details, and a blank incident worksheet. If an encrypted key backup is truly required, store it separately from the decryption material and require two-person access.
+
+Test recovery with a tabletop and, where safe, with a non-production signing identity. Do not restore production keys into random test laptops. Do not email recovery material to prove it exists. For SaaS recovery discipline, borrow the evidence mindset from the [SaaS restore drill checklist](/posts/saas-backup-restore-drill-rto-rpo-evidence-checklist-2026/): define the recovery promise, run the smallest safe drill, record timestamps, and clean up temporary access.
+
+Offline verification matters too. GitHub documents an offline attestation verification flow that downloads an attestation bundle and trusted roots before verifying without an internet connection ([GitHub offline attestation verification](https://docs.github.com/actions/security-for-github-actions/using-artifact-attestations/verifying-attestations-offline)). Even if your team does not need air-gapped verification, the pattern is useful: keep enough evidence to validate an important release when a provider page, account, or network path is unavailable.
+
+## Revocation drill
+
+A revocation plan that has never been rehearsed is a hope. Run a drill with a fake compromise scenario:
+
+1. Identify the affected signing identity, certificate, package publisher, or CI trust policy.
+2. Freeze releases from the affected path.
+3. Preserve workflow run logs, approval records, artifact digests, published package versions, and customer notices without collecting secret values.
+4. Decide whether to revoke, rotate, disable publisher configuration, remove a maintainer, or block a workflow.
+5. Publish replacement artifacts only through a clean signing path.
+6. Notify affected customers, stores, registries, or internal deployers with exact versions, hashes, and remediation steps.
+7. Close the loop by documenting timeline, decision owners, missed evidence, and control changes.
+
+For Apple-distributed software, know who can revoke or replace certificates and what customer effect follows. For Windows signing, know whether revocation affects timestamped binaries differently than future signatures under your certificate model. For npm, know who can unpublish, deprecate, rotate maintainers, or change trusted publisher configuration under current registry rules. For Sigstore-based artifacts, know what identity, issuer, transparency-log entry, and policy your verifiers actually enforce.
+
+![Closed workstation and hardware tokens for release-key recovery](/images/illustrations/tp-code-signing-custody-20260902-04.png)
+
+## Limitations
+
+This checklist does not make a malicious approved maintainer harmless. It cannot prove source code is secure, dependencies are safe, build runners are clean, or customers will verify signatures correctly. It also cannot override platform rules. Apple Developer roles, Microsoft Artifact Signing eligibility, npm trusted publisher support, GitHub Actions behavior, and Sigstore verification policy should be checked directly before production changes.
+
+Do not overfit to signatures. A healthy release process also needs dependency review, branch protection, reproducible or at least repeatable builds, vulnerability response, customer communication, and least-privilege access across connected tools. Code signing answers "who signed these bytes under which trust model?" The full release decision answers "should these bytes be shipped?"
+
+## FAQ
+
+### Does two-person custody mean every commit needs two people?
+
+No. Use two-person control for custody decisions, privileged release changes, recovery access, and high-impact release approval. Normal feature commits can follow your regular review policy.
+
+### Should we keep a private signing key in CI?
+
+Prefer managed signing, hardware-backed custody, or keyless signing when the ecosystem supports it. If CI must use a private key, restrict it to one protected release job, keep unrelated secrets away from that job, and rehearse revocation.
+
+### Is the risk-priority score a probability?
+
+No. The score only ranks work. It helps decide which signing path gets cleanup, recovery testing, or custody review first. It does not estimate attacker success or financial loss.
+
+### What is the minimum evidence after each release?
+
+Keep approvers, source revision, workflow identity, artifact digest, signature or attestation verification result, publication destination, version number, and any exception. Store evidence without secret values.

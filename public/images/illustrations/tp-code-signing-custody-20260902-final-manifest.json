@@ -1,0 +1,79 @@
+{
+  "site": "toolspilot",
+  "run_date": "2026-09-02",
+  "backend": "GTI15 ComfyUI (internal endpoint redacted)",
+  "contact_sheet": "tp-code-signing-custody-20260902-final-contact-sheet.jpg",
+  "qa": "strict visual QA passed for all selected assets",
+  "assets": [
+    {
+      "filename": "tp-code-signing-custody-20260902-hero.png",
+      "sha256": "d278f9ad9a5c441e243c6e6f7ec93dc8f609116d74a8045296776634358a8d42",
+      "width": 1536,
+      "height": 864,
+      "accepted": true,
+      "engine": null,
+      "model": null,
+      "seed": null,
+      "prompt_id": null,
+      "prompt": null,
+      "negative_prompt": null,
+      "source_manifest": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260902-final4\\toolspilot\\01\\manifest.json"
+    },
+    {
+      "filename": "tp-code-signing-custody-20260902-01.png",
+      "sha256": "6486a18d2187a01f6c2105fd223bc660fc774e3e3f9a3d386a1a70353b07a386",
+      "width": 1536,
+      "height": 864,
+      "accepted": true,
+      "engine": null,
+      "model": null,
+      "seed": null,
+      "prompt_id": null,
+      "prompt": null,
+      "negative_prompt": null,
+      "source_manifest": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260902-replacements\\toolspilot\\02\\manifest.json"
+    },
+    {
+      "filename": "tp-code-signing-custody-20260902-02.png",
+      "sha256": "c50b3d225937ad3f8bc58c7f2f3bd2a8b87ceb13eb7307cc822729ba0efcddc2",
+      "width": 1536,
+      "height": 864,
+      "accepted": true,
+      "engine": null,
+      "model": null,
+      "seed": null,
+      "prompt_id": null,
+      "prompt": null,
+      "negative_prompt": null,
+      "source_manifest": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260902-final4\\toolspilot\\03\\manifest.json"
+    },
+    {
+      "filename": "tp-code-signing-custody-20260902-03.png",
+      "sha256": "59d8278a2a6d71ed19ea56849a3c5211ea0764845230fc29d9496dd19d7eff71",
+      "width": 1536,
+      "height": 864,
+      "accepted": true,
+      "engine": null,
+      "model": null,
+      "seed": null,
+      "prompt_id": null,
+      "prompt": null,
+      "negative_prompt": null,
+      "source_manifest": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260902-final4\\toolspilot\\04\\manifest.json"
+    },
+    {
+      "filename": "tp-code-signing-custody-20260902-04.png",
+      "sha256": "5b351e99f655ab0b968e1c4a232483f538976734033be4ea55e8492e9d9f82f2",
+      "width": 1536,
+      "height": 864,
+      "accepted": true,
+      "engine": null,
+      "model": null,
+      "seed": null,
+      "prompt_id": null,
+      "prompt": null,
+      "negative_prompt": null,
+      "source_manifest": "C:\\Users\\k8plus\\AppData\\Local\\hermes\\tmp\\batch-d-20260902-final4\\toolspilot\\05\\manifest.json"
+    }
+  ]
+}
